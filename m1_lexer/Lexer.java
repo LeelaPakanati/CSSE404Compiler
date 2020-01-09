@@ -148,7 +148,7 @@ public class Lexer {
 		String word = "";
 		int nextIdx = 0;
 		char nextChar = 0;
-		String operatorSingle[] = {"+", "-", "*", "/", "<", "!"};
+		String operatorSingle[] = {"+", "-", "*", "/", "<", "!", ">", "!"};
 		String operatorDouble[] = {"<=", ">=","==", "!=", "&&", "||"};
 
 		nextChar = this.toLex.charAt(this.currIdx + nextIdx);
@@ -162,14 +162,14 @@ public class Lexer {
 		for(String op : operatorDouble) {
 			if(op.equals(word)) {
 				nextIdx++;
-				return new LexStruct(op, "Delimiter", this.currIdx + nextIdx);
+				return new LexStruct(op, "Operator", this.currIdx + nextIdx);
 			}
 		}
 
 		//Math with single char operators
 		for(String op : operatorSingle) {
 			if(op.equals(String.valueOf(word.charAt(0)))) {
-				return new LexStruct(op, "Delimiter", this.currIdx + nextIdx);
+				return new LexStruct(op, "Operator", this.currIdx + nextIdx);
 			}
 		}
 
@@ -217,7 +217,7 @@ public class Lexer {
 
 		for(String rw : reservedWord) {
 			if(rw.equals(word)) {
-				return new LexStruct(word, "ReserveWord", this.currIdx + nextIdx);
+				return new LexStruct(word, "ReservedWord", this.currIdx + nextIdx);
 			}
 		}
 

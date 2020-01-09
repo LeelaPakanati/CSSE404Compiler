@@ -77,19 +77,26 @@ ExprList =	, Expr ExprList	\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-Expr ::=	LogicalOperand Expr'
+Expr ::=	OrOperand Expr'
 
 \\~\\
-Expr' ::=	|| LogicalOperand Expr'				\newline
-\hspace*{.625in} | \&\& LogicalOperand Expr'	\newline
+Expr' ::=	|| OrOperand Expr'				\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-LogicalOperand ::=	EqualityOperand	LogicalOperand'
+OrOperand ::=	AndOperand OrOperand'
 
 \\~\\
-LogicalOperand' ::=	== EqualityOperand LogicalOperand'	\newline
-\hspace*{.625in} | != EqualityOperand LogicalOperand'	\newline
+OrOperand' ::=	\&\& AndOperand OrOperand'				\newline
+\hspace*{.625in} | \epsilon
+
+
+\\~\\
+AndOperand ::=	EqualityOperand	AndOperand'
+
+\\~\\
+AndOperand' ::=	== EqualityOperand AndOperand'	\newline
+\hspace*{.625in} | != EqualityOperand AndOperand'	\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\

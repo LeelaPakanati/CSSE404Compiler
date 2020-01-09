@@ -1,0 +1,658 @@
+Script started on 2020-01-08 21:30:24-05:00 [TERM="st-256color" TTY="/dev/pts/3" COLUMNS="161" LINES="8"]
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mexit[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[39m [0m[32me[0m[32mx[39m[0m[39m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mexit[39m[32mv[32mi[32mm[39m[39m [4mfirst-follow.js[24m[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31ms[0m[39m[1m[31ms[1m[31mc[0m[39m[1m[31ms[1m[31mc[1m[31mr[0m[39m[1m[31mr[1m[31mi[0m[39m[1m[31mi[1m[31mp[0m[39m[0m[32ms[0m[32mc[0m[32mr[0m[32mi[0m[32mp[32mt[39m [4mf[24m[4mf[4mi[24m[4mi[4mrst-follow.[24m[4m.[4mj[24m[4mj[4ms[24m[1m [0m[0m [?2004l
+Script started, file is first-follow.js
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mv[39m[32mv[32mi[39m[32mv[32mi[32mm[39m [4mf[24m[4mf[4mi[24m[4mi[4mrst-follow.[24m[4m.[4mj[24m[4mj[4ms[24m[?2004l
+[?1000h[?1049h[?1h=[1;8r[27m[24m[23m[0m[H[2J[?25l[8;1H[97m[41mE325: ATTENTION[0m
+Found a swap file by the name "~/.cache/vim/swap//%home%lee%OneDrive%Class Files%sr_winter%CSSE404%project%grammar%first-follow.js.swp"
+[10Cowned by: lee   dated: Wed Jan 08 21:29:37 2020
+[9Cfile name: ~lee/OneDrive/Class Files/sr_winter/CSSE404/project/grammar/first-follow.js
+[10Cmodified: no
+[9Cuser name: lee   host name: lee-pc
+[8Cprocess ID: 4244 (STILL RUNNING)
+[?1000l[32m-- More --[?12l[?25h[0m[8;1H[K[?1000h[8;1HWhile opening file "first-follow.js"
+[13Cdated: Wed Jan 08 21:30:32 2020
+      NEWER than swap file!
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+[?1000l[32m-- More --[0m[8;1H[K[?1000h[8;1H(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r first-follow.js"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file "/home/lee/.cache/vim/swap//%home%lee%OneDrive%Class Files%sr_winter%CSSE404%project%grammar%first-follow.js.s
+[7;161Hw[8;1Hp"
+    to avoid this message.
+[?1000l
+[32m-- More --[0m[8;1H[K[?1000h[8;1H
+[2;1H▽[6n[2;1H  [1;1H[1;1H[L[?25l[1;1H[4m[93m1   [24m[0m[4m                                                                                                                                                             [24m[2;1H[94m~                                                                                                                                                                [3;1H~                                                                                                                                                                [4;1H~                                                                                                                                                                [5;1H~                                                                                                                                                                [6;1H~                                                                                                                                                                [0m[7;1H[38;5;17m[48;5;190m [0m[1m[38;5;17m[48;5;190mNORMAL[0m[38;5;17m[48;5;190m [0m[38;5;85m[48;5;234m first-follow.js [0m[38;5;160m[48;5;234m⊝[0m[38;5;85m[48;5;234m                                                                                                        [0m[38;5;255m[48;5;238m [unix] [0m[38;5;17m[48;5;190m 100% [0m[1m[38;5;17m[48;5;190m☰    0/1 ㏑[0m[38;5;17m[48;5;190m :  1 [1;5H[?12l[?25h[?25l[0m[8;1HType  :qa  and press <Enter> to exit Vim[1;5H[?12l[?25h[?25l[8;1H[K[8;1H:[?12l[?25hq![?25l[?1000l[8;1H[K[8;1H[?1l>[?12l[?25h[?1049l[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mnode_modules[0m   [01;32mfirst-follow.js[0m   grammar.aux          grammar.fls  grammar.pdf         grammar.tex        typescript
+first-follow.  first-follow.txt  grammar.fdb_latexmk  grammar.log  grammar.synctex.gz  package-lock.json
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32m.[39m[39m[4m.[4m/[24m[4m.[4m/[4mf[24m[4mf[4mi[24m[4mi[4mr[24m[4mr[4ms[24m[24m[32m.[24m[32m/[24m[32mf[24m[32mi[24m[32mr[24m[32ms[32mt-follow.js[39m[1m [0m[0m [?2004l
+./first-follow.js: line 1: syntax error near unexpected token `('
+./first-follow.js: line 1: `var Grammar = require('first-follow').Grammar;'
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mw[39m[1m[31mw[1m[31mh[0m[39m[1m[31mw[1m[31mh[1m[31mi[0m[39m[1m[31mi[1m[31mc[0m[39m[0m[32mw[0m[32mh[0m[32mi[0m[32mc[32mh[39m ja
+jack_alias[27m                [27m  [27mjack_latent_client[27m        [27m  [27mjack_netsource[27m            [27m  [27mjack_transport[27m            [27m  [27mjava[27m                      [27m
+jack_bufsize[27m              [27m  [27mjack_load[27m                 [27m  [27mjack_property[27m             [27m  [27mjack_transport_client[27m     [27m  [27mjavac[27m                     [27m
+jack_connect[27m              [27m  [27mjack_load_test[27m            [27m  [27mjack_rec[27m                  [27m  [27mjack_unload[27m               [27m  [27mjavadoc[27m                   [27m
+jackd[27m                     [27m  [27mjack_lsp[27m                  [27m  [27mjack_samplerate[27m           [27m  [27mjack_wait[27m                 [27m  [27mjavah[27m                     [27m
+jack_disconnect[27m           [27m  [27mjack_metro[27m                [27m  [27mjack_server_control[27m       [27m  [27mjadetex[27m                   [27m  [27mjavap[27m                     [27m
+jack_evmon[27m                [27m  [27mjack_midi_dump[27m            [27m  [27mjack_session_notify[27m       [27m  [27mjaotc[27m                     [27m  [27m                          [27m
+[Jjack_freewheel[27m            [27m  [27m[Jjack_midiseq[27m              [27m  [27m[Jjack_showtime[27m             [27m  [27m[Jjar[27m                       [27m  [27m[J                          [27m
+jack_impulse_grabber[27m      [27m  [27m[Jjack_midisine[27m             [27m  [27m[Jjack_simple_client[27m        [27m  [27m[Jjarsigner[27m                 [27m  [27m[J                          [27m
+jack_iodelay[27m              [27m  [27m[Jjack_monitor_client[27m       [27m  [27m[Jjack_simple_session_client[27m  [27m[Jjasper[27m                    [27m  [27m[J                          [27m
+[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [32mwhich[39m ja[K[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mnode_modules[0m   [01;32mfirst-follow.js[0m   grammar.aux          grammar.fls  grammar.pdf         grammar.tex        typescript
+first-follow.  first-follow.txt  grammar.fdb_latexmk  grammar.log  grammar.synctex.gz  package-lock.json
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mls[39m[32m.[32m/[32mfirst-follow.js[39m[17D[32ml[32ms[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [15D[32m.[32m/[32mfirst-follow.js[39m[?2004l
+./first-follow.js: line 1: syntax error near unexpected token `('
+./first-follow.js: line 1: `var Grammar = require('first-follow').Grammar;'
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31mb[0m[39m[1m[31mb[1m[31ma[0m[39m[1m[31mb[1m[31ma[1m[31ms[0m[39m[0m[32mb[0m[32ma[0m[32ms[32mh[39m [4mf[24m[4mf[4mi[24m[4mi[4mrst-follow.[24m[?2004l
+first-follow.: line 1: Script: command not found
+first-follow.: line 2: $'\E[1m\E[7m%\E[27m\E[1m\E[0m': command not found
+first-follow.: line 3: $'\E[1m\E[7m%\E[27m\E[1m\E[0m': command not found
+first-follow.: line 4: $'\E[1m\E[7m%\E[27m\E[1m\E[0m': command not found
+first-follow.: line 5: Script: command not found
+first-follow.: line 6: $'\E[1m\E[7m%\E[27m\E[1m\E[0m': command not found
+first-follow.: line 7: $'\E[?1000h\E[?1049h\E[?1h\E=\E[1': command not found
+first-follow.: line 7: $'8r\E[27m\E[24m\E[23m\E[0m\E[H\E[2J\E[?25l\E[8': command not found
+first-follow.: line 7: $'1H\E[97m\E[41mE325:': command not found
+first-follow.: line 8: Found: command not found
+first-follow.: line 9: $'\E[10Cowned': command not found
+first-follow.: line 10: $'\E[9Cfile': command not found
+first-follow.: line 11: $'\E[10Cmodified:': command not found
+first-follow.: line 12: $'\E[9Cuser': command not found
+first-follow.: line 13: syntax error near unexpected token `('
+first-follow.: line 13: `[8Cprocess ID: 4244 (STILL RUNNING)'
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mbash[39m [4mfirst-follow.[24m[4m.[4mj[24m[4mj[4ms[24m[?2004l
+first-follow.js: line 1: syntax error near unexpected token `('
+first-follow.js: line 1: `var Grammar = require('first-follow').Grammar;'
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[32m.[39m[39m[4m.[4m/[24m[4m.[4m/[4mf[24m[4mf[4mi[24m[4mi[4mr[24m[24m[32m.[24m[32m/[24m[32mf[24m[32mi[24m[32mr[32mst-follow.js[39m[1m [0m[0m [?2004l
+./first-follow.js: line 1: syntax error near unexpected token `('
+./first-follow.js: line 1: `var Grammar = require('first-follow').Grammar;'
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[1m[31ms[0m[39m[0m[39m [1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mnode_modules[0m   [01;32mfirst-follow.js[0m   grammar.aux          grammar.fls  grammar.pdf         grammar.tex        typescript
+first-follow.  first-follow.txt  grammar.fdb_latexmk  grammar.log  grammar.synctex.gz  package-lock.json
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004hj[1m[31mj[1m[31mn[0m[39m[1m[31mj[1m[31mn[1m[31ms[0m[39m[1m[31mj[1m[31mn[0m[39m[0m[39m [1m[31mj[0m[39m[0m[39m [0m[39m [1m[31mj[0m[39m[1m[31mj[1m[31ms[0m[39m[0m[39mj[0m[39ms
+js60[27m              [27m  [27mjshell[27m            [27m  [27mjson-glib-validate[27m  [27mjson_reformat[27m     [27m  [27mjson_verify[27m       [27m  [27mjstat[27m             [27m  [27m                  [27m                  [27m
+[Jjs60-config[27m       [27m  [27m[Jjson-glib-format[27m  [27m  [27m[Jjson_pp[27m           [27m  [27m[Jjsonschema[27m        [27m  [27m[Jjstack[27m            [27m  [27m[Jjstatd[27m            [27m  [27m[J                  [27m                  [27m[A[A[0m[27m[24m[0m[37Cjs[K[0m60
+[7mjs60              [27m  [27mjshell[27m            [27m  [27mjson-glib-validate[27m  [27mjson_reformat[27m     [27m  [27mjson_verify[27m       [27m  [27mjstat[27m             [27m  [27m                  [27m                  [27m[K
+[Jjs60-config[27m       [27m  [27m[Jjson-glib-format[27m  [27m  [27m[Jjson_pp[27m           [27m  [27m[Jjsonschema[27m        [27m  [27m[Jjstack[27m            [27m  [27m[Jjstatd[27m            [27m  [27m[J                  [27m                  [27m[A[A[0m[27m[24m[0m[37Cjs60[K[0m
+[7mjs60              [27m  [27m[7mjs60              [27m  [27m[A[0m[27m[24m[0m[37Cjs60[K[0m
+[J[A[41C[1m[31mj[1m[31ms[0m[39m  [?2004l
+[J[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mw[39m[1m[31mw[1m[31mh[0m[39m[1m[31mw[1m[31mh[1m[31mi[0m[39m[1m[31mi[1m[31mc[0m[39m[0m[32mw[0m[32mh[0m[32mi[0m[32mc[32mh[39m javascript[?2004l
+javascript not found
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31mj[0m[39m[1m[31mj[1m[31ma[0m[39m[1m[31mj[1m[31ma[1m[31mv[0m[39m[0m[32mj[0m[32ma[0m[32mv[32ma[39m[1m[31mj[1m[31ma[1m[31mv[1m[31ma[1m[31ms[0m[39m[1m[31ms[1m[31mc[0m[39m[1m[31mc[1m[31mr[0m[39m[1m[31mr[1m[31mi[0m[39m[8D[0m[39mj[0m[39ma[0m[39mv[0m[39ma[0m[39ms[0m[39mc[0m[39mr[0m[39mi[8D[1m[31mj[1m[31ma[1m[31mv[1m[31ma[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[0m[39m[9D[0m[39mj[0m[39ma[0m[39mv[0m[39ma[0m[39ms[0m[39mc[0m[39mr[0m[39mi[0m[39mp[9D[1m[31mj[1m[31ma[1m[31mv[1m[31ma[1m[31ms[1m[31mc[1m[31mr[1m[31mi[1m[31mp[1m[31mt[0m[39m[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[4mn[24m[4mn[4mo[24m[4mn[4mo[4md[24m[24m[32mn[24m[32mo[24m[32md[32me[39m [4mf[24m[4mf[4mi[24m[4mi[4mr[24m[4mr[4mst-follow.[24m[4m.[4mj[24m[4mj[4ms[24m[?2004l
+{
+  Program: [ [32m'class'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [ [1mnull[22m, [32m'class'[39m ],
+  ClassDecl: [ [32m'class'[39m ],
+  ClassVarList: [ [32m'ClassVar'[39m, [1mnull[22m ],
+  ClassVarDecl: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  MethodDeclList: [ [1mnull[22m, [32m'public'[39m ],
+  MethodDecl: [ [32m'public'[39m ],
+  FormalList: [ [32m','[39m, [1mnull[22m ],
+  Formal: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  Type: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  StmtList: [ [1mnull[22m, [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  Stmt: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  BracketStmt: [ [32m'{'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  AtomicStmtList: [ [1mnull[22m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  AtomicStmt: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  ExprList: [ [32m','[39m, [1mnull[22m ],
+  Expr: [ [32m'EqualityOperand'[39m ],
+  ExprP: [ [32m'||'[39m, [1mnull[22m ],
+  OrOperand: [ [32m'EqualityOperand'[39m ],
+  OrOperandP: [ [32m'&&'[39m, [1mnull[22m ],
+  AndOperand: [ [32m'EqualityOperand'[39m ],
+  AndOperandP: [ [32m'=='[39m, [32m'!='[39m, [1mnull[22m ],
+  RelOperand: [ [32m'MulOperand'[39m ],
+  RelOperandP: [ [32m'+'[39m, [32m'-'[39m, [1mnull[22m ],
+  AddOperand: [ [32m'MulOperand'[39m ],
+  AddOperandP: [ [32m'*'[39m, [32m'/'[39m, [1mnull[22m ],
+  UnaryOperand: [
+    [32m'('[39m,       [32m'new'[39m,
+    [32m'ID'[39m,      [32m'this'[39m,
+    [32m'Integer'[39m, [32m'null'[39m,
+    [32m'true'[39m,    [32m'false'[39m
+  ],
+  ParenOperand: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  Value: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ]
+}
+{
+  Program: [ [32m'\u0000'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [],
+  ClassDecl: [ [32m'\u0000'[39m, [32m'class'[39m ],
+  ClassVarList: [],
+  ClassVarDecl: [],
+  MethodDeclList: [ [32m'}'[39m ],
+  MethodDecl: [ [32m'public'[39m, [32m'}'[39m ],
+  FormalList: [ [32m']'[39m ],
+  Formal: [ [32m','[39m, [32m']'[39m ],
+  Type: [ [32m'ID'[39m ],
+  StmtList: [ [32m'}'[39m, [32m'return'[39m ],
+  Stmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  BracketStmt: [
+    [32m'else'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  AtomicStmtList: [ [32m'}'[39m ],
+  AtomicStmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m
+  ],
+  ExprList: [ [32m']'[39m ],
+  Expr: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  ExprP: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  OrOperand: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  OrOperandP: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  AndOperand: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  AndOperandP: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  RelOperand: [],
+  RelOperandP: [],
+  AddOperand: [ [32m'+'[39m, [32m'-'[39m ],
+  AddOperandP: [ [32m'+'[39m, [32m'-'[39m ],
+  UnaryOperand: [],
+  ParenOperand: [ [32m')'[39m ],
+  Value: [ [32m'.'[39m, [32m')'[39m ]
+}
+{
+  [32m'1'[39m: [ [32m'class'[39m ],
+  [32m'2'[39m: [ [32m'class'[39m ],
+  [32m'3'[39m: [ [32m'class'[39m ],
+  [32m'4'[39m: [],
+  [32m'5'[39m: [ [32m'class'[39m ],
+  [32m'6'[39m: [ [32m'ClassVar'[39m ],
+  [32m'7'[39m: [],
+  [32m'8'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'9'[39m: [ [32m'public'[39m ],
+  [32m'10'[39m: [ [32m'}'[39m ],
+  [32m'11'[39m: [ [32m'public'[39m ],
+  [32m'12'[39m: [ [32m','[39m ],
+  [32m'13'[39m: [ [32m']'[39m ],
+  [32m'14'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'15'[39m: [ [32m'int'[39m ],
+  [32m'16'[39m: [ [32m'boolean'[39m ],
+  [32m'17'[39m: [ [32m'ID'[39m ],
+  [32m'18'[39m: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'19'[39m: [ [32m'}'[39m, [32m'return'[39m ],
+  [32m'20'[39m: [ [32m'if'[39m ],
+  [32m'21'[39m: [ [32m'while'[39m ],
+  [32m'22'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'23'[39m: [ [32m'{'[39m ],
+  [32m'24'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'25'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'26'[39m: [ [32m'}'[39m ],
+  [32m'27'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'28'[39m: [ [32m'System.out.println'[39m ],
+  [32m'29'[39m: [ [32m'ID'[39m ],
+  [32m'30'[39m: [ [32m','[39m ],
+  [32m'31'[39m: [ [32m']'[39m ],
+  [32m'32'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'33'[39m: [ [32m'||'[39m ],
+  [32m'34'[39m: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'35'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'36'[39m: [ [32m'&&'[39m ],
+  [32m'37'[39m: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'38'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'39'[39m: [ [32m'=='[39m ],
+  [32m'40'[39m: [ [32m'!='[39m ],
+  [32m'41'[39m: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'42'[39m: [ [32m'MulOperand'[39m ],
+  [32m'43'[39m: [ [32m'+'[39m ],
+  [32m'44'[39m: [ [32m'-'[39m ],
+  [32m'45'[39m: [],
+  [32m'46'[39m: [ [32m'MulOperand'[39m ],
+  [32m'47'[39m: [ [32m'*'[39m ],
+  [32m'48'[39m: [ [32m'/'[39m ],
+  [32m'49'[39m: [ [32m'+'[39m, [32m'-'[39m ],
+  [32m'50'[39m: [ [32m'('[39m ],
+  [32m'51'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'52'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'53'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'54'[39m: [ [32m'new'[39m ],
+  [32m'55'[39m: [ [32m'ID'[39m ],
+  [32m'56'[39m: [ [32m'this'[39m ],
+  [32m'57'[39m: [ [32m'Integer'[39m ],
+  [32m'58'[39m: [ [32m'null'[39m ],
+  [32m'59'[39m: [ [32m'true'[39m ],
+  [32m'60'[39m: [ [32m'false'[39m ]
+}
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mnode[39m [4mfirst-follow.js[24m[15D[24mf[24mi[24mr[24ms[24mt[24m-[24mf[24mo[24ml[24ml[24mo[24mw[24m.[24mj[24ms[7m^Y[27m[7m^Y[27m[7m^Y[27m[7m^Y[27m[7m^Y[27m[7m^Y[27m[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [32mnode[39m [4mfirst-follow.js[24m[?2004l
+{
+  Program: [ [32m'class'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [ [1mnull[22m, [32m'class'[39m ],
+  ClassDecl: [ [32m'class'[39m ],
+  ClassVarList: [ [32m'ClassVar'[39m, [1mnull[22m ],
+  ClassVarDecl: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  MethodDeclList: [ [1mnull[22m, [32m'public'[39m ],
+  MethodDecl: [ [32m'public'[39m ],
+  FormalList: [ [32m','[39m, [1mnull[22m ],
+  Formal: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  Type: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  StmtList: [ [1mnull[22m, [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  Stmt: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  BracketStmt: [ [32m'{'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  AtomicStmtList: [ [1mnull[22m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  AtomicStmt: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  ExprList: [ [32m','[39m, [1mnull[22m ],
+  Expr: [ [32m'EqualityOperand'[39m ],
+  ExprP: [ [32m'||'[39m, [1mnull[22m ],
+  OrOperand: [ [32m'EqualityOperand'[39m ],
+  OrOperandP: [ [32m'&&'[39m, [1mnull[22m ],
+  AndOperand: [ [32m'EqualityOperand'[39m ],
+  AndOperandP: [ [32m'=='[39m, [32m'!='[39m, [1mnull[22m ],
+  RelOperand: [ [32m'MulOperand'[39m ],
+  RelOperandP: [ [32m'+'[39m, [32m'-'[39m, [1mnull[22m ],
+  AddOperand: [ [32m'MulOperand'[39m ],
+  AddOperandP: [ [32m'*'[39m, [32m'/'[39m, [1mnull[22m ],
+  UnaryOperand: [
+    [32m'('[39m,       [32m'new'[39m,
+    [32m'ID'[39m,      [32m'this'[39m,
+    [32m'Integer'[39m, [32m'null'[39m,
+    [32m'true'[39m,    [32m'false'[39m
+  ],
+  ParenOperand: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  Value: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ]
+}
+{
+  Program: [ [32m'\u0000'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [],
+  ClassDecl: [ [32m'\u0000'[39m, [32m'class'[39m ],
+  ClassVarList: [],
+  ClassVarDecl: [],
+  MethodDeclList: [ [32m'}'[39m ],
+  MethodDecl: [ [32m'public'[39m, [32m'}'[39m ],
+  FormalList: [ [32m']'[39m ],
+  Formal: [ [32m','[39m, [32m']'[39m ],
+  Type: [ [32m'ID'[39m ],
+  StmtList: [ [32m'}'[39m, [32m'return'[39m ],
+  Stmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  BracketStmt: [
+    [32m'else'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  AtomicStmtList: [ [32m'}'[39m ],
+  AtomicStmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m
+  ],
+  ExprList: [ [32m']'[39m ],
+  Expr: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  ExprP: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  OrOperand: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  OrOperandP: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  AndOperand: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  AndOperandP: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  RelOperand: [],
+  RelOperandP: [],
+  AddOperand: [ [32m'+'[39m, [32m'-'[39m ],
+  AddOperandP: [ [32m'+'[39m, [32m'-'[39m ],
+  UnaryOperand: [],
+  ParenOperand: [ [32m')'[39m ],
+  Value: [ [32m'.'[39m, [32m')'[39m ]
+}
+{
+  [32m'1'[39m: [ [32m'class'[39m ],
+  [32m'2'[39m: [ [32m'class'[39m ],
+  [32m'3'[39m: [ [32m'class'[39m ],
+  [32m'4'[39m: [],
+  [32m'5'[39m: [ [32m'class'[39m ],
+  [32m'6'[39m: [ [32m'ClassVar'[39m ],
+  [32m'7'[39m: [],
+  [32m'8'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'9'[39m: [ [32m'public'[39m ],
+  [32m'10'[39m: [ [32m'}'[39m ],
+  [32m'11'[39m: [ [32m'public'[39m ],
+  [32m'12'[39m: [ [32m','[39m ],
+  [32m'13'[39m: [ [32m']'[39m ],
+  [32m'14'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'15'[39m: [ [32m'int'[39m ],
+  [32m'16'[39m: [ [32m'boolean'[39m ],
+  [32m'17'[39m: [ [32m'ID'[39m ],
+  [32m'18'[39m: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'19'[39m: [ [32m'}'[39m, [32m'return'[39m ],
+  [32m'20'[39m: [ [32m'if'[39m ],
+  [32m'21'[39m: [ [32m'while'[39m ],
+  [32m'22'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'23'[39m: [ [32m'{'[39m ],
+  [32m'24'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'25'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m, [32m'System.out.println'[39m ],
+  [32m'26'[39m: [ [32m'}'[39m ],
+  [32m'27'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'28'[39m: [ [32m'System.out.println'[39m ],
+  [32m'29'[39m: [ [32m'ID'[39m ],
+  [32m'30'[39m: [ [32m','[39m ],
+  [32m'31'[39m: [ [32m']'[39m ],
+  [32m'32'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'33'[39m: [ [32m'||'[39m ],
+  [32m'34'[39m: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'35'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'36'[39m: [ [32m'&&'[39m ],
+  [32m'37'[39m: [
+    [32m'||'[39m,
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'boolean'[39m,
+    [32m'ID'[39m,
+    [32m'System.out.println'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'38'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'39'[39m: [ [32m'=='[39m ],
+  [32m'40'[39m: [ [32m'!='[39m ],
+  [32m'41'[39m: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'boolean'[39m,
+    [32m'ID'[39m,   [32m'System.out.println'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m','[39m,
+    [32m']'[39m
+  ],
+  [32m'42'[39m: [ [32m'MulOperand'[39m ],
+  [32m'43'[39m: [ [32m'+'[39m ],
+  [32m'44'[39m: [ [32m'-'[39m ],
+  [32m'45'[39m: [],
+  [32m'46'[39m: [ [32m'MulOperand

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.12.10)  17 DEC 2019 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Arch Linux) (preloaded format=pdflatex 2019.12.10)  8 JAN 2020 21:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -693,105 +693,118 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
+./grammar.tex:84: Missing $ inserted.
+<inserted text> 
+                $
+l.84 \hspace*{.625in} | \epsilon
+                                
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
 ./grammar.tex:85: Missing $ inserted.
 <inserted text> 
                 $
-l.85 \hspace*{.625in} | \epsilon
-                                
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./grammar.tex:86: Missing $ inserted.
-<inserted text> 
-                $
-l.86 
+l.85 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-./grammar.tex:87: LaTeX Error: There's no line here to end.
+./grammar.tex:86: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.87 \\~
+l.86 \\~
         \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./grammar.tex:90: LaTeX Error: There's no line here to end.
+./grammar.tex:89: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.90 \\~
+l.89 \\~
         \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./grammar.tex:93: Missing $ inserted.
+./grammar.tex:91: Missing $ inserted.
 <inserted text> 
                 $
-l.93 \hspace*{.625in} | \epsilon
+l.91 \hspace*{.625in} | \epsilon
                                 
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./grammar.tex:94: Missing $ inserted.
+./grammar.tex:92: Missing $ inserted.
 <inserted text> 
                 $
-l.94 
+l.92 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-./grammar.tex:95: LaTeX Error: There's no line here to end.
+./grammar.tex:94: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.95 \\~
+l.94 \\~
         \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./grammar.tex:98: LaTeX Error: There's no line here to end.
+./grammar.tex:97: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.98 \\~
+l.97 \\~
         \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./grammar.tex:103: Missing $ inserted.
+./grammar.tex:100: Missing $ inserted.
 <inserted text> 
                 $
-l.103 \hspace*{.625in} | \epsilon
+l.100 \hspace*{.625in} | \epsilon
                                  
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./grammar.tex:104: Missing $ inserted.
+./grammar.tex:101: Missing $ inserted.
 <inserted text> 
                 $
-l.104 
+l.101 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+
+./grammar.tex:102: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.102 \\~
+         \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
 
 ./grammar.tex:105: LaTeX Error: There's no line here to end.
@@ -806,146 +819,175 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--107
-
- []
-
-
-./grammar.tex:108: LaTeX Error: There's no line here to end.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.108 \\~
-         \\
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+./grammar.tex:110: Missing $ inserted.
+<inserted text> 
+                $
+l.110 \hspace*{.625in} | \epsilon
+                                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
 ./grammar.tex:111: Missing $ inserted.
 <inserted text> 
                 $
-l.111 \hspace*{.625in} | \epsilon
-                                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./grammar.tex:112: Missing $ inserted.
-<inserted text> 
-                $
-l.112 
+l.111 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-./grammar.tex:113: LaTeX Error: There's no line here to end.
+./grammar.tex:112: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.113 \\~
+l.112 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--115
+Underfull \hbox (badness 10000) in paragraph at lines 112--114
 
  []
 
 
-./grammar.tex:116: LaTeX Error: There's no line here to end.
+./grammar.tex:115: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.116 \\~
+l.115 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
+
+./grammar.tex:118: Missing $ inserted.
+<inserted text> 
+                $
+l.118 \hspace*{.625in} | \epsilon
+                                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
 
 ./grammar.tex:119: Missing $ inserted.
 <inserted text> 
                 $
-l.119 \hspace*{.625in} | \epsilon
-                                 
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-./grammar.tex:120: Missing $ inserted.
-<inserted text> 
-                $
-l.120 
+l.119 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-./grammar.tex:121: LaTeX Error: There's no line here to end.
+./grammar.tex:120: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.121 \\~
+l.120 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 121--125
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
 
  []
 
 
-./grammar.tex:126: LaTeX Error: There's no line here to end.
+./grammar.tex:123: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.126 \\~
+l.123 \\~
+         \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./grammar.tex:126: Missing $ inserted.
+<inserted text> 
+                $
+l.126 \hspace*{.625in} | \epsilon
+                                 
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+./grammar.tex:127: Missing $ inserted.
+<inserted text> 
+                $
+l.127 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+./grammar.tex:128: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.128 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./grammar.tex:130: LaTeX Error: There's no line here to end.
+Underfull \hbox (badness 10000) in paragraph at lines 128--132
+
+ []
+
+
+./grammar.tex:133: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.130 \\~
+l.133 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./grammar.tex:134: LaTeX Error: There's no line here to end.
+./grammar.tex:137: LaTeX Error: There's no line here to end.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.134 \\~
+l.137 \\~
          \\
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--142
+./grammar.tex:141: LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.141 \\~
+         \\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--149
 
  []
 
@@ -959,7 +1001,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  46i,6n,34p,274b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on grammar.pdf (3 pages, 50055 bytes).
+Output written on grammar.pdf (3 pages, 50071 bytes).
 PDF statistics:
  31 PDF objects out of 1000 (max. 8388607)
  21 compressed objects within 1 object stream

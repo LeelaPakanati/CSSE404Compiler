@@ -52,17 +52,21 @@ var grammar = new Grammar([
   { left: 'ExprList', right: [',', 'Expr', 'ExprList'] },
   { left: 'ExprList', right: [null] },
 
-  { left: 'Expr', right: ['LogicalOperand', 'ExprP'] },
+  { left: 'Expr', right: ['OrOperand', 'ExprP'] },
 
-  { left: 'ExprP', right: ['||', 'LogicalOperand', 'ExprP'] },
-  { left: 'ExprP', right: ['&&', 'LogicalOperand', 'ExprP'] },
+  { left: 'ExprP', right: ['||', 'OrOperand', 'ExprP'] },
   { left: 'ExprP', right: [null] },
 
-  { left: 'LogicalOperand', right: ['EqualityOperand', 'LogicalOperandP',] },
+  { left: 'OrOperand', right: ['AndOperand', 'OrOperandP'] },
 
-  { left: 'LogicalOperandP', right: ['==', 'EqualityOperand', 'LogicalOperandP'] },
-  { left: 'LogicalOperandP', right: ['!=', 'EqualityOperand', 'LogicalOperandP'] },
-  { left: 'LogicalOperandP', right: [null] },
+  { left: 'OrOperandP', right: ['&&', 'AndOperand', 'OrOperandP'] },
+  { left: 'OrOperandP', right: [null] },
+
+  { left: 'AndOperand', right: ['EqualityOperand', 'AndOperandP',] },
+
+  { left: 'AndOperandP', right: ['==', 'EqualityOperand', 'AndOperandP'] },
+  { left: 'AndOperandP', right: ['!=', 'EqualityOperand', 'AndOperandP'] },
+  { left: 'AndOperandP', right: [null] },
 
   { left: 'RelOperand', right: ['AddOperand', 'RelOperandP',] },
 
