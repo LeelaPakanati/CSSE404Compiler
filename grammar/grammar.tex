@@ -1,0 +1,143 @@
+\documentclass[a4paper,portrait,12pt]{article}
+\usepackage[margin=.625in]{geometry}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\title{Mini Java Grammar}
+\date{}
+\author{Leela Pakanati, Manoj Kurapati}
+
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+\maketitle
+
+\hspace*{-.25in}Program ::=	MainClassDecl ClassDeclList 
+
+\\~\\
+MainClassDecl::=	class ID \{ public static void main (String[ ] ID) \{ StmtList \} \} 
+
+\\~\\
+ClassDeclList =	ClassDecl ClassDeclList				\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+ClassDecl ::=	class ID [extends ID] \{ ClassVarDeclList MethodDeclList \} 
+
+\\~\\
+ClassVarDeclList =	ClassVarDecl ClassVarDeclList	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+ClassVarDecl ::=	Type ID; 
+
+\\~\\
+MethodDeclList =	MethodDecl MethodDeclList		\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+MethodDecl ::=	public Type ID ( [Formal FormalList] ) \{ StmtList return Expr; \} 
+
+\\~\\
+FormalList =	, Formal FormalList					\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+Formal ::=	Type ID
+
+\\~\\
+Type ::=	int | boolean | ID 
+
+\\~\\
+StmtList =	Stmt StmtList						\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+Stmt ::=	if (Expr) BracketStmt else BracketStmt	\newline
+\hspace*{.625in} | while (Expr) BracketStmt		\newline
+\hspace*{.625in} | AtomicStmt
+
+\\~\\
+BracketStmt ::=	\{ AtomicStmtList \}			\newline
+\hspace*{.625in} | AtomicStmt
+
+\\~\\
+AtomicStmtList =	AtomicStmt AtomicStmtList	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+AtomicStmt ::= Type ID = Expr;					\newline
+\hspace*{.625in} | System.out.println(Expr);	\newline
+\hspace*{.625in} | ID = Expr;
+
+\\~\\
+ExprList =	, Expr ExprList	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+Expr ::=	LogicalOperand Expr'
+
+\\~\\
+Expr' ::=	|| LogicalOperand Expr'				\newline
+\hspace*{.625in} | \&\& LogicalOperand Expr'	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+LogicalOperand ::=	EqualityOperand	LogicalOperand'
+
+\\~\\
+LogicalOperand' ::=	== EqualityOperand LogicalOperand'	\newline
+\hspace*{.625in} | != EqualityOperand LogicalOperand'	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+EqualityOperand ::=	RelOperand EqualityOperand'
+
+\\~\\
+EqualityOperand' ::=	< RelOperand EqualityOperand'	\newline
+\hspace*{.625in} | <= RelOperand EqualityOperand'		\newline
+\hspace*{.625in} | >= RelOperand EqualityOperand'		\newline
+\hspace*{.625in} | > RelOperand	EqualityOperand'		\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+RelOperand ::=	AddOperand RelOperand'			\newline
+
+\\~\\
+RelOperand' ::=	+ AddOperand RelOperand'		\newline
+\hspace*{.625in} | - AddOperand	RelOperand' 	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+AddOperand ::=	MulOperand AddOperand'			\newline
+
+\\~\\
+AddOperand' ::=	* MulOperand AddOperand'		\newline
+\hspace*{.625in} | / MulOperand	AddOperand' 	\newline
+\hspace*{.625in} | \epsilon
+
+\\~\\
+MulOperand ::=	! UnaryOperand				\newline
+\hspace*{.625in} | - UnaryOperand			\newline
+\hspace*{.625in} | UnaryOperand				\newline
+
+\\~\\
+UnaryOperand ::=	( ParenOperand ) 		\newline
+\hspace*{.625in} | ParenOperand
+
+\\~\\
+ParenOperand ::=	Value . ID ( [Expr ExprList] )	\newline
+\hspace*{.625in} | Value
+
+\\~\\
+Value ::=	new ID ( )						\newline
+\hspace*{.625in} | ID						\newline
+\hspace*{.625in} | this   					\newline
+\hspace*{.625in} | Integer					\newline
+\hspace*{.625in} | null   					\newline
+\hspace*{.625in} | true   					\newline
+\hspace*{.625in} | false  					\newline
+
+\end{document}
