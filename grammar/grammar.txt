@@ -32,8 +32,11 @@ Type -> int IsArr
 Type -> boolean
 Type -> ID
 
-IsArr -> [ ]
+IsArr -> [ HasExpr ]
 IsArr -> ''
+
+HasExpr -> Expr
+HasExpr -> ''
 
 StmtList -> Stmt StmtList
 StmtList -> ''
@@ -42,24 +45,19 @@ Stmt -> if ( Expr ) BracketStmt else BracketStmt
 Stmt -> while ( Expr ) BracketStmt
 Stmt -> AtomicStmt
 
-BracketStmt -> { AtomicStmtList }
-BracketStmt -> AtomicStmt
-
-AtomicStmtList -> AtomicStmt AtomicStmtList
-AtomicStmtList -> ''
+BracketStmt -> { StmtList }
+BracketStmt -> Stmt
 
 AtomicStmt -> System.out.println ( Expr ) ;
-AtomicStmt -> int IsArr Assignment ;
-AtomicStmt -> boolean Assignment ;
-AtomicStmt -> ID IDAssignment
+AtomicStmt -> int IsArr ID IsArr Assignment
+AtomicStmt -> boolean ID IsArr Assignment
+AtomicStmt -> ID IsArr IDAssignment
 
-IDAssignment -> ID Assignment ;
-IDAssignment -> Assignment ;
+IDAssignment -> ID IsArr Assignment
+IDAssignment -> = Expr ;
 
-Assignment -> = Expr
-
-IsArrVal -> [ Expr ]
-IsArrVal -> ''
+Assignment -> = Expr ;
+Assignment -> ;
 
 ExprList -> Expr ExprListPrime
 ExprList -> ''

@@ -1,341 +1,39 @@
-{
-  Program: [ 'class' ],
-  MainClassDecl: [ 'class' ],
-  ClassDeclList: [ null, 'class' ],
-  ClassDecl: [ 'class' ],
-  ClassVarList: [ 'ClassVar', null ],
-  ClassVarDecl: [ 'int', 'boolean', 'ID' ],
-  MethodDeclList: [ null, 'public' ],
-  MethodDecl: [ 'public' ],
-  FormalList: [ ',', null ],
-  Formal: [ 'int', 'boolean', 'ID' ],
-  Type: [ 'int', 'boolean', 'ID' ],
-  AtomicType: [ 'int', 'boolean', 'ID' ],
-  StmtList: [ null, 'if', 'while', 'int', 'System.out.println', 'ID', 'boolean' ],
-  Stmt: [ 'if', 'while', 'int', 'System.out.println', 'ID', 'boolean' ],
-  BracketStmt: [ '{', 'int', 'System.out.println', 'ID', 'boolean' ],
-  AtomicStmtList: [ null, 'int', 'System.out.println', 'ID', 'boolean' ],
-  AtomicStmt: [ 'int', 'System.out.println', 'ID', 'boolean' ],
-  ExprList: [ ',', null ],
-  Expr: [ 'EqualityOperand' ],
-  ExprP: [ '||', null ],
-  OrOperand: [ 'EqualityOperand' ],
-  OrOperandP: [ '&&', null ],
-  AndOperand: [ 'EqualityOperand' ],
-  AndOperandP: [ '==', '!=', null ],
-  RelOperand: [ 'MulOperand' ],
-  RelOperandP: [ '+', '-', null ],
-  AddOperand: [ 'MulOperand' ],
-  AddOperandP: [ '*', '/', null ],
-  UnaryOperand: [
-    '(',
-    'EqualityOperand',
-    'new',
-    'ID',
-    'this',
-    'Integer',
-    'null',
-    'true',
-    'false'
-  ],
-  AtomicUnaryOperand: [
-    '(',       'new',
-    'ID',      'this',
-    'Integer', 'null',
-    'true',    'false'
-  ],
-  ParenOperand: [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  AtomicParenOperand: [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  Value: [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  AtomicValue: [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ]
-}
-{
-  Program: [ '\u0000' ],
-  MainClassDecl: [ 'class' ],
-  ClassDeclList: [],
-  ClassDecl: [ '\u0000', 'class' ],
-  ClassVarList: [],
-  ClassVarDecl: [],
-  MethodDeclList: [ '}' ],
-  MethodDecl: [ 'public', '}' ],
-  FormalList: [ ']' ],
-  Formal: [ ',', ']' ],
-  Type: [ 'ID' ],
-  AtomicType: [ 'ID' ],
-  StmtList: [ '}', 'return' ],
-  Stmt: [
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return'
-  ],
-  BracketStmt: [
-    'else',
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return'
-  ],
-  AtomicStmtList: [ '}' ],
-  AtomicStmt: [
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return',
-    'else'
-  ],
-  ExprList: [ ']' ],
-  Expr: [
-    ';',
-    ')',
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return',
-    'else',
-    ']',
-    ',',
-    '['
-  ],
-  ExprP: [
-    ';',
-    ')',
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return',
-    'else',
-    ']',
-    ',',
-    '['
-  ],
-  OrOperand: [
-    '||',                 ';',
-    ')',                  'if',
-    'while',              'int',
-    'System.out.println', 'ID',
-    'boolean',            '}',
-    'return',             'else',
-    ']',                  ',',
-    '['
-  ],
-  OrOperandP: [
-    '||',                 ';',
-    ')',                  'if',
-    'while',              'int',
-    'System.out.println', 'ID',
-    'boolean',            '}',
-    'return',             'else',
-    ']',                  ',',
-    '['
-  ],
-  AndOperand: [
-    '&&',   '||',
-    ';',    ')',
-    'if',   'while',
-    'int',  'System.out.println',
-    'ID',   'boolean',
-    '}',    'return',
-    'else', ']',
-    ',',    '['
-  ],
-  AndOperandP: [
-    '&&',   '||',
-    ';',    ')',
-    'if',   'while',
-    'int',  'System.out.println',
-    'ID',   'boolean',
-    '}',    'return',
-    'else', ']',
-    ',',    '['
-  ],
-  RelOperand: [],
-  RelOperandP: [],
-  AddOperand: [ '+', '-' ],
-  AddOperandP: [ '+', '-' ],
-  UnaryOperand: [],
-  AtomicUnaryOperand: [],
-  ParenOperand: [ ')' ],
-  AtomicParenOperand: [ ')' ],
-  Value: [ '.', ')' ],
-  AtomicValue: [ '.', ')' ]
-}
-{
-  '1': [ 'class' ],
-  '2': [ 'class' ],
-  '3': [ 'class' ],
-  '4': [],
-  '5': [ 'class' ],
-  '6': [ 'ClassVar' ],
-  '7': [],
-  '8': [ 'int', 'boolean', 'ID' ],
-  '9': [ 'public' ],
-  '10': [ '}' ],
-  '11': [ 'public' ],
-  '12': [ ',' ],
-  '13': [ ']' ],
-  '14': [ 'int', 'boolean', 'ID' ],
-  '15': [ 'int' ],
-  '16': [ 'int', 'boolean', 'ID' ],
-  '17': [ 'int' ],
-  '18': [ 'boolean' ],
-  '19': [ 'ID' ],
-  '20': [ 'if', 'while', 'int', 'System.out.println', 'ID', 'boolean' ],
-  '21': [ '}', 'return' ],
-  '22': [ 'if' ],
-  '23': [ 'while' ],
-  '24': [ 'int', 'System.out.println', 'ID', 'boolean' ],
-  '25': [ '{' ],
-  '26': [ 'int', 'System.out.println', 'ID', 'boolean' ],
-  '27': [ 'int', 'System.out.println', 'ID', 'boolean' ],
-  '28': [ '}' ],
-  '29': [ 'int', 'boolean', 'ID' ],
-  '30': [ 'System.out.println' ],
-  '31': [ 'ID' ],
-  '32': [ 'ID' ],
-  '33': [ ',' ],
-  '34': [ ']' ],
-  '35': [ 'EqualityOperand' ],
-  '36': [ '||' ],
-  '37': [
-    ';',
-    ')',
-    'if',
-    'while',
-    'int',
-    'System.out.println',
-    'ID',
-    'boolean',
-    '}',
-    'return',
-    'else',
-    ']',
-    ',',
-    '['
-  ],
-  '38': [ 'EqualityOperand' ],
-  '39': [ '&&' ],
-  '40': [
-    '||',                 ';',
-    ')',                  'if',
-    'while',              'int',
-    'System.out.println', 'ID',
-    'boolean',            '}',
-    'return',             'else',
-    ']',                  ',',
-    '['
-  ],
-  '41': [ 'EqualityOperand' ],
-  '42': [ '==' ],
-  '43': [ '!=' ],
-  '44': [
-    '&&',   '||',
-    ';',    ')',
-    'if',   'while',
-    'int',  'System.out.println',
-    'ID',   'boolean',
-    '}',    'return',
-    'else', ']',
-    ',',    '['
-  ],
-  '45': [ 'MulOperand' ],
-  '46': [ '+' ],
-  '47': [ '-' ],
-  '48': [],
-  '49': [ 'MulOperand' ],
-  '50': [ '*' ],
-  '51': [ '/' ],
-  '52': [ '+', '-' ],
-  '53': [ 'EqualityOperand' ],
-  '54': [
-    '(',       'new',
-    'ID',      'this',
-    'Integer', 'null',
-    'true',    'false'
-  ],
-  '55': [ '(' ],
-  '56': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '57': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '58': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '59': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '60': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '61': [ 'new' ],
-  '62': [
-    'new',   'ID',
-    'this',  'Integer',
-    'null',  'true',
-    'false'
-  ],
-  '63': [ 'new' ],
-  '64': [ 'ID' ],
-  '65': [ 'this' ],
-  '66': [ 'Integer' ],
-  '67': [ 'null' ],
-  '68': [ 'true' ],
-  '69': [ 'false' ]
-}
+Program: First: {class}	 Follow: {$}Program -> MainClassDecl ClassDeclList
+MainClassDecl: First: {class}	 Follow: {$,class}MainClassDecl -> class ID { public static void main ( String [ ] ID ) { StmtList } }
+ClassDeclList: First: {'',class}	 Follow: {$}ClassDeclList -> ClassDecl ClassDeclList
+ClassDecl: First: {class}	 Follow: {$,class}ClassDecl -> class ID ClassDeclPrime { ClassVarDeclList MethodDeclList }
+ClassDeclPrime: First: {extends,''}	 Follow: {{}
+ClassVarDeclList: First: {'',int,boolean,ID}	 Follow: {$,class,public,}}ClassVarDeclList -> ''
+ClassVarDecl: First: {int,boolean,ID}	 Follow: {$,class,public,},int,boolean,ID}
+MethodDeclList: First: {'',public}	 Follow: {}}
+MethodDecl: First: {public}	 Follow: {},public}
+FormalList: First: {'',int,boolean,ID}	 Follow: {)}
+FormalListPrime: First: {,,''}	 Follow: {)}
+Formal: First: {int,boolean,ID}	 Follow: {;,(,,,)}
+Type: First: {int,boolean,ID}	 Follow: {ID}
+IsArr: First: {[,''}	 Follow: {ID,=,;}
+HasExpr: First: {'',new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {]}
+StmtList: First: {'',if,while,System.out.println,int,boolean,ID}	 Follow: {},return}
+Stmt: First: {if,while,System.out.println,int,boolean,ID}	 Follow: {},return,if,while,System.out.println,int,boolean,ID,else}
+BracketStmt: First: {{,if,while,System.out.println,int,boolean,ID}	 Follow: {else,},return,if,while,System.out.println,int,boolean,ID}
+AtomicStmt: First: {System.out.println,int,boolean,ID}	 Follow: {},return,if,while,System.out.println,int,boolean,ID,else}
+IDAssignment: First: {ID,=}	 Follow: {},return,if,while,System.out.println,int,boolean,ID,else}
+Assignment: First: {=,;}	 Follow: {},return,if,while,System.out.println,int,boolean,ID,else}
+ExprList: First: {'',new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {)}
+ExprListPrime: First: {,,''}	 Follow: {)}
+Expr: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {;,],),,}
+ExprPrime: First: {||,''}	 Follow: {;,],),,}
+OrOperand: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {||,;,],),,}
+OrOperandPrime: First: {&&,''}	 Follow: {||,;,],),,}
+AndOperand: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {&&,||,;,],),,}
+AndOperandPrime: First: {==,!=,''}	 Follow: {&&,||,;,],),,}
+EqualityOperand: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {==,!=,&&,||,;,],),,}
+EqualityOperandPrime: First: {<,<=,>=,>,''}	 Follow: {==,!=,&&,||,;,],),,}
+RelOperand: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {<,<=,>=,>,==,!=,&&,||,;,],),,}
+RelOperandPrime: First: {+,-,''}	 Follow: {<,<=,>=,>,==,!=,&&,||,;,],),,}
+AddOperand: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
+AddOperandPrime: First: {*,/,''}	 Follow: {+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
+Value: First: {new,!,-,(,ID,this,Integer,null,true,false}	 Follow: {*,/,+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
+NewWhat: First: {int,ID}	 Follow: {*,/,+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
+ValuePrime: First: {.,[,''}	 Follow: {*,/,+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
+DotWhat: First: {ID,length}	 Follow: {*,/,+,-,<,<=,>=,>,==,!=,&&,||,;,],),,}
