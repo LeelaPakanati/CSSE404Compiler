@@ -31,14 +31,14 @@ ClassVarDeclList =	ClassVarDecl ClassVarDeclList	\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-ClassVarDecl ::=	Formal;
+ClassVarDecl ::=	Type ID; 
 
 \\~\\
 MethodDeclList =	MethodDecl MethodDeclList		\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-MethodDecl ::=	public Formal ( [Formal FormalList] ) \{ StmtList return Expr; \} 
+MethodDecl ::=	public Type ID ( [Formal FormalList] ) \{ StmtList return Expr; \} 
 
 \\~\\
 FormalList =	, Formal FormalList					\newline
@@ -48,10 +48,10 @@ FormalList =	, Formal FormalList					\newline
 Formal ::=	Type ID
 
 \\~\\
-Type ::=	int IsArr | boolean | ID 
+Type ::=	int [ ] | AtomicType
 
 \\~\\
-IsArr ::= [ ] | \epsilon
+AtomicType ::=	int | boolean | ID 
 
 \\~\\
 StmtList =	Stmt StmtList						\newline
@@ -71,12 +71,10 @@ AtomicStmtList =	AtomicStmt AtomicStmtList	\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-AtomicStmt ::= System.out.println ( Expr );	\newline
-\hspace*{.625in} | ID IsArrVal = Expr;		
-
-\\~\\
-IsArrVal ::= [ Expr ]							\newline
-\hspace*{.625in} | \epsilon 					\newline
+AtomicStmt ::= Type ID = Expr;					\newline
+\hspace*{.625in} | System.out.println ( Expr );	\newline
+\hspace*{.625in} | ID = Expr;					\newline
+\hspace*{.625in} | ID [ Expr ] = Expr;
 
 
 \\~\\
@@ -132,30 +130,38 @@ AddOperand' ::=	* MulOperand AddOperand'		\newline
 \hspace*{.625in} | \epsilon
 
 \\~\\
-Value ::=	new NewCons					    \newline
+MulOperand ::=	! UnaryOperand				\newline
+\hspace*{.625in} | - UnaryOperand			\newline
+\hspace*{.625in} | UnaryOperand				\newline
+
+
+\\~\\
+UnaryOperand ::=	Expr [ Expr ]			\newline
+\hspace*{.625in} | AtomicParenOperand		\newline
+
+\\~\\
+AtomicUnaryOperand ::=	( ParenOperand )	\newline
+\hspace*{.625in} | ParenOperand				\newline
+
+\\~\\
+ParenOperand ::=	Value . length          \newline
+\hspace*{.625in} | AtomicParenOperand		\newline
+
+\\~\\
+AtomicParenOperand ::=	Value . ID ( [Expr ExprList] )	\newline
+\hspace*{.625in} | Value					\newline
+
+\\~\\
+Value ::=	new int [ Expr ]			    \newline
 \hspace*{.625in} | AtomicValue				\newline
 
 \\~\\
-AtomicValue ::=	ID DotExpr					\newline
-\hspace*{.625in} | this DotExpr				\newline
+AtomicValue ::=	new ID ( )				    \newline
+\hspace*{.625in} | ID						\newline
+\hspace*{.625in} | this   					\newline
 \hspace*{.625in} | Integer					\newline
 \hspace*{.625in} | null   					\newline
 \hspace*{.625in} | true   					\newline
 \hspace*{.625in} | false  					\newline
-\hspace*{.625in} | ! AtomicValue			\newline
-\hspace*{.625in} | - AtomicValue			\newline
-\hspace*{.625in} | new NewWhat				\newline
-
-\\~\\
-NewWhat ::=	ID ( ) DotExpr					\newline
-\hspace*{.625in} | int [ Expr ] 			\newline
-
-\\~\\
-DotExpr ::=	. DotWhat						\newline
-\hspace*{.625in} | \epsilon					\newline
-
-\\~\\
-DotWhat ::= ID ( [Expr ExprList] )			\newline
-\hspace*{.625in} | length					\newline
 
 \end{document}

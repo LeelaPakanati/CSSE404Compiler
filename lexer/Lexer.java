@@ -1,3 +1,4 @@
+package lexer;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,6 +65,7 @@ public class Lexer {
 			}
 			return results;
 		}
+		results.add(new String[]{"eof", "$"});
 		return results;
 	}
 
@@ -193,7 +195,7 @@ public class Lexer {
 	}
 
 	private LexStruct lexReservedWord() {
-		String reservedWord[] = {"class", "public", "static", "extends", "void", "int", "boolean", "if", "else", "while", "return", "null", "true", "false", "this", "new", "String", "main", "System.out.println"};
+		String reservedWord[] = {"class", "public", "static", "extends", "void", "int", "boolean", "if", "else", "while", "return", "null", "true", "false", "this", "new", "String", "main", "System.out.println", "length"};
 
 		String word = "";
 		int nextIdx = 0;

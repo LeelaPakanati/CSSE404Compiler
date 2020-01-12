@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+import java.util.*;
+import lexer.Lexer;
+import parser.Parser;
+import parser.Tree;
 
 public class MiniJavaCompiler {
 
@@ -7,10 +10,15 @@ public class MiniJavaCompiler {
 		Lexer lexer = new Lexer(filepath);
 		ArrayList<String[]> results = lexer.analyse();
 
-		for(int i = 0; i < results.size(); i++) {
-			System.out.println(results.get(i)[0] + ", " + results.get(i)[1]);
-		}
-		
-	}
+		//for(int i = 0; i < results.size(); i++) {
+		//	System.out.println(results.get(i)[0] + ", " + results.get(i)[1]);
+		//}
 
+		Parser parser = new Parser(results);
+		if(!parser.parseProgram()){
+			System.out.println("Parsing Failed");
+			return;
+		}
+		System.out.println(parser.parseTree.toString(0));
+	}
 }

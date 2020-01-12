@@ -1,3 +1,4 @@
+package lexer;
 import java.io.Reader;
 
 public class LexStruct {

@@ -4666,4 +4666,424 @@ lrwxrwxrwx  1 lee  lee    29 Dec  8 03:09 [01;36m.tmux.conf[0m -> [01;32m/hom
 lrwxrwxrwx  1 lee  lee    29 Dec  8 02:56 [01;36m.tmux.conf.old[0m -> [01;32m/home/lee/dotfiles/.tmux.conf[0m
 -rw-------  1 lee  lee   67K Jan  8 23:10 .viminfo
 lrwxrwxrwx  1 lee  lee    25 Dec  8 03:09 [01;36m.vimrc[0m -> [01;32m/home/lee/dotfiles/.vimrc[0m
-lrwxrwxrwx  1 
+lrwxrwxrwx  1 lee  lee    25 Dec  8 02:56 [01;36m.vimrc.old[0m -> [01;32m/home/lee/dotfiles/.vimrc[0m
+-rw-r--r--  1 lee  lee   434 Dec 10 18:33 .wget-hsts
+-rw-------  1 lee  lee     0 Dec  8 21:26 .Xauthority
+-rwxr-xr-x  1 lee  lee   100 Oct 29  2017 [01;32m.Xclients[0m
+-rwxr-xr-x  1 lee  lee  1.5K Aug  6 10:55 [01;32m.xinitrc[0m
+-rw-r--r--  1 lee  lee   116 Oct 10 12:45 .yarnrc
+-rw-r--r--  1 lee  lee   41K Dec 19 18:23 .zcompdump
+-rw-r--r--  1 lee  lee  3.2K Dec 17 02:14 .zshrc
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~[34m$[0m [K[?2004h[1m[31ml[0m[39m[0m[32ml[32ml[39m | [1m[31mg[0m[39m[1m[31mg[1m[31mr[0m[39m[1m[31mr[1m[31me[0m[39m[0m[32mg[0m[32mr[0m[32me[32mp[39m vim[?2004l
+drwxr-xr-x  6 lee  lee  4.0K Dec 11 22:46 .[01;31m[Kvim[m[K
+lrwxrwxrwx  1 lee  lee    29 Dec  8 03:09 .[01;31m[Kvim[m[Kextras -> /home/lee/dotfiles/.[01;31m[Kvim[m[Kextras
+lrwxrwxrwx  1 lee  lee    20 Dec  3 20:51 .[01;31m[Kvim[m[Kextras.old -> dotfiles/.[01;31m[Kvim[m[Kextras/
+-rw-r--r--  1 lee  lee    56 Dec 11 21:56 .defaultnav.[01;31m[Kvim[m[K
+-rw-------  1 lee  lee   67K Jan  8 23:10 .[01;31m[Kvim[m[Kinfo
+lrwxrwxrwx  1 lee  lee    25 Dec  8 03:09 .[01;31m[Kvim[m[Krc -> /home/lee/dotfiles/.[01;31m[Kvim[m[Krc
+lrwxrwxrwx  1 lee  lee    25 Dec  8 02:56 .[01;31m[Kvim[m[Krc.old -> /home/lee/dotfiles/.[01;31m[Kvim[m[Krc
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~[34m$[0m [K[?2004h[1m[31mg[0m[39m[1m[31mg[1m[31ms[0m[39m[1m[31mg[1m[31ms[1m[31mt[0m[39m[1m[31mt[1m[31ma[0m[39m[0m[32mg[0m[32ms[0m[32mt[0m[32ma[32mt[39m[?2004l
+fatal: not a git repository (or any of the parent directories): .git
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~[34m$[0m [K[?2004h[1m[31mc[0m[39m[0m[32mc[32md[39m [4ms[24m[4ms[4mr[24m[4mr[4m_[24m[4m_[4mw[24m[4mw[4mi[24m[4mi[4mnter[1m[4m/[0m[24m[0m[4m/[4mCSSE[24m[4mE[4m4[24m[4m4[4m04[1m[4m/[0m[24m[18D[24ms[24mr[24m_[24mw[24mi[24mn[24mt[24me[24mr[24m/[24mC[24mS[24mS[24mE[24m4[24m0[24m4[0m[24m/
+[Jnotes[27m/[27m  [27m  [27m[Jpapers[27m/[27m [27m  [27m[Jproject[27m/[27m  [27m[Jslides[27m/[27m [27m[J[A[0m[27m[24m[0m[3C[32mcd[39m sr_winter/CSSE404/[K[0m[18D[4ms[4mr[4m_[4mw[4mi[4mn[4mt[4me[4mr[4m/[4mC[4mS[4mS[4mE[4m4[4m0[4m4[4m/[4mp[24m[4mp[4mr[24m[4mr[4mo[24m[4mo[4mject[1m[4m/[0m[24m[4mt[24m[0m[24m [?2004l
+[J[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[?2004h[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mgrammar[0m  [01;34mm1_lexer[0m  [01;34mm2_parser[0m  MiniJavaCompiler.java
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[?2004h[4mg[24m[24m[1m[31mg[1m[31ms[0m[39m[1m[31mg[1m[31ms[1m[31mt[0m[39m[1m[31mt[1m[31ma[0m[39m[0m[32mg[0m[32ms[0m[32mt[0m[32ma[32mt[39m[?2004l
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	[31mmodified:   grammar/first-follow.[m
+	[31mmodified:   m2_parser/Parser.java[m
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[1m[7m%[27m[1m[0m                                                                                                                                                                 [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [1m[31ml[0m[39m[0m[39m [H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mgrammar[0m  [01;34mm1_lexer[0m  [01;34mm2_parser[0m  MiniJavaCompiler.java
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                   [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [1m[31mi[0m[39m[0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [1m[31mi[0m[39m[0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [1m[31mi[0m[39m[0m[39m [1m[31mc[0m[39m[0m[32mc[32md[39m [4mg[24m[?2004l[24mg
+cd: no such file or directory: g
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project[34m$[0m [K[?2004h[1m[31mc[0m[39m[0m[32mc[32md[39m [4mg[24m[4mg[4mr[24m[4mr[4mammar[1m[4m/[0m[24m[4mr[24m[0m[24m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mnode_modules[0m   [01;32mfirst-follow.js[0m   grammar.aux          grammar.fls  grammar.pdf         grammar.tex        typescript
+first-follow.  first-follow.txt  grammar.fdb_latexmk  grammar.log  grammar.synctex.gz  package-lock.json
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[4mn[24m[4mn[4mo[24m[4mn[4mo[4md[24m[24m[32mn[24m[32mo[24m[32md[32me[39m [4mf[24m[4mf[4mi[24m[4mi[4mr[24m[4mr[4mst-follow.[24m[4m.[4mj[24m[4mj[4ms[24m[?2004l
+/home/lee/OneDrive/Class Files/sr_winter/CSSE404/project/grammar/first-follow.js:32
+  { left: 'Type', right: ['AtomicType'},
+                                      ^
+
+SyntaxError: Unexpected token '}'
+[90m    at wrapSafe (internal/modules/cjs/loader.js:1055:16)[39m
+[90m    at Module._compile (internal/modules/cjs/loader.js:1103:27)[39m
+[90m    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1159:10)[39m
+[90m    at Module.load (internal/modules/cjs/loader.js:988:32)[39m
+[90m    at Function.Module._load (internal/modules/cjs/loader.js:896:14)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)[39m
+[90m    at internal/main/run_main_module.js:17:47[39m
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[7m[31m^Y[0m[27m[39m[1m[7m[31m^Y[0m[27m[39m[1m[7m[31m^Y[0m[27m[39m[1m[7m[31m^Y[0m[27m[39m[1m[7m[31m^Y[0m[27m[39m[1m[7m[31m^Y[0m[27m[39m[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [32mnode[39m [4mfirst-follow.js[24m[?2004l
+/home/lee/OneDrive/Class Files/sr_winter/CSSE404/project/grammar/first-follow.js:32
+  { left: 'Type', right: ['AtomicType'},
+                                      ^
+
+SyntaxError: Unexpected token '}'
+[90m    at wrapSafe (internal/modules/cjs/loader.js:1055:16)[39m
+[90m    at Module._compile (internal/modules/cjs/loader.js:1103:27)[39m
+[90m    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1159:10)[39m
+[90m    at Module.load (internal/modules/cjs/loader.js:988:32)[39m
+[90m    at Function.Module._load (internal/modules/cjs/loader.js:896:14)[39m
+[90m    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:71:12)[39m
+[90m    at internal/main/run_main_module.js:17:47[39m
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [32mnode[39m [4mfirst-follow.js[24m[?2004l
+{
+  Program: [ [32m'class'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [ [1mnull[22m, [32m'class'[39m ],
+  ClassDecl: [ [32m'class'[39m ],
+  ClassVarList: [ [32m'ClassVar'[39m, [1mnull[22m ],
+  ClassVarDecl: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  MethodDeclList: [ [1mnull[22m, [32m'public'[39m ],
+  MethodDecl: [ [32m'public'[39m ],
+  FormalList: [ [32m','[39m, [1mnull[22m ],
+  Formal: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  Type: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  AtomicType: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  StmtList: [ [1mnull[22m, [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  Stmt: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  BracketStmt: [ [32m'{'[39m, [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  AtomicStmtList: [ [1mnull[22m, [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  AtomicStmt: [ [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  ExprList: [ [32m','[39m, [1mnull[22m ],
+  Expr: [ [32m'EqualityOperand'[39m ],
+  ExprP: [ [32m'||'[39m, [1mnull[22m ],
+  OrOperand: [ [32m'EqualityOperand'[39m ],
+  OrOperandP: [ [32m'&&'[39m, [1mnull[22m ],
+  AndOperand: [ [32m'EqualityOperand'[39m ],
+  AndOperandP: [ [32m'=='[39m, [32m'!='[39m, [1mnull[22m ],
+  RelOperand: [ [32m'MulOperand'[39m ],
+  RelOperandP: [ [32m'+'[39m, [32m'-'[39m, [1mnull[22m ],
+  AddOperand: [ [32m'MulOperand'[39m ],
+  AddOperandP: [ [32m'*'[39m, [32m'/'[39m, [1mnull[22m ],
+  UnaryOperand: [
+    [32m'('[39m,
+    [32m'EqualityOperand'[39m,
+    [32m'new'[39m,
+    [32m'ID'[39m,
+    [32m'this'[39m,
+    [32m'Integer'[39m,
+    [32m'null'[39m,
+    [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  AtomicUnaryOperand: [
+    [32m'('[39m,       [32m'new'[39m,
+    [32m'ID'[39m,      [32m'this'[39m,
+    [32m'Integer'[39m, [32m'null'[39m,
+    [32m'true'[39m,    [32m'false'[39m
+  ],
+  ParenOperand: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  AtomicParenOperand: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  Value: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  AtomicValue: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ]
+}
+{
+  Program: [ [32m'\u0000'[39m ],
+  MainClassDecl: [ [32m'class'[39m ],
+  ClassDeclList: [],
+  ClassDecl: [ [32m'\u0000'[39m, [32m'class'[39m ],
+  ClassVarList: [],
+  ClassVarDecl: [],
+  MethodDeclList: [ [32m'}'[39m ],
+  MethodDecl: [ [32m'public'[39m, [32m'}'[39m ],
+  FormalList: [ [32m']'[39m ],
+  Formal: [ [32m','[39m, [32m']'[39m ],
+  Type: [ [32m'ID'[39m ],
+  AtomicType: [ [32m'ID'[39m ],
+  StmtList: [ [32m'}'[39m, [32m'return'[39m ],
+  Stmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  BracketStmt: [
+    [32m'else'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m
+  ],
+  AtomicStmtList: [ [32m'}'[39m ],
+  AtomicStmt: [
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m
+  ],
+  ExprList: [ [32m']'[39m ],
+  Expr: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m']'[39m,
+    [32m','[39m,
+    [32m'['[39m
+  ],
+  ExprP: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m']'[39m,
+    [32m','[39m,
+    [32m'['[39m
+  ],
+  OrOperand: [
+    [32m'||'[39m,                 [32m';'[39m,
+    [32m')'[39m,                  [32m'if'[39m,
+    [32m'while'[39m,              [32m'int'[39m,
+    [32m'System.out.println'[39m, [32m'ID'[39m,
+    [32m'boolean'[39m,            [32m'}'[39m,
+    [32m'return'[39m,             [32m'else'[39m,
+    [32m']'[39m,                  [32m','[39m,
+    [32m'['[39m
+  ],
+  OrOperandP: [
+    [32m'||'[39m,                 [32m';'[39m,
+    [32m')'[39m,                  [32m'if'[39m,
+    [32m'while'[39m,              [32m'int'[39m,
+    [32m'System.out.println'[39m, [32m'ID'[39m,
+    [32m'boolean'[39m,            [32m'}'[39m,
+    [32m'return'[39m,             [32m'else'[39m,
+    [32m']'[39m,                  [32m','[39m,
+    [32m'['[39m
+  ],
+  AndOperand: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'System.out.println'[39m,
+    [32m'ID'[39m,   [32m'boolean'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m']'[39m,
+    [32m','[39m,    [32m'['[39m
+  ],
+  AndOperandP: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'System.out.println'[39m,
+    [32m'ID'[39m,   [32m'boolean'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m']'[39m,
+    [32m','[39m,    [32m'['[39m
+  ],
+  RelOperand: [],
+  RelOperandP: [],
+  AddOperand: [ [32m'+'[39m, [32m'-'[39m ],
+  AddOperandP: [ [32m'+'[39m, [32m'-'[39m ],
+  UnaryOperand: [],
+  AtomicUnaryOperand: [],
+  ParenOperand: [ [32m')'[39m ],
+  AtomicParenOperand: [ [32m')'[39m ],
+  Value: [ [32m'.'[39m, [32m')'[39m ],
+  AtomicValue: [ [32m'.'[39m, [32m')'[39m ]
+}
+{
+  [32m'1'[39m: [ [32m'class'[39m ],
+  [32m'2'[39m: [ [32m'class'[39m ],
+  [32m'3'[39m: [ [32m'class'[39m ],
+  [32m'4'[39m: [],
+  [32m'5'[39m: [ [32m'class'[39m ],
+  [32m'6'[39m: [ [32m'ClassVar'[39m ],
+  [32m'7'[39m: [],
+  [32m'8'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'9'[39m: [ [32m'public'[39m ],
+  [32m'10'[39m: [ [32m'}'[39m ],
+  [32m'11'[39m: [ [32m'public'[39m ],
+  [32m'12'[39m: [ [32m','[39m ],
+  [32m'13'[39m: [ [32m']'[39m ],
+  [32m'14'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'15'[39m: [ [32m'int'[39m ],
+  [32m'16'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'17'[39m: [ [32m'int'[39m ],
+  [32m'18'[39m: [ [32m'boolean'[39m ],
+  [32m'19'[39m: [ [32m'ID'[39m ],
+  [32m'20'[39m: [ [32m'if'[39m, [32m'while'[39m, [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  [32m'21'[39m: [ [32m'}'[39m, [32m'return'[39m ],
+  [32m'22'[39m: [ [32m'if'[39m ],
+  [32m'23'[39m: [ [32m'while'[39m ],
+  [32m'24'[39m: [ [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  [32m'25'[39m: [ [32m'{'[39m ],
+  [32m'26'[39m: [ [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  [32m'27'[39m: [ [32m'int'[39m, [32m'System.out.println'[39m, [32m'ID'[39m, [32m'boolean'[39m ],
+  [32m'28'[39m: [ [32m'}'[39m ],
+  [32m'29'[39m: [ [32m'int'[39m, [32m'boolean'[39m, [32m'ID'[39m ],
+  [32m'30'[39m: [ [32m'System.out.println'[39m ],
+  [32m'31'[39m: [ [32m'ID'[39m ],
+  [32m'32'[39m: [ [32m'ID'[39m ],
+  [32m'33'[39m: [ [32m','[39m ],
+  [32m'34'[39m: [ [32m']'[39m ],
+  [32m'35'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'36'[39m: [ [32m'||'[39m ],
+  [32m'37'[39m: [
+    [32m';'[39m,
+    [32m')'[39m,
+    [32m'if'[39m,
+    [32m'while'[39m,
+    [32m'int'[39m,
+    [32m'System.out.println'[39m,
+    [32m'ID'[39m,
+    [32m'boolean'[39m,
+    [32m'}'[39m,
+    [32m'return'[39m,
+    [32m'else'[39m,
+    [32m']'[39m,
+    [32m','[39m,
+    [32m'['[39m
+  ],
+  [32m'38'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'39'[39m: [ [32m'&&'[39m ],
+  [32m'40'[39m: [
+    [32m'||'[39m,                 [32m';'[39m,
+    [32m')'[39m,                  [32m'if'[39m,
+    [32m'while'[39m,              [32m'int'[39m,
+    [32m'System.out.println'[39m, [32m'ID'[39m,
+    [32m'boolean'[39m,            [32m'}'[39m,
+    [32m'return'[39m,             [32m'else'[39m,
+    [32m']'[39m,                  [32m','[39m,
+    [32m'['[39m
+  ],
+  [32m'41'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'42'[39m: [ [32m'=='[39m ],
+  [32m'43'[39m: [ [32m'!='[39m ],
+  [32m'44'[39m: [
+    [32m'&&'[39m,   [32m'||'[39m,
+    [32m';'[39m,    [32m')'[39m,
+    [32m'if'[39m,   [32m'while'[39m,
+    [32m'int'[39m,  [32m'System.out.println'[39m,
+    [32m'ID'[39m,   [32m'boolean'[39m,
+    [32m'}'[39m,    [32m'return'[39m,
+    [32m'else'[39m, [32m']'[39m,
+    [32m','[39m,    [32m'['[39m
+  ],
+  [32m'45'[39m: [ [32m'MulOperand'[39m ],
+  [32m'46'[39m: [ [32m'+'[39m ],
+  [32m'47'[39m: [ [32m'-'[39m ],
+  [32m'48'[39m: [],
+  [32m'49'[39m: [ [32m'MulOperand'[39m ],
+  [32m'50'[39m: [ [32m'*'[39m ],
+  [32m'51'[39m: [ [32m'/'[39m ],
+  [32m'52'[39m: [ [32m'+'[39m, [32m'-'[39m ],
+  [32m'53'[39m: [ [32m'EqualityOperand'[39m ],
+  [32m'54'[39m: [
+    [32m'('[39m,       [32m'new'[39m,
+    [32m'ID'[39m,      [32m'this'[39m,
+    [32m'Integer'[39m, [32m'null'[39m,
+    [32m'true'[39m,    [32m'false'[39m
+  ],
+  [32m'55'[39m: [ [32m'('[39m ],
+  [32m'56'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'57'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'58'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'59'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'60'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'61'[39m: [ [32m'new'[39m ],
+  [32m'62'[39m: [
+    [32m'new'[39m,   [32m'ID'[39m,
+    [32m'this'[39m,  [32m'Integer'[39m,
+    [32m'null'[39m,  [32m'true'[39m,
+    [32m'false'[39m
+  ],
+  [32m'63'[39m: [ [32m'new'[39m ],
+  [32m'64'[39m: [ [32m'ID'[39m ],
+  [32m'65'[39m: [ [32m'this'[39m ],
+  [32m'66'[39m: [ [32m'Integer'[39m ],
+  [32m'67'[39m: [ [32m'null'[39m ],
+  [32m'68'[39m: [ [32m'true'[39m ],
+  [32m'69'[39m: [ [32m'false'[39m ]
+}
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mnode[39m [4mfirst-follow.js[24m > [4mf[24m[4mf[4mi[24m[4mi[4mr[24m[4mr[4mst-follow.[24m[4m.[4mt[24m[4mt[4mxt[24m[1m [0m[0m [?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[32mr[39m[32mr[32mm[39m [4mf[24m[4mf[4mi[24m[4mi[4mrst-follow.[24m[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[H[2J[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[1m[31ml[0m[39m[0m[32ml[32ms[39m[?2004l
+[0m[01;34mnode_modules[0m  [01;32mfirst-follow.js[0m  first-follow.txt  grammar.aux  grammar.fdb_latexmk  grammar.fls  grammar.log  grammar.pdf  grammar.synctex.gz  grammar.tex  package-lock.json  typescript
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                    [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [1m[31ms[0m[39m[1m[31ms[1m[31me[0m[39m[0m[32ms[0m[32me[32mt[39m[1m[31ms[1m[31me[1m[31mt[1m[31mx[0m[39m[1m[31mx[1m[31mk[0m[39m[0m[32ms[0m[32me[0m[32mt[0m[32mx[0m[32mk[32mbmap[39m[1m [0m[0m ctrol  l:nocaps[?2004l
+Error loading new keyboard description
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [1m[31me[0m[39m[0m[32me[32mx[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[?2004l
+Script done, file is first-follow.js
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31me[0m[39m[0m[32me[32mx[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[?2004l
+Script done, file is first-follow.
+[1m[7m%[27m[1m[0m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        [0m[27m[24m[J[36m~/sr_winter/CSSE404/project/grammar[34m$[0m [K[?2004h[1m[31me[0m[39m[0m[32me[32mx[39m[1m[31me[1m[31mx[1m[31mi[0m[39m[0m[32me[0m[32mx[0m[32mi[32mt[39m[?2004l
+
+Script done on 2020-01-09 19:45:32-05:00 [COMMAND_EXIT_CODE="0"]

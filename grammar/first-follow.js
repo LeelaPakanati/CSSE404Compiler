@@ -28,9 +28,12 @@ var grammar = new Grammar([
 
   { left: 'Formal', right: ['Type', 'ID'] },
 
-  { left: 'Type', right: ['int'] },
-  { left: 'Type', right: ['boolean'] },
-  { left: 'Type', right: ['ID'] },
+  { left: 'Type', right: ['int', '[', ']'] },
+  { left: 'Type', right: ['AtomicType']},
+
+  { left: 'AtomicType', right: ['int'] },
+  { left: 'AtomicType', right: ['boolean'] },
+  { left: 'AtomicType', right: ['ID'] },
  
   { left: 'StmtList', right: ['Stmt', 'StmtList'] },
   { left: 'StmtList', right: [null] },
@@ -48,6 +51,7 @@ var grammar = new Grammar([
   { left: 'AtomicStmt', right: ['Type', 'ID', '=', 'Expr', ';'] },
   { left: 'AtomicStmt', right: ['System.out.println', '(', 'Expr', ')', ';'] },
   { left: 'AtomicStmt', right: ['ID', '=', 'Expr'] },
+  { left: 'AtomicStmt', right: ['ID', '[', 'Expr', ']', '=', 'Expr'] },
 
   { left: 'ExprList', right: [',', 'Expr', 'ExprList'] },
   { left: 'ExprList', right: [null] },
@@ -80,19 +84,28 @@ var grammar = new Grammar([
   { left: 'AddOperandP', right: ['/', 'MulOperand', 'AddOperandP'] },
   { left: 'AddOperandP', right: [null] },
 
-  { left: 'UnaryOperand', right: ['(', 'ParenOperand', ')'] },
-  { left: 'UnaryOperand', right: ['ParenOperand'] },
+  { left: 'UnaryOperand', right: ['Expr', '[', 'Expr', ']'] },
+  { left: 'UnaryOperand', right: ['AtomicUnaryOperand'] },
 
-  { left: 'ParenOperand', right: ['Value', '.', 'ID', '(', '[', 'Expr', 'ExprList', ']', ')'] },
-  { left: 'ParenOperand', right: ['Value'] },
+  { left: 'AtomicUnaryOperand', right: ['(', 'ParenOperand', ')'] },
+  { left: 'AtomicUnaryOperand', right: ['ParenOperand'] },
 
-  { left: 'Value', right: ['new', 'ID', '(', ')'] },
-  { left: 'Value', right: ['ID'] },
-  { left: 'Value', right: ['this'] },
-  { left: 'Value', right: ['Integer'] },
-  { left: 'Value', right: ['null'] },
-  { left: 'Value', right: ['true'] },
-  { left: 'Value', right: ['false'] }
+  { left: 'ParenOperand', right: ['Value', '.', 'length']},
+  { left: 'ParenOperand', right: ['AtomicParenOperand'] },
+
+  { left: 'AtomicParenOperand', right: ['Value', '.', 'ID', '(', '[', 'Expr', 'ExprList', ']', ')'] },
+  { left: 'AtomicParenOperand', right: ['Value'] },
+
+  { left: 'Value', right: ['new', 'int', '[', ']'] },
+  { left: 'Value', right: ['AtomicValue'] },
+
+  { left: 'AtomicValue', right: ['new', 'ID', '(', ')'] },
+  { left: 'AtomicValue', right: ['ID'] },
+  { left: 'AtomicValue', right: ['this'] },
+  { left: 'AtomicValue', right: ['Integer'] },
+  { left: 'AtomicValue', right: ['null'] },
+  { left: 'AtomicValue', right: ['true'] },
+  { left: 'AtomicValue', right: ['false'] }
   
 ]);
 

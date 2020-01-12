@@ -1,0 +1,126 @@
+Program -> MainClassDecl ClassDeclList
+
+MainClassDecl -> class ID { public static void main ( String [ ] ID ) { StmtList } }
+
+ClassDeclList -> ClassDecl ClassDeclList
+ClassDeclList -> ''
+
+ClassDecl -> class ID ClassDeclPrime { ClassVarDeclList MethodDeclList }
+
+ClassDeclPrime -> extends ID
+ClassDeclPrime -> ''
+
+ClassVarDeclList -> ClassVarDecl ClassVarDeclList
+ClassVarDeclList -> ''
+
+ClassVarDecl -> Formal ;
+
+MethodDeclList -> MethodDecl MethodDeclList
+MethodDeclList -> ''
+
+MethodDecl -> public Formal ( FormalList ) { StmtList return Expr ; }
+
+FormalList -> Formal FormalListPrime
+FormalList -> ''
+
+FormalListPrime -> , Formal FormalListPrime
+FormalListPrime -> ''
+
+Formal -> Type ID
+
+Type -> int IsArr
+Type -> boolean
+Type -> ID
+
+IsArr -> [ ]
+IsArr -> ''
+
+StmtList -> Stmt StmtList
+StmtList -> ''
+
+Stmt -> if ( Expr ) BracketStmt else BracketStmt
+Stmt -> while ( Expr ) BracketStmt
+Stmt -> AtomicStmt
+
+BracketStmt -> { AtomicStmtList }
+BracketStmt -> AtomicStmt
+
+AtomicStmtList -> AtomicStmt AtomicStmtList
+AtomicStmtList -> ''
+
+AtomicStmt -> System.out.println ( Expr ) ;
+AtomicStmt -> int IsArr Assignment ;
+AtomicStmt -> boolean Assignment ;
+AtomicStmt -> ID IDAssignment
+
+IDAssignment -> ID Assignment ;
+IDAssignment -> Assignment ;
+
+Assignment -> = Expr
+
+IsArrVal -> [ Expr ]
+IsArrVal -> ''
+
+ExprList -> Expr ExprListPrime
+ExprList -> ''
+
+ExprListPrime -> , Expr ExprListPrime
+ExprListPrime -> ''
+
+Expr -> OrOperand ExprPrime
+
+ExprPrime -> || OrOperand ExprPrime
+ExprPrime -> ''
+
+OrOperand -> AndOperand OrOperandPrime
+
+OrOperandPrime -> && AndOperand OrOperandPrime
+OrOperandPrime -> ''
+
+AndOperand -> EqualityOperand AndOperandPrime
+
+AndOperandPrime -> == EqualityOperand AndOperandPrime
+AndOperandPrime -> != EqualityOperand AndOperandPrime
+AndOperandPrime -> ''
+
+EqualityOperand -> RelOperand EqualityOperandPrime
+
+EqualityOperandPrime -> < RelOperand EqualityOperandPrime
+EqualityOperandPrime -> <= RelOperand EqualityOperandPrime
+EqualityOperandPrime -> >= RelOperand EqualityOperandPrime
+EqualityOperandPrime -> > RelOperand EqualityOperandPrime
+EqualityOperandPrime -> ''
+
+RelOperand -> AddOperand RelOperandPrime
+
+RelOperandPrime -> + AddOperand RelOperandPrime
+RelOperandPrime -> - AddOperand RelOperandPrime
+RelOperandPrime -> ''
+
+AddOperand -> Value AddOperandPrime
+
+AddOperandPrime -> * Value AddOperandPrime
+AddOperandPrime -> / Value AddOperandPrime
+AddOperandPrime -> ''
+
+Value -> new NewWhat
+Value -> ! Value
+Value -> - Value
+Value -> ( Expr ) ValuePrime
+Value -> ID ValuePrime
+Value -> this ValuePrime
+Value -> Integer
+Value -> null
+Value -> true
+Value -> false
+
+NewWhat -> int [ Expr ]
+NewWhat -> ID ( ) ValuePrime
+
+ValuePrime -> . DotWhat
+ValuePrime -> [ Expr ] ValuePrime
+ValuePrime -> ''
+
+DotWhat -> ID ( ExprList ) ValuePrime
+DotWhat -> length
+
