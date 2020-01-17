@@ -1,25 +1,25 @@
 Tree: 
  Program
   MainClassDecl
-   class
-   ID
-   {
-   public
-   static
-   void
-   main
-   (
-   String
-   [
-   ]
-   ID
-   )
-   {
+   T: class
+   T: ID : BinarySearch
+   T: {
+   T: public
+   T: static
+   T: void
+   T: main
+   T: (
+   T: String
+   T: [
+   T: ]
+   T: ID : a
+   T: )
+   T: {
    StmtList
     Stmt
      AtomicStmt
-      System.out.println
-      (
+      T: System.out.println
+      T: (
       Expr
        OrOperand
         AndOperand
@@ -27,16 +27,16 @@ Tree:
           RelOperand
            AddOperand
             Value
-             new
+             T: new
              NewWhat
-              ID
-              (
-              )
+              T: ID : BS
+              T: (
+              T: )
               ValuePrime
-               .
+               T: .
                DotWhat
-                ID
-                (
+                T: ID : Start
+                T: (
                 ExprList
                  Expr
                   OrOperand
@@ -45,7 +45,7 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        Integer
+                        T: Integer : 20
                        AddOperandPrime
                       RelOperandPrime
                      EqualityOperandPrime
@@ -53,7 +53,7 @@ Tree:
                    OrOperandPrime
                   ExprPrime
                  ExprListPrime
-                )
+                T: )
                 ValuePrime
             AddOperandPrime
            RelOperandPrime
@@ -61,80 +61,80 @@ Tree:
          AndOperandPrime
         OrOperandPrime
        ExprPrime
-      )
-      ;
+      T: )
+      T: ;
     StmtList
-   }
-   }
+   T: }
+   T: }
   ClassDeclList
    ClassDecl
-    class
-    ID
+    T: class
+    T: ID : BS
     ClassDeclPrime
-    {
+    T: {
     ClassVarDeclList
      ClassVarDecl
       Formal
        Type
-        int
+        T: int
         IsArr
-         [
+         T: [
          HasExpr
-         ]
-       ID
-      ;
+         T: ]
+       T: ID : number
+      T: ;
      ClassVarDeclList
       ClassVarDecl
        Formal
         Type
-         int
+         T: int
          IsArr
-        ID
-       ;
+        T: ID : size
+       T: ;
       ClassVarDeclList
     MethodDeclList
      MethodDecl
-      public
+      T: public
       Formal
        Type
-        int
+        T: int
         IsArr
-       ID
-      (
+       T: ID : Start
+      T: (
       FormalList
        Formal
         Type
-         int
+         T: int
          IsArr
-        ID
+        T: ID : sz
        FormalListPrime
-      )
-      {
+      T: )
+      T: {
       StmtList
        Stmt
         AtomicStmt
-         int
+         T: int
          IsArr
-         ID
+         T: ID : aux01
          IsArr
          Assignment
-          ;
+          T: ;
        StmtList
         Stmt
          AtomicStmt
-          int
+          T: int
           IsArr
-          ID
+          T: ID : aux02
           IsArr
           Assignment
-           ;
+           T: ;
         StmtList
          Stmt
           AtomicStmt
-           ID
+           T: ID : aux01
            IsArr
            IDAssignment
-            =
+            T: =
             Expr
              OrOperand
               AndOperand
@@ -142,12 +142,12 @@ Tree:
                 RelOperand
                  AddOperand
                   Value
-                   ID
+                   T: ID : this
                    ValuePrime
-                    .
+                    T: .
                     DotWhat
-                     ID
-                     (
+                     T: ID : Init
+                     T: (
                      ExprList
                       Expr
                        OrOperand
@@ -156,7 +156,7 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             ID
+                             T: ID : sz
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
@@ -165,7 +165,7 @@ Tree:
                         OrOperandPrime
                        ExprPrime
                       ExprListPrime
-                     )
+                     T: )
                      ValuePrime
                   AddOperandPrime
                  RelOperandPrime
@@ -173,14 +173,14 @@ Tree:
                AndOperandPrime
               OrOperandPrime
              ExprPrime
-            ;
+            T: ;
          StmtList
           Stmt
            AtomicStmt
-            ID
+            T: ID : aux02
             IsArr
             IDAssignment
-             =
+             T: =
              Expr
               OrOperand
                AndOperand
@@ -188,14 +188,14 @@ Tree:
                  RelOperand
                   AddOperand
                    Value
-                    ID
+                    T: ID : this
                     ValuePrime
-                     .
+                     T: .
                      DotWhat
-                      ID
-                      (
+                      T: ID : Print
+                      T: (
                       ExprList
-                      )
+                      T: )
                       ValuePrime
                    AddOperandPrime
                   RelOperandPrime
@@ -203,11 +203,11 @@ Tree:
                 AndOperandPrime
                OrOperandPrime
               ExprPrime
-             ;
+             T: ;
           StmtList
            Stmt
-            if
-            (
+            T: if
+            T: (
             Expr
              OrOperand
               AndOperand
@@ -215,12 +215,12 @@ Tree:
                 RelOperand
                  AddOperand
                   Value
-                   ID
+                   T: ID : this
                    ValuePrime
-                    .
+                    T: .
                     DotWhat
-                     ID
-                     (
+                     T: ID : Search
+                     T: (
                      ExprList
                       Expr
                        OrOperand
@@ -229,7 +229,7 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 8
                             AddOperandPrime
                            RelOperandPrime
                           EqualityOperandPrime
@@ -237,7 +237,7 @@ Tree:
                         OrOperandPrime
                        ExprPrime
                       ExprListPrime
-                     )
+                     T: )
                      ValuePrime
                   AddOperandPrime
                  RelOperandPrime
@@ -245,12 +245,12 @@ Tree:
                AndOperandPrime
               OrOperandPrime
              ExprPrime
-            )
+            T: )
             BracketStmt
              Stmt
               AtomicStmt
-               System.out.println
-               (
+               T: System.out.println
+               T: (
                Expr
                 OrOperand
                  AndOperand
@@ -258,21 +258,21 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      Integer
+                      T: Integer : 1
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               )
-               ;
-            else
+               T: )
+               T: ;
+            T: else
             BracketStmt
              Stmt
               AtomicStmt
-               System.out.println
-               (
+               T: System.out.println
+               T: (
                Expr
                 OrOperand
                  AndOperand
@@ -280,19 +280,19 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      Integer
+                      T: Integer : 0
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               )
-               ;
+               T: )
+               T: ;
            StmtList
             Stmt
-             if
-             (
+             T: if
+             T: (
              Expr
               OrOperand
                AndOperand
@@ -300,12 +300,12 @@ Tree:
                  RelOperand
                   AddOperand
                    Value
-                    ID
+                    T: ID : this
                     ValuePrime
-                     .
+                     T: .
                      DotWhat
-                      ID
-                      (
+                      T: ID : Search
+                      T: (
                       ExprList
                        Expr
                         OrOperand
@@ -314,7 +314,7 @@ Tree:
                            RelOperand
                             AddOperand
                              Value
-                              Integer
+                              T: Integer : 19
                              AddOperandPrime
                             RelOperandPrime
                            EqualityOperandPrime
@@ -322,7 +322,7 @@ Tree:
                          OrOperandPrime
                         ExprPrime
                        ExprListPrime
-                      )
+                      T: )
                       ValuePrime
                    AddOperandPrime
                   RelOperandPrime
@@ -330,12 +330,12 @@ Tree:
                 AndOperandPrime
                OrOperandPrime
               ExprPrime
-             )
+             T: )
              BracketStmt
               Stmt
                AtomicStmt
-                System.out.println
-                (
+                T: System.out.println
+                T: (
                 Expr
                  OrOperand
                   AndOperand
@@ -343,21 +343,21 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       Integer
+                       T: Integer : 1
                       AddOperandPrime
                      RelOperandPrime
                     EqualityOperandPrime
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                )
-                ;
-             else
+                T: )
+                T: ;
+             T: else
              BracketStmt
               Stmt
                AtomicStmt
-                System.out.println
-                (
+                T: System.out.println
+                T: (
                 Expr
                  OrOperand
                   AndOperand
@@ -365,19 +365,19 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       Integer
+                       T: Integer : 0
                       AddOperandPrime
                      RelOperandPrime
                     EqualityOperandPrime
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                )
-                ;
+                T: )
+                T: ;
             StmtList
              Stmt
-              if
-              (
+              T: if
+              T: (
               Expr
                OrOperand
                 AndOperand
@@ -385,12 +385,12 @@ Tree:
                   RelOperand
                    AddOperand
                     Value
-                     ID
+                     T: ID : this
                      ValuePrime
-                      .
+                      T: .
                       DotWhat
-                       ID
-                       (
+                       T: ID : Search
+                       T: (
                        ExprList
                         Expr
                          OrOperand
@@ -399,7 +399,7 @@ Tree:
                             RelOperand
                              AddOperand
                               Value
-                               Integer
+                               T: Integer : 20
                               AddOperandPrime
                              RelOperandPrime
                             EqualityOperandPrime
@@ -407,7 +407,7 @@ Tree:
                           OrOperandPrime
                          ExprPrime
                         ExprListPrime
-                       )
+                       T: )
                        ValuePrime
                     AddOperandPrime
                    RelOperandPrime
@@ -415,12 +415,12 @@ Tree:
                  AndOperandPrime
                 OrOperandPrime
                ExprPrime
-              )
+              T: )
               BracketStmt
                Stmt
                 AtomicStmt
-                 System.out.println
-                 (
+                 T: System.out.println
+                 T: (
                  Expr
                   OrOperand
                    AndOperand
@@ -428,21 +428,21 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        Integer
+                        T: Integer : 1
                        AddOperandPrime
                       RelOperandPrime
                      EqualityOperandPrime
                     AndOperandPrime
                    OrOperandPrime
                   ExprPrime
-                 )
-                 ;
-              else
+                 T: )
+                 T: ;
+              T: else
               BracketStmt
                Stmt
                 AtomicStmt
-                 System.out.println
-                 (
+                 T: System.out.println
+                 T: (
                  Expr
                   OrOperand
                    AndOperand
@@ -450,19 +450,19 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        Integer
+                        T: Integer : 0
                        AddOperandPrime
                       RelOperandPrime
                      EqualityOperandPrime
                     AndOperandPrime
                    OrOperandPrime
                   ExprPrime
-                 )
-                 ;
+                 T: )
+                 T: ;
              StmtList
               Stmt
-               if
-               (
+               T: if
+               T: (
                Expr
                 OrOperand
                  AndOperand
@@ -470,12 +470,12 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      ID
+                      T: ID : this
                       ValuePrime
-                       .
+                       T: .
                        DotWhat
-                        ID
-                        (
+                        T: ID : Search
+                        T: (
                         ExprList
                          Expr
                           OrOperand
@@ -484,7 +484,7 @@ Tree:
                              RelOperand
                               AddOperand
                                Value
-                                Integer
+                                T: Integer : 21
                                AddOperandPrime
                               RelOperandPrime
                              EqualityOperandPrime
@@ -492,7 +492,7 @@ Tree:
                            OrOperandPrime
                           ExprPrime
                          ExprListPrime
-                        )
+                        T: )
                         ValuePrime
                      AddOperandPrime
                     RelOperandPrime
@@ -500,12 +500,12 @@ Tree:
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               )
+               T: )
                BracketStmt
                 Stmt
                  AtomicStmt
-                  System.out.println
-                  (
+                  T: System.out.println
+                  T: (
                   Expr
                    OrOperand
                     AndOperand
@@ -513,21 +513,21 @@ Tree:
                       RelOperand
                        AddOperand
                         Value
-                         Integer
+                         T: Integer : 1
                         AddOperandPrime
                        RelOperandPrime
                       EqualityOperandPrime
                      AndOperandPrime
                     OrOperandPrime
                    ExprPrime
-                  )
-                  ;
-               else
+                  T: )
+                  T: ;
+               T: else
                BracketStmt
                 Stmt
                  AtomicStmt
-                  System.out.println
-                  (
+                  T: System.out.println
+                  T: (
                   Expr
                    OrOperand
                     AndOperand
@@ -535,19 +535,19 @@ Tree:
                       RelOperand
                        AddOperand
                         Value
-                         Integer
+                         T: Integer : 0
                         AddOperandPrime
                        RelOperandPrime
                       EqualityOperandPrime
                      AndOperandPrime
                     OrOperandPrime
                    ExprPrime
-                  )
-                  ;
+                  T: )
+                  T: ;
               StmtList
                Stmt
-                if
-                (
+                T: if
+                T: (
                 Expr
                  OrOperand
                   AndOperand
@@ -555,12 +555,12 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       ID
+                       T: ID : this
                        ValuePrime
-                        .
+                        T: .
                         DotWhat
-                         ID
-                         (
+                         T: ID : Search
+                         T: (
                          ExprList
                           Expr
                            OrOperand
@@ -569,7 +569,7 @@ Tree:
                               RelOperand
                                AddOperand
                                 Value
-                                 Integer
+                                 T: Integer : 37
                                 AddOperandPrime
                                RelOperandPrime
                               EqualityOperandPrime
@@ -577,7 +577,7 @@ Tree:
                             OrOperandPrime
                            ExprPrime
                           ExprListPrime
-                         )
+                         T: )
                          ValuePrime
                       AddOperandPrime
                      RelOperandPrime
@@ -585,12 +585,12 @@ Tree:
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                )
+                T: )
                 BracketStmt
                  Stmt
                   AtomicStmt
-                   System.out.println
-                   (
+                   T: System.out.println
+                   T: (
                    Expr
                     OrOperand
                      AndOperand
@@ -598,21 +598,21 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          Integer
+                          T: Integer : 1
                          AddOperandPrime
                         RelOperandPrime
                        EqualityOperandPrime
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   )
-                   ;
-                else
+                   T: )
+                   T: ;
+                T: else
                 BracketStmt
                  Stmt
                   AtomicStmt
-                   System.out.println
-                   (
+                   T: System.out.println
+                   T: (
                    Expr
                     OrOperand
                      AndOperand
@@ -620,19 +620,19 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          Integer
+                          T: Integer : 0
                          AddOperandPrime
                         RelOperandPrime
                        EqualityOperandPrime
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   )
-                   ;
+                   T: )
+                   T: ;
                StmtList
                 Stmt
-                 if
-                 (
+                 T: if
+                 T: (
                  Expr
                   OrOperand
                    AndOperand
@@ -640,12 +640,12 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        ID
+                        T: ID : this
                         ValuePrime
-                         .
+                         T: .
                          DotWhat
-                          ID
-                          (
+                          T: ID : Search
+                          T: (
                           ExprList
                            Expr
                             OrOperand
@@ -654,7 +654,7 @@ Tree:
                                RelOperand
                                 AddOperand
                                  Value
-                                  Integer
+                                  T: Integer : 38
                                  AddOperandPrime
                                 RelOperandPrime
                                EqualityOperandPrime
@@ -662,7 +662,7 @@ Tree:
                              OrOperandPrime
                             ExprPrime
                            ExprListPrime
-                          )
+                          T: )
                           ValuePrime
                        AddOperandPrime
                       RelOperandPrime
@@ -670,12 +670,12 @@ Tree:
                     AndOperandPrime
                    OrOperandPrime
                   ExprPrime
-                 )
+                 T: )
                  BracketStmt
                   Stmt
                    AtomicStmt
-                    System.out.println
-                    (
+                    T: System.out.println
+                    T: (
                     Expr
                      OrOperand
                       AndOperand
@@ -683,21 +683,21 @@ Tree:
                         RelOperand
                          AddOperand
                           Value
-                           Integer
+                           T: Integer : 1
                           AddOperandPrime
                          RelOperandPrime
                         EqualityOperandPrime
                        AndOperandPrime
                       OrOperandPrime
                      ExprPrime
-                    )
-                    ;
-                 else
+                    T: )
+                    T: ;
+                 T: else
                  BracketStmt
                   Stmt
                    AtomicStmt
-                    System.out.println
-                    (
+                    T: System.out.println
+                    T: (
                     Expr
                      OrOperand
                       AndOperand
@@ -705,19 +705,19 @@ Tree:
                         RelOperand
                          AddOperand
                           Value
-                           Integer
+                           T: Integer : 0
                           AddOperandPrime
                          RelOperandPrime
                         EqualityOperandPrime
                        AndOperandPrime
                       OrOperandPrime
                      ExprPrime
-                    )
-                    ;
+                    T: )
+                    T: ;
                 StmtList
                  Stmt
-                  if
-                  (
+                  T: if
+                  T: (
                   Expr
                    OrOperand
                     AndOperand
@@ -725,12 +725,12 @@ Tree:
                       RelOperand
                        AddOperand
                         Value
-                         ID
+                         T: ID : this
                          ValuePrime
-                          .
+                          T: .
                           DotWhat
-                           ID
-                           (
+                           T: ID : Search
+                           T: (
                            ExprList
                             Expr
                              OrOperand
@@ -739,7 +739,7 @@ Tree:
                                 RelOperand
                                  AddOperand
                                   Value
-                                   Integer
+                                   T: Integer : 39
                                   AddOperandPrime
                                  RelOperandPrime
                                 EqualityOperandPrime
@@ -747,7 +747,7 @@ Tree:
                               OrOperandPrime
                              ExprPrime
                             ExprListPrime
-                           )
+                           T: )
                            ValuePrime
                         AddOperandPrime
                        RelOperandPrime
@@ -755,12 +755,12 @@ Tree:
                      AndOperandPrime
                     OrOperandPrime
                    ExprPrime
-                  )
+                  T: )
                   BracketStmt
                    Stmt
                     AtomicStmt
-                     System.out.println
-                     (
+                     T: System.out.println
+                     T: (
                      Expr
                       OrOperand
                        AndOperand
@@ -768,21 +768,21 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            Integer
+                            T: Integer : 1
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     )
-                     ;
-                  else
+                     T: )
+                     T: ;
+                  T: else
                   BracketStmt
                    Stmt
                     AtomicStmt
-                     System.out.println
-                     (
+                     T: System.out.println
+                     T: (
                      Expr
                       OrOperand
                        AndOperand
@@ -790,19 +790,19 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            Integer
+                            T: Integer : 0
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     )
-                     ;
+                     T: )
+                     T: ;
                  StmtList
                   Stmt
-                   if
-                   (
+                   T: if
+                   T: (
                    Expr
                     OrOperand
                      AndOperand
@@ -810,12 +810,12 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          ID
+                          T: ID : this
                           ValuePrime
-                           .
+                           T: .
                            DotWhat
-                            ID
-                            (
+                            T: ID : Search
+                            T: (
                             ExprList
                              Expr
                               OrOperand
@@ -824,7 +824,7 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    Integer
+                                    T: Integer : 50
                                    AddOperandPrime
                                   RelOperandPrime
                                  EqualityOperandPrime
@@ -832,7 +832,7 @@ Tree:
                                OrOperandPrime
                               ExprPrime
                              ExprListPrime
-                            )
+                            T: )
                             ValuePrime
                          AddOperandPrime
                         RelOperandPrime
@@ -840,12 +840,12 @@ Tree:
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   )
+                   T: )
                    BracketStmt
                     Stmt
                      AtomicStmt
-                      System.out.println
-                      (
+                      T: System.out.println
+                      T: (
                       Expr
                        OrOperand
                         AndOperand
@@ -853,21 +853,21 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 1
                             AddOperandPrime
                            RelOperandPrime
                           EqualityOperandPrime
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      )
-                      ;
-                   else
+                      T: )
+                      T: ;
+                   T: else
                    BracketStmt
                     Stmt
                      AtomicStmt
-                      System.out.println
-                      (
+                      T: System.out.println
+                      T: (
                       Expr
                        OrOperand
                         AndOperand
@@ -875,17 +875,17 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 0
                             AddOperandPrime
                            RelOperandPrime
                           EqualityOperandPrime
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      )
-                      ;
+                      T: )
+                      T: ;
                   StmtList
-      return
+      T: return
       Expr
        OrOperand
         AndOperand
@@ -893,100 +893,100 @@ Tree:
           RelOperand
            AddOperand
             Value
-             Integer
+             T: Integer : 999
             AddOperandPrime
            RelOperandPrime
           EqualityOperandPrime
          AndOperandPrime
         OrOperandPrime
        ExprPrime
-      ;
-      }
+      T: ;
+      T: }
      MethodDeclList
       MethodDecl
-       public
+       T: public
        Formal
         Type
-         boolean
-        ID
-       (
+         T: boolean
+        T: ID : Search
+       T: (
        FormalList
         Formal
          Type
-          int
+          T: int
           IsArr
-         ID
+         T: ID : num
         FormalListPrime
-       )
-       {
+       T: )
+       T: {
        StmtList
         Stmt
          AtomicStmt
-          boolean
-          ID
+          T: boolean
+          T: ID : bs01
           IsArr
           Assignment
-           ;
+           T: ;
         StmtList
          Stmt
           AtomicStmt
-           int
+           T: int
            IsArr
-           ID
+           T: ID : right
            IsArr
            Assignment
-            ;
+            T: ;
          StmtList
           Stmt
            AtomicStmt
-            int
+            T: int
             IsArr
-            ID
+            T: ID : left
             IsArr
             Assignment
-             ;
+             T: ;
           StmtList
            Stmt
             AtomicStmt
-             boolean
-             ID
+             T: boolean
+             T: ID : var_cont
              IsArr
              Assignment
-              ;
+              T: ;
            StmtList
             Stmt
              AtomicStmt
-              int
+              T: int
               IsArr
-              ID
+              T: ID : medium
               IsArr
               Assignment
-               ;
+               T: ;
             StmtList
              Stmt
               AtomicStmt
-               int
+               T: int
                IsArr
-               ID
+               T: ID : aux01
                IsArr
                Assignment
-                ;
+                T: ;
              StmtList
               Stmt
                AtomicStmt
-                int
+                T: int
                 IsArr
-                ID
+                T: ID : nt
                 IsArr
                 Assignment
-                 ;
+                 T: ;
               StmtList
                Stmt
                 AtomicStmt
-                 ID
+                 T: ID : aux01
                  IsArr
                  IDAssignment
-                  =
+                  T: =
                   Expr
                    OrOperand
                     AndOperand
@@ -994,21 +994,21 @@ Tree:
                       RelOperand
                        AddOperand
                         Value
-                         Integer
+                         T: Integer : 0
                         AddOperandPrime
                        RelOperandPrime
                       EqualityOperandPrime
                      AndOperandPrime
                     OrOperandPrime
                    ExprPrime
-                  ;
+                  T: ;
                StmtList
                 Stmt
                  AtomicStmt
-                  ID
+                  T: ID : bs01
                   IsArr
                   IDAssignment
-                   =
+                   T: =
                    Expr
                     OrOperand
                      AndOperand
@@ -1016,21 +1016,21 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          false
+                          T: false
                          AddOperandPrime
                         RelOperandPrime
                        EqualityOperandPrime
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   ;
+                   T: ;
                 StmtList
                  Stmt
                   AtomicStmt
-                   ID
+                   T: ID : right
                    IsArr
                    IDAssignment
-                    =
+                    T: =
                     Expr
                      OrOperand
                       AndOperand
@@ -1038,25 +1038,25 @@ Tree:
                         RelOperand
                          AddOperand
                           Value
-                           ID
+                           T: ID : number
                            ValuePrime
-                            .
+                            T: .
                             DotWhat
-                             length
+                             T: length
                           AddOperandPrime
                          RelOperandPrime
                         EqualityOperandPrime
                        AndOperandPrime
                       OrOperandPrime
                      ExprPrime
-                    ;
+                    T: ;
                  StmtList
                   Stmt
                    AtomicStmt
-                    ID
+                    T: ID : right
                     IsArr
                     IDAssignment
-                     =
+                     T: =
                      Expr
                       OrOperand
                        AndOperand
@@ -1064,28 +1064,28 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            ID
+                            T: ID : right
                             ValuePrime
                            AddOperandPrime
                           RelOperandPrime
-                           -
+                           T: -
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 1
                             AddOperandPrime
                            RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     ;
+                     T: ;
                   StmtList
                    Stmt
                     AtomicStmt
-                     ID
+                     T: ID : left
                      IsArr
                      IDAssignment
-                      =
+                      T: =
                       Expr
                        OrOperand
                         AndOperand
@@ -1093,21 +1093,21 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 0
                             AddOperandPrime
                            RelOperandPrime
                           EqualityOperandPrime
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      ;
+                      T: ;
                    StmtList
                     Stmt
                      AtomicStmt
-                      ID
+                      T: ID : var_cont
                       IsArr
                       IDAssignment
-                       =
+                       T: =
                        Expr
                         OrOperand
                          AndOperand
@@ -1115,18 +1115,18 @@ Tree:
                            RelOperand
                             AddOperand
                              Value
-                              true
+                              T: true
                              AddOperandPrime
                             RelOperandPrime
                            EqualityOperandPrime
                           AndOperandPrime
                          OrOperandPrime
                         ExprPrime
-                       ;
+                       T: ;
                     StmtList
                      Stmt
-                      while
-                      (
+                      T: while
+                      T: (
                       Expr
                        OrOperand
                         AndOperand
@@ -1134,7 +1134,7 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             ID
+                             T: ID : var_cont
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
@@ -1142,16 +1142,16 @@ Tree:
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      )
+                      T: )
                       BracketStmt
-                       {
+                       T: {
                        StmtList
                         Stmt
                          AtomicStmt
-                          ID
+                          T: ID : medium
                           IsArr
                           IDAssignment
-                           =
+                           T: =
                            Expr
                             OrOperand
                              AndOperand
@@ -1159,14 +1159,14 @@ Tree:
                                RelOperand
                                 AddOperand
                                  Value
-                                  ID
+                                  T: ID : left
                                   ValuePrime
                                  AddOperandPrime
                                 RelOperandPrime
-                                 +
+                                 T: +
                                  AddOperand
                                   Value
-                                   ID
+                                   T: ID : right
                                    ValuePrime
                                   AddOperandPrime
                                  RelOperandPrime
@@ -1174,14 +1174,14 @@ Tree:
                               AndOperandPrime
                              OrOperandPrime
                             ExprPrime
-                           ;
+                           T: ;
                         StmtList
                          Stmt
                           AtomicStmt
-                           ID
+                           T: ID : medium
                            IsArr
                            IDAssignment
-                            =
+                            T: =
                             Expr
                              OrOperand
                               AndOperand
@@ -1189,12 +1189,12 @@ Tree:
                                 RelOperand
                                  AddOperand
                                   Value
-                                   ID
+                                   T: ID : this
                                    ValuePrime
-                                    .
+                                    T: .
                                     DotWhat
-                                     ID
-                                     (
+                                     T: ID : Div
+                                     T: (
                                      ExprList
                                       Expr
                                        OrOperand
@@ -1203,7 +1203,7 @@ Tree:
                                           RelOperand
                                            AddOperand
                                             Value
-                                             ID
+                                             T: ID : medium
                                              ValuePrime
                                             AddOperandPrime
                                            RelOperandPrime
@@ -1212,7 +1212,7 @@ Tree:
                                         OrOperandPrime
                                        ExprPrime
                                       ExprListPrime
-                                     )
+                                     T: )
                                      ValuePrime
                                   AddOperandPrime
                                  RelOperandPrime
@@ -1220,14 +1220,14 @@ Tree:
                                AndOperandPrime
                               OrOperandPrime
                              ExprPrime
-                            ;
+                            T: ;
                          StmtList
                           Stmt
                            AtomicStmt
-                            ID
+                            T: ID : aux01
                             IsArr
                             IDAssignment
-                             =
+                             T: =
                              Expr
                               OrOperand
                                AndOperand
@@ -1235,9 +1235,9 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : number
                                     ValuePrime
-                                     [
+                                     T: [
                                      Expr
                                       OrOperand
                                        AndOperand
@@ -1245,7 +1245,7 @@ Tree:
                                          RelOperand
                                           AddOperand
                                            Value
-                                            ID
+                                            T: ID : medium
                                             ValuePrime
                                            AddOperandPrime
                                           RelOperandPrime
@@ -1253,7 +1253,7 @@ Tree:
                                         AndOperandPrime
                                        OrOperandPrime
                                       ExprPrime
-                                     ]
+                                     T: ]
                                      ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -1261,11 +1261,11 @@ Tree:
                                 AndOperandPrime
                                OrOperandPrime
                               ExprPrime
-                             ;
+                             T: ;
                           StmtList
                            Stmt
-                            if
-                            (
+                            T: if
+                            T: (
                             Expr
                              OrOperand
                               AndOperand
@@ -1273,16 +1273,16 @@ Tree:
                                 RelOperand
                                  AddOperand
                                   Value
-                                   ID
+                                   T: ID : num
                                    ValuePrime
                                   AddOperandPrime
                                  RelOperandPrime
                                 EqualityOperandPrime
-                                 <
+                                 T: <
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : aux01
                                     ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -1290,14 +1290,14 @@ Tree:
                                AndOperandPrime
                               OrOperandPrime
                              ExprPrime
-                            )
+                            T: )
                             BracketStmt
                              Stmt
                               AtomicStmt
-                               ID
+                               T: ID : right
                                IsArr
                                IDAssignment
-                                =
+                                T: =
                                 Expr
                                  OrOperand
                                   AndOperand
@@ -1305,29 +1305,29 @@ Tree:
                                     RelOperand
                                      AddOperand
                                       Value
-                                       ID
+                                       T: ID : medium
                                        ValuePrime
                                       AddOperandPrime
                                      RelOperandPrime
-                                      -
+                                      T: -
                                       AddOperand
                                        Value
-                                        Integer
+                                        T: Integer : 1
                                        AddOperandPrime
                                       RelOperandPrime
                                     EqualityOperandPrime
                                    AndOperandPrime
                                   OrOperandPrime
                                  ExprPrime
-                                ;
-                            else
+                                T: ;
+                            T: else
                             BracketStmt
                              Stmt
                               AtomicStmt
-                               ID
+                               T: ID : left
                                IsArr
                                IDAssignment
-                                =
+                                T: =
                                 Expr
                                  OrOperand
                                   AndOperand
@@ -1335,25 +1335,25 @@ Tree:
                                     RelOperand
                                      AddOperand
                                       Value
-                                       ID
+                                       T: ID : medium
                                        ValuePrime
                                       AddOperandPrime
                                      RelOperandPrime
-                                      +
+                                      T: +
                                       AddOperand
                                        Value
-                                        Integer
+                                        T: Integer : 1
                                        AddOperandPrime
                                       RelOperandPrime
                                     EqualityOperandPrime
                                    AndOperandPrime
                                   OrOperandPrime
                                  ExprPrime
-                                ;
+                                T: ;
                            StmtList
                             Stmt
-                             if
-                             (
+                             T: if
+                             T: (
                              Expr
                               OrOperand
                                AndOperand
@@ -1361,12 +1361,12 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : this
                                     ValuePrime
-                                     .
+                                     T: .
                                      DotWhat
-                                      ID
-                                      (
+                                      T: ID : Compare
+                                      T: (
                                       ExprList
                                        Expr
                                         OrOperand
@@ -1375,7 +1375,7 @@ Tree:
                                            RelOperand
                                             AddOperand
                                              Value
-                                              ID
+                                              T: ID : aux01
                                               ValuePrime
                                              AddOperandPrime
                                             RelOperandPrime
@@ -1384,7 +1384,7 @@ Tree:
                                          OrOperandPrime
                                         ExprPrime
                                        ExprListPrime
-                                        ,
+                                        T: ,
                                         Expr
                                          OrOperand
                                           AndOperand
@@ -1392,7 +1392,7 @@ Tree:
                                             RelOperand
                                              AddOperand
                                               Value
-                                               ID
+                                               T: ID : num
                                                ValuePrime
                                               AddOperandPrime
                                              RelOperandPrime
@@ -1401,7 +1401,7 @@ Tree:
                                           OrOperandPrime
                                          ExprPrime
                                         ExprListPrime
-                                      )
+                                      T: )
                                       ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -1409,14 +1409,14 @@ Tree:
                                 AndOperandPrime
                                OrOperandPrime
                               ExprPrime
-                             )
+                             T: )
                              BracketStmt
                               Stmt
                                AtomicStmt
-                                ID
+                                T: ID : var_cont
                                 IsArr
                                 IDAssignment
-                                 =
+                                 T: =
                                  Expr
                                   OrOperand
                                    AndOperand
@@ -1424,22 +1424,22 @@ Tree:
                                      RelOperand
                                       AddOperand
                                        Value
-                                        false
+                                        T: false
                                        AddOperandPrime
                                       RelOperandPrime
                                      EqualityOperandPrime
                                     AndOperandPrime
                                    OrOperandPrime
                                   ExprPrime
-                                 ;
-                             else
+                                 T: ;
+                             T: else
                              BracketStmt
                               Stmt
                                AtomicStmt
-                                ID
+                                T: ID : var_cont
                                 IsArr
                                 IDAssignment
-                                 =
+                                 T: =
                                  Expr
                                   OrOperand
                                    AndOperand
@@ -1447,18 +1447,18 @@ Tree:
                                      RelOperand
                                       AddOperand
                                        Value
-                                        true
+                                        T: true
                                        AddOperandPrime
                                       RelOperandPrime
                                      EqualityOperandPrime
                                     AndOperandPrime
                                    OrOperandPrime
                                   ExprPrime
-                                 ;
+                                 T: ;
                             StmtList
                              Stmt
-                              if
-                              (
+                              T: if
+                              T: (
                               Expr
                                OrOperand
                                 AndOperand
@@ -1466,16 +1466,16 @@ Tree:
                                   RelOperand
                                    AddOperand
                                     Value
-                                     ID
+                                     T: ID : right
                                      ValuePrime
                                     AddOperandPrime
                                    RelOperandPrime
                                   EqualityOperandPrime
-                                   <
+                                   T: <
                                    RelOperand
                                     AddOperand
                                      Value
-                                      ID
+                                      T: ID : left
                                       ValuePrime
                                      AddOperandPrime
                                     RelOperandPrime
@@ -1483,14 +1483,14 @@ Tree:
                                  AndOperandPrime
                                 OrOperandPrime
                                ExprPrime
-                              )
+                              T: )
                               BracketStmt
                                Stmt
                                 AtomicStmt
-                                 ID
+                                 T: ID : var_cont
                                  IsArr
                                  IDAssignment
-                                  =
+                                  T: =
                                   Expr
                                    OrOperand
                                     AndOperand
@@ -1498,22 +1498,22 @@ Tree:
                                       RelOperand
                                        AddOperand
                                         Value
-                                         false
+                                         T: false
                                         AddOperandPrime
                                        RelOperandPrime
                                       EqualityOperandPrime
                                      AndOperandPrime
                                     OrOperandPrime
                                    ExprPrime
-                                  ;
-                              else
+                                  T: ;
+                              T: else
                               BracketStmt
                                Stmt
                                 AtomicStmt
-                                 ID
+                                 T: ID : nt
                                  IsArr
                                  IDAssignment
-                                  =
+                                  T: =
                                   Expr
                                    OrOperand
                                     AndOperand
@@ -1521,20 +1521,20 @@ Tree:
                                       RelOperand
                                        AddOperand
                                         Value
-                                         Integer
+                                         T: Integer : 0
                                         AddOperandPrime
                                        RelOperandPrime
                                       EqualityOperandPrime
                                      AndOperandPrime
                                     OrOperandPrime
                                    ExprPrime
-                                  ;
+                                  T: ;
                              StmtList
-                       }
+                       T: }
                      StmtList
                       Stmt
-                       if
-                       (
+                       T: if
+                       T: (
                        Expr
                         OrOperand
                          AndOperand
@@ -1542,12 +1542,12 @@ Tree:
                            RelOperand
                             AddOperand
                              Value
-                              ID
+                              T: ID : this
                               ValuePrime
-                               .
+                               T: .
                                DotWhat
-                                ID
-                                (
+                                T: ID : Compare
+                                T: (
                                 ExprList
                                  Expr
                                   OrOperand
@@ -1556,7 +1556,7 @@ Tree:
                                      RelOperand
                                       AddOperand
                                        Value
-                                        ID
+                                        T: ID : aux01
                                         ValuePrime
                                        AddOperandPrime
                                       RelOperandPrime
@@ -1565,7 +1565,7 @@ Tree:
                                    OrOperandPrime
                                   ExprPrime
                                  ExprListPrime
-                                  ,
+                                  T: ,
                                   Expr
                                    OrOperand
                                     AndOperand
@@ -1573,7 +1573,7 @@ Tree:
                                       RelOperand
                                        AddOperand
                                         Value
-                                         ID
+                                         T: ID : num
                                          ValuePrime
                                         AddOperandPrime
                                        RelOperandPrime
@@ -1582,7 +1582,7 @@ Tree:
                                     OrOperandPrime
                                    ExprPrime
                                   ExprListPrime
-                                )
+                                T: )
                                 ValuePrime
                              AddOperandPrime
                             RelOperandPrime
@@ -1590,14 +1590,14 @@ Tree:
                           AndOperandPrime
                          OrOperandPrime
                         ExprPrime
-                       )
+                       T: )
                        BracketStmt
                         Stmt
                          AtomicStmt
-                          ID
+                          T: ID : bs01
                           IsArr
                           IDAssignment
-                           =
+                           T: =
                            Expr
                             OrOperand
                              AndOperand
@@ -1605,22 +1605,22 @@ Tree:
                                RelOperand
                                 AddOperand
                                  Value
-                                  true
+                                  T: true
                                  AddOperandPrime
                                 RelOperandPrime
                                EqualityOperandPrime
                               AndOperandPrime
                              OrOperandPrime
                             ExprPrime
-                           ;
-                       else
+                           T: ;
+                       T: else
                        BracketStmt
                         Stmt
                          AtomicStmt
-                          ID
+                          T: ID : bs01
                           IsArr
                           IDAssignment
-                           =
+                           T: =
                            Expr
                             OrOperand
                              AndOperand
@@ -1628,16 +1628,16 @@ Tree:
                                RelOperand
                                 AddOperand
                                  Value
-                                  false
+                                  T: false
                                  AddOperandPrime
                                 RelOperandPrime
                                EqualityOperandPrime
                               AndOperandPrime
                              OrOperandPrime
                             ExprPrime
-                           ;
+                           T: ;
                       StmtList
-       return
+       T: return
        Expr
         OrOperand
          AndOperand
@@ -1645,7 +1645,7 @@ Tree:
            RelOperand
             AddOperand
              Value
-              ID
+              T: ID : bs01
               ValuePrime
              AddOperandPrime
             RelOperandPrime
@@ -1653,60 +1653,60 @@ Tree:
           AndOperandPrime
          OrOperandPrime
         ExprPrime
-       ;
-       }
+       T: ;
+       T: }
       MethodDeclList
        MethodDecl
-        public
+        T: public
         Formal
          Type
-          int
+          T: int
           IsArr
-         ID
-        (
+         T: ID : Div
+        T: (
         FormalList
          Formal
           Type
-           int
+           T: int
            IsArr
-          ID
+          T: ID : num
          FormalListPrime
-        )
-        {
+        T: )
+        T: {
         StmtList
          Stmt
           AtomicStmt
-           int
+           T: int
            IsArr
-           ID
+           T: ID : count01
            IsArr
            Assignment
-            ;
+            T: ;
          StmtList
           Stmt
            AtomicStmt
-            int
+            T: int
             IsArr
-            ID
+            T: ID : count02
             IsArr
             Assignment
-             ;
+             T: ;
           StmtList
            Stmt
             AtomicStmt
-             int
+             T: int
              IsArr
-             ID
+             T: ID : aux03
              IsArr
              Assignment
-              ;
+              T: ;
            StmtList
             Stmt
              AtomicStmt
-              ID
+              T: ID : count01
               IsArr
               IDAssignment
-               =
+               T: =
                Expr
                 OrOperand
                  AndOperand
@@ -1714,21 +1714,21 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      Integer
+                      T: Integer : 0
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               ;
+               T: ;
             StmtList
              Stmt
               AtomicStmt
-               ID
+               T: ID : count02
                IsArr
                IDAssignment
-                =
+                T: =
                 Expr
                  OrOperand
                   AndOperand
@@ -1736,21 +1736,21 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       Integer
+                       T: Integer : 0
                       AddOperandPrime
                      RelOperandPrime
                     EqualityOperandPrime
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                ;
+                T: ;
              StmtList
               Stmt
                AtomicStmt
-                ID
+                T: ID : aux03
                 IsArr
                 IDAssignment
-                 =
+                 T: =
                  Expr
                   OrOperand
                    AndOperand
@@ -1758,25 +1758,25 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        ID
+                        T: ID : num
                         ValuePrime
                        AddOperandPrime
                       RelOperandPrime
-                       -
+                       T: -
                        AddOperand
                         Value
-                         Integer
+                         T: Integer : 1
                         AddOperandPrime
                        RelOperandPrime
                      EqualityOperandPrime
                     AndOperandPrime
                    OrOperandPrime
                   ExprPrime
-                 ;
+                 T: ;
               StmtList
                Stmt
-                while
-                (
+                T: while
+                T: (
                 Expr
                  OrOperand
                   AndOperand
@@ -1784,16 +1784,16 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       ID
+                       T: ID : count02
                        ValuePrime
                       AddOperandPrime
                      RelOperandPrime
                     EqualityOperandPrime
-                     <
+                     T: <
                      RelOperand
                       AddOperand
                        Value
-                        ID
+                        T: ID : aux03
                         ValuePrime
                        AddOperandPrime
                       RelOperandPrime
@@ -1801,16 +1801,16 @@ Tree:
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                )
+                T: )
                 BracketStmt
-                 {
+                 T: {
                  StmtList
                   Stmt
                    AtomicStmt
-                    ID
+                    T: ID : count01
                     IsArr
                     IDAssignment
-                     =
+                     T: =
                      Expr
                       OrOperand
                        AndOperand
@@ -1818,28 +1818,28 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            ID
+                            T: ID : count01
                             ValuePrime
                            AddOperandPrime
                           RelOperandPrime
-                           +
+                           T: +
                            AddOperand
                             Value
-                             Integer
+                             T: Integer : 1
                             AddOperandPrime
                            RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     ;
+                     T: ;
                   StmtList
                    Stmt
                     AtomicStmt
-                     ID
+                     T: ID : count02
                      IsArr
                      IDAssignment
-                      =
+                      T: =
                       Expr
                        OrOperand
                         AndOperand
@@ -1847,25 +1847,25 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             ID
+                             T: ID : count02
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
-                            +
+                            T: +
                             AddOperand
                              Value
-                              Integer
+                              T: Integer : 2
                              AddOperandPrime
                             RelOperandPrime
                           EqualityOperandPrime
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      ;
+                      T: ;
                    StmtList
-                 }
+                 T: }
                StmtList
-        return
+        T: return
         Expr
          OrOperand
           AndOperand
@@ -1873,7 +1873,7 @@ Tree:
             RelOperand
              AddOperand
               Value
-               ID
+               T: ID : count01
                ValuePrime
               AddOperandPrime
              RelOperandPrime
@@ -1881,56 +1881,56 @@ Tree:
            AndOperandPrime
           OrOperandPrime
          ExprPrime
-        ;
-        }
+        T: ;
+        T: }
        MethodDeclList
         MethodDecl
-         public
+         T: public
          Formal
           Type
-           boolean
-          ID
-         (
+           T: boolean
+          T: ID : Compare
+         T: (
          FormalList
           Formal
            Type
-            int
+            T: int
             IsArr
-           ID
+           T: ID : num1
           FormalListPrime
-           ,
+           T: ,
            Formal
             Type
-             int
+             T: int
              IsArr
-            ID
+            T: ID : num2
            FormalListPrime
-         )
-         {
+         T: )
+         T: {
          StmtList
           Stmt
            AtomicStmt
-            boolean
-            ID
+            T: boolean
+            T: ID : retval
             IsArr
             Assignment
-             ;
+             T: ;
           StmtList
            Stmt
             AtomicStmt
-             int
+             T: int
              IsArr
-             ID
+             T: ID : aux02
              IsArr
              Assignment
-              ;
+              T: ;
            StmtList
             Stmt
              AtomicStmt
-              ID
+              T: ID : retval
               IsArr
               IDAssignment
-               =
+               T: =
                Expr
                 OrOperand
                  AndOperand
@@ -1938,21 +1938,21 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      false
+                      T: false
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               ;
+               T: ;
             StmtList
              Stmt
               AtomicStmt
-               ID
+               T: ID : aux02
                IsArr
                IDAssignment
-                =
+                T: =
                 Expr
                  OrOperand
                   AndOperand
@@ -1960,25 +1960,25 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       ID
+                       T: ID : num2
                        ValuePrime
                       AddOperandPrime
                      RelOperandPrime
-                      +
+                      T: +
                       AddOperand
                        Value
-                        Integer
+                        T: Integer : 1
                        AddOperandPrime
                       RelOperandPrime
                     EqualityOperandPrime
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                ;
+                T: ;
              StmtList
               Stmt
-               if
-               (
+               T: if
+               T: (
                Expr
                 OrOperand
                  AndOperand
@@ -1986,16 +1986,16 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      ID
+                      T: ID : num1
                       ValuePrime
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
-                    <
+                    T: <
                     RelOperand
                      AddOperand
                       Value
-                       ID
+                       T: ID : num2
                        ValuePrime
                       AddOperandPrime
                      RelOperandPrime
@@ -2003,14 +2003,14 @@ Tree:
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               )
+               T: )
                BracketStmt
                 Stmt
                  AtomicStmt
-                  ID
+                  T: ID : retval
                   IsArr
                   IDAssignment
-                   =
+                   T: =
                    Expr
                     OrOperand
                      AndOperand
@@ -2018,19 +2018,19 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          false
+                          T: false
                          AddOperandPrime
                         RelOperandPrime
                        EqualityOperandPrime
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   ;
-               else
+                   T: ;
+               T: else
                BracketStmt
                 Stmt
-                 if
-                 (
+                 T: if
+                 T: (
                  Expr
                   OrOperand
                    AndOperand
@@ -2038,9 +2038,9 @@ Tree:
                      RelOperand
                       AddOperand
                        Value
-                        !
+                        T: !
                         Value
-                         (
+                         T: (
                          Expr
                           OrOperand
                            AndOperand
@@ -2048,16 +2048,16 @@ Tree:
                              RelOperand
                               AddOperand
                                Value
-                                ID
+                                T: ID : num1
                                 ValuePrime
                                AddOperandPrime
                               RelOperandPrime
                              EqualityOperandPrime
-                              <
+                              T: <
                               RelOperand
                                AddOperand
                                 Value
-                                 ID
+                                 T: ID : aux02
                                  ValuePrime
                                 AddOperandPrime
                                RelOperandPrime
@@ -2065,7 +2065,7 @@ Tree:
                             AndOperandPrime
                            OrOperandPrime
                           ExprPrime
-                         )
+                         T: )
                          ValuePrime
                        AddOperandPrime
                       RelOperandPrime
@@ -2073,14 +2073,14 @@ Tree:
                     AndOperandPrime
                    OrOperandPrime
                   ExprPrime
-                 )
+                 T: )
                  BracketStmt
                   Stmt
                    AtomicStmt
-                    ID
+                    T: ID : retval
                     IsArr
                     IDAssignment
-                     =
+                     T: =
                      Expr
                       OrOperand
                        AndOperand
@@ -2088,22 +2088,22 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            false
+                            T: false
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     ;
-                 else
+                     T: ;
+                 T: else
                  BracketStmt
                   Stmt
                    AtomicStmt
-                    ID
+                    T: ID : retval
                     IsArr
                     IDAssignment
-                     =
+                     T: =
                      Expr
                       OrOperand
                        AndOperand
@@ -2111,16 +2111,16 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            true
+                            T: true
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     ;
+                     T: ;
               StmtList
-         return
+         T: return
          Expr
           OrOperand
            AndOperand
@@ -2128,7 +2128,7 @@ Tree:
              RelOperand
               AddOperand
                Value
-                ID
+                T: ID : retval
                 ValuePrime
                AddOperandPrime
               RelOperandPrime
@@ -2136,36 +2136,36 @@ Tree:
             AndOperandPrime
            OrOperandPrime
           ExprPrime
-         ;
-         }
+         T: ;
+         T: }
         MethodDeclList
          MethodDecl
-          public
+          T: public
           Formal
            Type
-            int
+            T: int
             IsArr
-           ID
-          (
+           T: ID : Print
+          T: (
           FormalList
-          )
-          {
+          T: )
+          T: {
           StmtList
            Stmt
             AtomicStmt
-             int
+             T: int
              IsArr
-             ID
+             T: ID : j
              IsArr
              Assignment
-              ;
+              T: ;
            StmtList
             Stmt
              AtomicStmt
-              ID
+              T: ID : j
               IsArr
               IDAssignment
-               =
+               T: =
                Expr
                 OrOperand
                  AndOperand
@@ -2173,18 +2173,18 @@ Tree:
                    RelOperand
                     AddOperand
                      Value
-                      Integer
+                      T: Integer : 1
                      AddOperandPrime
                     RelOperandPrime
                    EqualityOperandPrime
                   AndOperandPrime
                  OrOperandPrime
                 ExprPrime
-               ;
+               T: ;
             StmtList
              Stmt
-              while
-              (
+              T: while
+              T: (
               Expr
                OrOperand
                 AndOperand
@@ -2192,16 +2192,16 @@ Tree:
                   RelOperand
                    AddOperand
                     Value
-                     ID
+                     T: ID : j
                      ValuePrime
                     AddOperandPrime
                    RelOperandPrime
                   EqualityOperandPrime
-                   <
+                   T: <
                    RelOperand
                     AddOperand
                      Value
-                      (
+                      T: (
                       Expr
                        OrOperand
                         AndOperand
@@ -2209,7 +2209,7 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             ID
+                             T: ID : size
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
@@ -2217,7 +2217,7 @@ Tree:
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      )
+                      T: )
                       ValuePrime
                      AddOperandPrime
                     RelOperandPrime
@@ -2225,14 +2225,14 @@ Tree:
                  AndOperandPrime
                 OrOperandPrime
                ExprPrime
-              )
+              T: )
               BracketStmt
-               {
+               T: {
                StmtList
                 Stmt
                  AtomicStmt
-                  System.out.println
-                  (
+                  T: System.out.println
+                  T: (
                   Expr
                    OrOperand
                     AndOperand
@@ -2240,9 +2240,9 @@ Tree:
                       RelOperand
                        AddOperand
                         Value
-                         ID
+                         T: ID : number
                          ValuePrime
-                          [
+                          T: [
                           Expr
                            OrOperand
                             AndOperand
@@ -2250,7 +2250,7 @@ Tree:
                               RelOperand
                                AddOperand
                                 Value
-                                 ID
+                                 T: ID : j
                                  ValuePrime
                                 AddOperandPrime
                                RelOperandPrime
@@ -2258,7 +2258,7 @@ Tree:
                              AndOperandPrime
                             OrOperandPrime
                            ExprPrime
-                          ]
+                          T: ]
                           ValuePrime
                         AddOperandPrime
                        RelOperandPrime
@@ -2266,15 +2266,15 @@ Tree:
                      AndOperandPrime
                     OrOperandPrime
                    ExprPrime
-                  )
-                  ;
+                  T: )
+                  T: ;
                 StmtList
                  Stmt
                   AtomicStmt
-                   ID
+                   T: ID : j
                    IsArr
                    IDAssignment
-                    =
+                    T: =
                     Expr
                      OrOperand
                       AndOperand
@@ -2282,28 +2282,28 @@ Tree:
                         RelOperand
                          AddOperand
                           Value
-                           ID
+                           T: ID : j
                            ValuePrime
                           AddOperandPrime
                          RelOperandPrime
-                          +
+                          T: +
                           AddOperand
                            Value
-                            Integer
+                            T: Integer : 1
                            AddOperandPrime
                           RelOperandPrime
                         EqualityOperandPrime
                        AndOperandPrime
                       OrOperandPrime
                      ExprPrime
-                    ;
+                    T: ;
                  StmtList
-               }
+               T: }
              StmtList
               Stmt
                AtomicStmt
-                System.out.println
-                (
+                T: System.out.println
+                T: (
                 Expr
                  OrOperand
                   AndOperand
@@ -2311,17 +2311,17 @@ Tree:
                     RelOperand
                      AddOperand
                       Value
-                       Integer
+                       T: Integer : 99999
                       AddOperandPrime
                      RelOperandPrime
                     EqualityOperandPrime
                    AndOperandPrime
                   OrOperandPrime
                  ExprPrime
-                )
-                ;
+                T: )
+                T: ;
               StmtList
-          return
+          T: return
           Expr
            OrOperand
             AndOperand
@@ -2329,76 +2329,76 @@ Tree:
               RelOperand
                AddOperand
                 Value
-                 Integer
+                 T: Integer : 0
                 AddOperandPrime
                RelOperandPrime
               EqualityOperandPrime
              AndOperandPrime
             OrOperandPrime
            ExprPrime
-          ;
-          }
+          T: ;
+          T: }
          MethodDeclList
           MethodDecl
-           public
+           T: public
            Formal
             Type
-             int
+             T: int
              IsArr
-            ID
-           (
+            T: ID : Init
+           T: (
            FormalList
             Formal
              Type
-              int
+              T: int
               IsArr
-             ID
+             T: ID : sz
             FormalListPrime
-           )
-           {
+           T: )
+           T: {
            StmtList
             Stmt
              AtomicStmt
-              int
+              T: int
               IsArr
-              ID
+              T: ID : j
               IsArr
               Assignment
-               ;
+               T: ;
             StmtList
              Stmt
               AtomicStmt
-               int
+               T: int
                IsArr
-               ID
+               T: ID : k
                IsArr
                Assignment
-                ;
+                T: ;
              StmtList
               Stmt
                AtomicStmt
-                int
+                T: int
                 IsArr
-                ID
+                T: ID : aux02
                 IsArr
                 Assignment
-                 ;
+                 T: ;
               StmtList
                Stmt
                 AtomicStmt
-                 int
+                 T: int
                  IsArr
-                 ID
+                 T: ID : aux01
                  IsArr
                  Assignment
-                  ;
+                  T: ;
                StmtList
                 Stmt
                  AtomicStmt
-                  ID
+                  T: ID : size
                   IsArr
                   IDAssignment
-                   =
+                   T: =
                    Expr
                     OrOperand
                      AndOperand
@@ -2406,7 +2406,7 @@ Tree:
                        RelOperand
                         AddOperand
                          Value
-                          ID
+                          T: ID : sz
                           ValuePrime
                          AddOperandPrime
                         RelOperandPrime
@@ -2414,14 +2414,14 @@ Tree:
                       AndOperandPrime
                      OrOperandPrime
                     ExprPrime
-                   ;
+                   T: ;
                 StmtList
                  Stmt
                   AtomicStmt
-                   ID
+                   T: ID : number
                    IsArr
                    IDAssignment
-                    =
+                    T: =
                     Expr
                      OrOperand
                       AndOperand
@@ -2429,10 +2429,10 @@ Tree:
                         RelOperand
                          AddOperand
                           Value
-                           new
+                           T: new
                            NewWhat
-                            int
-                            [
+                            T: int
+                            T: [
                             Expr
                              OrOperand
                               AndOperand
@@ -2440,7 +2440,7 @@ Tree:
                                 RelOperand
                                  AddOperand
                                   Value
-                                   ID
+                                   T: ID : sz
                                    ValuePrime
                                   AddOperandPrime
                                  RelOperandPrime
@@ -2448,21 +2448,21 @@ Tree:
                                AndOperandPrime
                               OrOperandPrime
                              ExprPrime
-                            ]
+                            T: ]
                           AddOperandPrime
                          RelOperandPrime
                         EqualityOperandPrime
                        AndOperandPrime
                       OrOperandPrime
                      ExprPrime
-                    ;
+                    T: ;
                  StmtList
                   Stmt
                    AtomicStmt
-                    ID
+                    T: ID : j
                     IsArr
                     IDAssignment
-                     =
+                     T: =
                      Expr
                       OrOperand
                        AndOperand
@@ -2470,21 +2470,21 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            Integer
+                            T: Integer : 1
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     ;
+                     T: ;
                   StmtList
                    Stmt
                     AtomicStmt
-                     ID
+                     T: ID : k
                      IsArr
                      IDAssignment
-                      =
+                      T: =
                       Expr
                        OrOperand
                         AndOperand
@@ -2492,25 +2492,25 @@ Tree:
                           RelOperand
                            AddOperand
                             Value
-                             ID
+                             T: ID : size
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
-                            +
+                            T: +
                             AddOperand
                              Value
-                              Integer
+                              T: Integer : 1
                              AddOperandPrime
                             RelOperandPrime
                           EqualityOperandPrime
                          AndOperandPrime
                         OrOperandPrime
                        ExprPrime
-                      ;
+                      T: ;
                    StmtList
                     Stmt
-                     while
-                     (
+                     T: while
+                     T: (
                      Expr
                       OrOperand
                        AndOperand
@@ -2518,16 +2518,16 @@ Tree:
                          RelOperand
                           AddOperand
                            Value
-                            ID
+                            T: ID : j
                             ValuePrime
                            AddOperandPrime
                           RelOperandPrime
                          EqualityOperandPrime
-                          <
+                          T: <
                           RelOperand
                            AddOperand
                             Value
-                             (
+                             T: (
                              Expr
                               OrOperand
                                AndOperand
@@ -2535,7 +2535,7 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : size
                                     ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -2543,7 +2543,7 @@ Tree:
                                 AndOperandPrime
                                OrOperandPrime
                               ExprPrime
-                             )
+                             T: )
                              ValuePrime
                             AddOperandPrime
                            RelOperandPrime
@@ -2551,16 +2551,16 @@ Tree:
                         AndOperandPrime
                        OrOperandPrime
                       ExprPrime
-                     )
+                     T: )
                      BracketStmt
-                      {
+                      T: {
                       StmtList
                        Stmt
                         AtomicStmt
-                         ID
+                         T: ID : aux01
                          IsArr
                          IDAssignment
-                          =
+                          T: =
                           Expr
                            OrOperand
                             AndOperand
@@ -2568,11 +2568,11 @@ Tree:
                               RelOperand
                                AddOperand
                                 Value
-                                 Integer
+                                 T: Integer : 2
                                 AddOperandPrime
-                                 *
+                                 T: *
                                  Value
-                                  ID
+                                  T: ID : j
                                   ValuePrime
                                  AddOperandPrime
                                RelOperandPrime
@@ -2580,14 +2580,14 @@ Tree:
                              AndOperandPrime
                             OrOperandPrime
                            ExprPrime
-                          ;
+                          T: ;
                        StmtList
                         Stmt
                          AtomicStmt
-                          ID
+                          T: ID : aux02
                           IsArr
                           IDAssignment
-                           =
+                           T: =
                            Expr
                             OrOperand
                              AndOperand
@@ -2595,27 +2595,27 @@ Tree:
                                RelOperand
                                 AddOperand
                                  Value
-                                  ID
+                                  T: ID : k
                                   ValuePrime
                                  AddOperandPrime
                                 RelOperandPrime
-                                 -
+                                 T: -
                                  AddOperand
                                   Value
-                                   Integer
+                                   T: Integer : 3
                                   AddOperandPrime
                                  RelOperandPrime
                                EqualityOperandPrime
                               AndOperandPrime
                              OrOperandPrime
                             ExprPrime
-                           ;
+                           T: ;
                         StmtList
                          Stmt
                           AtomicStmt
-                           ID
+                           T: ID : number
                            IsArr
-                            [
+                            T: [
                             HasExpr
                              Expr
                               OrOperand
@@ -2624,7 +2624,7 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : j
                                     ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -2632,9 +2632,9 @@ Tree:
                                 AndOperandPrime
                                OrOperandPrime
                               ExprPrime
-                            ]
+                            T: ]
                            IDAssignment
-                            =
+                            T: =
                             Expr
                              OrOperand
                               AndOperand
@@ -2642,14 +2642,14 @@ Tree:
                                 RelOperand
                                  AddOperand
                                   Value
-                                   ID
+                                   T: ID : aux01
                                    ValuePrime
                                   AddOperandPrime
                                  RelOperandPrime
-                                  +
+                                  T: +
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : aux02
                                     ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
@@ -2657,14 +2657,14 @@ Tree:
                                AndOperandPrime
                               OrOperandPrime
                              ExprPrime
-                            ;
+                            T: ;
                          StmtList
                           Stmt
                            AtomicStmt
-                            ID
+                            T: ID : j
                             IsArr
                             IDAssignment
-                             =
+                             T: =
                              Expr
                               OrOperand
                                AndOperand
@@ -2672,28 +2672,28 @@ Tree:
                                  RelOperand
                                   AddOperand
                                    Value
-                                    ID
+                                    T: ID : j
                                     ValuePrime
                                    AddOperandPrime
                                   RelOperandPrime
-                                   +
+                                   T: +
                                    AddOperand
                                     Value
-                                     Integer
+                                     T: Integer : 1
                                     AddOperandPrime
                                    RelOperandPrime
                                  EqualityOperandPrime
                                 AndOperandPrime
                                OrOperandPrime
                               ExprPrime
-                             ;
+                             T: ;
                           StmtList
                            Stmt
                             AtomicStmt
-                             ID
+                             T: ID : k
                              IsArr
                              IDAssignment
-                              =
+                              T: =
                               Expr
                                OrOperand
                                 AndOperand
@@ -2701,25 +2701,25 @@ Tree:
                                   RelOperand
                                    AddOperand
                                     Value
-                                     ID
+                                     T: ID : k
                                      ValuePrime
                                     AddOperandPrime
                                    RelOperandPrime
-                                    -
+                                    T: -
                                     AddOperand
                                      Value
-                                      Integer
+                                      T: Integer : 1
                                      AddOperandPrime
                                     RelOperandPrime
                                   EqualityOperandPrime
                                  AndOperandPrime
                                 OrOperandPrime
                                ExprPrime
-                              ;
+                              T: ;
                            StmtList
-                      }
+                      T: }
                     StmtList
-           return
+           T: return
            Expr
             OrOperand
              AndOperand
@@ -2727,16 +2727,16 @@ Tree:
                RelOperand
                 AddOperand
                  Value
-                  Integer
+                  T: Integer : 0
                  AddOperandPrime
                 RelOperandPrime
                EqualityOperandPrime
               AndOperandPrime
              OrOperandPrime
             ExprPrime
-           ;
-           }
+           T: ;
+           T: }
           MethodDeclList
-    }
+    T: }
    ClassDeclList
 

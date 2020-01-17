@@ -1,7 +1,8 @@
+package compiler;
 import java.util.*;
 import lexer.Lexer;
 import parser.Parser;
-import parser.Tree;
+import codegen.Program;
 
 public class MiniJavaCompiler {
 
@@ -19,6 +20,10 @@ public class MiniJavaCompiler {
 			System.out.println("Parsing Failed");
 			return;
 		}
-		System.out.println(parser.parseTree.toString(0));
+		//System.out.println(parser.parseTree.toString(0));
+		Program syntaxTree = new Program(parser.parseTree.getChild(0));
+		String asm = syntaxTree.CodeGen();
+		System.out.println(asm);
+		
 	}
 }

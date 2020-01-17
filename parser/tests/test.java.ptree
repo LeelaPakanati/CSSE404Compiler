@@ -1,25 +1,25 @@
 Tree: 
  Program
   MainClassDecl
-   class
-   ID
-   {
-   public
-   static
-   void
-   main
-   (
-   String
-   [
-   ]
-   ID
-   )
-   {
+   T: class
+   T: ID : Test
+   T: {
+   T: public
+   T: static
+   T: void
+   T: main
+   T: (
+   T: String
+   T: [
+   T: ]
+   T: ID : args
+   T: )
+   T: {
    StmtList
     Stmt
      AtomicStmt
-      System.out.println
-      (
+      T: System.out.println
+      T: (
       Expr
        OrOperand
         AndOperand
@@ -27,23 +27,23 @@ Tree:
           RelOperand
            AddOperand
             Value
-             Integer
+             T: Integer : 2
             AddOperandPrime
            RelOperandPrime
-            +
+            T: +
             AddOperand
              Value
-              Integer
+              T: Integer : 13
              AddOperandPrime
             RelOperandPrime
           EqualityOperandPrime
          AndOperandPrime
         OrOperandPrime
        ExprPrime
-      )
-      ;
+      T: )
+      T: ;
     StmtList
-   }
-   }
+   T: }
+   T: }
   ClassDeclList
 

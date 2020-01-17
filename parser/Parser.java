@@ -15,7 +15,7 @@ public class Parser {
 	int parseIndex;
 	HashMap<String, String[]> table = new HashMap<String, String[]>();
 	String[] terminals;
-	public Tree<String> parseTree;
+	public Tree parseTree;
 
 	public Parser(ArrayList<String[]> toParse) {
 		this.toParse = toParse;
@@ -82,8 +82,8 @@ public class Parser {
 		symbolStack.push("Program");
 
 		String[] lexed = nextWord();
-		this.parseTree = new Tree<String>("Tree: ", null);
-		Tree<String> currNode = this.parseTree;
+		this.parseTree = new Tree("Tree: ", null, false);
+		Tree currNode = this.parseTree;
 		String focus = symbolStack.peek();
 
 		while(true){
@@ -99,7 +99,15 @@ public class Parser {
 				if( ((focus.equals("ID") || focus.equals("Integer")) && focus.equals(lexed[0])) || focus.equals(lexed[1]) ){
 					String poppedString = symbolStack.pop();
 
-					Tree<String> nextNode = new Tree<String>(poppedString, currNode);
+					Tree nextNode;
+
+					nextNode = new Tree(poppedString, currNode, true);
+					if(focus.equals("ID")) {
+						nextNode.IDVal = lexed[1];
+					}else if(focus.equals("Integer")){
+						nextNode.intVal = Integer.valueOf(lexed[1]);
+					}
+
 					currNode.addChild(nextNode);
 					
 					lexed = nextWord();
@@ -119,7 +127,7 @@ public class Parser {
 					List<String> symbols = Arrays.asList(symbolLookup.split(" "));
 					String poppedString = symbolStack.pop();
 
-					Tree<String> nextNode = new Tree<String>(poppedString, currNode);
+					Tree nextNode = new Tree(poppedString, currNode, false);
 					currNode.addChild(nextNode);
 					currNode = nextNode;
 					
@@ -140,15 +148,5 @@ public class Parser {
 		}
 
 		return true;
-	}
-
-	public class SymbolBool{
-		String data;
-		boolean returnAfter;
-
-		public SymbolBool(String data, boolean returnAfter){
-			this.data = data;
-			this.returnAfter = returnAfter;
-		}
 	}
 }
