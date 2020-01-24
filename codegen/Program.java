@@ -6,7 +6,8 @@ import arch.*;
 
 abstract class Node{
 	public List<Instruction> CodeGen(){
-		return " ";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		return asm;
 	}
 }
 
@@ -43,7 +44,7 @@ class MainClassDecl extends Node {
 		this.classname = parseTree.getChild(1).IDVal;
 
 		ClassSymbol classSymbol = new ClassSymbol(this.classname);
-		SymbolTable.addClass(this.classname, classSymbol);
+		SymbolTable.addClass(classSymbol);
 		SymbolTable.ScopeAdd(classSymbol);
 
 		MethodSymbol methodSymbol = new MethodSymbol("main", "void");
@@ -62,16 +63,16 @@ class MainClassDecl extends Node {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		ClassSymbol classSymbol = SymbolTable.getClass(this.classname);
+		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.classname);
 		SymbolTable.ScopeAdd(classSymbol);
 
 		Label mainClassLabel = new Label("MainClass_" + this.classname);
 		asm.add(mainClassLabel);
 
-		MethodSymbol methodSymbol = SymbolTable.getSymbol("main");
+		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol("main");
 		SymbolTable.ScopeAdd(methodSymbol);
 
-		Label mainLabel = new Label("MainMethod");
+		Label mainLabel = new Label("Method_main");
 		asm.add(mainLabel);
 
 		VarSymbol argsSymbol = new VarSymbol(this.args, "String");
@@ -84,8 +85,8 @@ class MainClassDecl extends Node {
 			asm.addAll(stmt.CodeGen());
 		}
 
-		SymbolTable.pop();
-		SymbolTable.pop();
+		SymbolTable.ScopePop();
+		SymbolTable.ScopePop();
 		return asm;
 	}
 }
@@ -100,7 +101,7 @@ class ClassDecl extends Node {
 		this.classname = parseTree.getChild(1).IDVal;
 
 		ClassSymbol classSymbol = new ClassSymbol(this.classname);
-		SymbolTable.addClass(this.classname, classSymbol);
+		SymbolTable.addClass(classSymbol);
 		SymbolTable.ScopeAdd(classSymbol);
 
 		if(parseTree.getChild(2).getChild(1) != null){
@@ -124,7 +125,7 @@ class ClassDecl extends Node {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		ClassSymbol classSymbol = SymbolTable.getClass(this.classname);
+		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.classname);
 		SymbolTable.ScopeAdd(classSymbol);
 
 		Label classLabel = new Label("Class_" + this.classname);
@@ -138,7 +139,7 @@ class ClassDecl extends Node {
 			asm.addAll(methodDecl.CodeGen());
 		}
 
-		SymbolTable.pop();
+		SymbolTable.ScopePop();
 		return asm;
 	}
 }
@@ -171,7 +172,7 @@ class MethodDecl extends Node {
 		this.methodname = parseTree.getChild(1).getChild(1).IDVal;
 
 		MethodSymbol methodSymbol = new MethodSymbol(this.methodname, this.methodtype.type);
-		SymbolTable.addSymbol(this.methodname, methodSymbol);
+		SymbolTable.addSymbol(methodSymbol);
 		SymbolTable.ScopeAdd(methodSymbol);
 
 		Tree arg = parseTree.getChild(3);
@@ -196,10 +197,11 @@ class MethodDecl extends Node {
 	}
 
 	public List<Instruction> CodeGen(){
-		MethodSymbol methodSymbol = SymbolTable.getSymbol(this.methodname);
+		List<Instruction> asm = new ArrayList<Instruction>();
+		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(this.methodname);
 		SymbolTable.ScopeAdd(methodSymbol);
 
-		Label methodLabel = new Label(this.methodname, this.methodtype.type);
+		Label methodLabel = new Label("Method_" + this.methodname);
 		asm.add(methodLabel);
 
 		for(Formal arg : this.argList){
@@ -211,7 +213,7 @@ class MethodDecl extends Node {
 			asm.addAll(stmt.CodeGen());
 		}
 
-		SymbolTable.pop();
+		SymbolTable.ScopePop();
 		return asm;
 	}
 }
@@ -379,28 +381,28 @@ class IfStmt extends Stmt {
 		if(this.condition instanceof OpExpr){
 			switch(((OpExpr)this.condition).operation){
 				case "<":
-					jumpOp = new JumpOp(Condition.LESS, trueLabel);
+					jumpTrue = new JumpOp(Condition.LESS, trueLabel);
 					break;
 				case "<=":
-					jumpOp = new JumpOp(Condition.LESSEQUAL, trueLabel);
+					jumpTrue = new JumpOp(Condition.LESSEQUAL, trueLabel);
 					break;
 				case ">":
-					jumpOp = new JumpOp(Condition.GREATER, trueLabel);
+					jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
 					break;
 				case ">=":
-					jumpOp = new JumpOp(Condition.GREATEREQUAL, trueLabel);
+					jumpTrue = new JumpOp(Condition.GREATEREQUAL, trueLabel);
 					break;
 				case "==":
-					jumpOp = new JumpOp(Condition.EQUAL, trueLabel);
+					jumpTrue = new JumpOp(Condition.EQUAL, trueLabel);
 					break;
 				case "!=":
-					jumpOp = new JumpOp(Condition.NOTEQUAL, trueLabel);
+					jumpTrue = new JumpOp(Condition.NOTEQUAL, trueLabel);
 					break;
 				case "&&":
-					jumpOp = new JumpOp(Condition.AND, trueLabel);
+					jumpTrue = new JumpOp(Condition.AND, trueLabel);
 					break;
 				case "||":
-					jumpOp = new JumpOp(Condition.NOT, trueLabel);
+					jumpTrue = new JumpOp(Condition.OR, trueLabel);
 					break;
 				default:
 					//fail
@@ -411,8 +413,14 @@ class IfStmt extends Stmt {
 			asm.add(new ArithOp("==", Register.AX, 1));
 		}
 
-		asm.add(jumpOp);
-		asm.addAll(this.falseStmt.CodeGen());
+		asm.add(jumpTrue);							//jump if true
+		asm.addAll(this.falseStmt.CodeGen());		//else do 'else' code
+		asm.add(new JumpOp(endLabel, false));		//jump to end after 'else' code
+		
+		asm.add(trueLabel);
+		asm.addAll(this.trueStmt.CodeGen());		//true code
+
+		asm.add(endLabel);
 
 		SymbolTable.ScopePop();
 		return asm;
@@ -429,12 +437,65 @@ class WhileStmt extends Stmt {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "WhileStart:\n";
-		asm += this.condition.CodeGen() + "\n";
-		asm += "R ? jumpTo WhileEnd\n";
-		asm += this.trueStmt.CodeGen();
-		asm += "jumpTo WhileStart\n";
-		asm = "WhileEnd:\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		
+		WhileSymbol whileSymbol = new WhileSymbol("while_" + SymbolTable.getIfWhileID());
+		SymbolTable.addSymbol(whileSymbol);
+		SymbolTable.ScopeAdd(whileSymbol);
+
+		Label startLabel = new Label(whileSymbol.name + "_start");
+		Label trueLabel = new Label(whileSymbol.name + "_true");
+		Label endLabel = new Label(whileSymbol.name + "_end");
+
+		asm.add(startLabel);
+		asm.addAll(this.condition.CodeGen());
+
+		JumpOp jumpTrue = new JumpOp(trueLabel, false);
+		if(this.condition instanceof OpExpr){
+			switch(((OpExpr)this.condition).operation){
+				case "<":
+					jumpTrue = new JumpOp(Condition.LESS, trueLabel);
+					break;
+				case "<=":
+					jumpTrue = new JumpOp(Condition.LESSEQUAL, trueLabel);
+					break;
+				case ">":
+					jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
+					break;
+				case ">=":
+					jumpTrue = new JumpOp(Condition.GREATEREQUAL, trueLabel);
+					break;
+				case "==":
+					jumpTrue = new JumpOp(Condition.EQUAL, trueLabel);
+					break;
+				case "!=":
+					jumpTrue = new JumpOp(Condition.NOTEQUAL, trueLabel);
+					break;
+				case "&&":
+					jumpTrue = new JumpOp(Condition.AND, trueLabel);
+					break;
+				case "||":
+					jumpTrue = new JumpOp(Condition.OR, trueLabel);
+					break;
+				default:
+					//fail
+					System.out.println("Invalid if condition");
+					break;
+			}
+		} else{
+			asm.add(new ArithOp("==", Register.AX, 1));
+		}
+
+		asm.add(jumpTrue);							//jump if true
+		asm.add(new JumpOp(endLabel, false));		//jump to end if not true
+		
+		asm.add(trueLabel);
+		asm.addAll(this.trueStmt.CodeGen());		//true code
+		asm.add(startLabel);						//loop
+
+		asm.add(endLabel);
+
+		SymbolTable.ScopePop();
 		return asm;
 	}
 }
@@ -447,9 +508,9 @@ class PrintStmt extends Stmt {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "";
-		asm += "rP <= " + this.printStmt.CodeGen();
-		asm += "Store at ScreenPrint rP";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.addAll(this.printStmt.CodeGen());
+		asm.add(new MovOp(Register.PRINT, Register.AX));
 		return asm;
 	}
 }
@@ -465,9 +526,10 @@ class VarAssignStmt extends Stmt {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "";
-		asm += this.value.CodeGen();
-		asm += "Reg[" + this.varName + "]" + " <= R\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
+		asm.addAll(this.value.CodeGen());
+		asm.add(new MovOp(varSymbol, Register.AX));
 		return asm;
 	}
 }
@@ -484,11 +546,12 @@ class ArrVarAssignStmt extends Stmt {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "";
-		asm += this.arrRef.CodeGen();
-		asm += "rA <= R";
-		asm += this.value.CodeGen();
-		asm += "Reg[" + this.varName + " + rA ]" + " <= R\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
+		asm.addAll(this.arrRef.CodeGen());
+		asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX to save ref
+		asm.addAll(this.value.CodeGen());
+		asm.add(new MovOp(varSymbol, Register.DX, Register.AX)); //varSymbol[ref] = value
 		return asm;
 	}
 }
@@ -626,12 +689,13 @@ class OpExpr extends Expr {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "";
-		asm += this.leftExpr.CodeGen() + "\n";
-		asm += "rL <= R\n";
-		asm += this.rightExpr.CodeGen() + "\n";
-		asm += "rR <= R\n";
-		asm += "R <= " + this.operation + " rL rR" + "\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+
+		asm.addAll(this.rightExpr.CodeGen());
+		asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX
+
+		asm.addAll(this.leftExpr.CodeGen());
+		asm.add(new ArithOp(this.operation, Register.AX, Register.DX)); // op leftExpr rightExpr
 		return asm;
 	}
 }
@@ -646,9 +710,9 @@ class UnaryExpr extends Expr {
 	}
 
 	public List<Instruction> CodeGen(){
-		String asm = "";
-		asm += this.expr.CodeGen() + "\n";
-		asm += "R <= " + this.operation + " R" + "\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.addAll(this.expr.CodeGen());
+		asm.add(new UnaryOp(this.operation, Register.AX));
 		return asm;
 	}
 }
@@ -660,6 +724,14 @@ class ArrExpr extends Expr {
 	ArrExpr(Tree parseTree){
 		this.arrName = parseTree.getChild(0).IDVal;
 		this.arrRef = Expr.getInstance(parseTree.getChild(1).getChild(1));
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName);
+		asm.addAll(this.arrRef.CodeGen());
+		asm.add(new MovOp(Register.AX, varSymbol, Register.AX));
+		return asm;
 	}
 }
 
@@ -739,6 +811,7 @@ class ParenExpr extends Expr {
 	ParenExpr(Tree parseTree){
 		this.expr = Expr.getInstance(parseTree.getChild(1));
 	}
+
 	public List<Instruction> CodeGen(){
 		return this.expr.CodeGen();
 	}
@@ -750,8 +823,12 @@ class IDExpr extends Expr {
 	IDExpr(Tree parseTree){
 		this.id = parseTree.getChild(0).IDVal;
 	}
+
 	public List<Instruction> CodeGen(){
-		return "R <= R[" + this.id + "]\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
+		asm.add(new MovOp(Register.AX, varSymbol));
+		return asm;
 	}
 }
 
@@ -759,11 +836,13 @@ class IntegerExpr extends Expr {
 	int intVal;
 
 	IntegerExpr(Tree parseTree){
-		this.intVal = parseTree.intVal;
+		this.intVal = parseTree.getChild(0).intVal;
 	}
 
 	public List<Instruction> CodeGen(){
-		return "R <= loadi " + this.intVal + "\n";
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.add(new MovOp(Register.AX, this.intVal));
+		return asm;
 	}
 }
 
@@ -777,8 +856,5 @@ class TExpr extends Expr {
 
 	TExpr(Tree parseTree){
 		this.word = parseTree.getChild(0).data;
-	}
-	public List<Instruction> CodeGen(){
-		return "R <= load " + this.word + "\n";
 	}
 }
