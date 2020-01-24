@@ -149,7 +149,7 @@ class ClassVarDecl extends Node {
 	String varName;
 
 	ClassVarDecl(Tree parseTree){
-		this.varType = new Type(parseTree.getChild(1).getChild(0));
+		this.varType = new Type(parseTree.getChild(0).getChild(0));
 		this.varName = parseTree.getChild(0).getChild(1).IDVal;
 		VarSymbol varSymbol = new VarSymbol(this.varName, varType.type);
 		SymbolTable.addSymbol(varSymbol);
