@@ -9,5 +9,6 @@ public enum Register{
 	BP,
 	SI,
 	DI,
-	PRINT
+	PRINT,
+	ARGS
 }
