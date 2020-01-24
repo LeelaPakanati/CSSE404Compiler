@@ -1,6 +1,7 @@
 package codegen;
 import java.util.*;
-import compiler.Tree;
+import parser.Tree;
+import symbol.*;
 
 abstract class Node{
 	public String CodeGen(){
@@ -42,6 +43,11 @@ class MainClassDecl extends Node {
 
 	MainClassDecl(Tree parseTree){
 		this.classname = parseTree.getChild(1).IDVal;
+
+		ClassSymbol classSymbol = new ClassSymbol(this.classname);
+		SymbolTable.addClass(this.classname, classSymbol);
+		SymbolTable.ScopeAdd(classSymbol);
+
 		this.args = parseTree.getChild(11).IDVal;
 
 		Tree stmt = parseTree.getChild(14);
@@ -49,6 +55,8 @@ class MainClassDecl extends Node {
 			this.stmtList.add(Stmt.getInstance(stmt.getChild(0)));
 			stmt = stmt.getChild(1);
 		}while(stmt.getChild(0) != null);
+
+		SymbolTable.ScopePop();
 	}
 
 	public String CodeGen(){
@@ -72,6 +80,10 @@ class ClassDecl extends Node {
 	ClassDecl(Tree parseTree){
 		this.classname = parseTree.getChild(1).IDVal;
 
+		ClassSymbol classSymbol = new ClassSymbol(this.classname);
+		SymbolTable.addClass(this.classname, classSymbol);
+		SymbolTable.ScopeAdd(classSymbol);
+
 		if(parseTree.getChild(2).getChild(1) != null){
 			this.superclass = parseTree.getChild(2).getChild(1).IDVal;
 		}
@@ -87,6 +99,8 @@ class ClassDecl extends Node {
 			this.methodDeclList.add(new MethodDecl(methodDecl.getChild(0)));
 			methodDecl = methodDecl.getChild(1);
 		}while(methodDecl.getChild(0) != null);
+
+		SymbolTable.ScopePop();
 	}
 
 	public String CodeGen(){
@@ -115,9 +129,11 @@ class ClassVarDecl extends Node {
 	String varName;
 
 	ClassVarDecl(Tree parseTree){
-		System.out.println(parseTree.toString(0));
-		this.varType = new Type(parseTree.getChild(0).getChild(0));
+		this.varType = new Type(parseTree.getChild(1).getChild(0));
 		this.varName = parseTree.getChild(0).getChild(1).IDVal;
+		VarSymbol varSymbol = new VarSymbol(this.varName, varType.type);
+		SymbolTable.addSymbol(varSymbol);
+
 	}
 }
 
@@ -136,6 +152,10 @@ class MethodDecl extends Node {
 		this.methodtype = new Type(parseTree.getChild(1).getChild(0));
 		this.methodname = parseTree.getChild(1).getChild(1).IDVal;
 
+		MethodSymbol methodSymbol = new MethodSymbol(this.methodname, this.methodtype.type);
+		SymbolTable.addSymbol(this.methodname, methodSymbol);
+		SymbolTable.ScopeAdd(methodSymbol);
+
 		Tree arg = parseTree.getChild(3);
 		if(arg.getChild(0) != null){
 			this.argList.add(new Formal(arg.getChild(0)));
@@ -153,6 +173,8 @@ class MethodDecl extends Node {
 			stmt = stmt.getChild(1);
 		}
 		this.returnVal = Expr.getInstance(parseTree.getChild(8));
+
+		SymbolTable.ScopePop();
 	}
 
 	public String CodeGen(){

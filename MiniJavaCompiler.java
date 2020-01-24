@@ -1,8 +1,9 @@
-package compiler;
 import java.util.*;
 import lexer.Lexer;
 import parser.Parser;
 import codegen.Program;
+import symbol.*;
+import arch.*;
 
 public class MiniJavaCompiler {
 
@@ -14,6 +15,7 @@ public class MiniJavaCompiler {
 		//for(int i = 0; i < results.size(); i++) {
 		//	System.out.println(results.get(i)[0] + ", " + results.get(i)[1]);
 		//}
+		SymbolTable symbols = SymbolTable.getInstance();
 
 		Parser parser = new Parser(results);
 		if(!parser.parseProgram()){
@@ -22,8 +24,15 @@ public class MiniJavaCompiler {
 		}
 		//System.out.println(parser.parseTree.toString(0));
 		Program syntaxTree = new Program(parser.parseTree.getChild(0));
-		String asm = syntaxTree.CodeGen();
-		System.out.println(asm);
+
+		//System.out.println("\nSymbol Table After Construction\n");
+		//System.out.println(symbols.toString());
+
+		List<Instruction> asm = syntaxTree.CodeGen();
+		
+		for(Instruction ins : asm){
+			System.out.println(ins.toX86());
+		}
 		
 	}
 }
