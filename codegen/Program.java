@@ -85,6 +85,7 @@ class MainClassDecl extends Node {
 			asm.addAll(stmt.CodeGen());
 		}
 
+		asm.add(new JumpOp()); //return
 		SymbolTable.ScopePop();
 		SymbolTable.ScopePop();
 		return asm;
@@ -101,12 +102,13 @@ class ClassDecl extends Node {
 		this.classname = parseTree.getChild(1).IDVal;
 
 		ClassSymbol classSymbol = new ClassSymbol(this.classname);
-		SymbolTable.addClass(classSymbol);
-		SymbolTable.ScopeAdd(classSymbol);
-
 		if(parseTree.getChild(2).getChild(1) != null){
 			this.superclass = parseTree.getChild(2).getChild(1).IDVal;
+			classSymbol.superclass = SymbolTable.getClassSymbol(this.superclass);
 		}
+
+		SymbolTable.addClass(classSymbol);
+		SymbolTable.ScopeAdd(classSymbol);
 
 		Tree varDecl = parseTree.getChild(4);
 		while(varDecl.getChild(0) != null){
@@ -213,6 +215,7 @@ class MethodDecl extends Node {
 			asm.addAll(stmt.CodeGen());
 		}
 
+		asm.add(new JumpOp()); //return
 		SymbolTable.ScopePop();
 		return asm;
 	}
@@ -744,7 +747,7 @@ class LengthExpr extends Expr {
 }
 
 class ClassMethodCallExpr extends Expr {
-	Expr className;
+	Expr classID;
 	String method;
 	List<Expr> argList = new ArrayList<Expr>();
 
@@ -753,19 +756,19 @@ class ClassMethodCallExpr extends Expr {
 		Tree dotWhat;
 
 		if(firstChild.data.equals("(")){
-			this.className = new ParenExpr(parseTree);
+			this.classID = new ParenExpr(parseTree);
 			dotWhat = parseTree.getChild(3).getChild(1);
 
 		} else if(firstChild.data.equals("ID")){
-			this.className = new IDExpr(parseTree);
+			this.classID = new IDExpr(parseTree);
 			dotWhat = parseTree.getChild(1).getChild(1);
 
 		} else if(firstChild.data.equals("this")){
-			this.className = new ThisExpr(parseTree);
+			this.classID = new ThisExpr(parseTree);
 			dotWhat = parseTree.getChild(1).getChild(1);
 
 		} else if(firstChild.data.equals("new")){
-			this.className = new ClassConstructorExpr(parseTree);
+			this.classID = new ClassConstructorExpr(parseTree);
 			dotWhat = parseTree.getChild(1).getChild(2).getChild(4);
 
 		} else{
@@ -785,7 +788,43 @@ class ClassMethodCallExpr extends Expr {
 				arg = arg.getChild(2);
 			}
 		}
+	}
 
+	MethodSymbol getMethodSymbol(){
+		ClassSymbol classSymbol = new ClassSymbol("NULL");
+		while(true){
+			if (this.classID instanceof IDExpr){
+				IDExpr classID = (IDExpr) this.classID;
+				if(classID.id.equals("this")){
+					classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
+				} else{
+				}
+
+			} else if(this.classID instanceof ThisExpr){
+				ClassSymbol classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
+
+			} else if(this.classID instanceof ClassConstructorExpr){
+
+			} else if(this.classID instanceof ClassMethodCallExpr){
+				
+			} else if(this.classID instanceof ArrExpr){
+
+			} else{
+			}
+			break;
+		}
+
+		MethodSymbol methodSymbol = SymbolTable.getSymbol(new ArrayList(Array.asList(classSymbol)), this.method);
+		return methodSymbol;
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		
+		if((this.classID instanceof ClassMethodCallExpr) || (this.classID instanceof ParenExpr)){
+			asm.add(this.classID.CodeGen());
+		}
+		return asm;
 	}
 }
 

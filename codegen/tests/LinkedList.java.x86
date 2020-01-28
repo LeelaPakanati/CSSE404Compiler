@@ -1,0 +1,286 @@
+MainClass_LinkedList
+Method_main
+	MOV Mem->a 0
+	MOV PRINT AX
+	RETQ
+Class_Element
+Method_Init
+	MOV AX Mem->v_Age
+	MOV Mem->Age 0
+	MOV AX Mem->v_Salary
+	MOV Mem->Salary 0
+	MOV AX Mem->v_Married
+	MOV Mem->Married 0
+	RETQ
+Method_GetAge
+	RETQ
+Method_GetSalary
+	RETQ
+Method_GetMarried
+	RETQ
+Method_Equal
+	MOV Mem->ret_val 0
+	MOV Mem->aux01 0
+	NOT AX
+	CMPQ AX 1
+	JMP if_0_true
+	MOV Mem->aux02 0
+	NOT AX
+	CMPQ AX 1
+	JMP if_1_true
+	MOV AX Mem->Married
+	CMPQ AX 1
+	JMP if_2_true
+	CMPQ AX 1
+	JMP if_3_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_3_end
+if_3_true
+	MOV Mem->ret_val 0
+if_3_end
+	JMP if_2_end
+if_2_true
+	NOT AX
+	CMPQ AX 1
+	JMP if_4_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_4_end
+if_4_true
+	MOV Mem->ret_val 0
+if_4_end
+if_2_end
+	JMP if_1_end
+if_1_true
+	MOV Mem->ret_val 0
+if_1_end
+	JMP if_0_end
+if_0_true
+	MOV Mem->ret_val 0
+if_0_end
+	RETQ
+Method_Compare
+	MOV Mem->retval 0
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->num2
+	ADD AX DX
+	MOV Mem->aux02 0
+	MOV AX Mem->num2
+	MOV DX AX
+	MOV AX Mem->num1
+	CMPQ AX DX
+	JL if_5_true
+	MOV AX Mem->aux02
+	MOV DX AX
+	MOV AX Mem->num1
+	CMPQ AX DX
+	NOT AX
+	CMPQ AX 1
+	JMP if_6_true
+	MOV Mem->retval 0
+	JMP if_6_end
+if_6_true
+	MOV Mem->retval 0
+if_6_end
+	JMP if_5_end
+if_5_true
+	MOV Mem->retval 0
+if_5_end
+	RETQ
+Class_List
+Method_Init
+	MOV Mem->end 0
+	RETQ
+Method_InitNew
+	MOV AX Mem->v_end
+	MOV Mem->end 0
+	MOV AX Mem->v_elem
+	MOV Mem->elem 0
+	MOV AX Mem->v_next
+	MOV Mem->next 0
+	RETQ
+Method_Insert
+	MOV Mem->aux03 0
+	MOV Mem->aux02 0
+	MOV Mem->ret_val 0
+	RETQ
+Method_SetNext
+	MOV AX Mem->v_next
+	MOV Mem->next 0
+	RETQ
+Method_Delete
+	MOV Mem->my_head 0
+	MOV Mem->ret_val 0
+	MOV AX 1
+	MOV DX AX
+	MOV AX 0
+	SUB AX DX
+	MOV Mem->aux04 0
+	MOV Mem->aux01 0
+	MOV Mem->prev 0
+	MOV AX Mem->end
+	MOV Mem->var_end 0
+	MOV AX Mem->elem
+	MOV Mem->var_elem 0
+while_7_start
+	MOV AX Mem->ret_val
+	NOT AX
+	MOV DX AX
+	MOV AX Mem->var_end
+	NOT AX
+	CMPQ AX DX
+	JE while_7_true
+	JMP while_7_end
+while_7_true
+	CMPQ AX 1
+	JMP if_8_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_8_end
+if_8_true
+	MOV Mem->ret_val 0
+	MOV AX 0
+	MOV DX AX
+	MOV AX Mem->aux04
+	CMPQ AX DX
+	JL if_9_true
+	MOV AX 555
+	MOV DX AX
+	MOV AX 0
+	SUB AX DX
+	MOV PRINT AX
+	MOV Mem->aux05 0
+	MOV AX 555
+	MOV DX AX
+	MOV AX 0
+	SUB AX DX
+	MOV PRINT AX
+	JMP if_9_end
+if_9_true
+	MOV Mem->my_head 0
+if_9_end
+if_8_end
+	MOV AX Mem->ret_val
+	NOT AX
+	CMPQ AX 1
+	JMP if_10_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_10_end
+if_10_true
+	MOV AX Mem->aux01
+	MOV Mem->prev 0
+	MOV Mem->aux01 0
+	MOV Mem->var_end 0
+	MOV Mem->var_elem 0
+	MOV AX 1
+	MOV Mem->aux04 0
+if_10_end
+while_7_start
+while_7_end
+	RETQ
+Method_Search
+	MOV AX 0
+	MOV Mem->int_ret_val 0
+	MOV Mem->aux01 0
+	MOV AX Mem->end
+	MOV Mem->var_end 0
+	MOV AX Mem->elem
+	MOV Mem->var_elem 0
+while_11_start
+	MOV AX Mem->var_end
+	NOT AX
+	CMPQ AX 1
+	JMP while_11_true
+	JMP while_11_end
+while_11_true
+	CMPQ AX 1
+	JMP if_12_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_12_end
+if_12_true
+	MOV AX 1
+	MOV Mem->int_ret_val 0
+if_12_end
+	MOV Mem->aux01 0
+	MOV Mem->var_end 0
+	MOV Mem->var_elem 0
+while_11_start
+while_11_end
+	RETQ
+Method_GetEnd
+	RETQ
+Method_GetElem
+	RETQ
+Method_GetNext
+	RETQ
+Method_Print
+	MOV Mem->aux01 0
+	MOV AX Mem->end
+	MOV Mem->var_end 0
+	MOV AX Mem->elem
+	MOV Mem->var_elem 0
+while_13_start
+	MOV AX Mem->var_end
+	NOT AX
+	CMPQ AX 1
+	JMP while_13_true
+	JMP while_13_end
+while_13_true
+	MOV PRINT AX
+	MOV Mem->aux01 0
+	MOV Mem->var_end 0
+	MOV Mem->var_elem 0
+while_13_start
+while_13_end
+	RETQ
+Class_LL
+Method_Start
+	MOV Mem->last_elem 0
+	MOV Mem->aux01 0
+	MOV AX Mem->last_elem
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV Mem->aux01 0
+	MOV Mem->el01 0
+	MOV Mem->aux01 0
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV AX 10000000
+	MOV PRINT AX
+	MOV Mem->el01 0
+	MOV Mem->aux01 0
+	MOV AX Mem->el01
+	MOV Mem->el02 0
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV AX 10000000
+	MOV PRINT AX
+	MOV Mem->el01 0
+	MOV Mem->aux01 0
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV Mem->el03 0
+	MOV Mem->aux01 0
+	MOV PRINT AX
+	MOV PRINT AX
+	MOV AX 10000000
+	MOV PRINT AX
+	MOV Mem->el01 0
+	MOV Mem->aux01 0
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV AX 2220000
+	MOV PRINT AX
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV AX 33300000
+	MOV PRINT AX
+	MOV Mem->head 0
+	MOV Mem->aux01 0
+	MOV AX 44440000
+	MOV PRINT AX
+	RETQ

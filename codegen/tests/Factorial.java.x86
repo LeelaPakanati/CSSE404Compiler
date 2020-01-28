@@ -1,0 +1,22 @@
+MainClass_Factorial
+Method_main
+	MOV Mem->a 0
+	MOV PRINT AX
+	RETQ
+Class_Fac
+Method_ComputeFac
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->num
+	CMPQ AX DX
+	JL if_0_true
+	MOV DX AX
+	MOV AX Mem->num
+	MUL AX DX
+	MOV Mem->num_aux 0
+	JMP if_0_end
+if_0_true
+	MOV AX 1
+	MOV Mem->num_aux 0
+if_0_end
+	RETQ

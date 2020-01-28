@@ -1,0 +1,218 @@
+MainClass_QuickSort
+Method_main
+	MOV Mem->a 0
+	MOV PRINT AX
+	RETQ
+Class_QS
+Method_Start
+	MOV Mem->aux01 0
+	MOV Mem->aux01 0
+	MOV AX 9999
+	MOV PRINT AX
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->size
+	SUB AX DX
+	MOV Mem->aux01 0
+	MOV Mem->aux01 0
+	MOV Mem->aux01 0
+	RETQ
+Method_Sort
+	MOV AX 0
+	MOV Mem->t 0
+	MOV AX Mem->right
+	MOV DX AX
+	MOV AX Mem->left
+	CMPQ AX DX
+	JL if_0_true
+	MOV AX 0
+	MOV Mem->nt 0
+	JMP if_0_end
+if_0_true
+	MOV AX Mem->right
+	MOV AX Mem->number[AX]
+	MOV Mem->v 0
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->left
+	SUB AX DX
+	MOV Mem->i 0
+	MOV AX Mem->right
+	MOV Mem->j 0
+	MOV Mem->cont01 0
+while_1_start
+	MOV AX Mem->cont01
+	CMPQ AX 1
+	JMP while_1_true
+	JMP while_1_end
+while_1_true
+	MOV Mem->cont02 0
+while_2_start
+	MOV AX Mem->cont02
+	CMPQ AX 1
+	JMP while_2_true
+	JMP while_2_end
+while_2_true
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->i
+	ADD AX DX
+	MOV Mem->i 0
+	MOV AX Mem->i
+	MOV AX Mem->number[AX]
+	MOV Mem->aux03 0
+	MOV AX Mem->v
+	MOV DX AX
+	MOV AX Mem->aux03
+	CMPQ AX DX
+	NOT AX
+	CMPQ AX 1
+	JMP if_3_true
+	MOV Mem->cont02 0
+	JMP if_3_end
+if_3_true
+	MOV Mem->cont02 0
+if_3_end
+while_2_start
+while_2_end
+	MOV Mem->cont02 0
+while_4_start
+	MOV AX Mem->cont02
+	CMPQ AX 1
+	JMP while_4_true
+	JMP while_4_end
+while_4_true
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->j
+	SUB AX DX
+	MOV Mem->j 0
+	MOV AX Mem->j
+	MOV AX Mem->number[AX]
+	MOV Mem->aux03 0
+	MOV AX Mem->aux03
+	MOV DX AX
+	MOV AX Mem->v
+	CMPQ AX DX
+	NOT AX
+	CMPQ AX 1
+	JMP if_5_true
+	MOV Mem->cont02 0
+	JMP if_5_end
+if_5_true
+	MOV Mem->cont02 0
+if_5_end
+while_4_start
+while_4_end
+	MOV AX Mem->i
+	MOV AX Mem->number[AX]
+	MOV Mem->t 0
+	MOV AX Mem->i
+	MOV DX AX
+	MOV AX Mem->j
+	MOV AX Mem->number[AX]
+	MOV Mem->number[DX] 0
+	MOV AX Mem->j
+	MOV DX AX
+	MOV AX Mem->t
+	MOV Mem->number[DX] 0
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->i
+	ADD AX DX
+	MOV DX AX
+	MOV AX Mem->j
+	CMPQ AX DX
+	JL if_6_true
+	MOV Mem->cont01 0
+	JMP if_6_end
+if_6_true
+	MOV Mem->cont01 0
+if_6_end
+while_1_start
+while_1_end
+	MOV AX Mem->j
+	MOV DX AX
+	MOV AX Mem->i
+	MOV AX Mem->number[AX]
+	MOV Mem->number[DX] 0
+	MOV AX Mem->i
+	MOV DX AX
+	MOV AX Mem->right
+	MOV AX Mem->number[AX]
+	MOV Mem->number[DX] 0
+	MOV AX Mem->right
+	MOV DX AX
+	MOV AX Mem->t
+	MOV Mem->number[DX] 0
+	MOV Mem->nt 0
+	MOV Mem->nt 0
+if_0_end
+	RETQ
+Method_Print
+	MOV AX 0
+	MOV Mem->j 0
+while_7_start
+	MOV AX Mem->size
+	MOV DX AX
+	MOV AX Mem->j
+	CMPQ AX DX
+	JL while_7_true
+	JMP while_7_end
+while_7_true
+	MOV AX Mem->j
+	MOV AX Mem->number[AX]
+	MOV PRINT AX
+	MOV AX 1
+	MOV DX AX
+	MOV AX Mem->j
+	ADD AX DX
+	MOV Mem->j 0
+while_7_start
+while_7_end
+	RETQ
+Method_Init
+	MOV AX Mem->sz
+	MOV Mem->size 0
+	MOV Mem->number 0
+	MOV AX 0
+	MOV DX AX
+	MOV AX 20
+	MOV Mem->number[DX] 0
+	MOV AX 1
+	MOV DX AX
+	MOV AX 7
+	MOV Mem->number[DX] 0
+	MOV AX 2
+	MOV DX AX
+	MOV AX 12
+	MOV Mem->number[DX] 0
+	MOV AX 3
+	MOV DX AX
+	MOV AX 18
+	MOV Mem->number[DX] 0
+	MOV AX 4
+	MOV DX AX
+	MOV AX 2
+	MOV Mem->number[DX] 0
+	MOV AX 5
+	MOV DX AX
+	MOV AX 11
+	MOV Mem->number[DX] 0
+	MOV AX 6
+	MOV DX AX
+	MOV AX 6
+	MOV Mem->number[DX] 0
+	MOV AX 7
+	MOV DX AX
+	MOV AX 9
+	MOV Mem->number[DX] 0
+	MOV AX 8
+	MOV DX AX
+	MOV AX 19
+	MOV Mem->number[DX] 0
+	MOV AX 9
+	MOV DX AX
+	MOV AX 5
+	MOV Mem->number[DX] 0
+	RETQ
