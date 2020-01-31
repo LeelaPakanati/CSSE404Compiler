@@ -64,20 +64,20 @@ public class MovOp extends Instruction {
 		if (this.toVar != null){
 			toRet += "Mem->" + this.toVar.name;
 			if(this.ref != null){
-				toRet += "[" + this.ref.name() + "]";
+				toRet += "[" + this.ref.label + "]";
 			}
 			toRet += " ";
 		} else {
-			toRet += this.RS1.name() + " ";
+			toRet += this.RS1.label + " ";
 		}
 		
 		if (this.fromVar != null) {
 			toRet += "Mem->" + this.fromVar.name;
 			if(this.ref != null){
-				toRet += "[" + this.ref.name() + "]";
+				toRet += "[" + this.ref.label + "]";
 			}
-		} else if (this.RS2 != null) {
-			toRet += this.RS2.name();
+		} else if (this.RS1 != null) {
+			toRet += this.RS1.label;
 		} else {
 			toRet += this.imm;
 		}

@@ -67,12 +67,14 @@ class MainClassDecl extends Node {
 		SymbolTable.ScopeAdd(classSymbol);
 
 		Label mainClassLabel = new Label("MainClass_" + this.classname);
+		classSymbol.label = mainClassLabel;
 		asm.add(mainClassLabel);
 
 		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol("main");
 		SymbolTable.ScopeAdd(methodSymbol);
 
 		Label mainLabel = new Label("Method_main");
+		methodSymbol.label = mainLabel;
 		asm.add(mainLabel);
 
 		VarSymbol argsSymbol = new VarSymbol(this.args, "String");
@@ -131,6 +133,7 @@ class ClassDecl extends Node {
 		SymbolTable.ScopeAdd(classSymbol);
 
 		Label classLabel = new Label("Class_" + this.classname);
+		classSymbol.label = classLabel;
 		asm.add(classLabel);
 
 		for(ClassVarDecl varDecl : this.varDeclList){
@@ -174,6 +177,9 @@ class MethodDecl extends Node {
 		this.methodname = parseTree.getChild(1).getChild(1).IDVal;
 
 		MethodSymbol methodSymbol = new MethodSymbol(this.methodname, this.methodtype.type);
+		Label methodLabel = new Label("Method_" + this.methodname);
+		methodSymbol.label = methodLabel;
+
 		SymbolTable.addSymbol(methodSymbol);
 		SymbolTable.ScopeAdd(methodSymbol);
 
@@ -203,8 +209,7 @@ class MethodDecl extends Node {
 		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(this.methodname);
 		SymbolTable.ScopeAdd(methodSymbol);
 
-		Label methodLabel = new Label("Method_" + this.methodname);
-		asm.add(methodLabel);
+		asm.add(methodSymbol.label);
 
 		for(Formal arg : this.argList){
 			asm.addAll(arg.CodeGen());
@@ -796,34 +801,52 @@ class ClassMethodCallExpr extends Expr {
 			if (this.classID instanceof IDExpr){
 				IDExpr classID = (IDExpr) this.classID;
 				if(classID.id.equals("this")){
+					// this may not work if there is some weird scope train 
 					classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
 				} else{
+					VarSymbol obj = (VarSymbol) SymbolTable.getSymbol(classID.id);
+					classSymbol = SymbolTable.getClassSymbol(obj.type);
 				}
 
 			} else if(this.classID instanceof ThisExpr){
-				ClassSymbol classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
+				classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
 
 			} else if(this.classID instanceof ClassConstructorExpr){
+				ClassConstructorExpr cons = (ClassConstructorExpr) this.classID;
+				classSymbol = SymbolTable.getClassSymbol(cons.className);
+
+			} else if(this.classID instanceof ParenExpr){
+				this.classID = ((ParenExpr) this.classID).expr;
+				continue;
 
 			} else if(this.classID instanceof ClassMethodCallExpr){
-				
-			} else if(this.classID instanceof ArrExpr){
+				ClassMethodCallExpr methodCall = (ClassMethodCallExpr) this.classID;
+				MethodSymbol internalMethod = methodCall.getMethodSymbol();
+				classSymbol = SymbolTable.getClassSymbol(internalMethod.retType);
 
 			} else{
+				//fail
+				System.out.println("Class method call gone wrong; has type: " + this.classID.getClass());
 			}
 			break;
 		}
 
-		MethodSymbol methodSymbol = SymbolTable.getSymbol(new ArrayList(Array.asList(classSymbol)), this.method);
+		List<Symbol> classScope = new ArrayList<Symbol>();
+		classScope.add(classSymbol);
+		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(classScope, this.method);
 		return methodSymbol;
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		
+
 		if((this.classID instanceof ClassMethodCallExpr) || (this.classID instanceof ParenExpr)){
-			asm.add(this.classID.CodeGen());
+			asm.addAll(this.classID.CodeGen());
 		}
+
+		MethodSymbol methodSymbol = this.getMethodSymbol();
+
+		asm.add(new JumpOp(methodSymbol.label, true));		
 		return asm;
 	}
 }
@@ -833,6 +856,13 @@ class ClassConstructorExpr extends Expr {
 
 	ClassConstructorExpr(Tree parseTree){
 		this.className = parseTree.getChild(1).getChild(0).IDVal;
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		//TODO: Memory allocate for object
+		asm.add(new Label("CONSTRUCT " + this.className));
+		return asm;
 	}
 }
 

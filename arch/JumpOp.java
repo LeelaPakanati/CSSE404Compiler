@@ -53,6 +53,7 @@ public class JumpOp extends Instruction {
 		if(this.op == Operation.RETQ){
 			return super.toX86();
 		}
+
 		return super.toX86() + " " + this.jumpLabel.toX86();
 	}
 }

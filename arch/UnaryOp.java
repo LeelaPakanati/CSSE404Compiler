@@ -24,7 +24,7 @@ public class UnaryOp extends Instruction {
 	}
 
 	public String toX86(){
-		return super.toX86() + " " + this.RS1.name();
+		return super.toX86() + " " + this.RS1.label;
 	}
 }
 

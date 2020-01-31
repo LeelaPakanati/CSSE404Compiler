@@ -49,9 +49,9 @@ public class ArithOp extends Instruction {
 	}
 
 	public String toX86(){
-		String retVal = super.toX86() + " " + this.RS1.name();
+		String retVal = super.toX86() + " " + this.RS1.label;
 		if (this.RS2 != null){
-			retVal +=  " " + this.RS2.name();
+			retVal +=  " " + this.RS2.label;
 		} else {
 			retVal +=  " " + this.imm;
 		}
