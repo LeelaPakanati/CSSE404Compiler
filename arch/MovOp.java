@@ -34,9 +34,9 @@ public class MovOp extends Instruction {
 	}
 
 
-	public MovOp(VarSymbol toVar, Register RS1){
+	public MovOp(VarSymbol toVar, Register RS2){
 		this.op = Operation.MOV;
-		this.RS1 = RS1;
+		this.RS2 = RS2;
 		this.toVar = toVar;
 	}
 
@@ -52,9 +52,9 @@ public class MovOp extends Instruction {
 		this.fromVar = fromVar;
 	}
 
-	public MovOp(VarSymbol toVar, Register ref, Register RS1){
+	public MovOp(VarSymbol toVar, Register ref, Register RS2){
 		this.op = Operation.MOV;
-		this.RS1 = RS1;
+		this.RS2 = RS2;
 		this.ref = ref;
 		this.toVar = toVar;
 	}
@@ -76,8 +76,8 @@ public class MovOp extends Instruction {
 			if(this.ref != null){
 				toRet += "[" + this.ref.label + "]";
 			}
-		} else if (this.RS1 != null) {
-			toRet += this.RS1.label;
+		} else if (this.RS2 != null) {
+			toRet += this.RS2.label;
 		} else {
 			toRet += this.imm;
 		}

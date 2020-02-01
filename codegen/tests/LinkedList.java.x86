@@ -1,16 +1,17 @@
 MainClass_LinkedList
 Method_main
-	MOV Mem->a 0
-	MOV PRINT AX
+	MOV Mem->a INPUT ARGS
+CONSTRUCT LL
+	MOV PRINTOUT %ax
 	RETQ
 Class_Element
 Method_Init
-	MOV AX Mem->v_Age
-	MOV Mem->Age 0
-	MOV AX Mem->v_Salary
-	MOV Mem->Salary 0
-	MOV AX Mem->v_Married
-	MOV Mem->Married 0
+	MOV %ax Mem->v_Age
+	MOV Mem->Age %ax
+	MOV %ax Mem->v_Salary
+	MOV Mem->Salary %ax
+	MOV %ax Mem->v_Married
+	MOV Mem->Married %ax
 	RETQ
 Method_GetAge
 	RETQ
@@ -19,195 +20,213 @@ Method_GetSalary
 Method_GetMarried
 	RETQ
 Method_Equal
-	MOV Mem->ret_val 0
-	MOV Mem->aux01 0
-	NOT AX
-	CMPQ AX 1
+	MOV Mem->ret_val %ax
+	CALLQ Method_GetAge
+	MOV Mem->aux01 %ax
+	CALLQ Method_Compare
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_0_true
-	MOV Mem->aux02 0
-	NOT AX
-	CMPQ AX 1
+	CALLQ Method_GetSalary
+	MOV Mem->aux02 %ax
+	CALLQ Method_Compare
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_1_true
-	MOV AX Mem->Married
-	CMPQ AX 1
+	MOV %ax Mem->Married
+	CMPQ %ax 1
 	JMP if_2_true
-	CMPQ AX 1
+	CALLQ Method_GetMarried
+	CMPQ %ax 1
 	JMP if_3_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 	JMP if_3_end
 if_3_true
-	MOV Mem->ret_val 0
+	MOV Mem->ret_val %ax
 if_3_end
 	JMP if_2_end
 if_2_true
-	NOT AX
-	CMPQ AX 1
+	CALLQ Method_GetMarried
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_4_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 	JMP if_4_end
 if_4_true
-	MOV Mem->ret_val 0
+	MOV Mem->ret_val %ax
 if_4_end
 if_2_end
 	JMP if_1_end
 if_1_true
-	MOV Mem->ret_val 0
+	MOV Mem->ret_val %ax
 if_1_end
 	JMP if_0_end
 if_0_true
-	MOV Mem->ret_val 0
+	MOV Mem->ret_val %ax
 if_0_end
 	RETQ
 Method_Compare
-	MOV Mem->retval 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->num2
-	ADD AX DX
-	MOV Mem->aux02 0
-	MOV AX Mem->num2
-	MOV DX AX
-	MOV AX Mem->num1
-	CMPQ AX DX
+	MOV Mem->retval %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->num2
+	ADD %ax %dx
+	MOV Mem->aux02 %ax
+	MOV %ax Mem->num2
+	MOV %dx %ax
+	MOV %ax Mem->num1
+	CMPQ %ax %dx
 	JL if_5_true
-	MOV AX Mem->aux02
-	MOV DX AX
-	MOV AX Mem->num1
-	CMPQ AX DX
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->aux02
+	MOV %dx %ax
+	MOV %ax Mem->num1
+	CMPQ %ax %dx
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_6_true
-	MOV Mem->retval 0
+	MOV Mem->retval %ax
 	JMP if_6_end
 if_6_true
-	MOV Mem->retval 0
+	MOV Mem->retval %ax
 if_6_end
 	JMP if_5_end
 if_5_true
-	MOV Mem->retval 0
+	MOV Mem->retval %ax
 if_5_end
 	RETQ
 Class_List
 Method_Init
-	MOV Mem->end 0
+	MOV Mem->end %ax
 	RETQ
 Method_InitNew
-	MOV AX Mem->v_end
-	MOV Mem->end 0
-	MOV AX Mem->v_elem
-	MOV Mem->elem 0
-	MOV AX Mem->v_next
-	MOV Mem->next 0
+	MOV %ax Mem->v_end
+	MOV Mem->end %ax
+	MOV %ax Mem->v_elem
+	MOV Mem->elem %ax
+	MOV %ax Mem->v_next
+	MOV Mem->next %ax
 	RETQ
 Method_Insert
-	MOV Mem->aux03 0
-	MOV Mem->aux02 0
-	MOV Mem->ret_val 0
+	MOV Mem->aux03 %ax
+CONSTRUCT List
+	MOV Mem->aux02 %ax
+	CALLQ Method_InitNew
+	MOV Mem->ret_val %ax
 	RETQ
 Method_SetNext
-	MOV AX Mem->v_next
-	MOV Mem->next 0
+	MOV %ax Mem->v_next
+	MOV Mem->next %ax
 	RETQ
 Method_Delete
-	MOV Mem->my_head 0
-	MOV Mem->ret_val 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX 0
-	SUB AX DX
-	MOV Mem->aux04 0
-	MOV Mem->aux01 0
-	MOV Mem->prev 0
-	MOV AX Mem->end
-	MOV Mem->var_end 0
-	MOV AX Mem->elem
-	MOV Mem->var_elem 0
+	MOV Mem->my_head %ax
+	MOV Mem->ret_val %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax 0
+	SUB %ax %dx
+	MOV Mem->aux04 %ax
+	MOV Mem->aux01 %ax
+	MOV Mem->prev %ax
+	MOV %ax Mem->end
+	MOV Mem->var_end %ax
+	MOV %ax Mem->elem
+	MOV Mem->var_elem %ax
 while_7_start
-	MOV AX Mem->ret_val
-	NOT AX
-	MOV DX AX
-	MOV AX Mem->var_end
-	NOT AX
-	CMPQ AX DX
+	MOV %ax Mem->ret_val
+	NOT %ax
+	MOV %dx %ax
+	MOV %ax Mem->var_end
+	NOT %ax
+	CMPQ %ax %dx
 	JE while_7_true
 	JMP while_7_end
 while_7_true
-	CMPQ AX 1
+	CALLQ Method_Equal
+	CMPQ %ax 1
 	JMP if_8_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 	JMP if_8_end
 if_8_true
-	MOV Mem->ret_val 0
-	MOV AX 0
-	MOV DX AX
-	MOV AX Mem->aux04
-	CMPQ AX DX
+	MOV Mem->ret_val %ax
+	MOV %ax 0
+	MOV %dx %ax
+	MOV %ax Mem->aux04
+	CMPQ %ax %dx
 	JL if_9_true
-	MOV AX 555
-	MOV DX AX
-	MOV AX 0
-	SUB AX DX
-	MOV PRINT AX
-	MOV Mem->aux05 0
-	MOV AX 555
-	MOV DX AX
-	MOV AX 0
-	SUB AX DX
-	MOV PRINT AX
+	MOV %ax 555
+	MOV %dx %ax
+	MOV %ax 0
+	SUB %ax %dx
+	MOV PRINTOUT %ax
+	CALLQ Method_SetNext
+	MOV Mem->aux05 %ax
+	MOV %ax 555
+	MOV %dx %ax
+	MOV %ax 0
+	SUB %ax %dx
+	MOV PRINTOUT %ax
 	JMP if_9_end
 if_9_true
-	MOV Mem->my_head 0
+	CALLQ Method_GetNext
+	MOV Mem->my_head %ax
 if_9_end
 if_8_end
-	MOV AX Mem->ret_val
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->ret_val
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_10_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 	JMP if_10_end
 if_10_true
-	MOV AX Mem->aux01
-	MOV Mem->prev 0
-	MOV Mem->aux01 0
-	MOV Mem->var_end 0
-	MOV Mem->var_elem 0
-	MOV AX 1
-	MOV Mem->aux04 0
+	MOV %ax Mem->aux01
+	MOV Mem->prev %ax
+	CALLQ Method_GetNext
+	MOV Mem->aux01 %ax
+	CALLQ Method_GetEnd
+	MOV Mem->var_end %ax
+	CALLQ Method_GetElem
+	MOV Mem->var_elem %ax
+	MOV %ax 1
+	MOV Mem->aux04 %ax
 if_10_end
 while_7_start
 while_7_end
 	RETQ
 Method_Search
-	MOV AX 0
-	MOV Mem->int_ret_val 0
-	MOV Mem->aux01 0
-	MOV AX Mem->end
-	MOV Mem->var_end 0
-	MOV AX Mem->elem
-	MOV Mem->var_elem 0
+	MOV %ax 0
+	MOV Mem->int_ret_val %ax
+	MOV Mem->aux01 %ax
+	MOV %ax Mem->end
+	MOV Mem->var_end %ax
+	MOV %ax Mem->elem
+	MOV Mem->var_elem %ax
 while_11_start
-	MOV AX Mem->var_end
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->var_end
+	NOT %ax
+	CMPQ %ax 1
 	JMP while_11_true
 	JMP while_11_end
 while_11_true
-	CMPQ AX 1
+	CALLQ Method_Equal
+	CMPQ %ax 1
 	JMP if_12_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 	JMP if_12_end
 if_12_true
-	MOV AX 1
-	MOV Mem->int_ret_val 0
+	MOV %ax 1
+	MOV Mem->int_ret_val %ax
 if_12_end
-	MOV Mem->aux01 0
-	MOV Mem->var_end 0
-	MOV Mem->var_elem 0
+	CALLQ Method_GetNext
+	MOV Mem->aux01 %ax
+	CALLQ Method_GetEnd
+	MOV Mem->var_end %ax
+	CALLQ Method_GetElem
+	MOV Mem->var_elem %ax
 while_11_start
 while_11_end
 	RETQ
@@ -218,69 +237,101 @@ Method_GetElem
 Method_GetNext
 	RETQ
 Method_Print
-	MOV Mem->aux01 0
-	MOV AX Mem->end
-	MOV Mem->var_end 0
-	MOV AX Mem->elem
-	MOV Mem->var_elem 0
+	MOV Mem->aux01 %ax
+	MOV %ax Mem->end
+	MOV Mem->var_end %ax
+	MOV %ax Mem->elem
+	MOV Mem->var_elem %ax
 while_13_start
-	MOV AX Mem->var_end
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->var_end
+	NOT %ax
+	CMPQ %ax 1
 	JMP while_13_true
 	JMP while_13_end
 while_13_true
-	MOV PRINT AX
-	MOV Mem->aux01 0
-	MOV Mem->var_end 0
-	MOV Mem->var_elem 0
+	CALLQ Method_GetAge
+	MOV PRINTOUT %ax
+	CALLQ Method_GetNext
+	MOV Mem->aux01 %ax
+	CALLQ Method_GetEnd
+	MOV Mem->var_end %ax
+	CALLQ Method_GetElem
+	MOV Mem->var_elem %ax
 while_13_start
 while_13_end
 	RETQ
 Class_LL
 Method_Start
-	MOV Mem->last_elem 0
-	MOV Mem->aux01 0
-	MOV AX Mem->last_elem
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV Mem->aux01 0
-	MOV Mem->el01 0
-	MOV Mem->aux01 0
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV AX 10000000
-	MOV PRINT AX
-	MOV Mem->el01 0
-	MOV Mem->aux01 0
-	MOV AX Mem->el01
-	MOV Mem->el02 0
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV AX 10000000
-	MOV PRINT AX
-	MOV Mem->el01 0
-	MOV Mem->aux01 0
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV Mem->el03 0
-	MOV Mem->aux01 0
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV AX 10000000
-	MOV PRINT AX
-	MOV Mem->el01 0
-	MOV Mem->aux01 0
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV AX 2220000
-	MOV PRINT AX
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV AX 33300000
-	MOV PRINT AX
-	MOV Mem->head 0
-	MOV Mem->aux01 0
-	MOV AX 44440000
-	MOV PRINT AX
+CONSTRUCT List
+	MOV Mem->last_elem %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	MOV %ax Mem->last_elem
+	MOV Mem->head %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+CONSTRUCT Element
+	MOV Mem->el01 %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Insert
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+	MOV %ax 10000000
+	MOV PRINTOUT %ax
+CONSTRUCT Element
+	MOV Mem->el01 %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	MOV %ax Mem->el01
+	MOV Mem->el02 %ax
+	CALLQ Method_Insert
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+	MOV %ax 10000000
+	MOV PRINTOUT %ax
+CONSTRUCT Element
+	MOV Mem->el01 %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Insert
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+CONSTRUCT Element
+	MOV Mem->el03 %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	MOV %ax 10000000
+	MOV PRINTOUT %ax
+CONSTRUCT Element
+	MOV Mem->el01 %ax
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Insert
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+	MOV %ax 2220000
+	MOV PRINTOUT %ax
+	CALLQ Method_Delete
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+	MOV %ax 33300000
+	MOV PRINTOUT %ax
+	CALLQ Method_Delete
+	MOV Mem->head %ax
+	CALLQ Method_Print
+	MOV Mem->aux01 %ax
+	MOV %ax 44440000
+	MOV PRINTOUT %ax
 	RETQ

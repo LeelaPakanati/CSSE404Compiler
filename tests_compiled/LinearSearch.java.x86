@@ -1,144 +1,151 @@
 MainClass_LinearSearch
 Method_main
-	MOV Mem->a 0
-	MOV PRINT AX
+	MOV Mem->a INPUT ARGS
+CONSTRUCT LS
+	MOV PRINTOUT %ax
 	RETQ
 Class_LS
 Method_Start
-	MOV Mem->aux01 0
-	MOV Mem->aux02 0
-	MOV AX 9999
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
+	CALLQ Method_Init
+	MOV Mem->aux01 %ax
+	CALLQ Method_Print
+	MOV Mem->aux02 %ax
+	MOV %ax 9999
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
 	RETQ
 Method_Print
-	MOV AX 1
-	MOV Mem->j 0
+	MOV %ax 1
+	MOV Mem->j %ax
 while_0_start
-	MOV AX Mem->size
-	MOV DX AX
-	MOV AX Mem->j
-	CMPQ AX DX
+	MOV %ax Mem->size
+	MOV %dx %ax
+	MOV %ax Mem->j
+	CMPQ %ax %dx
 	JL while_0_true
 	JMP while_0_end
 while_0_true
-	MOV AX Mem->j
-	MOV AX Mem->number[AX]
-	MOV PRINT AX
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->j
-	ADD AX DX
-	MOV Mem->j 0
+	MOV %ax Mem->j
+	MOV %ax Mem->number[%ax]
+	MOV PRINTOUT %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->j
+	ADD %ax %dx
+	MOV Mem->j %ax
 while_0_start
 while_0_end
 	RETQ
 Method_Search
-	MOV AX 1
-	MOV Mem->j 0
-	MOV Mem->ls01 0
-	MOV AX 0
-	MOV Mem->ifound 0
+	MOV %ax 1
+	MOV Mem->j %ax
+	MOV Mem->ls01 %ax
+	MOV %ax 0
+	MOV Mem->ifound %ax
 while_1_start
-	MOV AX Mem->size
-	MOV DX AX
-	MOV AX Mem->j
-	CMPQ AX DX
+	MOV %ax Mem->size
+	MOV %dx %ax
+	MOV %ax Mem->j
+	CMPQ %ax %dx
 	JL while_1_true
 	JMP while_1_end
 while_1_true
-	MOV AX Mem->j
-	MOV AX Mem->number[AX]
-	MOV Mem->aux01 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->num
-	ADD AX DX
-	MOV Mem->aux02 0
-	MOV AX Mem->num
-	MOV DX AX
-	MOV AX Mem->aux01
-	CMPQ AX DX
+	MOV %ax Mem->j
+	MOV %ax Mem->number[%ax]
+	MOV Mem->aux01 %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->num
+	ADD %ax %dx
+	MOV Mem->aux02 %ax
+	MOV %ax Mem->num
+	MOV %dx %ax
+	MOV %ax Mem->aux01
+	CMPQ %ax %dx
 	JL if_2_true
-	MOV AX Mem->aux02
-	MOV DX AX
-	MOV AX Mem->aux01
-	CMPQ AX DX
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->aux02
+	MOV %dx %ax
+	MOV %ax Mem->aux01
+	CMPQ %ax %dx
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_3_true
-	MOV Mem->ls01 0
-	MOV AX 1
-	MOV Mem->ifound 0
-	MOV AX Mem->size
-	MOV Mem->j 0
+	MOV Mem->ls01 %ax
+	MOV %ax 1
+	MOV Mem->ifound %ax
+	MOV %ax Mem->size
+	MOV Mem->j %ax
 	JMP if_3_end
 if_3_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 if_3_end
 	JMP if_2_end
 if_2_true
-	MOV AX 0
-	MOV Mem->nt 0
+	MOV %ax 0
+	MOV Mem->nt %ax
 if_2_end
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->j
-	ADD AX DX
-	MOV Mem->j 0
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->j
+	ADD %ax %dx
+	MOV Mem->j %ax
 while_1_start
 while_1_end
 	RETQ
 Method_Init
-	MOV AX Mem->sz
-	MOV Mem->size 0
-	MOV Mem->number 0
-	MOV AX 1
-	MOV Mem->j 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->size
-	ADD AX DX
-	MOV Mem->k 0
+	MOV %ax Mem->sz
+	MOV Mem->size %ax
+	MOV Mem->number %ax
+	MOV %ax 1
+	MOV Mem->j %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->size
+	ADD %ax %dx
+	MOV Mem->k %ax
 while_4_start
-	MOV AX Mem->size
-	MOV DX AX
-	MOV AX Mem->j
-	CMPQ AX DX
+	MOV %ax Mem->size
+	MOV %dx %ax
+	MOV %ax Mem->j
+	CMPQ %ax %dx
 	JL while_4_true
 	JMP while_4_end
 while_4_true
-	MOV AX Mem->j
-	MOV DX AX
-	MOV AX 2
-	MUL AX DX
-	MOV Mem->aux01 0
-	MOV AX 3
-	MOV DX AX
-	MOV AX Mem->k
-	SUB AX DX
-	MOV Mem->aux02 0
-	MOV AX Mem->j
-	MOV DX AX
-	MOV AX Mem->aux02
-	MOV DX AX
-	MOV AX Mem->aux01
-	ADD AX DX
-	MOV Mem->number[DX] 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->j
-	ADD AX DX
-	MOV Mem->j 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->k
-	SUB AX DX
-	MOV Mem->k 0
+	MOV %ax Mem->j
+	MOV %dx %ax
+	MOV %ax 2
+	MUL %ax %dx
+	MOV Mem->aux01 %ax
+	MOV %ax 3
+	MOV %dx %ax
+	MOV %ax Mem->k
+	SUB %ax %dx
+	MOV Mem->aux02 %ax
+	MOV %ax Mem->j
+	MOV %dx %ax
+	MOV %ax Mem->aux02
+	MOV %dx %ax
+	MOV %ax Mem->aux01
+	ADD %ax %dx
+	MOV Mem->number[%dx] %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->j
+	ADD %ax %dx
+	MOV Mem->j %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->k
+	SUB %ax %dx
+	MOV Mem->k %ax
 while_4_start
 while_4_end
 	RETQ

@@ -1,14 +1,14 @@
 package arch;
 
 public enum Register{
-	AX("%ax"),
-	CX("%cx"),
-	DX("%dx"),
-	BX("%bx"),
+	AX("%eax"),
+	CX("%ecx"),
+	DX("%edx"),
+	BX("%ebx"),
 	SP("%sp"),
-	bp("%bp"),
-	si("%si"),
-	di("%di"),
+	BP("%bp"),
+	SI("%si"),
+	DI("%di"),
 	PRINT("PRINTOUT"),
 	ARGS("INPUT ARGS");
 	

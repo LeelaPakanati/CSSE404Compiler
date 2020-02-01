@@ -1,22 +1,24 @@
 MainClass_Factorial
 Method_main
-	MOV Mem->a 0
-	MOV PRINT AX
+	MOV Mem->a INPUT ARGS
+CONSTRUCT Fac
+	MOV PRINTOUT %ax
 	RETQ
 Class_Fac
 Method_ComputeFac
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->num
-	CMPQ AX DX
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->num
+	CMPQ %ax %dx
 	JL if_0_true
-	MOV DX AX
-	MOV AX Mem->num
-	MUL AX DX
-	MOV Mem->num_aux 0
+	CALLQ Method_ComputeFac
+	MOV %dx %ax
+	MOV %ax Mem->num
+	MUL %ax %dx
+	MOV Mem->num_aux %ax
 	JMP if_0_end
 if_0_true
-	MOV AX 1
-	MOV Mem->num_aux 0
+	MOV %ax 1
+	MOV Mem->num_aux %ax
 if_0_end
 	RETQ

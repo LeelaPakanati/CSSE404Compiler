@@ -1,47 +1,68 @@
 MainClass_BinaryTree
 Method_main
-	MOV Mem->a 0
-	MOV PRINT AX
+	MOV Mem->a INPUT ARGS
+CONSTRUCT BT
+	MOV PRINTOUT %ax
 	RETQ
 Class_BT
 Method_Start
-	MOV Mem->root 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV AX 100000000
-	MOV PRINT AX
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV PRINT AX
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
-	MOV PRINT AX
+CONSTRUCT Tree
+	MOV Mem->root %ax
+	CALLQ Method_Init
+	MOV Mem->ntb %ax
+	CALLQ Method_Print
+	MOV Mem->ntb %ax
+	MOV %ax 100000000
+	MOV PRINTOUT %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Print
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Insert
+	MOV Mem->ntb %ax
+	CALLQ Method_Print
+	MOV Mem->ntb %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
+	CALLQ Method_Delete
+	MOV Mem->ntb %ax
+	CALLQ Method_Print
+	MOV Mem->ntb %ax
+	CALLQ Method_Search
+	MOV PRINTOUT %ax
 	RETQ
 Class_Tree
 Method_Init
-	MOV AX Mem->v_key
-	MOV Mem->key 0
-	MOV Mem->has_left 0
-	MOV Mem->has_right 0
+	MOV %ax Mem->v_key
+	MOV Mem->key %ax
+	MOV Mem->has_left %ax
+	MOV Mem->has_right %ax
 	RETQ
 Method_SetRight
-	MOV AX Mem->rn
-	MOV Mem->right 0
+	MOV %ax Mem->rn
+	MOV Mem->right %ax
 	RETQ
 Method_SetLeft
-	MOV AX Mem->ln
-	MOV Mem->left 0
+	MOV %ax Mem->ln
+	MOV Mem->left %ax
 	RETQ
 Method_GetRight
 	RETQ
@@ -50,282 +71,335 @@ Method_GetLeft
 Method_GetKey
 	RETQ
 Method_SetKey
-	MOV AX Mem->v_key
-	MOV Mem->key 0
+	MOV %ax Mem->v_key
+	MOV Mem->key %ax
 	RETQ
 Method_GetHas_Right
 	RETQ
 Method_GetHas_Left
 	RETQ
 Method_SetHas_Left
-	MOV AX Mem->val
-	MOV Mem->has_left 0
+	MOV %ax Mem->val
+	MOV Mem->has_left %ax
 	RETQ
 Method_SetHas_Right
-	MOV AX Mem->val
-	MOV Mem->has_right 0
+	MOV %ax Mem->val
+	MOV Mem->has_right %ax
 	RETQ
 Method_Compare
-	MOV Mem->ntb 0
-	MOV AX 1
-	MOV DX AX
-	MOV AX Mem->num2
-	ADD AX DX
-	MOV Mem->nti 0
-	MOV AX Mem->num2
-	MOV DX AX
-	MOV AX Mem->num1
-	CMPQ AX DX
+	MOV Mem->ntb %ax
+	MOV %ax 1
+	MOV %dx %ax
+	MOV %ax Mem->num2
+	ADD %ax %dx
+	MOV Mem->nti %ax
+	MOV %ax Mem->num2
+	MOV %dx %ax
+	MOV %ax Mem->num1
+	CMPQ %ax %dx
 	JL if_0_true
-	MOV AX Mem->nti
-	MOV DX AX
-	MOV AX Mem->num1
-	CMPQ AX DX
-	NOT AX
-	CMPQ AX 1
+	MOV %ax Mem->nti
+	MOV %dx %ax
+	MOV %ax Mem->num1
+	CMPQ %ax %dx
+	NOT %ax
+	CMPQ %ax 1
 	JMP if_1_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 	JMP if_1_end
 if_1_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 if_1_end
 	JMP if_0_end
 if_0_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 if_0_end
 	RETQ
 Method_Insert
-	MOV Mem->new_node 0
-	MOV Mem->ntb 0
-	MOV Mem->current_node 0
-	MOV Mem->cont 0
+CONSTRUCT Tree
+	MOV Mem->new_node %ax
+	CALLQ Method_Init
+	MOV Mem->ntb %ax
+	MOV Mem->current_node %ax
+	MOV Mem->cont %ax
 while_2_start
-	MOV AX Mem->cont
-	CMPQ AX 1
+	MOV %ax Mem->cont
+	CMPQ %ax 1
 	JMP while_2_true
 	JMP while_2_end
 while_2_true
-	MOV Mem->key_aux 0
-	MOV AX Mem->key_aux
-	MOV DX AX
-	MOV AX Mem->v_key
-	CMPQ AX DX
+	CALLQ Method_GetKey
+	MOV Mem->key_aux %ax
+	MOV %ax Mem->key_aux
+	MOV %dx %ax
+	MOV %ax Mem->v_key
+	CMPQ %ax %dx
 	JL if_3_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP if_4_true
-	MOV Mem->cont 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	MOV Mem->cont %ax
+	CALLQ Method_SetHas_Right
+	MOV Mem->ntb %ax
+	CALLQ Method_SetRight
+	MOV Mem->ntb %ax
 	JMP if_4_end
 if_4_true
-	MOV Mem->current_node 0
+	CALLQ Method_GetRight
+	MOV Mem->current_node %ax
 if_4_end
 	JMP if_3_end
 if_3_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP if_5_true
-	MOV Mem->cont 0
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	MOV Mem->cont %ax
+	CALLQ Method_SetHas_Left
+	MOV Mem->ntb %ax
+	CALLQ Method_SetLeft
+	MOV Mem->ntb %ax
 	JMP if_5_end
 if_5_true
-	MOV Mem->current_node 0
+	CALLQ Method_GetLeft
+	MOV Mem->current_node %ax
 if_5_end
 if_3_end
 while_2_start
 while_2_end
 	RETQ
 Method_Delete
-	MOV Mem->current_node 0
-	MOV Mem->parent_node 0
-	MOV Mem->cont 0
-	MOV Mem->found 0
-	MOV Mem->is_root 0
+	MOV Mem->current_node %ax
+	MOV Mem->parent_node %ax
+	MOV Mem->cont %ax
+	MOV Mem->found %ax
+	MOV Mem->is_root %ax
 while_6_start
-	MOV AX Mem->cont
-	CMPQ AX 1
+	MOV %ax Mem->cont
+	CMPQ %ax 1
 	JMP while_6_true
 	JMP while_6_end
 while_6_true
-	MOV Mem->key_aux 0
-	MOV AX Mem->key_aux
-	MOV DX AX
-	MOV AX Mem->v_key
-	CMPQ AX DX
+	CALLQ Method_GetKey
+	MOV Mem->key_aux %ax
+	MOV %ax Mem->key_aux
+	MOV %dx %ax
+	MOV %ax Mem->v_key
+	CMPQ %ax %dx
 	JL if_7_true
-	MOV AX Mem->v_key
-	MOV DX AX
-	MOV AX Mem->key_aux
-	CMPQ AX DX
+	MOV %ax Mem->v_key
+	MOV %dx %ax
+	MOV %ax Mem->key_aux
+	CMPQ %ax %dx
 	JL if_8_true
-	MOV AX Mem->is_root
-	CMPQ AX 1
+	MOV %ax Mem->is_root
+	CMPQ %ax 1
 	JMP if_9_true
-	MOV Mem->ntb 0
+	CALLQ Method_Remove
+	MOV Mem->ntb %ax
 	JMP if_9_end
 if_9_true
-	NOT AX
-	MOV DX AX
-	NOT AX
-	CMPQ AX DX
+	CALLQ Method_GetHas_Left
+	NOT %ax
+	MOV %dx %ax
+	CALLQ Method_GetHas_Right
+	NOT %ax
+	CMPQ %ax %dx
 	JE if_10_true
-	MOV Mem->ntb 0
+	CALLQ Method_Remove
+	MOV Mem->ntb %ax
 	JMP if_10_end
 if_10_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 if_10_end
 if_9_end
-	MOV Mem->found 0
-	MOV Mem->cont 0
+	MOV Mem->found %ax
+	MOV Mem->cont %ax
 	JMP if_8_end
 if_8_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP if_11_true
-	MOV Mem->cont 0
+	MOV Mem->cont %ax
 	JMP if_11_end
 if_11_true
-	MOV AX Mem->current_node
-	MOV Mem->parent_node 0
-	MOV Mem->current_node 0
+	MOV %ax Mem->current_node
+	MOV Mem->parent_node %ax
+	CALLQ Method_GetRight
+	MOV Mem->current_node %ax
 if_11_end
 if_8_end
 	JMP if_7_end
 if_7_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP if_12_true
-	MOV Mem->cont 0
+	MOV Mem->cont %ax
 	JMP if_12_end
 if_12_true
-	MOV AX Mem->current_node
-	MOV Mem->parent_node 0
-	MOV Mem->current_node 0
+	MOV %ax Mem->current_node
+	MOV Mem->parent_node %ax
+	CALLQ Method_GetLeft
+	MOV Mem->current_node %ax
 if_12_end
 if_7_end
-	MOV Mem->is_root 0
+	MOV Mem->is_root %ax
 while_6_start
 while_6_end
 	RETQ
 Method_Remove
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP if_13_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP if_14_true
-	MOV Mem->auxkey1 0
-	MOV Mem->auxkey2 0
-	CMPQ AX 1
+	CALLQ Method_GetKey
+	MOV Mem->auxkey1 %ax
+	CALLQ Method_GetLeft
+	CALLQ Method_GetKey
+	MOV Mem->auxkey2 %ax
+	CALLQ Method_Compare
+	CMPQ %ax 1
 	JMP if_15_true
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	CALLQ Method_SetRight
+	MOV Mem->ntb %ax
+	CALLQ Method_SetHas_Right
+	MOV Mem->ntb %ax
 	JMP if_15_end
 if_15_true
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	CALLQ Method_SetLeft
+	MOV Mem->ntb %ax
+	CALLQ Method_SetHas_Left
+	MOV Mem->ntb %ax
 if_15_end
 	JMP if_14_end
 if_14_true
-	MOV Mem->ntb 0
+	CALLQ Method_RemoveRight
+	MOV Mem->ntb %ax
 if_14_end
 	JMP if_13_end
 if_13_true
-	MOV Mem->ntb 0
+	CALLQ Method_RemoveLeft
+	MOV Mem->ntb %ax
 if_13_end
 	RETQ
 Method_RemoveRight
 while_16_start
-	CMPQ AX 1
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP while_16_true
 	JMP while_16_end
 while_16_true
-	MOV Mem->ntb 0
-	MOV AX Mem->c_node
-	MOV Mem->p_node 0
-	MOV Mem->c_node 0
+	CALLQ Method_SetKey
+	MOV Mem->ntb %ax
+	MOV %ax Mem->c_node
+	MOV Mem->p_node %ax
+	CALLQ Method_GetRight
+	MOV Mem->c_node %ax
 while_16_start
 while_16_end
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	CALLQ Method_SetRight
+	MOV Mem->ntb %ax
+	CALLQ Method_SetHas_Right
+	MOV Mem->ntb %ax
 	RETQ
 Method_RemoveLeft
 while_17_start
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP while_17_true
 	JMP while_17_end
 while_17_true
-	MOV Mem->ntb 0
-	MOV AX Mem->c_node
-	MOV Mem->p_node 0
-	MOV Mem->c_node 0
+	CALLQ Method_SetKey
+	MOV Mem->ntb %ax
+	MOV %ax Mem->c_node
+	MOV Mem->p_node %ax
+	CALLQ Method_GetLeft
+	MOV Mem->c_node %ax
 while_17_start
 while_17_end
-	MOV Mem->ntb 0
-	MOV Mem->ntb 0
+	CALLQ Method_SetLeft
+	MOV Mem->ntb %ax
+	CALLQ Method_SetHas_Left
+	MOV Mem->ntb %ax
 	RETQ
 Method_Search
-	MOV Mem->current_node 0
-	MOV Mem->cont 0
-	MOV AX 0
-	MOV Mem->ifound 0
+	MOV Mem->current_node %ax
+	MOV Mem->cont %ax
+	MOV %ax 0
+	MOV Mem->ifound %ax
 while_18_start
-	MOV AX Mem->cont
-	CMPQ AX 1
+	MOV %ax Mem->cont
+	CMPQ %ax 1
 	JMP while_18_true
 	JMP while_18_end
 while_18_true
-	MOV Mem->key_aux 0
-	MOV AX Mem->key_aux
-	MOV DX AX
-	MOV AX Mem->v_key
-	CMPQ AX DX
+	CALLQ Method_GetKey
+	MOV Mem->key_aux %ax
+	MOV %ax Mem->key_aux
+	MOV %dx %ax
+	MOV %ax Mem->v_key
+	CMPQ %ax %dx
 	JL if_19_true
-	MOV AX Mem->v_key
-	MOV DX AX
-	MOV AX Mem->key_aux
-	CMPQ AX DX
+	MOV %ax Mem->v_key
+	MOV %dx %ax
+	MOV %ax Mem->key_aux
+	CMPQ %ax %dx
 	JL if_20_true
-	MOV AX 1
-	MOV Mem->ifound 0
-	MOV Mem->cont 0
+	MOV %ax 1
+	MOV Mem->ifound %ax
+	MOV Mem->cont %ax
 	JMP if_20_end
 if_20_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP if_21_true
-	MOV Mem->cont 0
+	MOV Mem->cont %ax
 	JMP if_21_end
 if_21_true
-	MOV Mem->current_node 0
+	CALLQ Method_GetRight
+	MOV Mem->current_node %ax
 if_21_end
 if_20_end
 	JMP if_19_end
 if_19_true
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP if_22_true
-	MOV Mem->cont 0
+	MOV Mem->cont %ax
 	JMP if_22_end
 if_22_true
-	MOV Mem->current_node 0
+	CALLQ Method_GetLeft
+	MOV Mem->current_node %ax
 if_22_end
 if_19_end
 while_18_start
 while_18_end
 	RETQ
 Method_Print
-	MOV Mem->current_node 0
-	MOV Mem->ntb 0
+	MOV Mem->current_node %ax
+	CALLQ Method_RecPrint
+	MOV Mem->ntb %ax
 	RETQ
 Method_RecPrint
-	CMPQ AX 1
+	CALLQ Method_GetHas_Left
+	CMPQ %ax 1
 	JMP if_23_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 	JMP if_23_end
 if_23_true
-	MOV Mem->ntb 0
+	CALLQ Method_RecPrint
+	MOV Mem->ntb %ax
 if_23_end
-	MOV PRINT AX
-	CMPQ AX 1
+	CALLQ Method_GetKey
+	MOV PRINTOUT %ax
+	CALLQ Method_GetHas_Right
+	CMPQ %ax 1
 	JMP if_24_true
-	MOV Mem->ntb 0
+	MOV Mem->ntb %ax
 	JMP if_24_end
 if_24_true
-	MOV Mem->ntb 0
+	CALLQ Method_RecPrint
+	MOV Mem->ntb %ax
 if_24_end
 	RETQ
