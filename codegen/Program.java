@@ -560,7 +560,7 @@ class WhileStmt extends Stmt {
 		
 		asm.add(trueLabel);
 		asm.addAll(this.trueStmt.CodeGen());		//true code
-		asm.add(startLabel);						//loop
+		asm.add(new JumpOp(startLabel, false));						//loop
 
 		asm.add(endLabel);
 
