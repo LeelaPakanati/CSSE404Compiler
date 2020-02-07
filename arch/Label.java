@@ -8,7 +8,15 @@ public class Label extends Instruction {
 	}
 
 	public String toX86(){
-		return this.labelName;
+		return this.labelName + ":";
+	}
+
+	public String toX86(boolean colon){
+		if(colon){
+			return this.labelName + ":";
+		} else{
+			return this.labelName;
+		}
 	}
 }
 

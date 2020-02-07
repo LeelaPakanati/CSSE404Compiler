@@ -9,28 +9,7 @@ public abstract class Instruction {
 	boolean bool;
 
 	public String toX86(){
-		return "\t" + this.op.name();
+		return "\t" + this.op.name().toLowerCase();
 	}
 }
 
-enum Operation {
-	ADD,
-	SUB,
-	MUL,
-	DIV,
-	NOT,
-	AND,
-	NEGQ,
-	MOV,
-	JMP,
-	JE,
-	JNE,
-	JL,
-	JLE,
-	JG,
-	JGE,
-	JNZ,
-	CALLQ,
-	RETQ,
-	CMPQ
-}

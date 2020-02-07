@@ -4,20 +4,14 @@ import arch.Operation;
 import arch.Register;
 
 public class MovOp extends Instruction {
-	VarSymbol toVar;
-	VarSymbol fromVar;
-	Register ref;
+	Register regOffset;
+	int intOffset = -1;
+	boolean toVar = false;
 
 	public MovOp(Register RS1, int imm){
 		this.op = Operation.MOV;
 		this.RS1 = RS1;
 		this.imm = imm;
-	}
-
-	public MovOp(Register RS1, VarSymbol fromVar){
-		this.op = Operation.MOV;
-		this.RS1 = RS1;
-		this.fromVar = fromVar;
 	}
 
 	public MovOp(Register RS1, Register RS2){
@@ -26,59 +20,44 @@ public class MovOp extends Instruction {
 		this.RS2 = RS2;
 	}
 
-	public MovOp(Register RS1, VarSymbol fromVar, Register ref){
+	public MovOp(Register RS1, Register RS2, int offset){
 		this.op = Operation.MOV;
 		this.RS1 = RS1;
-		this.fromVar = fromVar;
-		this.ref = ref;
-	}
-
-
-	public MovOp(VarSymbol toVar, Register RS2){
-		this.op = Operation.MOV;
 		this.RS2 = RS2;
-		this.toVar = toVar;
+		this.intOffset = offset;
+		this.toVar = false;
 	}
 
-	public MovOp(VarSymbol toVar, int imm){
+	public MovOp(Register RS1, int offset, Register RS2){
 		this.op = Operation.MOV;
-		this.toVar = toVar;
+		this.RS1 = RS1;
+		this.intOffset = offset;
+		this.toVar = true;
+		this.RS2 = RS2;
+	}
+
+	public MovOp(Register RS1, int offset, int imm){
+		this.op = Operation.MOV;
+		this.intOffset = offset;
 		this.imm = imm;
-	}
-
-	public MovOp(VarSymbol toVar, VarSymbol fromVar){
-		this.op = Operation.MOV;
-		this.toVar = toVar;
-		this.fromVar = fromVar;
-	}
-
-	public MovOp(VarSymbol toVar, Register ref, Register RS2){
-		this.op = Operation.MOV;
-		this.RS2 = RS2;
-		this.ref = ref;
-		this.toVar = toVar;
 	}
 
 	public String toX86(){
 		String toRet = super.toX86() + " ";
-		if (this.toVar != null){
-			toRet += "Mem->" + this.toVar.name;
-			if(this.ref != null){
-				toRet += "[" + this.ref.label + "]";
-			}
-			toRet += " ";
-		} else {
-			toRet += this.RS1.label + " ";
+
+		if((this.toVar) && (this.intOffset != -1)){
+			toRet += "[" + this.RS1.label + " + " + this.intOffset + "], ";
+		}else{
+			toRet += this.RS1.label + ", ";
 		}
-		
-		if (this.fromVar != null) {
-			toRet += "Mem->" + this.fromVar.name;
-			if(this.ref != null){
-				toRet += "[" + this.ref.label + "]";
+
+		if(this.RS2 != null){
+			if((!this.toVar) && (this.intOffset != -1)){
+				toRet += "[" + this.RS2.label + " + " + this.intOffset + "] ";
+			} else{
+				toRet += this.RS2.label + " ";
 			}
-		} else if (this.RS2 != null) {
-			toRet += this.RS2.label;
-		} else {
+		}else{
 			toRet += this.imm;
 		}
 

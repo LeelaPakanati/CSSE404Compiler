@@ -14,7 +14,7 @@ public class UnaryOp extends Instruction {
 			case "!":
 				return Operation.NOT;
 			case "-":
-				return Operation.NEGQ;
+				return Operation.NEG;
 			default:
 				//fail
 				System.out.println("Unary Op not recognized");

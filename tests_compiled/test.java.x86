@@ -1,9 +1,0 @@
-MainClass_Test
-Method_main
-	MOV Mem->args INPUT ARGS
-	MOV %ax 13
-	MOV %dx %ax
-	MOV %ax 2
-	ADD %ax %dx
-	MOV PRINTOUT %ax
-	RETQ

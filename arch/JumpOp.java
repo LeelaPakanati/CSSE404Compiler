@@ -7,12 +7,12 @@ public class JumpOp extends Instruction {
 	Label jumpLabel;
 
 	public JumpOp(){
-		this.op = Operation.RETQ;
+		this.op = Operation.RET;
 	}
 
 	public JumpOp(Label jumpLabel, boolean call){
 		if(call){
-			this.op = Operation.CALLQ;
+			this.op = Operation.CALL;
 		} else {
 			this.op = Operation.JMP;
 		}
@@ -50,11 +50,11 @@ public class JumpOp extends Instruction {
 	}
 
 	public String toX86(){
-		if(this.op == Operation.RETQ){
+		if(this.op == Operation.RET){
 			return super.toX86();
 		}
 
-		return super.toX86() + " " + this.jumpLabel.toX86();
+		return super.toX86() + " " + this.jumpLabel.toX86(false);
 	}
 }
 

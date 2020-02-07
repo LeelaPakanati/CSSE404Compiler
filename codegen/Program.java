@@ -27,10 +27,16 @@ public class Program extends Node {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.add(new StartOp()); 
+
 		asm.addAll(mainClass.CodeGen());
 		for(ClassDecl classDecl : this.classList){
 			asm.addAll(classDecl.CodeGen());
 		}
+
+		asm.add(new SysCallOp(SysCall.EXIT));
+		asm.add(new PrintOp());
+
 		return asm;
 	}
 }
@@ -45,7 +51,7 @@ class MainClassDecl extends Node {
 
 		ClassSymbol classSymbol = new ClassSymbol(this.classname);
 		SymbolTable.addClass(classSymbol);
-		SymbolTable.ScopeAdd(classSymbol);
+		SymbolTable.scopeAdd(classSymbol);
 
 		MethodSymbol methodSymbol = new MethodSymbol("main", "void");
 		SymbolTable.addSymbol(methodSymbol);
@@ -58,38 +64,44 @@ class MainClassDecl extends Node {
 			stmt = stmt.getChild(1);
 		}while(stmt.getChild(0) != null);
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.classname);
-		SymbolTable.ScopeAdd(classSymbol);
+		SymbolTable.scopeAdd(classSymbol);
 
 		Label mainClassLabel = new Label("MainClass_" + this.classname);
 		classSymbol.label = mainClassLabel;
 		asm.add(mainClassLabel);
 
 		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol("main");
-		SymbolTable.ScopeAdd(methodSymbol);
+		SymbolTable.scopeAdd(methodSymbol);
 
-		Label mainLabel = new Label("Method_main");
+		Label mainLabel = new Label("main");
 		methodSymbol.label = mainLabel;
 		asm.add(mainLabel);
 
-		VarSymbol argsSymbol = new VarSymbol(this.args, "String");
-		SymbolTable.addSymbol(argsSymbol);
+		asm.add(new PushOp(Register.BP));			//push frame pointer
+		asm.add(new MovOp(Register.BP, Register.SP)); //save stack pointer as new frame pointer
 
-		//TODO Fix args handling
-		asm.add(new MovOp(argsSymbol, Register.ARGS));
+		//VarSymbol argsSymbol = new VarSymbol(this.args, "String");
+		//SymbolTable.addSymbol(argsSymbol);
+		//TODO Fix input args handling
+		//asm.add(new MovOp(Register.AX, Register.ARGS));
 
 		for(Stmt stmt : this.stmtList){
 			asm.addAll(stmt.CodeGen());
 		}
 
+		SymbolTable.scopePop();
+
+		asm.add(new MovOp(Register.SP, Register.BP)); //restore sp to bp
+		asm.add(new PopOp(Register.BP)); //restore frame pointer
 		asm.add(new JumpOp()); //return
-		SymbolTable.ScopePop();
-		SymbolTable.ScopePop();
+
+		SymbolTable.scopePop();
 		return asm;
 	}
 }
@@ -110,11 +122,12 @@ class ClassDecl extends Node {
 		}
 
 		SymbolTable.addClass(classSymbol);
-		SymbolTable.ScopeAdd(classSymbol);
+		SymbolTable.scopeAdd(classSymbol);
 
 		Tree varDecl = parseTree.getChild(4);
+		int varIndex = 1;
 		while(varDecl.getChild(0) != null){
-			this.varDeclList.add(new ClassVarDecl(varDecl.getChild(0)));
+			this.varDeclList.add(new ClassVarDecl(varDecl.getChild(0), varIndex++));
 			varDecl = varDecl.getChild(1);
 		}
 
@@ -124,13 +137,13 @@ class ClassDecl extends Node {
 			methodDecl = methodDecl.getChild(1);
 		}while(methodDecl.getChild(0) != null);
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.classname);
-		SymbolTable.ScopeAdd(classSymbol);
+		SymbolTable.scopeAdd(classSymbol);
 
 		Label classLabel = new Label("Class_" + this.classname);
 		classSymbol.label = classLabel;
@@ -144,7 +157,7 @@ class ClassDecl extends Node {
 			asm.addAll(methodDecl.CodeGen());
 		}
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 		return asm;
 	}
 }
@@ -157,6 +170,16 @@ class ClassVarDecl extends Node {
 		this.varType = new Type(parseTree.getChild(0).getChild(0));
 		this.varName = parseTree.getChild(0).getChild(1).IDVal;
 		VarSymbol varSymbol = new VarSymbol(this.varName, varType.type);
+		varSymbol.varType = VarType.classVar;
+		SymbolTable.addSymbol(varSymbol);
+	}
+
+	ClassVarDecl(Tree parseTree, int varIndex){
+		this.varType = new Type(parseTree.getChild(0).getChild(0));
+		this.varName = parseTree.getChild(0).getChild(1).IDVal;
+		VarSymbol varSymbol = new VarSymbol(this.varName, varType.type);
+		varSymbol.varType = VarType.classVar;
+		varSymbol.index = varIndex;
 		SymbolTable.addSymbol(varSymbol);
 	}
 }
@@ -177,11 +200,12 @@ class MethodDecl extends Node {
 		this.methodname = parseTree.getChild(1).getChild(1).IDVal;
 
 		MethodSymbol methodSymbol = new MethodSymbol(this.methodname, this.methodtype.type);
-		Label methodLabel = new Label("Method_" + this.methodname);
+		ClassSymbol classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
+		Label methodLabel = new Label(classSymbol.name + "_Method_" + this.methodname);
 		methodSymbol.label = methodLabel;
 
 		SymbolTable.addSymbol(methodSymbol);
-		SymbolTable.ScopeAdd(methodSymbol);
+		SymbolTable.scopeAdd(methodSymbol);
 
 		Tree arg = parseTree.getChild(3);
 		if(arg.getChild(0) != null){
@@ -194,6 +218,14 @@ class MethodDecl extends Node {
 			}
 		}
 
+		int idx = -1;
+		for(Formal argL : this.argList){
+			VarSymbol varSymbol = new VarSymbol(argL.name, argL.type.type);
+			varSymbol.varType = VarType.inputArg;
+			varSymbol.index = argList.size() - (idx++) + 1;
+			SymbolTable.addSymbol(varSymbol);
+		}
+
 		Tree stmt = parseTree.getChild(6);
 		while(stmt.getChild(0) != null){
 			this.stmtList.add(Stmt.getInstance(stmt.getChild(0)));
@@ -201,27 +233,36 @@ class MethodDecl extends Node {
 		}
 		this.returnVal = Expr.getInstance(parseTree.getChild(8));
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(this.methodname);
-		SymbolTable.ScopeAdd(methodSymbol);
+		SymbolTable.scopeAdd(methodSymbol);
+
+		int oldLocalIdx = SymbolTable.localIdx; //store and reset localidx
+		SymbolTable.localIdx = 1;
 
 		asm.add(methodSymbol.label);
 
-		for(Formal arg : this.argList){
-			asm.addAll(arg.CodeGen());
-		}
-		//TODO: load values into args
+		asm.add(new PushOp(Register.BP));			//push frame pointer
+		asm.add(new MovOp(Register.BP, Register.SP)); //save stack pointer as new frame pointer
 
 		for(Stmt stmt : this.stmtList){
 			asm.addAll(stmt.CodeGen());
 		}
 
+		asm.addAll(this.returnVal.CodeGen()); //stores value to RegisterAX
+
+		asm.add(new MovOp(Register.SP, Register.BP)); //restore sp to bp
+
+		asm.add(new PopOp(Register.BP)); //restore frame pointer
+		
+		SymbolTable.localIdx = oldLocalIdx; //restore localidx
+
 		asm.add(new JumpOp()); //return
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 		return asm;
 	}
 }
@@ -235,11 +276,11 @@ class Formal extends Node {
 		this.name = parseTree.getChild(1).IDVal;
 	}
 
-	public List<Instruction> CodeGen(){
-		List<Instruction> asm = new ArrayList<Instruction>();
-		SymbolTable.addSymbol(new VarSymbol(this.name, this.type.type));
-		return asm;
-	}
+	//public List<Instruction> CodeGen(){
+	//	List<Instruction> asm = new ArrayList<Instruction>();
+	//	SymbolTable.addSymbol(new VarSymbol(this.name, this.type.type));
+	//	return asm;
+	//}
 }
 
 class Type extends Node {
@@ -323,7 +364,7 @@ class BracketStmt extends Stmt {
 
 class VarDeclAssignStmt extends Stmt {
 	String varType;
-	String varName;
+	IDExpr varID;
 	Expr value;
 
 	VarDeclAssignStmt(Tree parseTree){
@@ -334,16 +375,18 @@ class VarDeclAssignStmt extends Stmt {
 		}
 
 		Tree Assignment;
+		String varName;
 		if(parseTree.getChild(0).data.equals("ID")){
-			this.varName = parseTree.getChild(2).getChild(0).IDVal;
+			varName = parseTree.getChild(2).getChild(0).IDVal;
 			Assignment = parseTree.getChild(2).getChild(2);
 		} else if(parseTree.getChild(0).data.equals("int")){
-			this.varName = parseTree.getChild(2).IDVal;
+			varName = parseTree.getChild(2).IDVal;
 			Assignment = parseTree.getChild(4);
 		}else{
-			this.varName = parseTree.getChild(1).IDVal;
+			varName = parseTree.getChild(1).IDVal;
 			Assignment = parseTree.getChild(3);
 		}
+		varID = new IDExpr(varName);
 
 		if(Assignment.getChild(0).data.equals("=")){
 			this.value = Expr.getInstance(Assignment.getChild(1));
@@ -352,11 +395,27 @@ class VarDeclAssignStmt extends Stmt {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = new VarSymbol(this.varName, this.varType);
+
+		VarSymbol varSymbol = new VarSymbol(this.varID.id, this.varType);
+		varSymbol.index = SymbolTable.localIdx++;
+
 		SymbolTable.addSymbol(varSymbol);
+
+		asm.add(new ArithOp("-", Register.SP, 4)); //make space on stack 
+
 		if(this.value != null){
 			asm.addAll(this.value.CodeGen());
-			asm.add(new MovOp(varSymbol, Register.AX)); //load output from value into value
+
+			RegOffset address = varID.getAddress();
+
+			if(address == null){ //classVar type
+				VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
+				asm.add(new MovOp(Register.CX, Register.BP, 8));
+				asm.add(new MovOp(Register.CX, classVar.index, Register.AX));
+			} else {
+				asm.add(new MovOp(address.reg, address.offset, Register.AX));
+			}
+
 		}
 		return asm;
 	}
@@ -378,9 +437,10 @@ class IfStmt extends Stmt {
 		
 		IfSymbol ifSymbol = new IfSymbol("if_" + SymbolTable.getIfWhileID());
 		SymbolTable.addSymbol(ifSymbol);
-		SymbolTable.ScopeAdd(ifSymbol);
+		SymbolTable.scopeAdd(ifSymbol);
 
 		Label trueLabel = new Label(ifSymbol.name + "_true");
+		Label falseLabel = new Label(ifSymbol.name + "_false");
 		Label endLabel = new Label(ifSymbol.name + "_end");
 
 		asm.addAll(this.condition.CodeGen());
@@ -422,6 +482,7 @@ class IfStmt extends Stmt {
 		}
 
 		asm.add(jumpTrue);							//jump if true
+		asm.add(falseLabel);
 		asm.addAll(this.falseStmt.CodeGen());		//else do 'else' code
 		asm.add(new JumpOp(endLabel, false));		//jump to end after 'else' code
 		
@@ -430,7 +491,7 @@ class IfStmt extends Stmt {
 
 		asm.add(endLabel);
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 		return asm;
 	}
 }
@@ -449,7 +510,7 @@ class WhileStmt extends Stmt {
 		
 		WhileSymbol whileSymbol = new WhileSymbol("while_" + SymbolTable.getIfWhileID());
 		SymbolTable.addSymbol(whileSymbol);
-		SymbolTable.ScopeAdd(whileSymbol);
+		SymbolTable.scopeAdd(whileSymbol);
 
 		Label startLabel = new Label(whileSymbol.name + "_start");
 		Label trueLabel = new Label(whileSymbol.name + "_true");
@@ -503,7 +564,7 @@ class WhileStmt extends Stmt {
 
 		asm.add(endLabel);
 
-		SymbolTable.ScopePop();
+		SymbolTable.scopePop();
 		return asm;
 	}
 }
@@ -518,26 +579,36 @@ class PrintStmt extends Stmt {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		asm.addAll(this.printStmt.CodeGen());
-		asm.add(new MovOp(Register.PRINT, Register.AX));
-		return asm;
+		asm.add(new PushOp(Register.AX));
+		asm.add(new JumpOp(new Label("PrintNum"), true));
+		asm.add(new PopOp(Register.AX)); return asm;
 	}
 }
 
 
 class VarAssignStmt extends Stmt {
-	String varName;
+	IDExpr varID;
 	Expr value;
 
 	VarAssignStmt(Tree parseTree){
-		this.varName = parseTree.getChild(0).IDVal;
+		this.varID = new IDExpr(parseTree);
 		this.value = Expr.getInstance(parseTree.getChild(2).getChild(1));
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
 		asm.addAll(this.value.CodeGen());
-		asm.add(new MovOp(varSymbol, Register.AX));
+
+		RegOffset address = varID.getAddress();
+
+		if(address == null){ //classVar type
+			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
+			asm.add(new MovOp(Register.CX, Register.BP, 8));
+			asm.add(new MovOp(Register.CX, classVar.index, Register.AX));
+		} else {
+			asm.add(new MovOp(address.reg, address.offset, Register.AX));
+		}
+
 		return asm;
 	}
 }
@@ -555,11 +626,11 @@ class ArrVarAssignStmt extends Stmt {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
-		asm.addAll(this.arrRef.CodeGen());
-		asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX to save ref
-		asm.addAll(this.value.CodeGen());
-		asm.add(new MovOp(varSymbol, Register.DX, Register.AX)); //varSymbol[ref] = value
+		//VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
+		//asm.addAll(this.arrRef.CodeGen());
+		//asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX to save ref
+		//asm.addAll(this.value.CodeGen());
+		//asm.add(new MovOp(varSymbol, Register.DX, Register.AX)); //varSymbol[ref] = value
 		return asm;
 	}
 }
@@ -602,7 +673,7 @@ class Expr extends Node {
 					Tree newWhat = value.getChild(1);
 					if(newWhat.getChild(0).data.equals("ID")){
 						if(newWhat.getChild(1).data.equals("(")){
-							if(newWhat.getChild(2).getChild(0) != null){
+							if(newWhat.getChild(3).getChild(0) != null){
 								return new ClassMethodCallExpr(value);
 							} else{
 								return new ClassConstructorExpr(value);
@@ -699,11 +770,30 @@ class OpExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 
+		//TODO Fix mul and div handling
 		asm.addAll(this.rightExpr.CodeGen());
-		asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX
-
+		asm.add(new PushOp(Register.AX));
 		asm.addAll(this.leftExpr.CodeGen());
-		asm.add(new ArithOp(this.operation, Register.AX, Register.DX)); // op leftExpr rightExpr
+
+		if(this.operation.equals("*")){
+			asm.add(new PopOp(Register.BX));
+			asm.add(new ArithOp(this.operation, Register.BX)); // ax <- leftexpr; op rightexpr
+
+		} else if(this.operation.equals("/")){
+			asm.add(new PopOp(Register.BX));
+
+			asm.add(new PushOp(Register.DX));	// Div uses 
+			asm.add(new MovOp(Register.DX, 0));
+
+			asm.add(new ArithOp(this.operation, Register.BX)); // ax <- leftexpr; op rightexpr
+
+			asm.add(new PopOp(Register.DX));
+
+		} else {
+			asm.add(new PopOp(Register.DX));
+			asm.add(new ArithOp(this.operation, Register.AX, Register.DX)); // op leftExpr rightExpr
+		}
+
 		return asm;
 	}
 }
@@ -737,8 +827,8 @@ class ArrExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName);
-		asm.addAll(this.arrRef.CodeGen());
-		asm.add(new MovOp(Register.AX, varSymbol, Register.AX));
+		//asm.addAll(this.arrRef.CodeGen());
+		//asm.add(new MovOp(Register.AX, varSymbol, Register.AX));
 		return asm;
 	}
 }
@@ -760,25 +850,28 @@ class ClassMethodCallExpr extends Expr {
 		Tree firstChild = parseTree.getChild(0);
 		Tree dotWhat;
 
-		if(firstChild.data.equals("(")){
-			this.classID = new ParenExpr(parseTree);
-			dotWhat = parseTree.getChild(3).getChild(1);
-
-		} else if(firstChild.data.equals("ID")){
-			this.classID = new IDExpr(parseTree);
-			dotWhat = parseTree.getChild(1).getChild(1);
-
-		} else if(firstChild.data.equals("this")){
-			this.classID = new ThisExpr(parseTree);
-			dotWhat = parseTree.getChild(1).getChild(1);
-
-		} else if(firstChild.data.equals("new")){
-			this.classID = new ClassConstructorExpr(parseTree);
-			dotWhat = parseTree.getChild(1).getChild(2).getChild(4);
-
-		} else{
-			//fail
-			return;
+		switch(firstChild.data){
+			case "(":
+				this.classID = new ParenExpr(parseTree);
+				dotWhat = parseTree.getChild(3).getChild(1);
+				break;
+			case "ID":
+				this.classID = new IDExpr(parseTree);
+				dotWhat = parseTree.getChild(1).getChild(1);
+				break;
+			case "this":
+				this.classID = new ThisExpr(parseTree);
+				dotWhat = parseTree.getChild(1).getChild(1);
+				break;
+			case "new":
+				this.classID = new ClassConstructorExpr(parseTree);
+				dotWhat = parseTree.getChild(1).getChild(3).getChild(1);
+				break;
+			default:
+				//fail
+				System.out.println("ClassMethodCallExpr not right");
+				dotWhat = new Tree();
+				break;
 		}
 
 		this.method = dotWhat.getChild(0).IDVal;
@@ -795,16 +888,16 @@ class ClassMethodCallExpr extends Expr {
 		}
 	}
 
-	MethodSymbol getMethodSymbol(){
+	ClassSymbol getMethodClass(){
 		ClassSymbol classSymbol = new ClassSymbol("NULL");
 		while(true){
 			if (this.classID instanceof IDExpr){
-				IDExpr classID = (IDExpr) this.classID;
-				if(classID.id.equals("this")){
+				IDExpr idExprClassID = (IDExpr) this.classID;
+				if(idExprClassID.id.equals("this")){
 					// this may not work if there is some weird scope train 
 					classSymbol = (ClassSymbol) SymbolTable.getScope().get(0);
 				} else{
-					VarSymbol obj = (VarSymbol) SymbolTable.getSymbol(classID.id);
+					VarSymbol obj = (VarSymbol) SymbolTable.getSymbol(idExprClassID.id);
 					classSymbol = SymbolTable.getClassSymbol(obj.type);
 				}
 
@@ -821,7 +914,11 @@ class ClassMethodCallExpr extends Expr {
 
 			} else if(this.classID instanceof ClassMethodCallExpr){
 				ClassMethodCallExpr methodCall = (ClassMethodCallExpr) this.classID;
-				MethodSymbol internalMethod = methodCall.getMethodSymbol();
+				ClassSymbol methodClass = methodCall.getMethodClass();
+				List<Symbol> scope = new ArrayList<Symbol>();
+				scope.add(methodClass);
+
+				MethodSymbol internalMethod = (MethodSymbol) SymbolTable.getSymbol(scope, methodCall.method);
 				classSymbol = SymbolTable.getClassSymbol(internalMethod.retType);
 
 			} else{
@@ -831,22 +928,37 @@ class ClassMethodCallExpr extends Expr {
 			break;
 		}
 
-		List<Symbol> classScope = new ArrayList<Symbol>();
-		classScope.add(classSymbol);
-		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(classScope, this.method);
-		return methodSymbol;
+		return classSymbol;
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 
-		if((this.classID instanceof ClassMethodCallExpr) || (this.classID instanceof ParenExpr)){
-			asm.addAll(this.classID.CodeGen());
+
+		List<Symbol> oldScope = new ArrayList<Symbol>(SymbolTable.getScope());
+		List<Symbol> newScope = new ArrayList<Symbol>();
+
+		ClassSymbol classSymbol = this.getMethodClass();
+		newScope.add(classSymbol);
+
+		MethodSymbol methodSymbol = (MethodSymbol) SymbolTable.getSymbol(newScope, this.method);
+		newScope.add(methodSymbol);
+
+		for(Expr arg : this.argList){
+			asm.addAll(arg.CodeGen());
+			asm.add(new PushOp(Register.AX));
 		}
 
-		MethodSymbol methodSymbol = this.getMethodSymbol();
+		asm.addAll(this.classID.CodeGen());
+		asm.add(new PushOp(Register.AX)); //push class pointer onto stack
+		
+		SymbolTable.setScope(newScope); //change scope
 
 		asm.add(new JumpOp(methodSymbol.label, true));		
+
+		SymbolTable.setScope(oldScope); //restore scope
+
+		asm.add(new ArithOp("+", Register.SP, (this.argList.size()+1)*4)); //pop args and class off stack
 		return asm;
 	}
 }
@@ -861,7 +973,20 @@ class ClassConstructorExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		//TODO: Memory allocate for object
-		asm.add(new Label("CONSTRUCT " + this.className));
+		//asm.add(new Label("CONSTRUCT_" + this.className));
+		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.className);
+
+		int ClassVarCnt = 0;
+		for(Symbol symbol : classSymbol.symbols.values()){
+			if(symbol instanceof VarSymbol){
+				ClassVarCnt++;
+			}
+		}
+		//TODO: Test malloc
+		asm.add(new MovOp(Register.AX, 4*ClassVarCnt));
+		asm.add(new PushOp(Register.AX));
+		asm.add(new JumpOp(new Label("malloc"), true));
+		asm.add(new ArithOp("+", Register.SP, 4));
 		return asm;
 	}
 }
@@ -889,14 +1014,42 @@ class ParenExpr extends Expr {
 class IDExpr extends Expr {
 	String id;
 
+	IDExpr(String id){
+		this.id = id;
+	}
+
 	IDExpr(Tree parseTree){
 		this.id = parseTree.getChild(0).IDVal;
 	}
 
+	public RegOffset getAddress(){
+		if(this.id.equals("this")){
+			//args | ClassAddr | ret ins | BP | 
+			return new RegOffset(Register.BP, 8);
+		} else{
+			VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
+			switch(varSymbol.varType){
+				case localVar:
+					return new RegOffset(Register.BP, -4*varSymbol.index);
+				case classVar:
+					return null;
+				case inputArg:
+					return new RegOffset(Register.BP, 4*varSymbol.index);
+			}
+		}
+		return new RegOffset(Register.ERROR, 0);
+	}
+
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
-		asm.add(new MovOp(Register.AX, varSymbol));
+		RegOffset address = this.getAddress();
+		if(address == null){ //classVar type
+			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.id);
+			asm.add(new MovOp(Register.AX, Register.BP, 8));
+			asm.add(new MovOp(Register.AX, Register.AX, classVar.index));
+		} else {
+			asm.add(new MovOp(Register.AX, address.reg, address.offset));
+		}
 		return asm;
 	}
 }
@@ -925,5 +1078,15 @@ class TExpr extends Expr {
 
 	TExpr(Tree parseTree){
 		this.word = parseTree.getChild(0).data;
+	}
+}
+
+class RegOffset {
+	Register reg;
+	int offset;
+
+	public RegOffset(Register reg, int offset){
+		this.reg = reg;
+		this.offset = offset;
 	}
 }

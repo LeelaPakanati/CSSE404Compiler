@@ -10,6 +10,8 @@ public class SymbolTable{
 	public List<Symbol> scope;
 	public int IfWhileID;
 
+	public static int localIdx = 1;
+
 	private SymbolTable(){
 		this.classTable = new HashMap<String, Symbol>();
 		this.scope = new ArrayList<Symbol>();
@@ -76,11 +78,11 @@ public class SymbolTable{
 		return instance.IfWhileID++;
 	}
 
-	public static void ScopeAdd(Symbol symbol){
+	public static void scopeAdd(Symbol symbol){
 		instance.scope.add(symbol);
 	}
 
-	public static void ScopePop(){
+	public static void scopePop(){
 		instance.scope.remove(instance.scope.size()-1);
 	}
 
@@ -113,6 +115,10 @@ public class SymbolTable{
 
 	public static List<Symbol> getScope(){
 		return instance.scope;
+	}
+
+	public static void setScope(List<Symbol> newScope){
+		instance.scope = newScope;
 	}
 
 	public static String getScopeStr(List<Symbol> scope){
