@@ -31,7 +31,7 @@ class TV {
 		System.out.println(100000000);
 		v = new MyVisitor();
 		System.out.println(50000000);
-		nti = root.accept(v);
+		nti = root.acceptMy(v);
 		System.out.println(100000000);
 		System.out.println(root.Search(24));
 		System.out.println(root.Search(12));
@@ -325,6 +325,14 @@ class Tree{
 		return 0 ;
 	}
 
+	public int acceptMy(MyVisitor v){
+		int nti ;
+
+		System.out.println(333);
+		nti = v.visit(this) ;
+		return 0 ;
+	}
+
 }
 
 
@@ -359,14 +367,14 @@ class MyVisitor extends Visitor {
 
 		if (n.GetHas_Right()){
 			r = n.GetRight() ;
-			nti = r.accept(this) ; }
+			nti = r.acceptMy(this) ; }
 		else nti = 0 ;
 
 		System.out.println(n.GetKey());
 
 		if (n.GetHas_Left()) {
 			l = n.GetLeft(); 
-			nti =l.accept(this) ; }
+			nti =l.acceptMy(this) ; }
 		else nti = 0 ;
 
 		return 0;
