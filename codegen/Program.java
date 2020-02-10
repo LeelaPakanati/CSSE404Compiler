@@ -171,6 +171,9 @@ class ClassVarDecl extends Node {
 		this.varName = parseTree.getChild(0).getChild(1).IDVal;
 		VarSymbol varSymbol = new VarSymbol(this.varName, varType.type);
 		varSymbol.varType = VarType.classVar;
+		if(this.varType.type.equals("int[]")){
+			varSymbol.isArr = true;
+		}
 		SymbolTable.addSymbol(varSymbol);
 	}
 
@@ -275,12 +278,6 @@ class Formal extends Node {
 		this.type = new Type(parseTree.getChild(0));
 		this.name = parseTree.getChild(1).IDVal;
 	}
-
-	//public List<Instruction> CodeGen(){
-	//	List<Instruction> asm = new ArrayList<Instruction>();
-	//	SymbolTable.addSymbol(new VarSymbol(this.name, this.type.type));
-	//	return asm;
-	//}
 }
 
 class Type extends Node {
@@ -398,10 +395,11 @@ class VarDeclAssignStmt extends Stmt {
 
 		VarSymbol varSymbol = new VarSymbol(this.varID.id, this.varType);
 		varSymbol.index = SymbolTable.localIdx++;
+		varSymbol.isArr = true;
 
 		SymbolTable.addSymbol(varSymbol);
 
-		asm.add(new ArithOp("-", Register.SP, 4)); //make space on stack 
+		asm.add(new ArithOp(Operation.SUB, Register.SP, 4)); //make space on stack 
 
 		if(this.value != null){
 			asm.addAll(this.value.CodeGen());
@@ -411,7 +409,7 @@ class VarDeclAssignStmt extends Stmt {
 			if(address == null){ //classVar type
 				VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
 				asm.add(new MovOp(Register.CX, Register.BP, 8));
-				asm.add(new MovOp(Register.CX, classVar.index, Register.AX));
+				asm.add(new MovOp(Register.CX, 4*classVar.index, Register.AX));
 			} else {
 				asm.add(new MovOp(address.reg, address.offset, Register.AX));
 			}
@@ -443,43 +441,10 @@ class IfStmt extends Stmt {
 		Label falseLabel = new Label(ifSymbol.name + "_false");
 		Label endLabel = new Label(ifSymbol.name + "_end");
 
-		asm.addAll(this.condition.CodeGen());
+		asm.addAll(this.condition.CodeGen());				// expression return 1 if true;
 
-		JumpOp jumpTrue = new JumpOp(trueLabel, false);
-		if(this.condition instanceof OpExpr){
-			switch(((OpExpr)this.condition).operation){
-				case "<":
-					jumpTrue = new JumpOp(Condition.LESS, trueLabel);
-					break;
-				case "<=":
-					jumpTrue = new JumpOp(Condition.LESSEQUAL, trueLabel);
-					break;
-				case ">":
-					jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
-					break;
-				case ">=":
-					jumpTrue = new JumpOp(Condition.GREATEREQUAL, trueLabel);
-					break;
-				case "==":
-					jumpTrue = new JumpOp(Condition.EQUAL, trueLabel);
-					break;
-				case "!=":
-					jumpTrue = new JumpOp(Condition.NOTEQUAL, trueLabel);
-					break;
-				case "&&":
-					jumpTrue = new JumpOp(Condition.AND, trueLabel);
-					break;
-				case "||":
-					jumpTrue = new JumpOp(Condition.OR, trueLabel);
-					break;
-				default:
-					//fail
-					System.out.println("Invalid if condition");
-					break;
-			}
-		} else{
-			asm.add(new ArithOp("==", Register.AX, 1));
-		}
+		asm.add(new ArithOp(Operation.CMP, Register.AX, 0));
+		JumpOp jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
 
 		asm.add(jumpTrue);							//jump if true
 		asm.add(falseLabel);
@@ -517,43 +482,10 @@ class WhileStmt extends Stmt {
 		Label endLabel = new Label(whileSymbol.name + "_end");
 
 		asm.add(startLabel);
-		asm.addAll(this.condition.CodeGen());
+		asm.addAll(this.condition.CodeGen());				// expression return 1 if true;
 
-		JumpOp jumpTrue = new JumpOp(trueLabel, false);
-		if(this.condition instanceof OpExpr){
-			switch(((OpExpr)this.condition).operation){
-				case "<":
-					jumpTrue = new JumpOp(Condition.LESS, trueLabel);
-					break;
-				case "<=":
-					jumpTrue = new JumpOp(Condition.LESSEQUAL, trueLabel);
-					break;
-				case ">":
-					jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
-					break;
-				case ">=":
-					jumpTrue = new JumpOp(Condition.GREATEREQUAL, trueLabel);
-					break;
-				case "==":
-					jumpTrue = new JumpOp(Condition.EQUAL, trueLabel);
-					break;
-				case "!=":
-					jumpTrue = new JumpOp(Condition.NOTEQUAL, trueLabel);
-					break;
-				case "&&":
-					jumpTrue = new JumpOp(Condition.AND, trueLabel);
-					break;
-				case "||":
-					jumpTrue = new JumpOp(Condition.OR, trueLabel);
-					break;
-				default:
-					//fail
-					System.out.println("Invalid if condition");
-					break;
-			}
-		} else{
-			asm.add(new ArithOp("==", Register.AX, 1));
-		}
+		asm.add(new ArithOp(Operation.CMP, Register.AX, 0));		
+		JumpOp jumpTrue = new JumpOp(Condition.GREATER, trueLabel);
 
 		asm.add(jumpTrue);							//jump if true
 		asm.add(new JumpOp(endLabel, false));		//jump to end if not true
@@ -604,7 +536,7 @@ class VarAssignStmt extends Stmt {
 		if(address == null){ //classVar type
 			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
 			asm.add(new MovOp(Register.CX, Register.BP, 8));
-			asm.add(new MovOp(Register.CX, classVar.index, Register.AX));
+			asm.add(new MovOp(Register.CX, 4*classVar.index, Register.AX));
 		} else {
 			asm.add(new MovOp(address.reg, address.offset, Register.AX));
 		}
@@ -614,23 +546,35 @@ class VarAssignStmt extends Stmt {
 }
 
 class ArrVarAssignStmt extends Stmt {
-	String varName;
+	IDExpr varName;
 	Expr arrRef;
 	Expr value;
 
 	ArrVarAssignStmt(Tree parseTree){
-		this.varName = parseTree.getChild(0).IDVal;
+		//this.varName = parseTree.getChild(0).IDVal;
+		this.varName = new IDExpr(parseTree);
 		this.arrRef = Expr.getInstance(parseTree.getChild(1).getChild(1).getChild(0));
 		this.value = Expr.getInstance(parseTree.getChild(2).getChild(1));
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		//VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName);
-		//asm.addAll(this.arrRef.CodeGen());
-		//asm.add(new MovOp(Register.DX, Register.AX)); //move AX -> DX to save ref
-		//asm.addAll(this.value.CodeGen());
-		//asm.add(new MovOp(varSymbol, Register.DX, Register.AX)); //varSymbol[ref] = value
+
+
+		asm.addAll(this.arrRef.CodeGen());
+		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
+
+		asm.add(new MovOp(Register.BX, 4));//mul arrref by 4
+		asm.add(new ArithOp(Operation.IMUL, Register.BX));
+
+		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
+
+		asm.addAll(this.value.CodeGen());
+		asm.add(new MovOp(Register.DX, Register.AX)); //move value to dx register
+
+		asm.addAll(this.varName.CodeGen());
+
+		asm.add(new MovOp(Register.AX, Register.CX, Register.DX, true)); //move reference to cx register [AX + CX] <- DX
 		return asm;
 	}
 }
@@ -746,7 +690,15 @@ class Expr extends Node {
 				case "Integer":
 					return new IntegerExpr(value);
 
+				case "true":
+					return new BoolExpr(value);
+
+				case "false":
+					return new BoolExpr(value);
+				
 				default:
+					System.out.println("Invalid Expr: " + valueFirstChild.data);
+					//fail
 					return new TExpr(value);
 			}
 		}
@@ -770,14 +722,13 @@ class OpExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 
-		//TODO Fix mul and div handling
 		asm.addAll(this.rightExpr.CodeGen());
 		asm.add(new PushOp(Register.AX));
 		asm.addAll(this.leftExpr.CodeGen());
 
 		if(this.operation.equals("*")){
 			asm.add(new PopOp(Register.BX));
-			asm.add(new ArithOp(this.operation, Register.BX)); // ax <- leftexpr; op rightexpr
+			asm.add(new ArithOp(Operation.IMUL, Register.BX)); // ax <- leftexpr; op rightexpr
 
 		} else if(this.operation.equals("/")){
 			asm.add(new PopOp(Register.BX));
@@ -785,13 +736,78 @@ class OpExpr extends Expr {
 			asm.add(new PushOp(Register.DX));	// Div uses 
 			asm.add(new MovOp(Register.DX, 0));
 
-			asm.add(new ArithOp(this.operation, Register.BX)); // ax <- leftexpr; op rightexpr
+			asm.add(new ArithOp(Operation.DIV, Register.BX)); // ax <- leftexpr; op rightexpr
 
 			asm.add(new PopOp(Register.DX));
 
 		} else {
 			asm.add(new PopOp(Register.DX));
-			asm.add(new ArithOp(this.operation, Register.AX, Register.DX)); // op leftExpr rightExpr
+			
+			Operation op = Operation.ADD;
+			Condition condition = Condition.EQUAL;
+			switch(this.operation){
+				case "+":
+					op = Operation.ADD;
+					break;
+				case "-":
+					op =  Operation.SUB;
+					break;
+				case "*":
+					op = Operation.IMUL;
+					break;
+				case "/":
+					op = Operation.DIV;
+					break;
+				case "<":
+					condition = Condition.LESS;
+					op = Operation.CMP;
+					break;
+				case "<=":
+					condition = Condition.LESSEQUAL;
+					op = Operation.CMP;
+					break;
+				case ">":
+					condition = Condition.GREATER;
+					op = Operation.CMP;
+					break;
+				case "=>":
+					condition = Condition.GREATEREQUAL;
+					op = Operation.CMP;
+					break;
+				case "&&":
+					condition = Condition.AND;
+					op = Operation.CMP;
+					break;
+				case "||":
+					condition = Condition.OR;
+				case "==":
+					condition = Condition.EQUAL;
+					op =  Operation.CMP;
+					break;
+				default:
+					//fail
+					System.out.println("Bi Op: " + operation + "  not recognized");
+					break;
+			}
+
+			asm.add(new ArithOp(op, Register.AX, Register.DX)); // op leftExpr rightExpr
+
+			if(op == Operation.CMP){
+				Label ift = new Label("ift_"+ ArithOp.iftlc);
+				Label ifend = new Label("ifend_"+ ArithOp.iftlc++);
+				JumpOp jmpt = new JumpOp(condition, ift);
+				JumpOp jmpend = new JumpOp(ifend, false);
+				MovOp f = new MovOp(Register.AX, 0);
+				MovOp t = new MovOp(Register.AX, 1);
+
+				List<Instruction> cmpops = new ArrayList<Instruction>();
+				asm.add(jmpt);	//jump to true
+				asm.add(f);		//set ax to 0
+				asm.add(jmpend);//jump to end
+				asm.add(ift);	//true label
+				asm.add(t);		//set ax to 1
+				asm.add(ifend); //end label
+			}
 		}
 
 		return asm;
@@ -810,34 +826,74 @@ class UnaryExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		asm.addAll(this.expr.CodeGen());
-		asm.add(new UnaryOp(this.operation, Register.AX));
+		if(this.operation.equals("!")){
+			asm.add(new UnaryOp(Operation.CMP, Register.AX));
+
+			Label ift = new Label("ift_"+ ArithOp.iftlc);
+			Label ifend = new Label("ifend_"+ ArithOp.iftlc++);
+			JumpOp jmpt = new JumpOp(Condition.EQUAL, ift);
+			JumpOp jmpend = new JumpOp(ifend, false);
+			MovOp f = new MovOp(Register.AX, 0);
+			MovOp t = new MovOp(Register.AX, 1);
+
+			List<Instruction> cmpops = new ArrayList<Instruction>();
+			asm.add(jmpt);	//jump to true
+			asm.add(f);		//set ax to 0
+			asm.add(jmpend);//jump to end
+			asm.add(ift);	//true label
+			asm.add(t);		//set ax to 1
+			asm.add(ifend); //end label
+		} else if (this.operation.equals("-")){
+			asm.add(new UnaryOp(Operation.NEG, Register.AX));
+		} else {
+			System.out.println("Invalid unary op type");
+			//fail
+		}
 		return asm;
 	}
 }
 
 class ArrExpr extends Expr {
-	String arrName;
+	IDExpr arrName;
 	Expr arrRef;
 
 	ArrExpr(Tree parseTree){
-		this.arrName = parseTree.getChild(0).IDVal;
+		//this.arrName = parseTree.getChild(0).IDVal;
+		this.arrName = new IDExpr(parseTree);
 		this.arrRef = Expr.getInstance(parseTree.getChild(1).getChild(1));
 	}
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName);
-		//asm.addAll(this.arrRef.CodeGen());
-		//asm.add(new MovOp(Register.AX, varSymbol, Register.AX));
+
+		asm.addAll(this.arrRef.CodeGen());
+		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
+
+		asm.add(new MovOp(Register.BX, 4)); //multiply arr by 4
+		asm.add(new ArithOp(Operation.IMUL, Register.BX));
+
+		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
+
+		asm.addAll(this.arrName.CodeGen());
+
+		asm.add(new MovOp(Register.AX, Register.AX, Register.CX, false)); //move reference to cx register AX <- [AX + CX]
 		return asm;
 	}
 }
 
 class LengthExpr extends Expr {
-	String arrName;
+	IDExpr arrName;
 
 	LengthExpr(Tree parseTree){
-		this.arrName = parseTree.getChild(0).IDVal;
+		//this.IDExpr = parseTree.getChild(0).IDVal;
+		this.arrName = new IDExpr(parseTree);
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.addAll(arrName.CodeGen());
+		asm.add(new MovOp(Register.AX, Register.AX, 0));
+		return asm;
 	}
 }
 
@@ -958,7 +1014,7 @@ class ClassMethodCallExpr extends Expr {
 
 		SymbolTable.setScope(oldScope); //restore scope
 
-		asm.add(new ArithOp("+", Register.SP, (this.argList.size()+1)*4)); //pop args and class off stack
+		asm.add(new ArithOp(Operation.ADD, Register.SP, (this.argList.size()+1)*4)); //pop args and class off stack
 		return asm;
 	}
 }
@@ -972,8 +1028,6 @@ class ClassConstructorExpr extends Expr {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		//TODO: Memory allocate for object
-		//asm.add(new Label("CONSTRUCT_" + this.className));
 		ClassSymbol classSymbol = SymbolTable.getClassSymbol(this.className);
 
 		int ClassVarCnt = 0;
@@ -982,11 +1036,11 @@ class ClassConstructorExpr extends Expr {
 				ClassVarCnt++;
 			}
 		}
-		//TODO: Test malloc
-		asm.add(new MovOp(Register.AX, 4*ClassVarCnt));
+		//TODO: Test wheter or not malloc was successful
+		asm.add(new MovOp(Register.AX, 4*(ClassVarCnt+2)));
 		asm.add(new PushOp(Register.AX));
 		asm.add(new JumpOp(new Label("malloc"), true));
-		asm.add(new ArithOp("+", Register.SP, 4));
+		asm.add(new ArithOp(Operation.ADD, Register.SP, 4));
 		return asm;
 	}
 }
@@ -996,6 +1050,32 @@ class IntArrConstructorExpr extends Expr {
 
 	IntArrConstructorExpr(Tree parseTree){
 		this.arrLength = Expr.getInstance(parseTree.getChild(1).getChild(2));
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+
+		asm.addAll(this.arrLength.CodeGen());
+
+		asm.add(new PushOp(Register.AX)); //push unaltered length onto stack
+		asm.add(new ArithOp(Operation.ADD, Register.AX, 1));
+
+		asm.add(new MovOp(Register.BX, 4));
+		asm.add(new ArithOp(Operation.IMUL, Register.BX));
+
+		asm.add(new PushOp(Register.AX));
+		asm.add(new JumpOp(new Label("malloc"), true));
+		asm.add(new ArithOp(Operation.ADD, Register.SP, 4));
+
+		asm.add(new PopOp(Register.CX));	//get lenth of arr into cx
+		
+		asm.add(new MovOp(Register.AX, 0, Register.CX)); //load array spot with array length [AX] <- CX
+
+		for(Instruction ins : asm){
+			System.out.println(ins.toX86());
+		}
+
+		return asm;
 	}
 }
 
@@ -1046,7 +1126,7 @@ class IDExpr extends Expr {
 		if(address == null){ //classVar type
 			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.id);
 			asm.add(new MovOp(Register.AX, Register.BP, 8));
-			asm.add(new MovOp(Register.AX, Register.AX, classVar.index));
+			asm.add(new MovOp(Register.AX, Register.AX, 4*classVar.index));
 		} else {
 			asm.add(new MovOp(Register.AX, address.reg, address.offset));
 		}
@@ -1069,7 +1149,36 @@ class IntegerExpr extends Expr {
 }
 
 class ThisExpr extends Expr {
+
 	ThisExpr(Tree parseTree){
+
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.add(new MovOp(Register.AX, Register.BP, 8));
+		return asm;
+	}
+}
+
+class BoolExpr extends Expr {
+	int bool;
+
+	BoolExpr(Tree parseTree){
+		if(parseTree.getChild(0).data.equals("true")){
+			this.bool = 1;
+		} else if (parseTree.getChild(0).data.equals("false")){
+			this.bool = 0;
+		} else{
+			System.out.println("Boolean Expression failed");
+			//fail
+		}
+	}
+
+	public List<Instruction> CodeGen(){
+		List<Instruction> asm = new ArrayList<Instruction>();
+		asm.add(new MovOp(Register.AX, bool));
+		return asm;
 	}
 }
 

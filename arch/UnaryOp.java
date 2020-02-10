@@ -4,27 +4,17 @@ import arch.Register;
 
 public class UnaryOp extends Instruction {
 
-	public UnaryOp(String operation, Register RS1){
-		this.op = this.getOp(operation);
+	public UnaryOp(Operation op, Register RS1){
 		this.RS1 = RS1;
-	}
-
-	private Operation getOp(String operation){
-		switch(operation){
-			case "!":
-				return Operation.NOT;
-			case "-":
-				return Operation.NEG;
-			default:
-				//fail
-				System.out.println("Unary Op not recognized");
-				break;
-		}
-		return null;
+		this.op = op;
 	}
 
 	public String toX86(){
-		return super.toX86() + " " + this.RS1.label;
+		String toRet = super.toX86() + " " + this.RS1.label;
+		if(this.op == Operation.CMP){
+			toRet += ", 0";
+		}
+		return toRet;
 	}
 }
 

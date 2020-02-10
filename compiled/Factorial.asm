@@ -10,7 +10,7 @@ main:
 	mov ebp, esp 
 	mov eax, 10
 	push eax
-	mov eax, 0
+	mov eax, 8
 	push eax
 	call malloc
 	add esp, 4
@@ -33,7 +33,14 @@ Fac_Method_ComputeFac:
 	mov eax, [ebp + 12] 
 	pop edx
 	cmp eax, edx
-	jl if_0_true
+	jl ift_0
+	mov eax, 0
+	jmp ifend_0
+ift_0:
+	mov eax, 1
+ifend_0:
+	cmp eax, 0
+	jg if_0_true
 if_0_false:
 	mov eax, 1
 	push eax

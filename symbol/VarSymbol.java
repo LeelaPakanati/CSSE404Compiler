@@ -6,6 +6,7 @@ public class VarSymbol extends Symbol{
 	public String type;
 	public int index;
 	public VarType varType;
+	public boolean isArr;
 	
 	public VarSymbol(String name, String type){
 		super(name);

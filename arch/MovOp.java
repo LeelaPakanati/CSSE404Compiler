@@ -7,6 +7,7 @@ public class MovOp extends Instruction {
 	Register regOffset;
 	int intOffset = -1;
 	boolean toVar = false;
+	boolean arrTo = false;
 
 	public MovOp(Register RS1, int imm){
 		this.op = Operation.MOV;
@@ -36,6 +37,14 @@ public class MovOp extends Instruction {
 		this.RS2 = RS2;
 	}
 
+	public MovOp(Register RS1, Register regOffset, Register RS2, boolean arrTo){
+		this.op = Operation.MOV;
+		this.RS1 = RS1;
+		this.RS2 = RS2;
+		this.regOffset = regOffset;
+		this.arrTo = arrTo;
+	}
+
 	public MovOp(Register RS1, int offset, int imm){
 		this.op = Operation.MOV;
 		this.intOffset = offset;
@@ -45,24 +54,29 @@ public class MovOp extends Instruction {
 	public String toX86(){
 		String toRet = super.toX86() + " ";
 
-		if((this.toVar) && (this.intOffset != -1)){
-			toRet += "[" + this.RS1.label + " + " + this.intOffset + "], ";
-		}else{
-			toRet += this.RS1.label + ", ";
-		}
-
-		if(this.RS2 != null){
-			if((!this.toVar) && (this.intOffset != -1)){
-				toRet += "[" + this.RS2.label + " + " + this.intOffset + "] ";
-			} else{
-				toRet += this.RS2.label + " ";
+		if(this.regOffset != null){
+			if(arrTo){
+				toRet += "[" + this.RS1.label + " + " + this.regOffset.label + "], " + this.RS2.label;
+			} else {
+				toRet += this.RS1.label + ", " + "[" + this.RS2.label + " + " + this.regOffset.label + "]";
 			}
-		}else{
-			toRet += this.imm;
-		}
+		} else{
+			if((this.toVar) && (this.intOffset != -1)){
+				toRet += "[" + this.RS1.label + " + " + this.intOffset + "], ";
+			}else{
+				toRet += this.RS1.label + ", ";
+			}
 
+			if(this.RS2 != null){
+				if((!this.toVar) && (this.intOffset != -1)){
+					toRet += "[" + this.RS2.label + " + " + this.intOffset + "] ";
+				} else{
+					toRet += this.RS2.label + " ";
+				}
+			}else{
+				toRet += this.imm;
+			}
+		}
 		return toRet;
 	}
-
-
 }
