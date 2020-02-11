@@ -1,13 +1,3 @@
-	mov eax, [ebp + 12] 
-	push eax
-	add eax, 1
-	mov ebx, 4
-	imul ebx
-	push eax
-	call malloc
-	add esp, 4
-	pop ecx
-	mov [eax + 0], ecx 
 	global main
 extern printf
 extern malloc
@@ -17,11 +7,9 @@ section .text
 MainClass_BubbleSort:
 main:
 	push ebp
-	mov ebp, esp 
-	mov eax, 10
-	push eax
-	mov eax, 16
-	push eax
+	mov ebp, esp
+	push 10
+	push 16
 	call malloc
 	add esp, 4
 	push eax
@@ -29,74 +17,57 @@ main:
 	add esp, 8
 	push eax
 	call PrintNum
-	pop eax
-	mov esp, ebp 
+	add esp, 4
+	mov esp, ebp
 	pop ebp
 	ret
 Class_BBS:
 BBS_Method_Start:
 	push ebp
-	mov ebp, esp 
+	mov ebp, esp
 	sub esp, 4
-	mov eax, [ebp + 12] 
-	push eax
-	mov eax, [ebp + 8] 
-	push eax
+	push dword [ebp + 12]
+	push dword [ebp + 8]
 	call BBS_Method_Init
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + 8] 
-	push eax
+	mov [ebp + -4], eax
+	push dword [ebp + 8]
 	call BBS_Method_Print
 	add esp, 4
-	mov [ebp + -4], eax 
-	mov eax, 99999
-	push eax
+	mov [ebp + -4], eax
+	push 99999
 	call PrintNum
-	pop eax
-	mov eax, [ebp + 8] 
-	push eax
+	add esp, 4
+	push dword [ebp + 8]
 	call BBS_Method_Sort
 	add esp, 4
-	mov [ebp + -4], eax 
-	mov eax, [ebp + 8] 
-	push eax
+	mov [ebp + -4], eax
+	push dword [ebp + 8]
 	call BBS_Method_Print
 	add esp, 4
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 	mov eax, 0
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 BBS_Method_Sort:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	mov eax, 1
-	push eax
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 8] 
+	mov ebp, esp
+	sub esp, 36
+	push 1
+	mov eax, [ebp + 8]
+	mov eax, [eax + 8]
 	pop edx
 	sub eax, edx
-	mov [ebp + -8], eax 
-	mov eax, 1
-	push eax
+	mov [ebp + -8], eax
+	push 1
 	mov eax, 0
 	pop edx
 	sub eax, edx
-	mov [ebp + -12], eax 
+	mov [ebp + -12], eax
 while_0_start:
-	mov eax, [ebp + -8] 
-	push eax
-	mov eax, [ebp + -12] 
+	push dword [ebp + -8]
+	mov eax, [ebp + -12]
 	pop edx
 	cmp eax, edx
 	jl ift_0
@@ -110,15 +81,14 @@ ifend_0:
 	jmp while_0_end
 while_0_true:
 	mov eax, 1
-	mov [ebp + -32], eax 
+	mov [ebp + -32], eax
 while_1_start:
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -8] 
+	push 1
+	mov eax, [ebp + -8]
 	pop edx
 	add eax, edx
 	push eax
-	mov eax, [ebp + -32] 
+	mov eax, [ebp + -32]
 	pop edx
 	cmp eax, edx
 	jl ift_1
@@ -131,33 +101,30 @@ ifend_1:
 	jg while_1_true
 	jmp while_1_end
 while_1_true:
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -32] 
+	push 1
+	mov eax, [ebp + -32]
 	pop edx
 	sub eax, edx
-	mov [ebp + -28], eax 
-	mov eax, [ebp + -28] 
+	mov [ebp + -28], eax
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
 	mov eax, [ecx + eax]
-	mov [ebp + -16], eax 
-	mov eax, [ebp + -32] 
+	mov [ebp + -16], eax
+	mov eax, [ebp + -32]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
 	mov eax, [ecx + eax]
-	mov [ebp + -20], eax 
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -20] 
+	mov [ebp + -20], eax
+	push dword [ebp + -16]
+	mov eax, [ebp + -20]
 	pop edx
 	cmp eax, edx
 	jl ift_2
@@ -170,83 +137,78 @@ ifend_2:
 	jg if_2_true
 if_2_false:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 	jmp if_2_end
 if_2_true:
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -32] 
+	push 1
+	mov eax, [ebp + -32]
 	pop edx
 	sub eax, edx
-	mov [ebp + -24], eax 
-	mov eax, [ebp + -24] 
+	mov [ebp + -24], eax
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
 	mov eax, [ecx + eax]
-	mov [ebp + -36], eax 
-	mov eax, [ebp + -24] 
+	mov [ebp + -36], eax
+	mov eax, [ebp + -32]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + -32] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	push dword [ecx + eax]
+	mov eax, [ebp + -24]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov eax, [ecx + eax]
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
-	mov eax, [ebp + -32] 
+	push dword [ebp + -36]
+	mov eax, [ebp + -32]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + -36] 
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
 if_2_end:
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -32] 
+	push 1
+	mov eax, [ebp + -32]
 	pop edx
 	add eax, edx
-	mov [ebp + -32], eax 
+	mov [ebp + -32], eax
 	jmp while_1_start
 while_1_end:
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -8] 
+	push 1
+	mov eax, [ebp + -8]
 	pop edx
 	sub eax, edx
-	mov [ebp + -8], eax 
+	mov [ebp + -8], eax
 	jmp while_0_start
 while_0_end:
 	mov eax, 0
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 BBS_Method_Print:
 	push ebp
-	mov ebp, esp 
+	mov ebp, esp
 	sub esp, 4
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 while_3_start:
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 8] 
-	push eax
-	mov eax, [ebp + -4] 
+	mov eax, [ebp + 8]
+	push dword [eax + 8]
+	mov eax, [ebp + -4]
 	pop edx
 	cmp eax, edx
 	jl ift_3
@@ -259,37 +221,34 @@ ifend_3:
 	jg while_3_true
 	jmp while_3_end
 while_3_true:
-	mov eax, [ebp + -4] 
+	mov eax, [ebp + -4]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov eax, [ecx + eax]
-	push eax
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	push dword [ecx + eax]
 	call PrintNum
-	pop eax
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -4] 
+	add esp, 4
+	push 1
+	mov eax, [ebp + -4]
 	pop edx
 	add eax, edx
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 	jmp while_3_start
 while_3_end:
 	mov eax, 0
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 BBS_Method_Init:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 12] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 8], eax 
-	mov eax, [ebp + 12] 
-	push eax
+	mov ebp, esp
+	mov eax, [ebp + 12]
+	mov ecx, [ebp + 8]
+	mov [ecx + 8], eax
+	push dword [ebp + 12]
 	add eax, 1
 	mov ebx, 4
 	imul ebx
@@ -297,111 +256,111 @@ BBS_Method_Init:
 	call malloc
 	add esp, 4
 	pop ecx
-	mov [eax + 0], ecx 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 4], eax 
+	mov [eax + 0], ecx
+	mov ecx, [ebp + 8]
+	mov [ecx + 4], eax
+	push 20
 	mov eax, 0
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 20
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 7
 	mov eax, 1
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 7
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 12
 	mov eax, 2
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 12
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 18
 	mov eax, 3
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 18
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 2
 	mov eax, 4
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 2
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 11
 	mov eax, 5
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 11
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 6
 	mov eax, 6
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 6
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 9
 	mov eax, 7
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 9
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 19
 	mov eax, 8
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 19
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
+	push 5
 	mov eax, 9
 	add eax, 1
 	mov ebx, 4
 	imul ebx
-	mov ecx, eax 
-	mov eax, 5
-	mov edx, eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
+	mov ecx, eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	pop edx
 	mov [eax + ecx], edx
 	mov eax, 0
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 Syscall_EXIT:
@@ -410,12 +369,12 @@ Syscall_EXIT:
 
 PrintNum:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
+	mov ebp, esp
+	mov eax, [ebp + 8]
 	push eax
 	push message
 	call printf
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 message db "%d", 10, 0

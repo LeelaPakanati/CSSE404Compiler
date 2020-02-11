@@ -4,6 +4,7 @@ import parser.Parser;
 import codegen.Program;
 import symbol.*;
 import arch.*;
+import optimize.*;
 
 public class MiniJavaCompiler {
 
@@ -29,6 +30,15 @@ public class MiniJavaCompiler {
 		//System.out.println(symbols.toString());
 
 		List<Instruction> asm = syntaxTree.CodeGen();
+
+		List<Optimizer> opts = new ArrayList<Optimizer>();
+		opts.add(new AXBounce());
+		opts.add(new ComSub());
+		opts.add(new PushMem());
+
+		for(Optimizer opt : opts){
+			asm = opt.Optimize(asm);
+		}
 		
 		for(Instruction ins : asm){
 			System.out.println(ins.toX86());

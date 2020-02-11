@@ -7,23 +7,19 @@ section .text
 MainClass_Test:
 main:
 	push ebp
-	mov ebp, esp 
-	mov eax, 6
-	push eax
-	mov eax, 30
-	pop ebx
-	push edx
-	mov edx, 0
-	div ebx
-	pop edx
-	push eax
-	mov eax, 3
-	pop edx
-	add eax, edx
+	mov ebp, esp
+	sub esp, 4
+	mov eax, 5
+	mov [ebp + -4], eax
+	sub esp, 4
+	mov eax, 10
+	mov [ebp + -8], eax
+	mov eax, [ebp + -4]
+	mov [ebp + -8], eax
 	push eax
 	call PrintNum
-	pop eax
-	mov esp, ebp 
+	add esp, 4
+	mov esp, ebp
 	pop ebp
 	ret
 Syscall_EXIT:
@@ -32,12 +28,12 @@ Syscall_EXIT:
 
 PrintNum:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
+	mov ebp, esp
+	mov eax, [ebp + 8]
 	push eax
 	push message
 	call printf
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 message db "%d", 10, 0

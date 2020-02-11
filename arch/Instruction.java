@@ -2,11 +2,11 @@ package arch;
 import arch.Register;
 
 public abstract class Instruction {
-	Operation op;
-	Register RS1;
-	Register RS2;
-	int imm;
-	boolean bool;
+	public Operation op;
+	public Register RS1;
+	public Register RS2;
+	public int imm;
+	public boolean bool;
 
 	public String toX86(){
 		return "\t" + this.op.name().toLowerCase();

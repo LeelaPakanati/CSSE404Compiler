@@ -513,7 +513,8 @@ class PrintStmt extends Stmt {
 		asm.addAll(this.printStmt.CodeGen());
 		asm.add(new PushOp(Register.AX));
 		asm.add(new JumpOp(new Label("PrintNum"), true));
-		asm.add(new PopOp(Register.AX)); return asm;
+		asm.add(new ArithOp(Operation.ADD, Register.SP, 4));
+		return asm;
 	}
 }
 
@@ -560,19 +561,20 @@ class ArrVarAssignStmt extends Stmt {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 
+		asm.addAll(this.value.CodeGen());
+		asm.add(new PushOp(Register.AX));		//push value
 
 		asm.addAll(this.arrRef.CodeGen());
 		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
 
-		asm.add(new MovOp(Register.BX, 4));//mul arrref by 4
+		asm.add(new MovOp(Register.BX, 4));//mul arr ref by 4
 		asm.add(new ArithOp(Operation.IMUL, Register.BX));
 
 		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
 
-		asm.addAll(this.value.CodeGen());
-		asm.add(new MovOp(Register.DX, Register.AX)); //move value to dx register
+		asm.addAll(this.varName.CodeGen());		//varname returns in AX
 
-		asm.addAll(this.varName.CodeGen());
+		asm.add(new PopOp(Register.DX));		//pop value into DX
 
 		asm.add(new MovOp(Register.AX, Register.CX, Register.DX, true)); //move reference to cx register [AX + CX] <- DX
 		return asm;
@@ -869,7 +871,7 @@ class ArrExpr extends Expr {
 		asm.addAll(this.arrRef.CodeGen());
 		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
 
-		asm.add(new MovOp(Register.BX, 4)); //multiply arr by 4
+		asm.add(new MovOp(Register.BX, 4)); //multiply arrref by 4
 		asm.add(new ArithOp(Operation.IMUL, Register.BX));
 
 		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
@@ -1070,10 +1072,6 @@ class IntArrConstructorExpr extends Expr {
 		asm.add(new PopOp(Register.CX));	//get lenth of arr into cx
 		
 		asm.add(new MovOp(Register.AX, 0, Register.CX)); //load array spot with array length [AX] <- CX
-
-		for(Instruction ins : asm){
-			System.out.println(ins.toX86());
-		}
 
 		return asm;
 	}

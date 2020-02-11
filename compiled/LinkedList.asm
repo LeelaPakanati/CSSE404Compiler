@@ -7,9 +7,8 @@ section .text
 MainClass_LinkedList:
 main:
 	push ebp
-	mov ebp, esp 
-	mov eax, 8
-	push eax
+	mov ebp, esp
+	push 8
 	call malloc
 	add esp, 4
 	push eax
@@ -17,72 +16,65 @@ main:
 	add esp, 4
 	push eax
 	call PrintNum
-	pop eax
-	mov esp, ebp 
+	add esp, 4
+	mov esp, ebp
 	pop ebp
 	ret
 Class_Element:
 Element_Method_Init:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 20] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 4], eax 
-	mov eax, [ebp + 16] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 8], eax 
-	mov eax, [ebp + 12] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 12], eax 
+	mov ebp, esp
+	mov eax, [ebp + 20]
+	mov ecx, [ebp + 8]
+	mov [ecx + 4], eax
+	mov eax, [ebp + 16]
+	mov ecx, [ebp + 8]
+	mov [ecx + 8], eax
+	mov eax, [ebp + 12]
+	mov ecx, [ebp + 8]
+	mov [ecx + 12], eax
 	mov eax, 1
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 Element_Method_GetAge:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	mov esp, ebp
 	pop ebp
 	ret
 Element_Method_GetSalary:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 8] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 8]
+	mov esp, ebp
 	pop ebp
 	ret
 Element_Method_GetMarried:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
+	mov esp, ebp
 	pop ebp
 	ret
 Element_Method_Equal:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
+	mov ebp, esp
+	sub esp, 16
 	mov eax, 1
-	mov [ebp + -4], eax 
-	mov eax, [ebp + 12] 
-	push eax
+	mov [ebp + -4], eax
+	push dword [ebp + 12]
 	call Element_Method_GetAge
 	add esp, 4
-	mov [ebp + -8], eax 
-	mov eax, [ebp + -8] 
+	mov [ebp + -8], eax
 	push eax
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	push eax
-	mov eax, [ebp + 8] 
-	push eax
+	mov eax, [ebp + 8]
+	push dword [eax + 4]
+	push dword [ebp + 8]
 	call Element_Method_Compare
 	add esp, 12
 	cmp eax, 0
@@ -95,18 +87,14 @@ ifend_0:
 	cmp eax, 0
 	jg if_0_true
 if_0_false:
-	mov eax, [ebp + 12] 
-	push eax
+	push dword [ebp + 12]
 	call Element_Method_GetSalary
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -12] 
+	mov [ebp + -12], eax
 	push eax
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 8] 
-	push eax
-	mov eax, [ebp + 8] 
-	push eax
+	mov eax, [ebp + 8]
+	push dword [eax + 8]
+	push dword [ebp + 8]
 	call Element_Method_Compare
 	add esp, 12
 	cmp eax, 0
@@ -119,29 +107,27 @@ ifend_1:
 	cmp eax, 0
 	jg if_1_true
 if_1_false:
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
 	cmp eax, 0
 	jg if_2_true
 if_2_false:
-	mov eax, [ebp + 12] 
-	push eax
+	push dword [ebp + 12]
 	call Element_Method_GetMarried
 	add esp, 4
 	cmp eax, 0
 	jg if_3_true
 if_3_false:
 	mov eax, 0
-	mov [ebp + -16], eax 
+	mov [ebp + -16], eax
 	jmp if_3_end
 if_3_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_3_end:
 	jmp if_2_end
 if_2_true:
-	mov eax, [ebp + 12] 
-	push eax
+	push dword [ebp + 12]
 	call Element_Method_GetMarried
 	add esp, 4
 	cmp eax, 0
@@ -155,43 +141,40 @@ ifend_2:
 	jg if_4_true
 if_4_false:
 	mov eax, 0
-	mov [ebp + -16], eax 
+	mov [ebp + -16], eax
 	jmp if_4_end
 if_4_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_4_end:
 if_2_end:
 	jmp if_1_end
 if_1_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_1_end:
 	jmp if_0_end
 if_0_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_0_end:
-	mov eax, [ebp + -4] 
-	mov esp, ebp 
+	mov eax, [ebp + -4]
+	mov esp, ebp
 	pop ebp
 	ret
 Element_Method_Compare:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
+	mov ebp, esp
+	sub esp, 8
 	mov eax, 0
-	mov [ebp + -4], eax 
-	mov eax, 1
-	push eax
-	mov eax, [ebp + 12] 
+	mov [ebp + -4], eax
+	push 1
+	mov eax, [ebp + 12]
 	pop edx
 	add eax, edx
-	mov [ebp + -8], eax 
-	mov eax, [ebp + 12] 
-	push eax
-	mov eax, [ebp + 16] 
+	mov [ebp + -8], eax
+	push dword [ebp + 12]
+	mov eax, [ebp + 16]
 	pop edx
 	cmp eax, edx
 	jl ift_3
@@ -203,9 +186,8 @@ ifend_3:
 	cmp eax, 0
 	jg if_5_true
 if_5_false:
-	mov eax, [ebp + -8] 
-	push eax
-	mov eax, [ebp + 16] 
+	push dword [ebp + -8]
+	mov eax, [ebp + 16]
 	pop edx
 	cmp eax, edx
 	jl ift_4
@@ -225,120 +207,104 @@ ifend_5:
 	jg if_6_true
 if_6_false:
 	mov eax, 1
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 	jmp if_6_end
 if_6_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_6_end:
 	jmp if_5_end
 if_5_true:
 	mov eax, 0
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_5_end:
-	mov eax, [ebp + -4] 
-	mov esp, ebp 
+	mov eax, [ebp + -4]
+	mov esp, ebp
 	pop ebp
 	ret
 Class_List:
 List_Method_Init:
 	push ebp
-	mov ebp, esp 
+	mov ebp, esp
 	mov eax, 1
-	mov ecx, [ebp + 8] 
-	mov [ecx + 12], eax 
+	mov ecx, [ebp + 8]
+	mov [ecx + 12], eax
 	mov eax, 1
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_InitNew:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 12] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 12], eax 
-	mov eax, [ebp + 20] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 4], eax 
-	mov eax, [ebp + 16] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 8], eax 
+	mov ebp, esp
+	mov eax, [ebp + 12]
+	mov ecx, [ebp + 8]
+	mov [ecx + 12], eax
+	mov eax, [ebp + 20]
+	mov ecx, [ebp + 8]
+	mov [ecx + 4], eax
+	mov eax, [ebp + 16]
+	mov ecx, [ebp + 8]
+	mov [ecx + 8], eax
 	mov eax, 1
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_Insert:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	mov eax, [ebp + 8] 
-	mov [ebp + -8], eax 
-	mov eax, 20
-	push eax
+	mov ebp, esp
+	sub esp, 12
+	mov eax, [ebp + 8]
+	mov [ebp + -8], eax
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, [ebp + 12] 
-	push eax
-	mov eax, [ebp + -8] 
-	push eax
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -12] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + 12]
+	push dword [ebp + -8]
+	push 0
+	push dword [ebp + -12]
 	call List_Method_InitNew
 	add esp, 16
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -12] 
-	mov esp, ebp 
+	mov [ebp + -4], eax
+	mov eax, [ebp + -12]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_SetNext:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 12] 
-	mov ecx, [ebp + 8] 
-	mov [ecx + 8], eax 
+	mov ebp, esp
+	mov eax, [ebp + 12]
+	mov ecx, [ebp + 8]
+	mov [ecx + 8], eax
 	mov eax, 1
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_Delete:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	mov eax, [ebp + 8] 
-	mov [ebp + -4], eax 
+	mov ebp, esp
+	sub esp, 36
+	mov eax, [ebp + 8]
+	mov [ebp + -4], eax
 	mov eax, 0
-	mov [ebp + -8], eax 
-	mov eax, 1
-	push eax
+	mov [ebp + -8], eax
+	push 1
 	mov eax, 0
 	pop edx
 	sub eax, edx
-	mov [ebp + -32], eax 
-	mov eax, [ebp + 8] 
-	mov [ebp + -16], eax 
-	mov eax, [ebp + 8] 
-	mov [ebp + -20], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
-	mov [ebp + -24], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov [ebp + -28], eax 
+	mov [ebp + -32], eax
+	mov eax, [ebp + 8]
+	mov [ebp + -16], eax
+	mov eax, [ebp + 8]
+	mov [ebp + -20], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
+	mov [ebp + -24], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	mov [ebp + -28], eax
 while_7_start:
-	mov eax, [ebp + -8] 
+	mov eax, [ebp + -8]
 	cmp eax, 0
 	je ift_6
 	mov eax, 0
@@ -347,7 +313,7 @@ ift_6:
 	mov eax, 1
 ifend_6:
 	push eax
-	mov eax, [ebp + -24] 
+	mov eax, [ebp + -24]
 	cmp eax, 0
 	je ift_7
 	mov eax, 0
@@ -367,24 +333,21 @@ ifend_8:
 	jg while_7_true
 	jmp while_7_end
 while_7_true:
-	mov eax, [ebp + -28] 
-	push eax
-	mov eax, [ebp + 12] 
-	push eax
+	push dword [ebp + -28]
+	push dword [ebp + 12]
 	call Element_Method_Equal
 	add esp, 8
 	cmp eax, 0
 	jg if_8_true
 if_8_false:
 	mov eax, 0
-	mov [ebp + -36], eax 
+	mov [ebp + -36], eax
 	jmp if_8_end
 if_8_true:
 	mov eax, 1
-	mov [ebp + -8], eax 
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -32] 
+	mov [ebp + -8], eax
+	push 0
+	mov eax, [ebp + -32]
 	pop edx
 	cmp eax, edx
 	jl ift_9
@@ -396,42 +359,37 @@ ifend_9:
 	cmp eax, 0
 	jg if_9_true
 if_9_false:
-	mov eax, 555
-	push eax
+	push 555
 	mov eax, 0
 	pop edx
 	sub eax, edx
 	push eax
 	call PrintNum
-	pop eax
-	mov eax, [ebp + -16] 
-	push eax
+	add esp, 4
+	push dword [ebp + -16]
 	call List_Method_GetNext
 	add esp, 4
 	push eax
-	mov eax, [ebp + -20] 
-	push eax
+	push dword [ebp + -20]
 	call List_Method_SetNext
 	add esp, 8
-	mov [ebp + -12], eax 
-	mov eax, 555
-	push eax
+	mov [ebp + -12], eax
+	push 555
 	mov eax, 0
 	pop edx
 	sub eax, edx
 	push eax
 	call PrintNum
-	pop eax
+	add esp, 4
 	jmp if_9_end
 if_9_true:
-	mov eax, [ebp + -16] 
-	push eax
+	push dword [ebp + -16]
 	call List_Method_GetNext
 	add esp, 4
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_9_end:
 if_8_end:
-	mov eax, [ebp + -8] 
+	mov eax, [ebp + -8]
 	cmp eax, 0
 	je ift_10
 	mov eax, 0
@@ -443,55 +401,48 @@ ifend_10:
 	jg if_10_true
 if_10_false:
 	mov eax, 0
-	mov [ebp + -36], eax 
+	mov [ebp + -36], eax
 	jmp if_10_end
 if_10_true:
-	mov eax, [ebp + -16] 
-	mov [ebp + -20], eax 
-	mov eax, [ebp + -16] 
-	push eax
+	mov eax, [ebp + -16]
+	mov [ebp + -20], eax
+	push dword [ebp + -16]
 	call List_Method_GetNext
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, [ebp + -16] 
+	mov [ebp + -16], eax
 	push eax
 	call List_Method_GetEnd
 	add esp, 4
-	mov [ebp + -24], eax 
-	mov eax, [ebp + -16] 
-	push eax
+	mov [ebp + -24], eax
+	push dword [ebp + -16]
 	call List_Method_GetElem
 	add esp, 4
-	mov [ebp + -28], eax 
+	mov [ebp + -28], eax
 	mov eax, 1
-	mov [ebp + -32], eax 
+	mov [ebp + -32], eax
 if_10_end:
 	jmp while_7_start
 while_7_end:
-	mov eax, [ebp + -4] 
-	mov esp, ebp 
+	mov eax, [ebp + -4]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_Search:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
+	mov ebp, esp
+	sub esp, 20
 	mov eax, 0
-	mov [ebp + -4], eax 
-	mov eax, [ebp + 8] 
-	mov [ebp + -8], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
-	mov [ebp + -16], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov [ebp + -12], eax 
+	mov [ebp + -4], eax
+	mov eax, [ebp + 8]
+	mov [ebp + -8], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
+	mov [ebp + -16], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	mov [ebp + -12], eax
 while_11_start:
-	mov eax, [ebp + -16] 
+	mov eax, [ebp + -16]
 	cmp eax, 0
 	je ift_11
 	mov eax, 0
@@ -503,83 +454,76 @@ ifend_11:
 	jg while_11_true
 	jmp while_11_end
 while_11_true:
-	mov eax, [ebp + -12] 
-	push eax
-	mov eax, [ebp + 12] 
-	push eax
+	push dword [ebp + -12]
+	push dword [ebp + 12]
 	call Element_Method_Equal
 	add esp, 8
 	cmp eax, 0
 	jg if_12_true
 if_12_false:
 	mov eax, 0
-	mov [ebp + -20], eax 
+	mov [ebp + -20], eax
 	jmp if_12_end
 if_12_true:
 	mov eax, 1
-	mov [ebp + -4], eax 
+	mov [ebp + -4], eax
 if_12_end:
-	mov eax, [ebp + -8] 
-	push eax
+	push dword [ebp + -8]
 	call List_Method_GetNext
 	add esp, 4
-	mov [ebp + -8], eax 
-	mov eax, [ebp + -8] 
+	mov [ebp + -8], eax
 	push eax
 	call List_Method_GetEnd
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, [ebp + -8] 
-	push eax
+	mov [ebp + -16], eax
+	push dword [ebp + -8]
 	call List_Method_GetElem
 	add esp, 4
-	mov [ebp + -12], eax 
+	mov [ebp + -12], eax
 	jmp while_11_start
 while_11_end:
-	mov eax, [ebp + -4] 
-	mov esp, ebp 
+	mov eax, [ebp + -4]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_GetEnd:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_GetElem:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_GetNext:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 8] 
-	mov esp, ebp 
+	mov ebp, esp
+	mov eax, [ebp + 8]
+	mov eax, [eax + 8]
+	mov esp, ebp
 	pop ebp
 	ret
 List_Method_Print:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	mov eax, [ebp + 8] 
-	mov [ebp + -4], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 12] 
-	mov [ebp + -8], eax 
-	mov eax, [ebp + 8] 
-	mov eax, [eax + 4] 
-	mov [ebp + -12], eax 
+	mov ebp, esp
+	sub esp, 12
+	mov eax, [ebp + 8]
+	mov [ebp + -4], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 12]
+	mov [ebp + -8], eax
+	mov eax, [ebp + 8]
+	mov eax, [eax + 4]
+	mov [ebp + -12], eax
 while_13_start:
-	mov eax, [ebp + -8] 
+	mov eax, [ebp + -8]
 	cmp eax, 0
 	je ift_12
 	mov eax, 0
@@ -591,264 +535,198 @@ ifend_12:
 	jg while_13_true
 	jmp while_13_end
 while_13_true:
-	mov eax, [ebp + -12] 
-	push eax
+	push dword [ebp + -12]
 	call Element_Method_GetAge
 	add esp, 4
 	push eax
 	call PrintNum
-	pop eax
-	mov eax, [ebp + -4] 
-	push eax
+	add esp, 4
+	push dword [ebp + -4]
 	call List_Method_GetNext
 	add esp, 4
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_GetEnd
 	add esp, 4
-	mov [ebp + -8], eax 
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -8], eax
+	push dword [ebp + -4]
 	call List_Method_GetElem
 	add esp, 4
-	mov [ebp + -12], eax 
+	mov [ebp + -12], eax
 	jmp while_13_start
 while_13_end:
 	mov eax, 1
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 Class_LL:
 LL_Method_Start:
 	push ebp
-	mov ebp, esp 
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	sub esp, 4
-	mov eax, 20
-	push eax
+	mov ebp, esp
+	sub esp, 24
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -8], eax 
-	mov eax, [ebp + -8] 
+	mov [ebp + -8], eax
 	push eax
 	call List_Method_Init
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -8] 
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -12], eax
+	mov eax, [ebp + -8]
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Init
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + -4]
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 20
-	push eax
+	mov [ebp + -12], eax
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, 25
-	push eax
-	mov eax, 37000
-	push eax
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -16] 
-	push eax
+	mov [ebp + -16], eax
+	push 25
+	push 37000
+	push 0
+	push dword [ebp + -16]
 	call Element_Method_Init
 	add esp, 16
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + -16]
+	push dword [ebp + -4]
 	call List_Method_Insert
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 10000000
-	push eax
+	mov [ebp + -12], eax
+	push 10000000
 	call PrintNum
-	pop eax
-	mov eax, 20
-	push eax
+	add esp, 4
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, 39
-	push eax
-	mov eax, 42000
-	push eax
-	mov eax, 1
-	push eax
-	mov eax, [ebp + -16] 
-	push eax
+	mov [ebp + -16], eax
+	push 39
+	push 42000
+	push 1
+	push dword [ebp + -16]
 	call Element_Method_Init
 	add esp, 16
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -16] 
-	mov [ebp + -20], eax 
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	mov eax, [ebp + -16]
+	mov [ebp + -20], eax
+	push dword [ebp + -16]
+	push dword [ebp + -4]
 	call List_Method_Insert
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 10000000
-	push eax
+	mov [ebp + -12], eax
+	push 10000000
 	call PrintNum
-	pop eax
-	mov eax, 20
-	push eax
+	add esp, 4
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, 22
-	push eax
-	mov eax, 34000
-	push eax
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -16] 
-	push eax
+	mov [ebp + -16], eax
+	push 22
+	push 34000
+	push 0
+	push dword [ebp + -16]
 	call Element_Method_Init
 	add esp, 16
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + -16]
+	push dword [ebp + -4]
 	call List_Method_Insert
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 20
-	push eax
+	mov [ebp + -12], eax
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -24], eax 
-	mov eax, 27
-	push eax
-	mov eax, 34000
-	push eax
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -24] 
-	push eax
+	mov [ebp + -24], eax
+	push 27
+	push 34000
+	push 0
+	push dword [ebp + -24]
 	call Element_Method_Init
 	add esp, 16
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -20] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + -20]
+	push dword [ebp + -4]
 	call List_Method_Search
 	add esp, 8
 	push eax
 	call PrintNum
-	pop eax
-	mov eax, [ebp + -24] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	add esp, 4
+	push dword [ebp + -24]
+	push dword [ebp + -4]
 	call List_Method_Search
 	add esp, 8
 	push eax
 	call PrintNum
-	pop eax
-	mov eax, 10000000
-	push eax
+	add esp, 4
+	push 10000000
 	call PrintNum
-	pop eax
-	mov eax, 20
-	push eax
+	add esp, 4
+	push 20
 	call malloc
 	add esp, 4
-	mov [ebp + -16], eax 
-	mov eax, 28
-	push eax
-	mov eax, 35000
-	push eax
-	mov eax, 0
-	push eax
-	mov eax, [ebp + -16] 
-	push eax
+	mov [ebp + -16], eax
+	push 28
+	push 35000
+	push 0
+	push dword [ebp + -16]
 	call Element_Method_Init
 	add esp, 16
-	mov [ebp + -12], eax 
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	mov [ebp + -12], eax
+	push dword [ebp + -16]
+	push dword [ebp + -4]
 	call List_Method_Insert
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 2220000
-	push eax
+	mov [ebp + -12], eax
+	push 2220000
 	call PrintNum
-	pop eax
-	mov eax, [ebp + -20] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	add esp, 4
+	push dword [ebp + -20]
+	push dword [ebp + -4]
 	call List_Method_Delete
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 33300000
-	push eax
+	mov [ebp + -12], eax
+	push 33300000
 	call PrintNum
-	pop eax
-	mov eax, [ebp + -16] 
-	push eax
-	mov eax, [ebp + -4] 
-	push eax
+	add esp, 4
+	push dword [ebp + -16]
+	push dword [ebp + -4]
 	call List_Method_Delete
 	add esp, 8
-	mov [ebp + -4], eax 
-	mov eax, [ebp + -4] 
+	mov [ebp + -4], eax
 	push eax
 	call List_Method_Print
 	add esp, 4
-	mov [ebp + -12], eax 
-	mov eax, 44440000
-	push eax
+	mov [ebp + -12], eax
+	push 44440000
 	call PrintNum
-	pop eax
+	add esp, 4
 	mov eax, 0
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 Syscall_EXIT:
@@ -857,12 +735,12 @@ Syscall_EXIT:
 
 PrintNum:
 	push ebp
-	mov ebp, esp 
-	mov eax, [ebp + 8] 
+	mov ebp, esp
+	mov eax, [ebp + 8]
 	push eax
 	push message
 	call printf
-	mov esp, ebp 
+	mov esp, ebp
 	pop ebp
 	ret
 message db "%d", 10, 0

@@ -8,8 +8,10 @@ MainClass_QuickSort:
 main:
 	push ebp
 	mov ebp, esp
-	push 10
-	push 16
+	mov eax, 10
+	push eax
+	mov eax, 16
+	push eax
 	call malloc
 	add esp, 4
 	push eax
@@ -26,31 +28,40 @@ QS_Method_Start:
 	push ebp
 	mov ebp, esp
 	sub esp, 4
-	push dword [ebp + 12]
-	push dword [ebp + 8]
+	mov eax, [ebp + 12]
+	push eax
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Init
 	add esp, 8
 	mov [ebp + -4], eax
-	push dword [ebp + 8]
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Print
 	add esp, 4
 	mov [ebp + -4], eax
-	push 9999
+	mov eax, 9999
+	push eax
 	call PrintNum
 	add esp, 4
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + 8]
 	mov eax, [eax + 8]
 	pop edx
 	sub eax, edx
 	mov [ebp + -4], eax
-	push 0
-	push dword [ebp + -4]
-	push dword [ebp + 8]
+	mov eax, 0
+	push eax
+	mov eax, [ebp + -4]
+	push eax
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Sort
 	add esp, 12
 	mov [ebp + -4], eax
-	push dword [ebp + 8]
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Print
 	add esp, 4
 	mov [ebp + -4], eax
@@ -64,7 +75,8 @@ QS_Method_Sort:
 	sub esp, 32
 	mov eax, 0
 	mov [ebp + -20], eax
-	push dword [ebp + 12]
+	mov eax, [ebp + 12]
+	push eax
 	mov eax, [ebp + 16]
 	pop edx
 	cmp eax, edx
@@ -90,7 +102,8 @@ if_0_true:
 	mov eax, [eax + 4]
 	mov eax, [ecx + eax]
 	mov [ebp + -4], eax
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + 16]
 	pop edx
 	sub eax, edx
@@ -113,7 +126,8 @@ while_2_start:
 	jg while_2_true
 	jmp while_2_end
 while_2_true:
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -8]
 	pop edx
 	add eax, edx
@@ -126,7 +140,8 @@ while_2_true:
 	mov eax, [eax + 4]
 	mov eax, [ecx + eax]
 	mov [ebp + -32], eax
-	push dword [ebp + -4]
+	mov eax, [ebp + -4]
+	push eax
 	mov eax, [ebp + -32]
 	pop edx
 	cmp eax, edx
@@ -163,7 +178,8 @@ while_4_start:
 	jg while_4_true
 	jmp while_4_end
 while_4_true:
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -12]
 	pop edx
 	sub eax, edx
@@ -221,7 +237,8 @@ while_4_end:
 	mov ecx, eax
 	mov eax, [ebp + 8]
 	mov eax, [eax + 4]
-	push dword [ecx + eax]
+	mov eax, [ecx + eax]
+	push eax
 	mov eax, [ebp + -8]
 	add eax, 1
 	mov ebx, 4
@@ -231,7 +248,8 @@ while_4_end:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push dword [ebp + -20]
+	mov eax, [ebp + -20]
+	push eax
 	mov eax, [ebp + -12]
 	add eax, 1
 	mov ebx, 4
@@ -241,7 +259,8 @@ while_4_end:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -8]
 	pop edx
 	add eax, edx
@@ -274,7 +293,8 @@ while_1_end:
 	mov ecx, eax
 	mov eax, [ebp + 8]
 	mov eax, [eax + 4]
-	push dword [ecx + eax]
+	mov eax, [ecx + eax]
+	push eax
 	mov eax, [ebp + -12]
 	add eax, 1
 	mov ebx, 4
@@ -291,7 +311,8 @@ while_1_end:
 	mov ecx, eax
 	mov eax, [ebp + 8]
 	mov eax, [eax + 4]
-	push dword [ecx + eax]
+	mov eax, [ecx + eax]
+	push eax
 	mov eax, [ebp + -8]
 	add eax, 1
 	mov ebx, 4
@@ -301,7 +322,8 @@ while_1_end:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push dword [ebp + -20]
+	mov eax, [ebp + -20]
+	push eax
 	mov eax, [ebp + 12]
 	add eax, 1
 	mov ebx, 4
@@ -311,23 +333,29 @@ while_1_end:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push dword [ebp + 16]
-	push 1
+	mov eax, [ebp + 16]
+	push eax
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -8]
 	pop edx
 	sub eax, edx
 	push eax
-	push dword [ebp + 8]
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Sort
 	add esp, 12
 	mov [ebp + -16], eax
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -8]
 	pop edx
 	add eax, edx
 	push eax
-	push dword [ebp + 12]
-	push dword [ebp + 8]
+	mov eax, [ebp + 12]
+	push eax
+	mov eax, [ebp + 8]
+	push eax
 	call QS_Method_Sort
 	add esp, 12
 	mov [ebp + -16], eax
@@ -344,7 +372,8 @@ QS_Method_Print:
 	mov [ebp + -4], eax
 while_7_start:
 	mov eax, [ebp + 8]
-	push dword [eax + 8]
+	mov eax, [eax + 8]
+	push eax
 	mov eax, [ebp + -4]
 	pop edx
 	cmp eax, edx
@@ -365,10 +394,12 @@ while_7_true:
 	mov ecx, eax
 	mov eax, [ebp + 8]
 	mov eax, [eax + 4]
-	push dword [ecx + eax]
+	mov eax, [ecx + eax]
+	push eax
 	call PrintNum
 	add esp, 4
-	push 1
+	mov eax, 1
+	push eax
 	mov eax, [ebp + -4]
 	pop edx
 	add eax, edx
@@ -385,7 +416,8 @@ QS_Method_Init:
 	mov eax, [ebp + 12]
 	mov ecx, [ebp + 8]
 	mov [ecx + 8], eax
-	push dword [ebp + 12]
+	mov eax, [ebp + 12]
+	push eax
 	add eax, 1
 	mov ebx, 4
 	imul ebx
@@ -396,7 +428,8 @@ QS_Method_Init:
 	mov [eax + 0], ecx
 	mov ecx, [ebp + 8]
 	mov [ecx + 4], eax
-	push 20
+	mov eax, 20
+	push eax
 	mov eax, 0
 	add eax, 1
 	mov ebx, 4
@@ -406,7 +439,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 7
+	mov eax, 7
+	push eax
 	mov eax, 1
 	add eax, 1
 	mov ebx, 4
@@ -416,7 +450,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 12
+	mov eax, 12
+	push eax
 	mov eax, 2
 	add eax, 1
 	mov ebx, 4
@@ -426,7 +461,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 18
+	mov eax, 18
+	push eax
 	mov eax, 3
 	add eax, 1
 	mov ebx, 4
@@ -436,7 +472,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 2
+	mov eax, 2
+	push eax
 	mov eax, 4
 	add eax, 1
 	mov ebx, 4
@@ -446,7 +483,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 11
+	mov eax, 11
+	push eax
 	mov eax, 5
 	add eax, 1
 	mov ebx, 4
@@ -456,7 +494,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 6
+	mov eax, 6
+	push eax
 	mov eax, 6
 	add eax, 1
 	mov ebx, 4
@@ -466,7 +505,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 9
+	mov eax, 9
+	push eax
 	mov eax, 7
 	add eax, 1
 	mov ebx, 4
@@ -476,7 +516,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 19
+	mov eax, 19
+	push eax
 	mov eax, 8
 	add eax, 1
 	mov ebx, 4
@@ -486,7 +527,8 @@ QS_Method_Init:
 	mov eax, [eax + 4]
 	pop edx
 	mov [eax + ecx], edx
-	push 5
+	mov eax, 5
+	push eax
 	mov eax, 9
 	add eax, 1
 	mov ebx, 4
