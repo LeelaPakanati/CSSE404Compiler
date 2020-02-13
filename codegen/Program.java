@@ -327,13 +327,13 @@ class Stmt extends Node {
 					return new VarDeclAssignStmt(parseTree);
 				} else {
 					//fail
-					System.out.println("Stmt->ID Failed");
+					System.err.println("Stmt->ID Failed");
 					return null;
 				}
 			default:
 				//fail
-				System.out.println("Stmt Switch Failed");
-				System.out.println(parseTree.toString(0));
+				System.err.println("Stmt Switch Failed");
+				System.err.println(parseTree.toString(0));
 				return null;
 		}
 	}
@@ -601,14 +601,14 @@ class Expr extends Node {
 								return new LengthExpr(value);
 							} else{
 								//fail
-								System.out.println("Expr->ID->. Failed");
+								System.err.println("Expr->ID->. Failed");
 								return null;
 							}
 						} else if(value.getChild(1).getChild(0).data.equals("[")){
 							return new ArrExpr(value);
 						} else{
 							//fail
-							System.out.println("Expr->ID Failed");
+							System.err.println("Expr->ID Failed");
 							return null;
 						}
 					} else{
@@ -626,7 +626,7 @@ class Expr extends Node {
 							}
 						} else{
 							//fail
-							System.out.println("Expr->new->ID Failed");
+							System.err.println("Expr->new->ID Failed");
 							return null;
 						}
 					} else if(newWhat.getChild(0).data.equals("int")){
@@ -634,12 +634,12 @@ class Expr extends Node {
 							return new IntArrConstructorExpr(value);
 						} else{
 							//fail
-							System.out.println("Expr->new->int Failed");
+							System.err.println("Expr->new->int Failed");
 							return null;
 						}
 					} else{
 						//fail
-						System.out.println("Expr->new Failed");
+						System.err.println("Expr->new Failed");
 						return null;
 					}
 
@@ -661,7 +661,7 @@ class Expr extends Node {
 							}
 						} else{
 							//fail
-							System.out.println("Expr->( Failed");
+							System.err.println("Expr->( Failed");
 							return null;
 						}
 					} else{
@@ -677,12 +677,12 @@ class Expr extends Node {
 								return new ClassMethodCallExpr(value);
 							} else{
 								//fail
-								System.out.println("Expr->this->. Failed");
+								System.err.println("Expr->this->. Failed");
 								return null;
 							}
 						} else{
 							//fail
-							System.out.println("Expr->this Failed");
+							System.err.println("Expr->this Failed");
 							return null;
 						}
 					} else{
@@ -699,7 +699,7 @@ class Expr extends Node {
 					return new BoolExpr(value);
 				
 				default:
-					System.out.println("Invalid Expr: " + valueFirstChild.data);
+					System.err.println("Invalid Expr: " + valueFirstChild.data);
 					//fail
 					return new TExpr(value);
 			}
@@ -788,7 +788,7 @@ class OpExpr extends Expr {
 					break;
 				default:
 					//fail
-					System.out.println("Bi Op: " + operation + "  not recognized");
+					System.err.println("Bi Op: " + operation + "  not recognized");
 					break;
 			}
 
@@ -848,7 +848,7 @@ class UnaryExpr extends Expr {
 		} else if (this.operation.equals("-")){
 			asm.add(new UnaryOp(Operation.NEG, Register.AX));
 		} else {
-			System.out.println("Invalid unary op type");
+			System.err.println("Invalid unary op type");
 			//fail
 		}
 		return asm;
@@ -871,7 +871,7 @@ class ArrExpr extends Expr {
 		asm.addAll(this.arrRef.CodeGen());
 		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
 
-		asm.add(new MovOp(Register.BX, 4)); //multiply arrref by 4
+		asm.add(new MovOp(Register.BX, 4)); //multiply arr ref by 4
 		asm.add(new ArithOp(Operation.IMUL, Register.BX));
 
 		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
@@ -927,7 +927,7 @@ class ClassMethodCallExpr extends Expr {
 				break;
 			default:
 				//fail
-				System.out.println("ClassMethodCallExpr not right");
+				System.err.println("ClassMethodCallExpr not right");
 				dotWhat = new Tree();
 				break;
 		}
@@ -981,7 +981,7 @@ class ClassMethodCallExpr extends Expr {
 
 			} else{
 				//fail
-				System.out.println("Class method call gone wrong; has type: " + this.classID.getClass());
+				System.err.println("Class method call gone wrong; has type: " + this.classID.getClass());
 			}
 			break;
 		}
@@ -1168,7 +1168,7 @@ class BoolExpr extends Expr {
 		} else if (parseTree.getChild(0).data.equals("false")){
 			this.bool = 0;
 		} else{
-			System.out.println("Boolean Expression failed");
+			System.err.println("Boolean Expression failed");
 			//fail
 		}
 	}

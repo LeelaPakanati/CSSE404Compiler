@@ -20,7 +20,7 @@ public class MiniJavaCompiler {
 
 		Parser parser = new Parser(results);
 		if(!parser.parseProgram()){
-			System.out.println("Parsing Failed");
+			System.err.println("Parsing Failed");
 			return;
 		}
 		//System.out.println(parser.parseTree.toString(0));

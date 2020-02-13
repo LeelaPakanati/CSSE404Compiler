@@ -66,7 +66,8 @@ public class SymbolTable{
 			}
 		}
 
-		System.out.println("Symbol " + symbolName + " not found in scope: " + getScopeStr(scope) + "\n");
+		System.err.println("Symbol " + symbolName + " not found in scope: " + getScopeStr(scope, false) + "\n");
+		//fail
 		return null;
 	}
 
@@ -108,7 +109,8 @@ public class SymbolTable{
 		if(toRet != null){
 			return toRet;
 		} else{
-			System.out.println("Class " + className + " not found.");
+			System.err.println("Class " + className + " not found.");
+			//fail
 			return null;
 		}
 	}
@@ -121,9 +123,12 @@ public class SymbolTable{
 		instance.scope = newScope;
 	}
 
-	public static String getScopeStr(List<Symbol> scope){
+	public static String getScopeStr(List<Symbol> scope, boolean showStmt){
 		String toRet = "";
 		for(Symbol symbol : scope){
+			if(!showStmt && ((symbol instanceof IfSymbol) || (symbol instanceof WhileSymbol))){
+				continue;
+			}
 			toRet += symbol.name + " -> ";
 		}
 		return toRet;

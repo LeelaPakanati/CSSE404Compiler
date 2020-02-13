@@ -32,7 +32,7 @@ public class Lexer {
 				currentLine = reader.readLine();
 			}
 		}catch(IOException e){
-			System.out.print("Invalid File");
+			System.err.print("Invalid File");
 			return;
 		}
 
@@ -90,7 +90,7 @@ public class Lexer {
 		if(id != null)
 			return id;
 
-		System.out.print("Invalid Program at char" + this.currIdx + "\n");
+		System.err.print("Invalid Program at char " + this.currIdx + " : '" + this.toLex.charAt(this.currIdx) + "'\n");
 		return null;
 	}
 

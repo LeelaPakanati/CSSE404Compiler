@@ -88,7 +88,7 @@ public class Parser {
 
 		while(true){
 			//System.out.println("Focus : " + focus + "\tWord : " + lexed[1]);
-			if (focus.equals("../")){
+			if (focus.equals("YEET")){
 				//System.out.println("Returning to parent: " + currNode.parent.data);
 				currNode = currNode.parent;
 				symbolStack.pop();
@@ -100,7 +100,6 @@ public class Parser {
 					String poppedString = symbolStack.pop();
 
 					Tree nextNode;
-
 					nextNode = new Tree(poppedString, currNode, true);
 					if(focus.equals("ID")) {
 						nextNode.IDVal = lexed[1];
@@ -111,8 +110,17 @@ public class Parser {
 					currNode.addChild(nextNode);
 					
 					lexed = nextWord();
-				}else{
-					System.out.println("Error at reading symbol " + focus + "; looking at word " + lexed[0] + " : " + lexed[1]);
+
+				//} else if(focus.equals(";")){		//missing semicolon; just put one in and keep chugging
+				//	System.err.println("Error at reading symbol " + lexed[0] + " : " + lexed[1] + "-- missing semicolon, Auto-inserted");
+				//	String poppedString = symbolStack.pop();
+				//	Tree nextNode;
+				//	nextNode = new Tree(poppedString, currNode, true);
+				//	currNode.addChild(nextNode);
+
+				} else {
+					//unexpected symbol -- not missing semicolon
+					System.err.println("Error at reading symbol " + lexed[0] + " : " + lexed[1] + "; Expected: " + focus);
 					return false;
 				}
 			}else{
@@ -122,6 +130,7 @@ public class Parser {
 				}else{
 					wordIndex = Arrays.asList(this.terminals).indexOf(lexed[1]);
 				}
+
 				String symbolLookup = this.table.get(focus)[wordIndex];
 				if(symbolLookup != null){
 					List<String> symbols = Arrays.asList(symbolLookup.split(" "));
@@ -132,15 +141,15 @@ public class Parser {
 					currNode = nextNode;
 					
 					Collections.reverse(symbols);
-					symbolStack.push("../");
+					symbolStack.push("YEET");
 					if(!symbols.get(0).equals("''")){
 						for(String symbol : symbols){
 							symbolStack.push(symbol);
 						}
 					}
 
-				}else{
-					System.out.println("Error following " + focus);
+				} else{
+					System.err.println("Error following " + focus);
 					return false;
 				}
 			}
