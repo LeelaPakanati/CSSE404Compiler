@@ -1,6 +1,7 @@
 package arch;
-import arch.Register;
+import arch.*;
 import symbol.*;
+import java.util.*;
 
 public abstract class Instruction {
 	public Operation op;
@@ -13,9 +14,8 @@ public abstract class Instruction {
 
 	public Register regArrRef;
 	public int intArrRef;
-	public boolean arrRefaByReg;
+	public boolean arrRefByReg;
 	public VarSymbol varSymbol;
-
 
 	public String toX86(){
 		return "\t" + this.op.name().toLowerCase();
@@ -46,25 +46,32 @@ public abstract class Instruction {
 	public String loadArrRef(){
 		String toRet = "";
 		boolean saveReg = (this.fromType == ArgType.REG);
+		List<Instruction> insts = new ArrayList<Instruction>();
 		
-		PushOp push = new PushOp(RS2);									// should just be AX 
+		if(saveReg){
+			insts.add(new PushOp(RS2));									// should just be AX 
+		}
 
-		ArithOp add1 = new ArithOp(Operation.ADD, this.regArrRef, 1); 	// the first item is the length so add 1 to ref value
-		MovOp mov4  = new MovOp(Register.DX, 4);						// load 4 
-		ArithOp mul4  = new ArithOp(Operation.IMUL, Register.DX);  		// mul arr ref by 4
-		MovOp movCX = new MovOp(Register.CX, Register.AX);		   		// move offset to cx register
+		if(this.arrRefByReg){
+			insts.add(new ArithOp(Operation.ADD, this.regArrRef, 1)); 	// the first item is the length so add 1 to ref value
+		} else{
+			insts.add(new MovOp(Register.CX, this.intArrRef));
+			insts.add(new ArithOp(Operation.ADD, Register.CX, 1)); 	// the first item is the length so add 1 to ref value
+		}
 
-		MovOp loadVar = new MovOp(Register.BX, this.varSymbol);	   		// load array pointer into BX
+		insts.add(new MovOp(Register.DX, 4));						// load 4 
+		insts.add(new ArithOp(Operation.IMUL, Register.DX));  		// mul arr ref by 4
+		insts.add(new MovOp(Register.CX, Register.AX));		   		// move offset to cx register
 
-		PopOp pop = new PopOp(RS2);										// should just be AX 
+		insts.add(new MovOp(Register.BX, this.varSymbol));	   		// load array pointer into BX
 
-		if(saveReg){ toRet += push.toX86() + "\n"; }
-		toRet += add1.toX86() + "\n";
-		toRet += mov4.toX86() + "\n";
-		toRet += mul4.toX86() + "\n";
-		toRet += movCX.toX86() + "\n";
-		toRet += loadVar.toX86() + "\n";
-		if(saveReg){ toRet += pop.toX86() + "\n"; }
+		if(saveReg){
+			insts.add(new PopOp(RS2));										// should just be AX 
+		}
+
+		for(Instruction inst : insts){
+			toRet += inst.toX86() + "\n";
+		}
 
 		return toRet;
 	}
@@ -97,6 +104,7 @@ public abstract class Instruction {
 				break;
 			case IMM:
 				toRet += this.imm;
+				break;
 			default:
 				System.err.println("Inst Operands failed");
 				//fail

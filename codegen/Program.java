@@ -1070,7 +1070,12 @@ class IDExpr extends Expr {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
+		VarSymbol varSymbol;
+		if(this.id.equals("this")){
+			varSymbol = new VarSymbol("this", null);
+		} else{
+			varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
+		}
 		asm.add(new MovOp(Register.AX, varSymbol));
 		return asm;
 	}

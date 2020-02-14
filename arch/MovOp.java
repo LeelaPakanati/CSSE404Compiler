@@ -8,6 +8,7 @@ public class MovOp extends Instruction {
 	//TODO Assumes standard AX accumilation format; check and add push/pops as necesary later 
 	//	   Doesn't preserve other regs
 
+	//To Registers------------------------------------------------------
 	public MovOp(Register RS1, int imm){
 		this.op = Operation.MOV;
 		this.toType = ArgType.REG;
@@ -35,6 +36,7 @@ public class MovOp extends Instruction {
 		this.varSymbol = toVar;
 	}
 
+	//To Variables----------------------------------------------------
 	public MovOp(VarSymbol fromVar, Register RS2){
 		this.op = Operation.MOV;
 		this.toType = ArgType.VAR;
@@ -53,70 +55,71 @@ public class MovOp extends Instruction {
 		this.imm = imm;
 	}
 
-	public MovOp(VarSymbol toVar, Register regArrRef, Register RS2){
+	//To Arrays----------------------------------------------------
+	public MovOp(VarSymbol toVar, Register regArrRef, Register RS2){ // Var[Reg] <= Reg
 		this.op = Operation.MOV;
 		this.toType = ArgType.ARR;
 		this.fromType = ArgType.REG;
-		this.arrRefaByReg = true;
+		this.arrRefByReg = true;
 
 		this.varSymbol = toVar;
 		this.regArrRef = regArrRef;
 		this.RS2 = RS2;
 	}
 
-	public MovOp(VarSymbol toVar, int intArrRef, Register RS2){
+	public MovOp(VarSymbol toVar, int intArrRef, Register RS2){ // Var[int] <= Reg
 		this.op = Operation.MOV;
 		this.toType = ArgType.ARR;
 		this.fromType = ArgType.REG;
-		this.arrRefaByReg = false;
+		this.arrRefByReg = false;
 
 		this.varSymbol = toVar;
 		this.intArrRef = intArrRef;
 		this.RS2 = RS2;
 	}
 
-	public MovOp(VarSymbol toVar, Register regArrRef, int imm){
+	public MovOp(VarSymbol toVar, Register regArrRef, int imm){ // Var[reg] <= int
 		this.op = Operation.MOV;
 		this.toType = ArgType.ARR;
 		this.fromType = ArgType.IMM;
-		this.arrRefaByReg = true;
+		this.arrRefByReg = true;
 
 		this.varSymbol = toVar;
 		this.regArrRef = regArrRef;
 		this.imm = imm;
 	}
 
-	public MovOp(VarSymbol toVar, int intArrRef, int imm){
+	public MovOp(VarSymbol toVar, int intArrRef, int imm){ // Var[int] <= int
 		this.op = Operation.MOV;
 		this.toType = ArgType.ARR;
 		this.fromType = ArgType.IMM;
-		this.arrRefaByReg = false;
+		this.arrRefByReg = false;
 
 		this.varSymbol = toVar;
 		this.intArrRef = intArrRef;
 		this.imm = imm;
 	}
 
-	public MovOp(Register RS1, VarSymbol fromVar, Register regArrRef){
+	public MovOp(Register RS1, VarSymbol fromVar, Register regArrRef){ // Reg <= Var[Reg]
 		this.op = Operation.MOV;
 		this.toType = ArgType.REG;
 		this.fromType = ArgType.ARR;
-		this.arrRefaByReg = true;
+		this.arrRefByReg = true;
 
 		this.RS1 = RS1;
 		this.varSymbol = fromVar;
 		this.regArrRef = regArrRef;
 	}
 
-	public MovOp(Register RS1, VarSymbol fromVar, int intArrRef){
+	public MovOp(Register RS1, VarSymbol fromVar, int intArrRef){ // Reg <= Var[int]
 		this.op = Operation.MOV;
 		this.toType = ArgType.REG;
 		this.fromType = ArgType.ARR;
-		this.arrRefaByReg = false;
+		this.arrRefByReg = false;
 
 		this.RS1 = RS1;
 		this.intArrRef = intArrRef;
-		this.regArrRef = regArrRef;
+		this.varSymbol = fromVar;
 	}
 
 	//stupid case
@@ -132,7 +135,7 @@ public class MovOp extends Instruction {
 
 		if (this.fromType == null){ //weird case; i hate it but ya know
 			toRet += super.toX86() + " [" + this.RS1.label + " + " + this.intArrRef + "], " + this.RS2.label;
-
+			return toRet;
 		}
 		
 		if ((this.fromType == ArgType.VAR) || (this.toType == ArgType.VAR)){
