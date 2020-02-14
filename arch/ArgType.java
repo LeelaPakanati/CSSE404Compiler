@@ -1,6 +1,6 @@
 package arch;
 
-public enum MovArgType{
+public enum ArgType{
 	IMM,	//int
 	REG,	//reg
 	VAR,	//reg + int

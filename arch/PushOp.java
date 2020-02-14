@@ -2,68 +2,77 @@ package arch;
 import arch.Operation;
 import arch.Register;
 import arch.Condition;
+import symbol.*;
 
 public class PushOp extends Instruction {
 	Label label;
 	Register sourceRegisterOffset;
-	MovArgType sourceType;
 
-	public PushOp(Register RS1){
+	public PushOp(Register RS2){
 		this.op = Operation.PUSH;
-		this.RS1 = RS1;
-		this.sourceType = MovArgType.REG;
+		this.RS2 = RS2;
+		this.fromType = ArgType.REG;
 	}
 
-	public PushOp(Register RS1, int offset){
+	public PushOp(Register RS2, int offset){
 		this.op = Operation.PUSH;
-		this.RS1 = RS1;
+		this.RS2 = RS2;
 		this.imm = offset;
-		this.sourceType = MovArgType.VAR;
+		this.fromType = ArgType.VAR;
 	}
 
-	public PushOp(Register RS1, Register registerOffset){
+	public PushOp(VarSymbol varSymbol){
 		this.op = Operation.PUSH;
-		this.RS1 = RS1;
-		this.sourceRegisterOffset = registerOffset;
-		this.sourceType = MovArgType.ARR;
+		this.varSymbol = varSymbol;
+		this.fromType = ArgType.VAR;
 	}
+
+	//public PushOp(Register RS2, Register registerOffset){
+	//	this.op = Operation.PUSH;
+	//	this.RS2 = RS2;
+	//	this.sourceRegisterOffset = registerOffset;
+	//	this.fromType = ArgType.ARR;
+	//}
 
 	public PushOp(int imm){
 		this.op = Operation.PUSH;
 		this.imm = imm;
-		this.sourceType = MovArgType.IMM;
+		this.fromType = ArgType.IMM;
 	}
 
 	public PushOp(Label label){
 		this.op = Operation.PUSH;
 		this.label = label;
-		this.sourceType = null;
+		this.fromType = null;
 	}
 
 	public String toX86(){
-		if(this.sourceType == null){
+		if(this.fromType == null){
 			return super.toX86() + " " + this.label.toX86(false);
 		} else {
-			String toRet = super.toX86() + " ";
+			String toRet = " ";
+			toRet = super.toX86() + " ";
 
-			switch(this.sourceType){
-				case REG:
-					toRet += this.RS1.label;
-					break;
-				case IMM:
-					toRet += this.imm;
-					break;
-				case VAR:
-					toRet += "dword " + "[" + this.RS1.label + " + " + this.imm + "]";
-					break;
-				case ARR:
-					toRet += "dword " + "[" + this.RS1.label + " + " + this.sourceRegisterOffset.label + "]";
-					break;
-				default:
-					System.out.println("Push From var type failed");
-					//fail
-					break;
-			}
+			toRet += this.getOperand(false);
+
+			//switch(this.fromType){
+			//	case REG:
+			//		toRet += this.RS2.label;
+			//		break;
+			//	case IMM:
+			//		toRet += this.imm;
+			//		break;
+			//	case VAR:
+			//		toRet += "dword " + "[" + this.RS2.label + " + " + this.imm + "]";
+			//		break;
+			//	case ARR:
+			//		toRet += "dword " + "[" + this.RS2.label + " + " + this.sourceRegisterOffset.label + "]";
+			//		break;
+			//	default:
+			//		System.out.println("Push From var type failed");
+			//		//fail
+			//		break;
+			//}
 
 			return toRet;
 		}
