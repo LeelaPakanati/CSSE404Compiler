@@ -403,18 +403,9 @@ class VarDeclAssignStmt extends Stmt {
 
 		if(this.value != null){
 			asm.addAll(this.value.CodeGen());
-
-			RegOffset address = varID.getAddress();
-
-			if(address == null){ //classVar type
-				VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
-				asm.add(new MovOp(Register.CX, Register.BP, 8));
-				asm.add(new MovOp(Register.CX, 4*classVar.index, Register.AX));
-			} else {
-				asm.add(new MovOp(address.reg, address.offset, Register.AX));
-			}
-
+			asm.add(new MovOp(varSymbol, Register.AX));
 		}
+
 		return asm;
 	}
 }
@@ -531,17 +522,8 @@ class VarAssignStmt extends Stmt {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		asm.addAll(this.value.CodeGen());
-
-		RegOffset address = varID.getAddress();
-
-		if(address == null){ //classVar type
-			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
-			asm.add(new MovOp(Register.CX, Register.BP, 8));
-			asm.add(new MovOp(Register.CX, 4*classVar.index, Register.AX));
-		} else {
-			asm.add(new MovOp(address.reg, address.offset, Register.AX));
-		}
-
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varID.id);
+		asm.add(new MovOp(varSymbol, Register.AX));
 		return asm;
 	}
 }
@@ -560,23 +542,14 @@ class ArrVarAssignStmt extends Stmt {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName.id);
 
-		asm.addAll(this.value.CodeGen());
-		asm.add(new PushOp(Register.AX));		//push value
+		asm.addAll(this.arrRef.CodeGen());			  // get arr reference
+		asm.add(new MovOp(Register.CX, Register.AX)); // move reference to CX register
 
-		asm.addAll(this.arrRef.CodeGen());
-		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
+		asm.addAll(this.value.CodeGen());			  // get value into AX
 
-		asm.add(new MovOp(Register.BX, 4));//mul arr ref by 4
-		asm.add(new ArithOp(Operation.IMUL, Register.BX));
-
-		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
-
-		asm.addAll(this.varName.CodeGen());		//varname returns in AX
-
-		asm.add(new PopOp(Register.DX));		//pop value into DX
-
-		asm.add(new MovOp(Register.AX, Register.CX, Register.DX, true)); //move reference to cx register [AX + CX] <- DX
+		asm.add(new MovOp(varSymbol, Register.CX, Register.AX)); //move reference to cx register Var[CX] <- AX
 		return asm;
 	}
 }
@@ -867,18 +840,12 @@ class ArrExpr extends Expr {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName.id);
 
-		asm.addAll(this.arrRef.CodeGen());
-		asm.add(new ArithOp(Operation.ADD, Register.AX, 1)); //the first item is the length so add 1 to ref value
+		asm.addAll(this.arrRef.CodeGen());			  // get arr reference
+		asm.add(new MovOp(Register.CX, Register.AX)); // move reference to CX register
 
-		asm.add(new MovOp(Register.BX, 4)); //multiply arr ref by 4
-		asm.add(new ArithOp(Operation.IMUL, Register.BX));
-
-		asm.add(new MovOp(Register.CX, Register.AX)); //move reference to cx register
-
-		asm.addAll(this.arrName.CodeGen());
-
-		asm.add(new MovOp(Register.AX, Register.AX, Register.CX, false)); //move reference to cx register AX <- [AX + CX]
+		asm.add(new MovOp(Register.AX, varSymbol, Register.CX)); // AX <- Var[CX]
 		return asm;
 	}
 }
@@ -893,8 +860,9 @@ class LengthExpr extends Expr {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		asm.addAll(arrName.CodeGen());
-		asm.add(new MovOp(Register.AX, Register.AX, 0));
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName.id);
+
+		asm.add(new MovOp(Register.AX, varSymbol, 0));
 		return asm;
 	}
 }
@@ -1100,34 +1068,10 @@ class IDExpr extends Expr {
 		this.id = parseTree.getChild(0).IDVal;
 	}
 
-	public RegOffset getAddress(){
-		if(this.id.equals("this")){
-			//args | ClassAddr | ret ins | BP | 
-			return new RegOffset(Register.BP, 8);
-		} else{
-			VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
-			switch(varSymbol.varType){
-				case localVar:
-					return new RegOffset(Register.BP, -4*varSymbol.index);
-				case classVar:
-					return null;
-				case inputArg:
-					return new RegOffset(Register.BP, 4*varSymbol.index);
-			}
-		}
-		return new RegOffset(Register.ERROR, 0);
-	}
-
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		RegOffset address = this.getAddress();
-		if(address == null){ //classVar type
-			VarSymbol classVar = (VarSymbol) SymbolTable.getSymbol(this.id);
-			asm.add(new MovOp(Register.AX, Register.BP, 8));
-			asm.add(new MovOp(Register.AX, Register.AX, 4*classVar.index));
-		} else {
-			asm.add(new MovOp(Register.AX, address.reg, address.offset));
-		}
+		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.id);
+		asm.add(new MovOp(Register.AX, varSymbol));
 		return asm;
 	}
 }
@@ -1154,7 +1098,7 @@ class ThisExpr extends Expr {
 
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
-		asm.add(new MovOp(Register.AX, Register.BP, 8));
+		asm.add(new MovOp(Register.AX, new VarSymbol("this", null)));
 		return asm;
 	}
 }
@@ -1185,15 +1129,5 @@ class TExpr extends Expr {
 
 	TExpr(Tree parseTree){
 		this.word = parseTree.getChild(0).data;
-	}
-}
-
-class RegOffset {
-	Register reg;
-	int offset;
-
-	public RegOffset(Register reg, int offset){
-		this.reg = reg;
-		this.offset = offset;
 	}
 }

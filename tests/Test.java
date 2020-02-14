@@ -25,7 +25,7 @@ class Test {
 		//System.out.println(a.length);
 
 		int a = 5;
-		int b = 10:
+		int b = 10;
 		b = a;
 		System.out.println(b);
 
