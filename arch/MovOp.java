@@ -36,6 +36,28 @@ public class MovOp extends Instruction {
 		this.varSymbol = toVar;
 	}
 
+	public MovOp(Register RS1, VarSymbol fromVar, Register regArrRef){ // Reg <= Var[Reg]
+		this.op = Operation.MOV;
+		this.toType = ArgType.REG;
+		this.fromType = ArgType.ARR;
+		this.arrRefByReg = true;
+
+		this.RS1 = RS1;
+		this.varSymbol = fromVar;
+		this.regArrRef = regArrRef;
+	}
+
+	public MovOp(Register RS1, VarSymbol fromVar, int intArrRef){ // Reg <= Var[int]
+		this.op = Operation.MOV;
+		this.toType = ArgType.REG;
+		this.fromType = ArgType.ARR;
+		this.arrRefByReg = false;
+
+		this.RS1 = RS1;
+		this.varSymbol = fromVar;
+		this.intArrRef = intArrRef;
+	}
+
 	//To Variables----------------------------------------------------
 	public MovOp(VarSymbol fromVar, Register RS2){
 		this.op = Operation.MOV;
@@ -100,31 +122,10 @@ public class MovOp extends Instruction {
 		this.imm = imm;
 	}
 
-	public MovOp(Register RS1, VarSymbol fromVar, Register regArrRef){ // Reg <= Var[Reg]
-		this.op = Operation.MOV;
-		this.toType = ArgType.REG;
-		this.fromType = ArgType.ARR;
-		this.arrRefByReg = true;
-
-		this.RS1 = RS1;
-		this.varSymbol = fromVar;
-		this.regArrRef = regArrRef;
-	}
-
-	public MovOp(Register RS1, VarSymbol fromVar, int intArrRef){ // Reg <= Var[int]
-		this.op = Operation.MOV;
-		this.toType = ArgType.REG;
-		this.fromType = ArgType.ARR;
-		this.arrRefByReg = false;
-
-		this.RS1 = RS1;
-		this.intArrRef = intArrRef;
-		this.varSymbol = fromVar;
-	}
-
-	//stupid case
+	//stupid case -- Writing in length of array at array base addr
 	public MovOp(Register RS1, int intArrRef, Register RS2){
 		this.op = Operation.MOV;
+		this.toType = ArgType.ARR;
 		this.RS1 = RS1;
 		this.intArrRef = intArrRef;
 		this.RS2 = RS2;

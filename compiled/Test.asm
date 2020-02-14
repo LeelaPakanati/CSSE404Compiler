@@ -15,259 +15,339 @@ main:
 	mov eax, dword [ebp + -4]
 	push eax
 	add eax, 1
-	mov ebx, 4
-	imul ebx
+	mov edx, 4
+	imul edx
 	push eax
 	call malloc
 	add esp, 4
 	pop ecx
 	mov [eax + 0], ecx
 	mov dword [ebp + -8], eax
-	mov eax, 0
-	mov ecx, eax
-	mov eax, 0
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 1
-	mov ecx, eax
-	mov eax, 1
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
 	sub esp, 4
 	mov eax, 2
 	mov dword [ebp + -12], eax
-	mov eax, 2
-	mov ecx, eax
-	mov eax, dword [ebp + -12]
+	mov eax, 0
 	push eax
-	add ecx, 1
+	mov eax, 0
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + -8]
 	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 2
-	push eax
-	mov eax, 1
+	mov dword [ebx + ecx], eax
+	mov eax, 0
 	mov ecx, eax
-	add ecx, 1
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 1
+	push eax
+	mov eax, 1
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 1
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 2
+	push eax
+	mov eax, 2
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 2
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 2
+	push eax
+	mov eax, 1
+	pop edx
+	imul edx
+	push eax
+	mov eax, 1
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
 	pop edx
 	add eax, edx
 	mov dword [ebp + -12], eax
 	mov eax, 3
-	mov ecx, eax
-	mov eax, dword [ebp + -12]
 	push eax
-	add ecx, 1
+	mov eax, dword [ebp + -12]
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + -8]
 	pop eax
-	mov dword [ebp + -8], eax
+	mov dword [ebx + ecx], eax
+	mov eax, 3
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 4
+	push eax
+	mov eax, 4
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
 	mov eax, 4
 	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 5
+	push eax
 	mov eax, 1
 	push eax
-	mov eax, dword [ebp + -12]
+	mov eax, 4
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
 	pop edx
 	add eax, edx
+	pop ecx
 	push eax
-	add ecx, 1
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + -8]
 	pop eax
-	mov dword [ebp + -8], eax
+	mov dword [ebx + ecx], eax
+	mov eax, 5
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 6
+	push eax
+	mov eax, 2
+	push eax
+	mov eax, 4
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	pop edx
+	add eax, edx
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 6
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 7
+	push eax
+	mov eax, 5
+	push eax
+	mov eax, 2
+	pop edx
+	add eax, edx
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 7
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 8
+	push eax
+	mov eax, 4
+	push eax
+	mov eax, 2
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	pop edx
+	imul edx
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 8
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 9
+	push eax
+	mov eax, 9
+	pop ecx
+	push eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	pop eax
+	mov dword [ebx + ecx], eax
+	mov eax, 9
+	mov ecx, eax
+	mov eax, ecx
+	add eax, 1
+	mov edx, 4
+	imul edx
+	mov ecx, eax
+	mov ebx, dword [ebp + -8]
+	mov eax, dword [ebx + ecx]
+	push eax
+	call PrintNum
+	add esp, 4
 	mov eax, 99999
 	push eax
 	call PrintNum
 	add esp, 4
-	mov eax, 5
-	mov ecx, eax
-	mov eax, 1
-	push eax
-	mov eax, 4
-	mov ecx, eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	pop edx
-	add eax, edx
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 6
-	mov ecx, eax
-	mov eax, 2
-	push eax
-	mov eax, 4
-	mov ecx, eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	pop edx
-	add eax, edx
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 7
-	mov ecx, eax
-	mov eax, 3
-	push eax
-	mov eax, 2
-	mov ecx, eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	pop ebx
-	imul ebx
-	push eax
-	mov eax, 1
-	pop edx
-	add eax, edx
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 8
-	mov ecx, eax
-	mov eax, 4
-	push eax
-	mov eax, 2
-	mov ecx, eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	pop ebx
-	imul ebx
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
-	mov eax, 9
-	mov ecx, eax
-	mov eax, 9
-	push eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	pop eax
-	mov dword [ebp + -8], eax
 	sub esp, 4
 	mov eax, 0
 	mov dword [ebp + -16], eax
-while_0_start:
-	mov ecx, 0
-	add ecx, 1
+	mov eax, -1
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	push eax
-	mov eax, dword [ebp + -16]
-	pop edx
-	cmp eax, edx
-	jl ift_0
-	mov eax, 0
-	jmp ifend_0
-ift_0:
-	mov eax, 1
-ifend_0:
-	cmp eax, 0
-	jg while_0_true
-	jmp while_0_end
-while_0_true:
-	mov eax, dword [ebp + -16]
-	mov ecx, eax
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	push eax
-	call PrintNum
-	add esp, 4
-	mov eax, 1
-	push eax
-	mov eax, dword [ebp + -16]
-	pop edx
-	add eax, edx
-	mov dword [ebp + -16], eax
-	jmp while_0_start
-while_0_end:
-	mov ecx, 0
-	add ecx, 1
-	mov edx, 4
-	imul edx
-	mov ecx, eax
-	mov ebx, dword [ebp + -8]
-	mov eax, dword [ebp + -8]
-	push eax
-	call PrintNum
-	add esp, 4
-	sub esp, 4
-	mov eax, 5
-	mov dword [ebp + -20], eax
-	sub esp, 4
-	mov eax, 10
-	mov dword [ebp + -24], eax
-	mov eax, dword [ebp + -20]
-	mov dword [ebp + -24], eax
-	mov eax, dword [ebp + -24]
+	mov eax, dword [ebx + ecx]
 	push eax
 	call PrintNum
 	add esp, 4
@@ -281,7 +361,6 @@ Syscall_EXIT:
 PrintNum:
 	push ebp
 	mov ebp, esp
-	mov eax, dword [ebp + 8]
 	push eax
 	push message
 	call printf

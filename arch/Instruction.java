@@ -44,7 +44,7 @@ public abstract class Instruction {
 	}
 
 	public String loadArrRef(){
-		String toRet = "";
+	String toRet = "";
 		boolean saveReg = (this.fromType == ArgType.REG);
 		List<Instruction> insts = new ArrayList<Instruction>();
 		
@@ -53,11 +53,11 @@ public abstract class Instruction {
 		}
 
 		if(this.arrRefByReg){
-			insts.add(new ArithOp(Operation.ADD, this.regArrRef, 1)); 	// the first item is the length so add 1 to ref value
+			insts.add(new MovOp(Register.AX, this.regArrRef));		   		// move ref to ax register
 		} else{
-			insts.add(new MovOp(Register.CX, this.intArrRef));
-			insts.add(new ArithOp(Operation.ADD, Register.CX, 1)); 	// the first item is the length so add 1 to ref value
+			insts.add(new MovOp(Register.AX, this.intArrRef));
 		}
+		insts.add(new ArithOp(Operation.ADD, Register.AX, 1)); 	// the first item is the length so add 1 to ref value
 
 		insts.add(new MovOp(Register.DX, 4));						// load 4 
 		insts.add(new ArithOp(Operation.IMUL, Register.DX));  		// mul arr ref by 4
@@ -89,18 +89,16 @@ public abstract class Instruction {
 			type = this.fromType;
 		}
 			
-		RegOffset varAddr;
 		switch(type){
 			case REG:
 				toRet += reg.label;
 				break;
 			case VAR:
-				varAddr = this.getVarAddr(this.varSymbol);
+				RegOffset varAddr = this.getVarAddr(this.varSymbol);
 				toRet += "dword [" + varAddr.reg.label + " + " + varAddr.offset + "]";
 				break;
 			case ARR:
-				varAddr = this.getVarAddr(this.varSymbol);
-				toRet += "dword [" + varAddr.reg.label + " + " + varAddr.offset + "]";
+				toRet += "dword [" + Register.BX.label + " + " + Register.CX.label + "]";
 				break;
 			case IMM:
 				toRet += this.imm;

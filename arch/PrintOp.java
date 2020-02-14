@@ -1,6 +1,7 @@
 package arch;
 import arch.*;
 import symbol.VarSymbol;
+import symbol.VarType;
 import java.util.*;
 
 public class PrintOp extends Instruction {
@@ -15,7 +16,8 @@ public class PrintOp extends Instruction {
 		ins.add(new PushOp(Register.BP));			//push frame pointer
 		ins.add(new MovOp(Register.BP, Register.SP)); //save stack pointer as new frame pointer
 
-		ins.add(new MovOp(Register.AX, new VarSymbol("this", null))); //load ax with null
+		//ins.add(new MovOp(Register.AX, Register.BP, 8));
+		//ins.add(new MovOp(Register.AX, new VarSymbol("this", null)));	//add 'this' to stack
 		ins.add(new PushOp(Register.AX));
 
 		ins.add(new PushOp(new Label("message")));

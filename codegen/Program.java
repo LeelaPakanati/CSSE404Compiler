@@ -545,9 +545,11 @@ class ArrVarAssignStmt extends Stmt {
 		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.varName.id);
 
 		asm.addAll(this.arrRef.CodeGen());			  // get arr reference
-		asm.add(new MovOp(Register.CX, Register.AX)); // move reference to CX register
+		asm.add(new PushOp(Register.AX));
 
 		asm.addAll(this.value.CodeGen());			  // get value into AX
+
+		asm.add(new PopOp(Register.CX));
 
 		asm.add(new MovOp(varSymbol, Register.CX, Register.AX)); //move reference to cx register Var[CX] <- AX
 		return asm;
@@ -702,8 +704,8 @@ class OpExpr extends Expr {
 		asm.addAll(this.leftExpr.CodeGen());
 
 		if(this.operation.equals("*")){
-			asm.add(new PopOp(Register.BX));
-			asm.add(new ArithOp(Operation.IMUL, Register.BX)); // ax <- leftexpr; op rightexpr
+			asm.add(new PopOp(Register.DX));
+			asm.add(new ArithOp(Operation.IMUL, Register.DX)); // ax <- leftexpr; op rightexpr
 
 		} else if(this.operation.equals("/")){
 			asm.add(new PopOp(Register.BX));
@@ -841,6 +843,7 @@ class ArrExpr extends Expr {
 	public List<Instruction> CodeGen(){
 		List<Instruction> asm = new ArrayList<Instruction>();
 		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName.id);
+		//TODO Check if ref in range of length
 
 		asm.addAll(this.arrRef.CodeGen());			  // get arr reference
 		asm.add(new MovOp(Register.CX, Register.AX)); // move reference to CX register
@@ -862,7 +865,7 @@ class LengthExpr extends Expr {
 		List<Instruction> asm = new ArrayList<Instruction>();
 		VarSymbol varSymbol = (VarSymbol) SymbolTable.getSymbol(this.arrName.id);
 
-		asm.add(new MovOp(Register.AX, varSymbol, 0));
+		asm.add(new MovOp(Register.AX, varSymbol, -1));	//value at base of symbol is length
 		return asm;
 	}
 }
@@ -1030,8 +1033,8 @@ class IntArrConstructorExpr extends Expr {
 		asm.add(new PushOp(Register.AX)); //push unaltered length onto stack
 		asm.add(new ArithOp(Operation.ADD, Register.AX, 1));
 
-		asm.add(new MovOp(Register.BX, 4));
-		asm.add(new ArithOp(Operation.IMUL, Register.BX));
+		asm.add(new MovOp(Register.DX, 4));
+		asm.add(new ArithOp(Operation.IMUL, Register.DX));
 
 		asm.add(new PushOp(Register.AX));
 		asm.add(new JumpOp(new Label("malloc"), true));

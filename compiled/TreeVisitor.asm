@@ -4,7 +4,7 @@ extern malloc
 extern free
 section .text
 
-MainClass_BinaryTree:
+MainClass_TreeVisitor:
 main:
 	push ebp
 	mov ebp, esp
@@ -13,7 +13,7 @@ main:
 	call malloc
 	add esp, 4
 	push eax
-	call BT_Method_Start
+	call TV_Method_Start
 	add esp, 4
 	push eax
 	call PrintNum
@@ -21,10 +21,11 @@ main:
 	mov esp, ebp
 	pop ebp
 	ret
-Class_BT:
-BT_Method_Start:
+Class_TV:
+TV_Method_Start:
 	push ebp
 	mov ebp, esp
+	sub esp, 4
 	sub esp, 4
 	sub esp, 4
 	sub esp, 4
@@ -55,11 +56,6 @@ BT_Method_Start:
 	push eax
 	call Tree_Method_Insert
 	add esp, 8
-	mov dword [ebp + -8], eax
-	mov eax, dword [ebp + -4]
-	push eax
-	call Tree_Method_Print
-	add esp, 4
 	mov dword [ebp + -8], eax
 	mov eax, 24
 	push eax
@@ -108,6 +104,30 @@ BT_Method_Start:
 	call Tree_Method_Print
 	add esp, 4
 	mov dword [ebp + -8], eax
+	mov eax, 100000000
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, 8
+	push eax
+	call malloc
+	add esp, 4
+	mov dword [ebp + -16], eax
+	mov eax, 50000000
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, dword [ebp + -16]
+	push eax
+	mov eax, dword [ebp + -4]
+	push eax
+	call Tree_Method_acceptMy
+	add esp, 8
+	mov dword [ebp + -12], eax
+	mov eax, 100000000
+	push eax
+	call PrintNum
+	add esp, 4
 	mov eax, 24
 	push eax
 	mov eax, dword [ebp + -4]
@@ -370,21 +390,21 @@ Tree_Method_Insert:
 	add esp, 8
 	mov dword [ebp + -8], eax
 	mov eax, dword [ebp + 8]
-	mov dword [ebp + -20], eax
-	mov eax, 1
 	mov dword [ebp + -12], eax
+	mov eax, 1
+	mov dword [ebp + -16], eax
 while_2_start:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -16]
 	cmp eax, 0
 	jg while_2_true
 	jmp while_2_end
 while_2_true:
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_GetKey
 	add esp, 4
-	mov dword [ebp + -16], eax
-	mov eax, dword [ebp + -16]
+	mov dword [ebp + -20], eax
+	mov eax, dword [ebp + -20]
 	push eax
 	mov eax, dword [ebp + 12]
 	pop edx
@@ -398,7 +418,7 @@ ifend_3:
 	cmp eax, 0
 	jg if_3_true
 if_3_false:
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_GetHas_Right
 	add esp, 4
@@ -406,32 +426,33 @@ if_3_false:
 	jg if_4_true
 if_4_false:
 	mov eax, 0
-	mov dword [ebp + -12], eax
+	mov dword [ebp + -16], eax
 	mov eax, 1
 	push eax
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_SetHas_Right
 	add esp, 8
 	mov dword [ebp + -8], eax
 	mov eax, dword [ebp + -4]
 	push eax
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_SetRight
 	add esp, 8
 	mov dword [ebp + -8], eax
 	jmp if_4_end
 if_4_true:
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_GetRight
 	add esp, 4
-	mov dword [ebp + -20], eax
+	mov dword [ebp + -12], eax
 if_4_end:
 	jmp if_3_end
 if_3_true:
-	mov eax, dword [ebp + -20]
+	sub esp, 4
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_GetHas_Left
 	add esp, 4
@@ -439,28 +460,28 @@ if_3_true:
 	jg if_5_true
 if_5_false:
 	mov eax, 0
-	mov dword [ebp + -12], eax
+	mov dword [ebp + -16], eax
 	mov eax, 1
 	push eax
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_SetHas_Left
 	add esp, 8
 	mov dword [ebp + -8], eax
 	mov eax, dword [ebp + -4]
 	push eax
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_SetLeft
 	add esp, 8
 	mov dword [ebp + -8], eax
 	jmp if_5_end
 if_5_true:
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -12]
 	push eax
 	call Tree_Method_GetLeft
 	add esp, 4
-	mov dword [ebp + -20], eax
+	mov dword [ebp + -12], eax
 if_5_end:
 if_3_end:
 	jmp while_2_start
@@ -488,7 +509,7 @@ Tree_Method_Delete:
 	mov eax, 0
 	mov dword [ebp + -16], eax
 	mov eax, 1
-	mov dword [ebp + -20], eax
+	mov dword [ebp + -24], eax
 while_6_start:
 	mov eax, dword [ebp + -12]
 	cmp eax, 0
@@ -499,8 +520,8 @@ while_6_true:
 	push eax
 	call Tree_Method_GetKey
 	add esp, 4
-	mov dword [ebp + -24], eax
-	mov eax, dword [ebp + -24]
+	mov dword [ebp + -28], eax
+	mov eax, dword [ebp + -28]
 	push eax
 	mov eax, dword [ebp + 12]
 	pop edx
@@ -516,7 +537,7 @@ ifend_4:
 if_7_false:
 	mov eax, dword [ebp + 12]
 	push eax
-	mov eax, dword [ebp + -24]
+	mov eax, dword [ebp + -28]
 	pop edx
 	cmp eax, edx
 	jl ift_5
@@ -528,7 +549,7 @@ ifend_5:
 	cmp eax, 0
 	jg if_8_true
 if_8_false:
-	mov eax, dword [ebp + -20]
+	mov eax, dword [ebp + -24]
 	cmp eax, 0
 	jg if_9_true
 if_9_false:
@@ -540,7 +561,7 @@ if_9_false:
 	push eax
 	call Tree_Method_Remove
 	add esp, 12
-	mov dword [ebp + -28], eax
+	mov dword [ebp + -20], eax
 	jmp if_9_end
 if_9_true:
 	mov eax, dword [ebp + -4]
@@ -585,11 +606,11 @@ if_10_false:
 	push eax
 	call Tree_Method_Remove
 	add esp, 12
-	mov dword [ebp + -28], eax
+	mov dword [ebp + -20], eax
 	jmp if_10_end
 if_10_true:
 	mov eax, 1
-	mov dword [ebp + -28], eax
+	mov dword [ebp + -20], eax
 if_10_end:
 if_9_end:
 	mov eax, 1
@@ -641,7 +662,7 @@ if_12_true:
 if_12_end:
 if_7_end:
 	mov eax, 0
-	mov dword [ebp + -20], eax
+	mov dword [ebp + -24], eax
 	jmp while_6_start
 while_6_end:
 	mov eax, dword [ebp + -16]
@@ -869,18 +890,18 @@ Tree_Method_Search:
 	sub esp, 4
 	sub esp, 4
 	mov eax, dword [ebp + 8]
-	mov dword [ebp + -12], eax
-	mov eax, 1
 	mov dword [ebp + -4], eax
+	mov eax, 1
+	mov dword [ebp + -12], eax
 	mov eax, 0
 	mov dword [ebp + -8], eax
 while_18_start:
-	mov eax, dword [ebp + -4]
+	mov eax, dword [ebp + -12]
 	cmp eax, 0
 	jg while_18_true
 	jmp while_18_end
 while_18_true:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -4]
 	push eax
 	call Tree_Method_GetKey
 	add esp, 4
@@ -916,10 +937,10 @@ if_20_false:
 	mov eax, 1
 	mov dword [ebp + -8], eax
 	mov eax, 0
-	mov dword [ebp + -4], eax
+	mov dword [ebp + -12], eax
 	jmp if_20_end
 if_20_true:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -4]
 	push eax
 	call Tree_Method_GetHas_Right
 	add esp, 4
@@ -927,19 +948,19 @@ if_20_true:
 	jg if_21_true
 if_21_false:
 	mov eax, 0
-	mov dword [ebp + -4], eax
+	mov dword [ebp + -12], eax
 	jmp if_21_end
 if_21_true:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -4]
 	push eax
 	call Tree_Method_GetRight
 	add esp, 4
-	mov dword [ebp + -12], eax
+	mov dword [ebp + -4], eax
 if_21_end:
 if_20_end:
 	jmp if_19_end
 if_19_true:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -4]
 	push eax
 	call Tree_Method_GetHas_Left
 	add esp, 4
@@ -947,14 +968,14 @@ if_19_true:
 	jg if_22_true
 if_22_false:
 	mov eax, 0
-	mov dword [ebp + -4], eax
+	mov dword [ebp + -12], eax
 	jmp if_22_end
 if_22_true:
-	mov eax, dword [ebp + -12]
+	mov eax, dword [ebp + -4]
 	push eax
 	call Tree_Method_GetLeft
 	add esp, 4
-	mov dword [ebp + -12], eax
+	mov dword [ebp + -4], eax
 if_22_end:
 if_19_end:
 	jmp while_18_start
@@ -969,14 +990,14 @@ Tree_Method_Print:
 	sub esp, 4
 	sub esp, 4
 	mov eax, dword [ebp + 8]
-	mov dword [ebp + -4], eax
-	mov eax, dword [ebp + -4]
+	mov dword [ebp + -8], eax
+	mov eax, dword [ebp + -8]
 	push eax
 	mov eax, dword [ebp + 8]
 	push eax
 	call Tree_Method_RecPrint
 	add esp, 8
-	mov dword [ebp + -8], eax
+	mov dword [ebp + -4], eax
 	mov eax, 1
 	mov esp, ebp
 	pop ebp
@@ -1037,6 +1058,173 @@ if_24_true:
 	mov dword [ebp + -4], eax
 if_24_end:
 	mov eax, 1
+	mov esp, ebp
+	pop ebp
+	ret
+Tree_Method_accept:
+	push ebp
+	mov ebp, esp
+	sub esp, 4
+	mov eax, 333
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, dword [ebp + 8]
+	push eax
+	mov eax, dword [ebp + 12]
+	push eax
+	call Visitor_Method_visit
+	add esp, 8
+	mov dword [ebp + -4], eax
+	mov eax, 0
+	mov esp, ebp
+	pop ebp
+	ret
+Tree_Method_acceptMy:
+	push ebp
+	mov ebp, esp
+	sub esp, 4
+	mov eax, 333
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, dword [ebp + 8]
+	push eax
+	mov eax, dword [ebp + 12]
+	push eax
+	call MyVisitor_Method_visit
+	add esp, 8
+	mov dword [ebp + -4], eax
+	mov eax, 0
+	mov esp, ebp
+	pop ebp
+	ret
+Class_Visitor:
+Visitor_Method_visit:
+	push ebp
+	mov ebp, esp
+	sub esp, 4
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetHas_Right
+	add esp, 4
+	cmp eax, 0
+	jg if_25_true
+if_25_false:
+	mov eax, 0
+	mov dword [ebp + -4], eax
+	jmp if_25_end
+if_25_true:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetRight
+	add esp, 4
+	mov ebx, dword [ebp + 8]
+	mov dword [ebx + 8], eax
+	mov eax, dword [ebp + 8]
+	push eax
+	mov ebx, dword [ebp + 8]
+	mov eax, dword [ebx + 8]
+	push eax
+	call Tree_Method_accept
+	add esp, 8
+	mov dword [ebp + -4], eax
+if_25_end:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetHas_Left
+	add esp, 4
+	cmp eax, 0
+	jg if_26_true
+if_26_false:
+	mov eax, 0
+	mov dword [ebp + -4], eax
+	jmp if_26_end
+if_26_true:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetLeft
+	add esp, 4
+	mov ebx, dword [ebp + 8]
+	mov dword [ebx + 4], eax
+	mov eax, dword [ebp + 8]
+	push eax
+	mov ebx, dword [ebp + 8]
+	mov eax, dword [ebx + 4]
+	push eax
+	call Tree_Method_accept
+	add esp, 8
+	mov dword [ebp + -4], eax
+if_26_end:
+	mov eax, 0
+	mov esp, ebp
+	pop ebp
+	ret
+Class_MyVisitor:
+MyVisitor_Method_visit:
+	push ebp
+	mov ebp, esp
+	sub esp, 4
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetHas_Right
+	add esp, 4
+	cmp eax, 0
+	jg if_27_true
+if_27_false:
+	mov eax, 0
+	mov dword [ebp + -4], eax
+	jmp if_27_end
+if_27_true:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetRight
+	add esp, 4
+	mov ebx, dword [ebp + 8]
+	mov dword [ebx + 8], eax
+	mov eax, dword [ebp + 8]
+	push eax
+	mov ebx, dword [ebp + 8]
+	mov eax, dword [ebx + 8]
+	push eax
+	call Tree_Method_acceptMy
+	add esp, 8
+	mov dword [ebp + -4], eax
+if_27_end:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetKey
+	add esp, 4
+	push eax
+	call PrintNum
+	add esp, 4
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetHas_Left
+	add esp, 4
+	cmp eax, 0
+	jg if_28_true
+if_28_false:
+	mov eax, 0
+	mov dword [ebp + -4], eax
+	jmp if_28_end
+if_28_true:
+	mov eax, dword [ebp + 12]
+	push eax
+	call Tree_Method_GetLeft
+	add esp, 4
+	mov ebx, dword [ebp + 8]
+	mov dword [ebx + 4], eax
+	mov eax, dword [ebp + 8]
+	push eax
+	mov ebx, dword [ebp + 8]
+	mov eax, dword [ebx + 4]
+	push eax
+	call Tree_Method_acceptMy
+	add esp, 8
+	mov dword [ebp + -4], eax
+if_28_end:
+	mov eax, 0
 	mov esp, ebp
 	pop ebp
 	ret

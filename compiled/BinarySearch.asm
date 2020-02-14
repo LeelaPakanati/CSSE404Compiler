@@ -219,14 +219,14 @@ BS_Method_Search:
 	mov dword [ebp + -24], eax
 	mov eax, 0
 	mov dword [ebp + -4], eax
-	mov ecx, 0
-	add ecx, 1
+	mov eax, -1
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + 8]
 	mov ebx, dword [ebx + 4]
-	mov eax, dword [ebx + 4]
+	mov eax, dword [ebx + ecx]
 	mov dword [ebp + -8], eax
 	mov eax, 1
 	push eax
@@ -259,13 +259,14 @@ while_8_true:
 	mov dword [ebp + -20], eax
 	mov eax, dword [ebp + -20]
 	mov ecx, eax
-	add ecx, 1
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + 8]
 	mov ebx, dword [ebx + 4]
-	mov eax, dword [ebx + 4]
+	mov eax, dword [ebx + ecx]
 	mov dword [ebp + -24], eax
 	mov eax, dword [ebp + -24]
 	push eax
@@ -498,13 +499,14 @@ ifend_6:
 while_16_true:
 	mov eax, dword [ebp + -4]
 	mov ecx, eax
-	add ecx, 1
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + 8]
 	mov ebx, dword [ebx + 4]
-	mov eax, dword [ebx + 4]
+	mov eax, dword [ebx + ecx]
 	push eax
 	call PrintNum
 	add esp, 4
@@ -537,8 +539,8 @@ BS_Method_Init:
 	mov eax, dword [ebp + 12]
 	push eax
 	add eax, 1
-	mov ebx, 4
-	imul ebx
+	mov edx, 4
+	imul edx
 	push eax
 	call malloc
 	add esp, 4
@@ -575,8 +577,8 @@ while_17_true:
 	mov eax, dword [ebp + -4]
 	push eax
 	mov eax, 2
-	pop ebx
-	imul ebx
+	pop edx
+	imul edx
 	mov dword [ebp + -16], eax
 	mov eax, 3
 	push eax
@@ -585,21 +587,23 @@ while_17_true:
 	sub eax, edx
 	mov dword [ebp + -12], eax
 	mov eax, dword [ebp + -4]
-	mov ecx, eax
+	push eax
 	mov eax, dword [ebp + -12]
 	push eax
 	mov eax, dword [ebp + -16]
 	pop edx
 	add eax, edx
+	pop ecx
 	push eax
-	add ecx, 1
+	mov eax, ecx
+	add eax, 1
 	mov edx, 4
 	imul edx
 	mov ecx, eax
 	mov ebx, dword [ebp + 8]
 	mov ebx, dword [ebx + 4]
 	pop eax
-	mov dword [ebx + 4], eax
+	mov dword [ebx + ecx], eax
 	mov eax, 1
 	push eax
 	mov eax, dword [ebp + -4]
@@ -625,7 +629,6 @@ Syscall_EXIT:
 PrintNum:
 	push ebp
 	mov ebp, esp
-	mov eax, dword [ebp + 8]
 	push eax
 	push message
 	call printf
