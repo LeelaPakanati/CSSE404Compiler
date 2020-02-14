@@ -101,7 +101,7 @@ public abstract class Instruction {
 				toRet += "dword [" + Register.BX.label + " + " + Register.CX.label + "]";
 				break;
 			case IMM:
-				toRet += this.imm;
+				toRet += "dword " + this.imm;
 				break;
 			default:
 				System.err.println("Inst Operands failed");

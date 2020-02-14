@@ -6,19 +6,11 @@ import symbol.*;
 
 public class PushOp extends Instruction {
 	Label label;
-	Register sourceRegisterOffset;
 
 	public PushOp(Register RS2){
 		this.op = Operation.PUSH;
-		this.RS2 = RS2;
 		this.fromType = ArgType.REG;
-	}
-
-	public PushOp(Register RS2, int offset){
-		this.op = Operation.PUSH;
 		this.RS2 = RS2;
-		this.imm = offset;
-		this.fromType = ArgType.VAR;
 	}
 
 	public PushOp(VarSymbol varSymbol){
@@ -27,23 +19,32 @@ public class PushOp extends Instruction {
 		this.fromType = ArgType.VAR;
 	}
 
-	//public PushOp(Register RS2, Register registerOffset){
-	//	this.op = Operation.PUSH;
-	//	this.RS2 = RS2;
-	//	this.sourceRegisterOffset = registerOffset;
-	//	this.fromType = ArgType.ARR;
-	//}
+	public PushOp(VarSymbol varSymbol, Register regArrRef){
+		this.op = Operation.PUSH;
+		this.fromType = ArgType.VAR;
+		this.varSymbol = varSymbol;
+		this.regArrRef = regArrRef;
+		this.arrRefByReg = true;
+	}
+
+	public PushOp(VarSymbol varSymbol, int intArrRef){
+		this.op = Operation.PUSH;
+		this.fromType = ArgType.VAR;
+		this.varSymbol = varSymbol;
+		this.intArrRef = intArrRef;
+		this.arrRefByReg = false;
+	}
 
 	public PushOp(int imm){
 		this.op = Operation.PUSH;
-		this.imm = imm;
 		this.fromType = ArgType.IMM;
+		this.imm = imm;
 	}
 
 	public PushOp(Label label){
 		this.op = Operation.PUSH;
-		this.label = label;
 		this.fromType = null;
+		this.label = label;
 	}
 
 	public String toX86(){
@@ -51,28 +52,16 @@ public class PushOp extends Instruction {
 			return super.toX86() + " " + this.label.toX86(false);
 		} else {
 			String toRet = " ";
-			toRet = super.toX86() + " ";
 
-			toRet += this.getOperand(false);
+			if (this.fromType == ArgType.VAR){
+				if(this.varSymbol.varType == VarType.classVar){
+					toRet += this.loadClass();
+				}
+			} else if (this.fromType == ArgType.ARR){
+				toRet += this.loadArrRef();
+			}
 
-			//switch(this.fromType){
-			//	case REG:
-			//		toRet += this.RS2.label;
-			//		break;
-			//	case IMM:
-			//		toRet += this.imm;
-			//		break;
-			//	case VAR:
-			//		toRet += "dword " + "[" + this.RS2.label + " + " + this.imm + "]";
-			//		break;
-			//	case ARR:
-			//		toRet += "dword " + "[" + this.RS2.label + " + " + this.sourceRegisterOffset.label + "]";
-			//		break;
-			//	default:
-			//		System.out.println("Push From var type failed");
-			//		//fail
-			//		break;
-			//}
+			toRet += super.toX86() + " " + this.getOperand(false);
 
 			return toRet;
 		}
