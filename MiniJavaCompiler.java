@@ -13,21 +13,15 @@ public class MiniJavaCompiler {
 		Lexer lexer = new Lexer(filepath);
 		ArrayList<String[]> results = lexer.analyse();
 
-		//for(int i = 0; i < results.size(); i++) {
-		//	System.out.println(results.get(i)[0] + ", " + results.get(i)[1]);
-		//}
 		SymbolTable symbols = SymbolTable.getInstance();
 
 		Parser parser = new Parser(results);
+
 		if(!parser.parseProgram()){
 			System.err.println("Parsing Failed");
 			return;
 		}
-		//System.out.println(parser.parseTree.toString(0));
 		Program syntaxTree = new Program(parser.parseTree.getChild(0));
-
-		//System.out.println("\nSymbol Table After Construction\n");
-		//System.out.println(symbols.toString());
 
 		List<Instruction> asm = syntaxTree.CodeGen();
 

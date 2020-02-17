@@ -147,6 +147,8 @@ QuickSort.java
 20
 0
 Test.java
+10000
+99999
 0
 1
 2
@@ -157,7 +159,6 @@ Test.java
 7
 8
 9
-99999
 10
 TreeVisitor.java
 16

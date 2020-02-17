@@ -17,6 +17,9 @@ public class Parser {
 	String[] terminals;
 	public Tree parseTree;
 
+	public static final String ANSI_RESET = "\u001B[0m";
+	public static final String ANSI_RED = "\u001B[31m";
+
 	public Parser(ArrayList<String[]> toParse) {
 		this.toParse = toParse;
 		this.parseIndex = 0;
@@ -77,6 +80,18 @@ public class Parser {
 		return this.toParse.get(this.parseIndex++);
 	}
 
+	private List<String> getFollowTerminals(String symbol){
+		List<String> followTerminals = new ArrayList<String>();
+		String[] followSet = this.table.get(symbol);
+		for(int i = 0; i < followSet.length; i++){
+			String str = followSet[i];
+			if(str != null){
+				followTerminals.add(this.terminals[i]);
+			}
+		}
+		return followTerminals;
+	}
+
 	public Boolean parseProgram(){
 		Stack<String> symbolStack = new Stack<String>();
 		symbolStack.push("Program");
@@ -111,17 +126,23 @@ public class Parser {
 					
 					lexed = nextWord();
 
-				//} else if(focus.equals(";")){		//missing semicolon; just put one in and keep chugging
-				//	System.err.println("Error at reading symbol " + lexed[0] + " : " + lexed[1] + "-- missing semicolon, Auto-inserted");
-				//	String poppedString = symbolStack.pop();
-				//	Tree nextNode;
-				//	nextNode = new Tree(poppedString, currNode, true);
-				//	currNode.addChild(nextNode);
-
 				} else {
-					//unexpected symbol -- not missing semicolon
-					System.err.println("Error at reading symbol " + lexed[0] + " : " + lexed[1] + "; Expected: " + focus);
-					return false;
+					System.err.println(ANSI_RED + "Error at Line " + lexed[2] + ANSI_RESET + ": reading symbol '" + lexed[1] + "'. Expected: " + focus);
+
+					String[] nextLex = this.toParse.get(this.parseIndex);
+
+					boolean focusID = focus.equals("ID") && nextLex[0].equals("ID");
+					boolean focusInt = focus.equals("Integer") && nextLex[0].equals("Integer");
+					if(focusID || focusInt || focus.equals(nextLex[1])){
+						System.err.println("Next word '" + nextLex[1] + "' fits in, ignoring troublesome '" + lexed[1] + "' and continuing");
+						lexed = nextWord();
+					} else if(focus.equals(";")){
+						System.err.println("Seems like missing semicolon; Inserting and continueing");
+						lexed = new String[]{"Delimiter", ";", lexed[2]};
+						this.parseIndex--;
+					} else{
+						return false;
+					}
 				}
 			}else{
 				int wordIndex;
@@ -149,8 +170,24 @@ public class Parser {
 					}
 
 				} else{
-					System.err.println("Error following " + focus);
-					return false;
+					System.err.println(ANSI_RED + "Error at Line " + lexed[2] + ANSI_RESET + ": '" + lexed[1] + "'");
+					List<String> followTerminals = this.getFollowTerminals(focus);
+
+					System.err.println("Expecting one of: " + this.getFollowTerminals(focus));
+					String[] nextLex = this.toParse.get(this.parseIndex);
+					
+					boolean followID = followTerminals.contains("ID") && nextLex[0].equals("ID");
+					boolean followInt = followTerminals.contains("Integer") && nextLex[0].equals("Integer");
+					if(followID || followInt || followTerminals.contains(nextLex[1])){
+						System.err.println("Next word '" + nextLex[1] + "' fits in, ignoring troublesome '" + lexed[1] + "' and continuing");
+						lexed = nextWord();
+					} else if (followTerminals.contains(";")){
+						System.err.println("Seems like missing semicolon; Inserting and continueing");
+						lexed = new String[]{"Delimiter", ";", lexed[2]};
+						this.parseIndex--;
+					} else {
+						return false;
+					}
 				}
 			}
 			focus = symbolStack.peek();

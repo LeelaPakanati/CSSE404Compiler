@@ -23,6 +23,7 @@ public class PrintOp extends Instruction {
 		ins.add(new PushOp(new Label("message")));
 
 		ins.add(new JumpOp(new Label("printf"), true));
+
 		ins.add(new MovOp(Register.SP, Register.BP)); //restore sp to bp
 		ins.add(new PopOp(Register.BP)); //restore frame pointer
 		ins.add(new JumpOp());			//return 

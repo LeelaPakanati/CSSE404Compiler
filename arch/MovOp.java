@@ -7,7 +7,7 @@ import arch.Register;
 public class MovOp extends Instruction {
 	//TODO Assumes standard AX accumilation format; check and add push/pops as necesary later 
 	//	   Doesn't preserve other regs
-
+	
 	//To Registers------------------------------------------------------
 	public MovOp(Register RS1, int imm){
 		this.op = Operation.MOV;

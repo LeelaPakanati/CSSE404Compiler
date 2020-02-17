@@ -16,6 +16,7 @@ public class Lexer {
 	String filepath;
 	String toLex;
 	int currIdx = 0;
+	int lineCount = 1;
 
 	public Lexer(String filepath) {
 		this.filepath = filepath;
@@ -58,14 +59,14 @@ public class Lexer {
 
 			LexStruct token = this.lexToken();
 			if(token != null){
-				String[] result = {token.type, token.word};
+				String[] result = {token.type, token.word, String.valueOf(token.lineCount)};
 				results.add(result);
 				currIdx = token.nextIdx;
 				continue;
 			}
 			return results;
 		}
-		results.add(new String[]{"eof", "$"});
+		results.add(new String[]{"eof", "$", String.valueOf(this.lineCount)});
 		return results;
 	}
 
@@ -108,7 +109,7 @@ public class Lexer {
 		word += nextChar;
 
 		if(nextChar == '0')
-			return new LexStruct(word, "Integer", this.currIdx + nextIdx);
+			return new LexStruct(word, "Integer", this.currIdx + nextIdx, this.lineCount);
 
 		while(true){
 			nextChar = this.toLex.charAt(this.currIdx + nextIdx);
@@ -118,7 +119,7 @@ public class Lexer {
 			nextIdx++;
 			word += nextChar;
 		}
-		return new LexStruct(word, "Integer", this.currIdx + nextIdx);
+		return new LexStruct(word, "Integer", this.currIdx + nextIdx, this.lineCount);
 	}
 
 	private LexStruct lexId(){
@@ -142,7 +143,7 @@ public class Lexer {
 			word += nextChar;
 		}
 
-		return new LexStruct(word, "ID", this.currIdx + nextIdx);
+		return new LexStruct(word, "ID", this.currIdx + nextIdx, this.lineCount);
 	}
 
 
@@ -164,14 +165,14 @@ public class Lexer {
 		for(String op : operatorDouble) {
 			if(op.equals(word)) {
 				nextIdx++;
-				return new LexStruct(op, "Operator", this.currIdx + nextIdx);
+				return new LexStruct(op, "Operator", this.currIdx + nextIdx, this.lineCount);
 			}
 		}
 
 		//Math with single char operators
 		for(String op : operatorSingle) {
 			if(op.equals(String.valueOf(word.charAt(0)))) {
-				return new LexStruct(op, "Operator", this.currIdx + nextIdx);
+				return new LexStruct(op, "Operator", this.currIdx + nextIdx, this.lineCount);
 			}
 		}
 
@@ -188,7 +189,7 @@ public class Lexer {
 		for(String ch : delimiter) {
 			if(ch.equals(String.valueOf(nextChar))) {
 				nextIdx++;
-				return new LexStruct(ch, "Delimiter", this.currIdx + nextIdx);
+				return new LexStruct(ch, "Delimiter", this.currIdx + nextIdx, this.lineCount);
 			}
 		}
 		return null;
@@ -219,7 +220,7 @@ public class Lexer {
 
 		for(String rw : reservedWord) {
 			if(rw.equals(word)) {
-				return new LexStruct(word, "ReservedWord", this.currIdx + nextIdx);
+				return new LexStruct(word, "ReservedWord", this.currIdx + nextIdx, this.lineCount);
 			}
 		}
 
@@ -237,8 +238,11 @@ public class Lexer {
 
 		nextChar = this.toLex.charAt(this.currIdx + nextIdx);
 		if(nextChar == ' ' || nextChar == '\n' || nextChar == '\t') {
+			if(nextChar == '\n'){
+				this.lineCount++;
+			}
 			nextIdx++;
-			return new LexStruct("", "Whitespace", this.currIdx + nextIdx);
+			return new LexStruct("", "Whitespace", this.currIdx + nextIdx, this.lineCount);
 		}
 
 		return null;
@@ -262,11 +266,12 @@ public class Lexer {
 				nextChar = this.toLex.charAt(this.currIdx + nextIdx);
 				nextIdx++;
 				if(nextChar == '\n'){
+					this.lineCount++;
 					break;
 				}
 				word += nextChar;
 			}
-			return new LexStruct(word, "Comment", this.currIdx + nextIdx);
+			return new LexStruct(word, "Comment", this.currIdx + nextIdx, this.lineCount);
 		}
 		
 		//comment between /*  */
@@ -279,16 +284,17 @@ public class Lexer {
 					nextChar = this.toLex.charAt(this.currIdx + nextIdx);
 					nextIdx++;
 					if(nextChar == '/'){
-						nextIdx++;
 						break;
 					}
 					word += '*' + nextChar;
 					continue;
+				} else if(nextChar == '\n'){
+					this.lineCount++;
 				}
 				word += nextChar;
 			}
 			// allow multiline comment to be terminated by end of file as well as '*/'
-			return new LexStruct(word, "Comment", this.currIdx + nextIdx);
+			return new LexStruct(word, "Comment", this.currIdx + nextIdx, this.lineCount);
 		}
 
 		// not actually a comment, just a '/'
