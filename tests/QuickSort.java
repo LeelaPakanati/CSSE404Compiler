@@ -21,7 +21,7 @@ class QS{
 		aux01 = this.Print();
 		System.out.println(9999);
 		aux01 = size - 1 ;
-		aux01 = this.Sort(0,aux01);
+		aux01 = this.Sort(0,aux01,true);
 		aux01 = this.Print();
 		return 0 ;
 	}
