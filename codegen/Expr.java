@@ -462,17 +462,17 @@ class ClassMethodCallExpr extends Expr {
 
 		// Check Arguments		//we check after adding because calling codegen is required to set the type
 		if(this.argList.size() != methodSymbol.argList.size()){
-			System.err.println("Method" + methodSymbol.name + " takes " + methodSymbol.argList.size() + " arguments. Gave: " + this.argList.size());
-			System.err.println("Method profile called: " + this.getProfile());
-			System.err.println("Method profile required: " + methodSymbol.getProfile());
+			System.err.println("Method " + methodSymbol.name + " takes " + methodSymbol.argList.size() + " arguments. Gave: " + this.argList.size());
+			System.err.println("Method signature called: " + this.getProfile());
+			System.err.println("Method signature required: " + methodSymbol.getProfile());
 			//fail
 		} else {
 			for(int i = 0; i < this.argList.size(); i++){
 				String argType = this.argList.get(0).type;
 				String decArgType = methodSymbol.argList.get(0).type.type;
 				if(!argType.equals(decArgType)){
-					System.err.println("Method profile called: " + this.getProfile());
-					System.err.println("Method profile required: " + methodSymbol.getProfile());
+					System.err.println("Method signature called: " + this.getProfile());
+					System.err.println("Method signature required: " + methodSymbol.getProfile());
 				}
 				//fail
 			}

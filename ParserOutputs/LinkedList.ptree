@@ -1,0 +1,4488 @@
+Tree: 
+ Program
+  MainClassDecl
+   T: class
+   T: ID : LinkedList
+   T: {
+   T: public
+   T: static
+   T: void
+   T: main
+   T: (
+   T: String
+   T: [
+   T: ]
+   T: ID : a
+   T: )
+   T: {
+   StmtList
+    Stmt
+     AtomicStmt
+      T: System.out.println
+      T: (
+      Expr
+       OrOperand
+        AndOperand
+         EqualityOperand
+          RelOperand
+           AddOperand
+            Value
+             T: new
+             NewWhat
+              T: ID : LL
+              T: (
+              T: )
+              ValuePrime
+               T: .
+               DotWhat
+                T: ID : Start
+                T: (
+                ExprList
+                T: )
+                ValuePrime
+            AddOperandPrime
+           RelOperandPrime
+          EqualityOperandPrime
+         AndOperandPrime
+        OrOperandPrime
+       ExprPrime
+      T: )
+      T: ;
+    StmtList
+   T: }
+   T: }
+  ClassDeclList
+   ClassDecl
+    T: class
+    T: ID : Element
+    ClassDeclPrime
+    T: {
+    ClassVarDeclList
+     ClassVarDecl
+      Formal
+       Type
+        T: int
+        IsArr
+       T: ID : Age
+      T: ;
+     ClassVarDeclList
+      ClassVarDecl
+       Formal
+        Type
+         T: int
+         IsArr
+        T: ID : Salary
+       T: ;
+      ClassVarDeclList
+       ClassVarDecl
+        Formal
+         Type
+          T: boolean
+         T: ID : Married
+        T: ;
+       ClassVarDeclList
+    MethodDeclList
+     MethodDecl
+      T: public
+      Formal
+       Type
+        T: boolean
+       T: ID : Init
+      T: (
+      FormalList
+       Formal
+        Type
+         T: int
+         IsArr
+        T: ID : v_Age
+       FormalListPrime
+        T: ,
+        Formal
+         Type
+          T: int
+          IsArr
+         T: ID : v_Salary
+        FormalListPrime
+         T: ,
+         Formal
+          Type
+           T: boolean
+          T: ID : v_Married
+         FormalListPrime
+      T: )
+      T: {
+      StmtList
+       Stmt
+        AtomicStmt
+         T: ID : Age
+         IsArr
+         IDAssignment
+          T: =
+          Expr
+           OrOperand
+            AndOperand
+             EqualityOperand
+              RelOperand
+               AddOperand
+                Value
+                 T: ID : v_Age
+                 ValuePrime
+                AddOperandPrime
+               RelOperandPrime
+              EqualityOperandPrime
+             AndOperandPrime
+            OrOperandPrime
+           ExprPrime
+          T: ;
+       StmtList
+        Stmt
+         AtomicStmt
+          T: ID : Salary
+          IsArr
+          IDAssignment
+           T: =
+           Expr
+            OrOperand
+             AndOperand
+              EqualityOperand
+               RelOperand
+                AddOperand
+                 Value
+                  T: ID : v_Salary
+                  ValuePrime
+                 AddOperandPrime
+                RelOperandPrime
+               EqualityOperandPrime
+              AndOperandPrime
+             OrOperandPrime
+            ExprPrime
+           T: ;
+        StmtList
+         Stmt
+          AtomicStmt
+           T: ID : Married
+           IsArr
+           IDAssignment
+            T: =
+            Expr
+             OrOperand
+              AndOperand
+               EqualityOperand
+                RelOperand
+                 AddOperand
+                  Value
+                   T: ID : v_Married
+                   ValuePrime
+                  AddOperandPrime
+                 RelOperandPrime
+                EqualityOperandPrime
+               AndOperandPrime
+              OrOperandPrime
+             ExprPrime
+            T: ;
+         StmtList
+      T: return
+      Expr
+       OrOperand
+        AndOperand
+         EqualityOperand
+          RelOperand
+           AddOperand
+            Value
+             T: true
+            AddOperandPrime
+           RelOperandPrime
+          EqualityOperandPrime
+         AndOperandPrime
+        OrOperandPrime
+       ExprPrime
+      T: ;
+      T: }
+     MethodDeclList
+      MethodDecl
+       T: public
+       Formal
+        Type
+         T: int
+         IsArr
+        T: ID : GetAge
+       T: (
+       FormalList
+       T: )
+       T: {
+       StmtList
+       T: return
+       Expr
+        OrOperand
+         AndOperand
+          EqualityOperand
+           RelOperand
+            AddOperand
+             Value
+              T: ID : Age
+              ValuePrime
+             AddOperandPrime
+            RelOperandPrime
+           EqualityOperandPrime
+          AndOperandPrime
+         OrOperandPrime
+        ExprPrime
+       T: ;
+       T: }
+      MethodDeclList
+       MethodDecl
+        T: public
+        Formal
+         Type
+          T: int
+          IsArr
+         T: ID : GetSalary
+        T: (
+        FormalList
+        T: )
+        T: {
+        StmtList
+        T: return
+        Expr
+         OrOperand
+          AndOperand
+           EqualityOperand
+            RelOperand
+             AddOperand
+              Value
+               T: ID : Salary
+               ValuePrime
+              AddOperandPrime
+             RelOperandPrime
+            EqualityOperandPrime
+           AndOperandPrime
+          OrOperandPrime
+         ExprPrime
+        T: ;
+        T: }
+       MethodDeclList
+        MethodDecl
+         T: public
+         Formal
+          Type
+           T: boolean
+          T: ID : GetMarried
+         T: (
+         FormalList
+         T: )
+         T: {
+         StmtList
+         T: return
+         Expr
+          OrOperand
+           AndOperand
+            EqualityOperand
+             RelOperand
+              AddOperand
+               Value
+                T: ID : Married
+                ValuePrime
+               AddOperandPrime
+              RelOperandPrime
+             EqualityOperandPrime
+            AndOperandPrime
+           OrOperandPrime
+          ExprPrime
+         T: ;
+         T: }
+        MethodDeclList
+         MethodDecl
+          T: public
+          Formal
+           Type
+            T: boolean
+           T: ID : Equal
+          T: (
+          FormalList
+           Formal
+            Type
+             T: ID : Element
+            T: ID : other
+           FormalListPrime
+          T: )
+          T: {
+          StmtList
+           Stmt
+            AtomicStmt
+             T: boolean
+             T: ID : ret_val
+             IsArr
+             Assignment
+              T: ;
+           StmtList
+            Stmt
+             AtomicStmt
+              T: int
+              IsArr
+              T: ID : aux01
+              IsArr
+              Assignment
+               T: ;
+            StmtList
+             Stmt
+              AtomicStmt
+               T: int
+               IsArr
+               T: ID : aux02
+               IsArr
+               Assignment
+                T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: int
+                IsArr
+                T: ID : nt
+                IsArr
+                Assignment
+                 T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : ret_val
+                 IsArr
+                 IDAssignment
+                  T: =
+                  Expr
+                   OrOperand
+                    AndOperand
+                     EqualityOperand
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: true
+                        AddOperandPrime
+                       RelOperandPrime
+                      EqualityOperandPrime
+                     AndOperandPrime
+                    OrOperandPrime
+                   ExprPrime
+                  T: ;
+               StmtList
+                Stmt
+                 AtomicStmt
+                  T: ID : aux01
+                  IsArr
+                  IDAssignment
+                   T: =
+                   Expr
+                    OrOperand
+                     AndOperand
+                      EqualityOperand
+                       RelOperand
+                        AddOperand
+                         Value
+                          T: ID : other
+                          ValuePrime
+                           T: .
+                           DotWhat
+                            T: ID : GetAge
+                            T: (
+                            ExprList
+                            T: )
+                            ValuePrime
+                         AddOperandPrime
+                        RelOperandPrime
+                       EqualityOperandPrime
+                      AndOperandPrime
+                     OrOperandPrime
+                    ExprPrime
+                   T: ;
+                StmtList
+                 Stmt
+                  T: if
+                  T: (
+                  Expr
+                   OrOperand
+                    AndOperand
+                     EqualityOperand
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: !
+                         Value
+                          T: ID : this
+                          ValuePrime
+                           T: .
+                           DotWhat
+                            T: ID : Compare
+                            T: (
+                            ExprList
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: ID : aux01
+                                    ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                              ExprPrime
+                             ExprListPrime
+                              T: ,
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: ID : Age
+                                     ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              ExprListPrime
+                            T: )
+                            ValuePrime
+                        AddOperandPrime
+                       RelOperandPrime
+                      EqualityOperandPrime
+                     AndOperandPrime
+                    OrOperandPrime
+                   ExprPrime
+                  T: )
+                  BracketStmt
+                   Stmt
+                    AtomicStmt
+                     T: ID : ret_val
+                     IsArr
+                     IDAssignment
+                      T: =
+                      Expr
+                       OrOperand
+                        AndOperand
+                         EqualityOperand
+                          RelOperand
+                           AddOperand
+                            Value
+                             T: false
+                            AddOperandPrime
+                           RelOperandPrime
+                          EqualityOperandPrime
+                         AndOperandPrime
+                        OrOperandPrime
+                       ExprPrime
+                      T: ;
+                  T: else
+                  BracketStmt
+                   T: {
+                   StmtList
+                    Stmt
+                     AtomicStmt
+                      T: ID : aux02
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: ID : other
+                              ValuePrime
+                               T: .
+                               DotWhat
+                                T: ID : GetSalary
+                                T: (
+                                ExprList
+                                T: )
+                                ValuePrime
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                    StmtList
+                     Stmt
+                      T: if
+                      T: (
+                      Expr
+                       OrOperand
+                        AndOperand
+                         EqualityOperand
+                          RelOperand
+                           AddOperand
+                            Value
+                             T: !
+                             Value
+                              T: ID : this
+                              ValuePrime
+                               T: .
+                               DotWhat
+                                T: ID : Compare
+                                T: (
+                                ExprList
+                                 Expr
+                                  OrOperand
+                                   AndOperand
+                                    EqualityOperand
+                                     RelOperand
+                                      AddOperand
+                                       Value
+                                        T: ID : aux02
+                                        ValuePrime
+                                       AddOperandPrime
+                                      RelOperandPrime
+                                     EqualityOperandPrime
+                                    AndOperandPrime
+                                   OrOperandPrime
+                                  ExprPrime
+                                 ExprListPrime
+                                  T: ,
+                                  Expr
+                                   OrOperand
+                                    AndOperand
+                                     EqualityOperand
+                                      RelOperand
+                                       AddOperand
+                                        Value
+                                         T: ID : Salary
+                                         ValuePrime
+                                        AddOperandPrime
+                                       RelOperandPrime
+                                      EqualityOperandPrime
+                                     AndOperandPrime
+                                    OrOperandPrime
+                                   ExprPrime
+                                  ExprListPrime
+                                T: )
+                                ValuePrime
+                            AddOperandPrime
+                           RelOperandPrime
+                          EqualityOperandPrime
+                         AndOperandPrime
+                        OrOperandPrime
+                       ExprPrime
+                      T: )
+                      BracketStmt
+                       Stmt
+                        AtomicStmt
+                         T: ID : ret_val
+                         IsArr
+                         IDAssignment
+                          T: =
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: false
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: ;
+                      T: else
+                      BracketStmt
+                       Stmt
+                        T: if
+                        T: (
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: ID : Married
+                               ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: )
+                        BracketStmt
+                         Stmt
+                          T: if
+                          T: (
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: !
+                                 Value
+                                  T: ID : other
+                                  ValuePrime
+                                   T: .
+                                   DotWhat
+                                    T: ID : GetMarried
+                                    T: (
+                                    ExprList
+                                    T: )
+                                    ValuePrime
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: )
+                          BracketStmt
+                           Stmt
+                            AtomicStmt
+                             T: ID : ret_val
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: false
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                          T: else
+                          BracketStmt
+                           Stmt
+                            AtomicStmt
+                             T: ID : nt
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: Integer : 0
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                        T: else
+                        BracketStmt
+                         Stmt
+                          T: if
+                          T: (
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: ID : other
+                                 ValuePrime
+                                  T: .
+                                  DotWhat
+                                   T: ID : GetMarried
+                                   T: (
+                                   ExprList
+                                   T: )
+                                   ValuePrime
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: )
+                          BracketStmt
+                           Stmt
+                            AtomicStmt
+                             T: ID : ret_val
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: false
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                          T: else
+                          BracketStmt
+                           Stmt
+                            AtomicStmt
+                             T: ID : nt
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: Integer : 0
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                     StmtList
+                   T: }
+                 StmtList
+          T: return
+          Expr
+           OrOperand
+            AndOperand
+             EqualityOperand
+              RelOperand
+               AddOperand
+                Value
+                 T: ID : ret_val
+                 ValuePrime
+                AddOperandPrime
+               RelOperandPrime
+              EqualityOperandPrime
+             AndOperandPrime
+            OrOperandPrime
+           ExprPrime
+          T: ;
+          T: }
+         MethodDeclList
+          MethodDecl
+           T: public
+           Formal
+            Type
+             T: boolean
+            T: ID : Compare
+           T: (
+           FormalList
+            Formal
+             Type
+              T: int
+              IsArr
+             T: ID : num1
+            FormalListPrime
+             T: ,
+             Formal
+              Type
+               T: int
+               IsArr
+              T: ID : num2
+             FormalListPrime
+           T: )
+           T: {
+           StmtList
+            Stmt
+             AtomicStmt
+              T: boolean
+              T: ID : retval
+              IsArr
+              Assignment
+               T: ;
+            StmtList
+             Stmt
+              AtomicStmt
+               T: int
+               IsArr
+               T: ID : aux02
+               IsArr
+               Assignment
+                T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: ID : retval
+                IsArr
+                IDAssignment
+                 T: =
+                 Expr
+                  OrOperand
+                   AndOperand
+                    EqualityOperand
+                     RelOperand
+                      AddOperand
+                       Value
+                        T: false
+                       AddOperandPrime
+                      RelOperandPrime
+                     EqualityOperandPrime
+                    AndOperandPrime
+                   OrOperandPrime
+                  ExprPrime
+                 T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : aux02
+                 IsArr
+                 IDAssignment
+                  T: =
+                  Expr
+                   OrOperand
+                    AndOperand
+                     EqualityOperand
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: ID : num2
+                         ValuePrime
+                        AddOperandPrime
+                       RelOperandPrime
+                        T: +
+                        AddOperand
+                         Value
+                          T: Integer : 1
+                         AddOperandPrime
+                        RelOperandPrime
+                      EqualityOperandPrime
+                     AndOperandPrime
+                    OrOperandPrime
+                   ExprPrime
+                  T: ;
+               StmtList
+                Stmt
+                 T: if
+                 T: (
+                 Expr
+                  OrOperand
+                   AndOperand
+                    EqualityOperand
+                     RelOperand
+                      AddOperand
+                       Value
+                        T: ID : num1
+                        ValuePrime
+                       AddOperandPrime
+                      RelOperandPrime
+                     EqualityOperandPrime
+                      T: <
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: ID : num2
+                         ValuePrime
+                        AddOperandPrime
+                       RelOperandPrime
+                      EqualityOperandPrime
+                    AndOperandPrime
+                   OrOperandPrime
+                  ExprPrime
+                 T: )
+                 BracketStmt
+                  Stmt
+                   AtomicStmt
+                    T: ID : retval
+                    IsArr
+                    IDAssignment
+                     T: =
+                     Expr
+                      OrOperand
+                       AndOperand
+                        EqualityOperand
+                         RelOperand
+                          AddOperand
+                           Value
+                            T: false
+                           AddOperandPrime
+                          RelOperandPrime
+                         EqualityOperandPrime
+                        AndOperandPrime
+                       OrOperandPrime
+                      ExprPrime
+                     T: ;
+                 T: else
+                 BracketStmt
+                  Stmt
+                   T: if
+                   T: (
+                   Expr
+                    OrOperand
+                     AndOperand
+                      EqualityOperand
+                       RelOperand
+                        AddOperand
+                         Value
+                          T: !
+                          Value
+                           T: (
+                           Expr
+                            OrOperand
+                             AndOperand
+                              EqualityOperand
+                               RelOperand
+                                AddOperand
+                                 Value
+                                  T: ID : num1
+                                  ValuePrime
+                                 AddOperandPrime
+                                RelOperandPrime
+                               EqualityOperandPrime
+                                T: <
+                                RelOperand
+                                 AddOperand
+                                  Value
+                                   T: ID : aux02
+                                   ValuePrime
+                                  AddOperandPrime
+                                 RelOperandPrime
+                                EqualityOperandPrime
+                              AndOperandPrime
+                             OrOperandPrime
+                            ExprPrime
+                           T: )
+                           ValuePrime
+                         AddOperandPrime
+                        RelOperandPrime
+                       EqualityOperandPrime
+                      AndOperandPrime
+                     OrOperandPrime
+                    ExprPrime
+                   T: )
+                   BracketStmt
+                    Stmt
+                     AtomicStmt
+                      T: ID : retval
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: false
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                   T: else
+                   BracketStmt
+                    Stmt
+                     AtomicStmt
+                      T: ID : retval
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: true
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                StmtList
+           T: return
+           Expr
+            OrOperand
+             AndOperand
+              EqualityOperand
+               RelOperand
+                AddOperand
+                 Value
+                  T: ID : retval
+                  ValuePrime
+                 AddOperandPrime
+                RelOperandPrime
+               EqualityOperandPrime
+              AndOperandPrime
+             OrOperandPrime
+            ExprPrime
+           T: ;
+           T: }
+          MethodDeclList
+    T: }
+   ClassDeclList
+    ClassDecl
+     T: class
+     T: ID : List
+     ClassDeclPrime
+     T: {
+     ClassVarDeclList
+      ClassVarDecl
+       Formal
+        Type
+         T: ID : Element
+        T: ID : elem
+       T: ;
+      ClassVarDeclList
+       ClassVarDecl
+        Formal
+         Type
+          T: ID : List
+         T: ID : next
+        T: ;
+       ClassVarDeclList
+        ClassVarDecl
+         Formal
+          Type
+           T: boolean
+          T: ID : end
+         T: ;
+        ClassVarDeclList
+     MethodDeclList
+      MethodDecl
+       T: public
+       Formal
+        Type
+         T: boolean
+        T: ID : Init
+       T: (
+       FormalList
+       T: )
+       T: {
+       StmtList
+        Stmt
+         AtomicStmt
+          T: ID : end
+          IsArr
+          IDAssignment
+           T: =
+           Expr
+            OrOperand
+             AndOperand
+              EqualityOperand
+               RelOperand
+                AddOperand
+                 Value
+                  T: true
+                 AddOperandPrime
+                RelOperandPrime
+               EqualityOperandPrime
+              AndOperandPrime
+             OrOperandPrime
+            ExprPrime
+           T: ;
+        StmtList
+       T: return
+       Expr
+        OrOperand
+         AndOperand
+          EqualityOperand
+           RelOperand
+            AddOperand
+             Value
+              T: true
+             AddOperandPrime
+            RelOperandPrime
+           EqualityOperandPrime
+          AndOperandPrime
+         OrOperandPrime
+        ExprPrime
+       T: ;
+       T: }
+      MethodDeclList
+       MethodDecl
+        T: public
+        Formal
+         Type
+          T: boolean
+         T: ID : InitNew
+        T: (
+        FormalList
+         Formal
+          Type
+           T: ID : Element
+          T: ID : v_elem
+         FormalListPrime
+          T: ,
+          Formal
+           Type
+            T: ID : List
+           T: ID : v_next
+          FormalListPrime
+           T: ,
+           Formal
+            Type
+             T: boolean
+            T: ID : v_end
+           FormalListPrime
+        T: )
+        T: {
+        StmtList
+         Stmt
+          AtomicStmt
+           T: ID : end
+           IsArr
+           IDAssignment
+            T: =
+            Expr
+             OrOperand
+              AndOperand
+               EqualityOperand
+                RelOperand
+                 AddOperand
+                  Value
+                   T: ID : v_end
+                   ValuePrime
+                  AddOperandPrime
+                 RelOperandPrime
+                EqualityOperandPrime
+               AndOperandPrime
+              OrOperandPrime
+             ExprPrime
+            T: ;
+         StmtList
+          Stmt
+           AtomicStmt
+            T: ID : elem
+            IsArr
+            IDAssignment
+             T: =
+             Expr
+              OrOperand
+               AndOperand
+                EqualityOperand
+                 RelOperand
+                  AddOperand
+                   Value
+                    T: ID : v_elem
+                    ValuePrime
+                   AddOperandPrime
+                  RelOperandPrime
+                 EqualityOperandPrime
+                AndOperandPrime
+               OrOperandPrime
+              ExprPrime
+             T: ;
+          StmtList
+           Stmt
+            AtomicStmt
+             T: ID : next
+             IsArr
+             IDAssignment
+              T: =
+              Expr
+               OrOperand
+                AndOperand
+                 EqualityOperand
+                  RelOperand
+                   AddOperand
+                    Value
+                     T: ID : v_next
+                     ValuePrime
+                    AddOperandPrime
+                   RelOperandPrime
+                  EqualityOperandPrime
+                 AndOperandPrime
+                OrOperandPrime
+               ExprPrime
+              T: ;
+           StmtList
+        T: return
+        Expr
+         OrOperand
+          AndOperand
+           EqualityOperand
+            RelOperand
+             AddOperand
+              Value
+               T: true
+              AddOperandPrime
+             RelOperandPrime
+            EqualityOperandPrime
+           AndOperandPrime
+          OrOperandPrime
+         ExprPrime
+        T: ;
+        T: }
+       MethodDeclList
+        MethodDecl
+         T: public
+         Formal
+          Type
+           T: ID : List
+          T: ID : Insert
+         T: (
+         FormalList
+          Formal
+           Type
+            T: ID : Element
+           T: ID : new_elem
+          FormalListPrime
+         T: )
+         T: {
+         StmtList
+          Stmt
+           AtomicStmt
+            T: boolean
+            T: ID : ret_val
+            IsArr
+            Assignment
+             T: ;
+          StmtList
+           Stmt
+            AtomicStmt
+             T: ID : List
+             IsArr
+             IDAssignment
+              T: ID : aux03
+              IsArr
+              Assignment
+               T: ;
+           StmtList
+            Stmt
+             AtomicStmt
+              T: ID : List
+              IsArr
+              IDAssignment
+               T: ID : aux02
+               IsArr
+               Assignment
+                T: ;
+            StmtList
+             Stmt
+              AtomicStmt
+               T: ID : aux03
+               IsArr
+               IDAssignment
+                T: =
+                Expr
+                 OrOperand
+                  AndOperand
+                   EqualityOperand
+                    RelOperand
+                     AddOperand
+                      Value
+                       T: this
+                       ValuePrime
+                      AddOperandPrime
+                     RelOperandPrime
+                    EqualityOperandPrime
+                   AndOperandPrime
+                  OrOperandPrime
+                 ExprPrime
+                T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: ID : aux02
+                IsArr
+                IDAssignment
+                 T: =
+                 Expr
+                  OrOperand
+                   AndOperand
+                    EqualityOperand
+                     RelOperand
+                      AddOperand
+                       Value
+                        T: new
+                        NewWhat
+                         T: ID : List
+                         T: (
+                         T: )
+                         ValuePrime
+                       AddOperandPrime
+                      RelOperandPrime
+                     EqualityOperandPrime
+                    AndOperandPrime
+                   OrOperandPrime
+                  ExprPrime
+                 T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : ret_val
+                 IsArr
+                 IDAssignment
+                  T: =
+                  Expr
+                   OrOperand
+                    AndOperand
+                     EqualityOperand
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: ID : aux02
+                         ValuePrime
+                          T: .
+                          DotWhat
+                           T: ID : InitNew
+                           T: (
+                           ExprList
+                            Expr
+                             OrOperand
+                              AndOperand
+                               EqualityOperand
+                                RelOperand
+                                 AddOperand
+                                  Value
+                                   T: ID : new_elem
+                                   ValuePrime
+                                  AddOperandPrime
+                                 RelOperandPrime
+                                EqualityOperandPrime
+                               AndOperandPrime
+                              OrOperandPrime
+                             ExprPrime
+                            ExprListPrime
+                             T: ,
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: ID : aux03
+                                    ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                              ExprPrime
+                             ExprListPrime
+                              T: ,
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: false
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              ExprListPrime
+                           T: )
+                           ValuePrime
+                        AddOperandPrime
+                       RelOperandPrime
+                      EqualityOperandPrime
+                     AndOperandPrime
+                    OrOperandPrime
+                   ExprPrime
+                  T: ;
+               StmtList
+         T: return
+         Expr
+          OrOperand
+           AndOperand
+            EqualityOperand
+             RelOperand
+              AddOperand
+               Value
+                T: ID : aux02
+                ValuePrime
+               AddOperandPrime
+              RelOperandPrime
+             EqualityOperandPrime
+            AndOperandPrime
+           OrOperandPrime
+          ExprPrime
+         T: ;
+         T: }
+        MethodDeclList
+         MethodDecl
+          T: public
+          Formal
+           Type
+            T: boolean
+           T: ID : SetNext
+          T: (
+          FormalList
+           Formal
+            Type
+             T: ID : List
+            T: ID : v_next
+           FormalListPrime
+          T: )
+          T: {
+          StmtList
+           Stmt
+            AtomicStmt
+             T: ID : next
+             IsArr
+             IDAssignment
+              T: =
+              Expr
+               OrOperand
+                AndOperand
+                 EqualityOperand
+                  RelOperand
+                   AddOperand
+                    Value
+                     T: ID : v_next
+                     ValuePrime
+                    AddOperandPrime
+                   RelOperandPrime
+                  EqualityOperandPrime
+                 AndOperandPrime
+                OrOperandPrime
+               ExprPrime
+              T: ;
+           StmtList
+          T: return
+          Expr
+           OrOperand
+            AndOperand
+             EqualityOperand
+              RelOperand
+               AddOperand
+                Value
+                 T: true
+                AddOperandPrime
+               RelOperandPrime
+              EqualityOperandPrime
+             AndOperandPrime
+            OrOperandPrime
+           ExprPrime
+          T: ;
+          T: }
+         MethodDeclList
+          MethodDecl
+           T: public
+           Formal
+            Type
+             T: ID : List
+            T: ID : Delete
+           T: (
+           FormalList
+            Formal
+             Type
+              T: ID : Element
+             T: ID : e
+            FormalListPrime
+           T: )
+           T: {
+           StmtList
+            Stmt
+             AtomicStmt
+              T: ID : List
+              IsArr
+              IDAssignment
+               T: ID : my_head
+               IsArr
+               Assignment
+                T: ;
+            StmtList
+             Stmt
+              AtomicStmt
+               T: boolean
+               T: ID : ret_val
+               IsArr
+               Assignment
+                T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: boolean
+                T: ID : aux05
+                IsArr
+                Assignment
+                 T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : List
+                 IsArr
+                 IDAssignment
+                  T: ID : aux01
+                  IsArr
+                  Assignment
+                   T: ;
+               StmtList
+                Stmt
+                 AtomicStmt
+                  T: ID : List
+                  IsArr
+                  IDAssignment
+                   T: ID : prev
+                   IsArr
+                   Assignment
+                    T: ;
+                StmtList
+                 Stmt
+                  AtomicStmt
+                   T: boolean
+                   T: ID : var_end
+                   IsArr
+                   Assignment
+                    T: ;
+                 StmtList
+                  Stmt
+                   AtomicStmt
+                    T: ID : Element
+                    IsArr
+                    IDAssignment
+                     T: ID : var_elem
+                     IsArr
+                     Assignment
+                      T: ;
+                  StmtList
+                   Stmt
+                    AtomicStmt
+                     T: int
+                     IsArr
+                     T: ID : aux04
+                     IsArr
+                     Assignment
+                      T: ;
+                   StmtList
+                    Stmt
+                     AtomicStmt
+                      T: int
+                      IsArr
+                      T: ID : nt
+                      IsArr
+                      Assignment
+                       T: ;
+                    StmtList
+                     Stmt
+                      AtomicStmt
+                       T: ID : my_head
+                       IsArr
+                       IDAssignment
+                        T: =
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: this
+                               ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: ;
+                     StmtList
+                      Stmt
+                       AtomicStmt
+                        T: ID : ret_val
+                        IsArr
+                        IDAssignment
+                         T: =
+                         Expr
+                          OrOperand
+                           AndOperand
+                            EqualityOperand
+                             RelOperand
+                              AddOperand
+                               Value
+                                T: false
+                               AddOperandPrime
+                              RelOperandPrime
+                             EqualityOperandPrime
+                            AndOperandPrime
+                           OrOperandPrime
+                          ExprPrime
+                         T: ;
+                      StmtList
+                       Stmt
+                        AtomicStmt
+                         T: ID : aux04
+                         IsArr
+                         IDAssignment
+                          T: =
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: Integer : 0
+                                AddOperandPrime
+                               RelOperandPrime
+                                T: -
+                                AddOperand
+                                 Value
+                                  T: Integer : 1
+                                 AddOperandPrime
+                                RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: ;
+                       StmtList
+                        Stmt
+                         AtomicStmt
+                          T: ID : aux01
+                          IsArr
+                          IDAssignment
+                           T: =
+                           Expr
+                            OrOperand
+                             AndOperand
+                              EqualityOperand
+                               RelOperand
+                                AddOperand
+                                 Value
+                                  T: this
+                                  ValuePrime
+                                 AddOperandPrime
+                                RelOperandPrime
+                               EqualityOperandPrime
+                              AndOperandPrime
+                             OrOperandPrime
+                            ExprPrime
+                           T: ;
+                        StmtList
+                         Stmt
+                          AtomicStmt
+                           T: ID : prev
+                           IsArr
+                           IDAssignment
+                            T: =
+                            Expr
+                             OrOperand
+                              AndOperand
+                               EqualityOperand
+                                RelOperand
+                                 AddOperand
+                                  Value
+                                   T: this
+                                   ValuePrime
+                                  AddOperandPrime
+                                 RelOperandPrime
+                                EqualityOperandPrime
+                               AndOperandPrime
+                              OrOperandPrime
+                             ExprPrime
+                            T: ;
+                         StmtList
+                          Stmt
+                           AtomicStmt
+                            T: ID : var_end
+                            IsArr
+                            IDAssignment
+                             T: =
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: ID : end
+                                    ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                              ExprPrime
+                             T: ;
+                          StmtList
+                           Stmt
+                            AtomicStmt
+                             T: ID : var_elem
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: ID : elem
+                                     ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                           StmtList
+                            Stmt
+                             T: while
+                             T: (
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: (
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: !
+                                           Value
+                                            T: ID : var_end
+                                            ValuePrime
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    T: )
+                                    ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                                T: &&
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: (
+                                     Expr
+                                      OrOperand
+                                       AndOperand
+                                        EqualityOperand
+                                         RelOperand
+                                          AddOperand
+                                           Value
+                                            T: !
+                                            Value
+                                             T: ID : ret_val
+                                             ValuePrime
+                                           AddOperandPrime
+                                          RelOperandPrime
+                                         EqualityOperandPrime
+                                        AndOperandPrime
+                                       OrOperandPrime
+                                      ExprPrime
+                                     T: )
+                                     ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                              ExprPrime
+                             T: )
+                             BracketStmt
+                              T: {
+                              StmtList
+                               Stmt
+                                T: if
+                                T: (
+                                Expr
+                                 OrOperand
+                                  AndOperand
+                                   EqualityOperand
+                                    RelOperand
+                                     AddOperand
+                                      Value
+                                       T: ID : e
+                                       ValuePrime
+                                        T: .
+                                        DotWhat
+                                         T: ID : Equal
+                                         T: (
+                                         ExprList
+                                          Expr
+                                           OrOperand
+                                            AndOperand
+                                             EqualityOperand
+                                              RelOperand
+                                               AddOperand
+                                                Value
+                                                 T: ID : var_elem
+                                                 ValuePrime
+                                                AddOperandPrime
+                                               RelOperandPrime
+                                              EqualityOperandPrime
+                                             AndOperandPrime
+                                            OrOperandPrime
+                                           ExprPrime
+                                          ExprListPrime
+                                         T: )
+                                         ValuePrime
+                                      AddOperandPrime
+                                     RelOperandPrime
+                                    EqualityOperandPrime
+                                   AndOperandPrime
+                                  OrOperandPrime
+                                 ExprPrime
+                                T: )
+                                BracketStmt
+                                 T: {
+                                 StmtList
+                                  Stmt
+                                   AtomicStmt
+                                    T: ID : ret_val
+                                    IsArr
+                                    IDAssignment
+                                     T: =
+                                     Expr
+                                      OrOperand
+                                       AndOperand
+                                        EqualityOperand
+                                         RelOperand
+                                          AddOperand
+                                           Value
+                                            T: true
+                                           AddOperandPrime
+                                          RelOperandPrime
+                                         EqualityOperandPrime
+                                        AndOperandPrime
+                                       OrOperandPrime
+                                      ExprPrime
+                                     T: ;
+                                  StmtList
+                                   Stmt
+                                    T: if
+                                    T: (
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: ID : aux04
+                                           ValuePrime
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                         T: <
+                                         RelOperand
+                                          AddOperand
+                                           Value
+                                            T: Integer : 0
+                                           AddOperandPrime
+                                          RelOperandPrime
+                                         EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    T: )
+                                    BracketStmt
+                                     T: {
+                                     StmtList
+                                      Stmt
+                                       AtomicStmt
+                                        T: ID : my_head
+                                        IsArr
+                                        IDAssignment
+                                         T: =
+                                         Expr
+                                          OrOperand
+                                           AndOperand
+                                            EqualityOperand
+                                             RelOperand
+                                              AddOperand
+                                               Value
+                                                T: ID : aux01
+                                                ValuePrime
+                                                 T: .
+                                                 DotWhat
+                                                  T: ID : GetNext
+                                                  T: (
+                                                  ExprList
+                                                  T: )
+                                                  ValuePrime
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                             EqualityOperandPrime
+                                            AndOperandPrime
+                                           OrOperandPrime
+                                          ExprPrime
+                                         T: ;
+                                      StmtList
+                                     T: }
+                                    T: else
+                                    BracketStmt
+                                     T: {
+                                     StmtList
+                                      Stmt
+                                       AtomicStmt
+                                        T: System.out.println
+                                        T: (
+                                        Expr
+                                         OrOperand
+                                          AndOperand
+                                           EqualityOperand
+                                            RelOperand
+                                             AddOperand
+                                              Value
+                                               T: Integer : 0
+                                              AddOperandPrime
+                                             RelOperandPrime
+                                              T: -
+                                              AddOperand
+                                               Value
+                                                T: Integer : 555
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                            EqualityOperandPrime
+                                           AndOperandPrime
+                                          OrOperandPrime
+                                         ExprPrime
+                                        T: )
+                                        T: ;
+                                      StmtList
+                                       Stmt
+                                        AtomicStmt
+                                         T: ID : aux05
+                                         IsArr
+                                         IDAssignment
+                                          T: =
+                                          Expr
+                                           OrOperand
+                                            AndOperand
+                                             EqualityOperand
+                                              RelOperand
+                                               AddOperand
+                                                Value
+                                                 T: ID : prev
+                                                 ValuePrime
+                                                  T: .
+                                                  DotWhat
+                                                   T: ID : SetNext
+                                                   T: (
+                                                   ExprList
+                                                    Expr
+                                                     OrOperand
+                                                      AndOperand
+                                                       EqualityOperand
+                                                        RelOperand
+                                                         AddOperand
+                                                          Value
+                                                           T: ID : aux01
+                                                           ValuePrime
+                                                            T: .
+                                                            DotWhat
+                                                             T: ID : GetNext
+                                                             T: (
+                                                             ExprList
+                                                             T: )
+                                                             ValuePrime
+                                                          AddOperandPrime
+                                                         RelOperandPrime
+                                                        EqualityOperandPrime
+                                                       AndOperandPrime
+                                                      OrOperandPrime
+                                                     ExprPrime
+                                                    ExprListPrime
+                                                   T: )
+                                                   ValuePrime
+                                                AddOperandPrime
+                                               RelOperandPrime
+                                              EqualityOperandPrime
+                                             AndOperandPrime
+                                            OrOperandPrime
+                                           ExprPrime
+                                          T: ;
+                                       StmtList
+                                        Stmt
+                                         AtomicStmt
+                                          T: System.out.println
+                                          T: (
+                                          Expr
+                                           OrOperand
+                                            AndOperand
+                                             EqualityOperand
+                                              RelOperand
+                                               AddOperand
+                                                Value
+                                                 T: Integer : 0
+                                                AddOperandPrime
+                                               RelOperandPrime
+                                                T: -
+                                                AddOperand
+                                                 Value
+                                                  T: Integer : 555
+                                                 AddOperandPrime
+                                                RelOperandPrime
+                                              EqualityOperandPrime
+                                             AndOperandPrime
+                                            OrOperandPrime
+                                           ExprPrime
+                                          T: )
+                                          T: ;
+                                        StmtList
+                                     T: }
+                                   StmtList
+                                 T: }
+                                T: else
+                                BracketStmt
+                                 Stmt
+                                  AtomicStmt
+                                   T: ID : nt
+                                   IsArr
+                                   IDAssignment
+                                    T: =
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: Integer : 0
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    T: ;
+                               StmtList
+                                Stmt
+                                 T: if
+                                 T: (
+                                 Expr
+                                  OrOperand
+                                   AndOperand
+                                    EqualityOperand
+                                     RelOperand
+                                      AddOperand
+                                       Value
+                                        T: !
+                                        Value
+                                         T: ID : ret_val
+                                         ValuePrime
+                                       AddOperandPrime
+                                      RelOperandPrime
+                                     EqualityOperandPrime
+                                    AndOperandPrime
+                                   OrOperandPrime
+                                  ExprPrime
+                                 T: )
+                                 BracketStmt
+                                  T: {
+                                  StmtList
+                                   Stmt
+                                    AtomicStmt
+                                     T: ID : prev
+                                     IsArr
+                                     IDAssignment
+                                      T: =
+                                      Expr
+                                       OrOperand
+                                        AndOperand
+                                         EqualityOperand
+                                          RelOperand
+                                           AddOperand
+                                            Value
+                                             T: ID : aux01
+                                             ValuePrime
+                                            AddOperandPrime
+                                           RelOperandPrime
+                                          EqualityOperandPrime
+                                         AndOperandPrime
+                                        OrOperandPrime
+                                       ExprPrime
+                                      T: ;
+                                   StmtList
+                                    Stmt
+                                     AtomicStmt
+                                      T: ID : aux01
+                                      IsArr
+                                      IDAssignment
+                                       T: =
+                                       Expr
+                                        OrOperand
+                                         AndOperand
+                                          EqualityOperand
+                                           RelOperand
+                                            AddOperand
+                                             Value
+                                              T: ID : aux01
+                                              ValuePrime
+                                               T: .
+                                               DotWhat
+                                                T: ID : GetNext
+                                                T: (
+                                                ExprList
+                                                T: )
+                                                ValuePrime
+                                             AddOperandPrime
+                                            RelOperandPrime
+                                           EqualityOperandPrime
+                                          AndOperandPrime
+                                         OrOperandPrime
+                                        ExprPrime
+                                       T: ;
+                                    StmtList
+                                     Stmt
+                                      AtomicStmt
+                                       T: ID : var_end
+                                       IsArr
+                                       IDAssignment
+                                        T: =
+                                        Expr
+                                         OrOperand
+                                          AndOperand
+                                           EqualityOperand
+                                            RelOperand
+                                             AddOperand
+                                              Value
+                                               T: ID : aux01
+                                               ValuePrime
+                                                T: .
+                                                DotWhat
+                                                 T: ID : GetEnd
+                                                 T: (
+                                                 ExprList
+                                                 T: )
+                                                 ValuePrime
+                                              AddOperandPrime
+                                             RelOperandPrime
+                                            EqualityOperandPrime
+                                           AndOperandPrime
+                                          OrOperandPrime
+                                         ExprPrime
+                                        T: ;
+                                     StmtList
+                                      Stmt
+                                       AtomicStmt
+                                        T: ID : var_elem
+                                        IsArr
+                                        IDAssignment
+                                         T: =
+                                         Expr
+                                          OrOperand
+                                           AndOperand
+                                            EqualityOperand
+                                             RelOperand
+                                              AddOperand
+                                               Value
+                                                T: ID : aux01
+                                                ValuePrime
+                                                 T: .
+                                                 DotWhat
+                                                  T: ID : GetElem
+                                                  T: (
+                                                  ExprList
+                                                  T: )
+                                                  ValuePrime
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                             EqualityOperandPrime
+                                            AndOperandPrime
+                                           OrOperandPrime
+                                          ExprPrime
+                                         T: ;
+                                      StmtList
+                                       Stmt
+                                        AtomicStmt
+                                         T: ID : aux04
+                                         IsArr
+                                         IDAssignment
+                                          T: =
+                                          Expr
+                                           OrOperand
+                                            AndOperand
+                                             EqualityOperand
+                                              RelOperand
+                                               AddOperand
+                                                Value
+                                                 T: Integer : 1
+                                                AddOperandPrime
+                                               RelOperandPrime
+                                              EqualityOperandPrime
+                                             AndOperandPrime
+                                            OrOperandPrime
+                                           ExprPrime
+                                          T: ;
+                                       StmtList
+                                  T: }
+                                 T: else
+                                 BracketStmt
+                                  Stmt
+                                   AtomicStmt
+                                    T: ID : nt
+                                    IsArr
+                                    IDAssignment
+                                     T: =
+                                     Expr
+                                      OrOperand
+                                       AndOperand
+                                        EqualityOperand
+                                         RelOperand
+                                          AddOperand
+                                           Value
+                                            T: Integer : 0
+                                           AddOperandPrime
+                                          RelOperandPrime
+                                         EqualityOperandPrime
+                                        AndOperandPrime
+                                       OrOperandPrime
+                                      ExprPrime
+                                     T: ;
+                                StmtList
+                              T: }
+                            StmtList
+           T: return
+           Expr
+            OrOperand
+             AndOperand
+              EqualityOperand
+               RelOperand
+                AddOperand
+                 Value
+                  T: ID : my_head
+                  ValuePrime
+                 AddOperandPrime
+                RelOperandPrime
+               EqualityOperandPrime
+              AndOperandPrime
+             OrOperandPrime
+            ExprPrime
+           T: ;
+           T: }
+          MethodDeclList
+           MethodDecl
+            T: public
+            Formal
+             Type
+              T: int
+              IsArr
+             T: ID : Search
+            T: (
+            FormalList
+             Formal
+              Type
+               T: ID : Element
+              T: ID : e
+             FormalListPrime
+            T: )
+            T: {
+            StmtList
+             Stmt
+              AtomicStmt
+               T: int
+               IsArr
+               T: ID : int_ret_val
+               IsArr
+               Assignment
+                T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: ID : List
+                IsArr
+                IDAssignment
+                 T: ID : aux01
+                 IsArr
+                 Assignment
+                  T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : Element
+                 IsArr
+                 IDAssignment
+                  T: ID : var_elem
+                  IsArr
+                  Assignment
+                   T: ;
+               StmtList
+                Stmt
+                 AtomicStmt
+                  T: boolean
+                  T: ID : var_end
+                  IsArr
+                  Assignment
+                   T: ;
+                StmtList
+                 Stmt
+                  AtomicStmt
+                   T: int
+                   IsArr
+                   T: ID : nt
+                   IsArr
+                   Assignment
+                    T: ;
+                 StmtList
+                  Stmt
+                   AtomicStmt
+                    T: ID : int_ret_val
+                    IsArr
+                    IDAssignment
+                     T: =
+                     Expr
+                      OrOperand
+                       AndOperand
+                        EqualityOperand
+                         RelOperand
+                          AddOperand
+                           Value
+                            T: Integer : 0
+                           AddOperandPrime
+                          RelOperandPrime
+                         EqualityOperandPrime
+                        AndOperandPrime
+                       OrOperandPrime
+                      ExprPrime
+                     T: ;
+                  StmtList
+                   Stmt
+                    AtomicStmt
+                     T: ID : aux01
+                     IsArr
+                     IDAssignment
+                      T: =
+                      Expr
+                       OrOperand
+                        AndOperand
+                         EqualityOperand
+                          RelOperand
+                           AddOperand
+                            Value
+                             T: this
+                             ValuePrime
+                            AddOperandPrime
+                           RelOperandPrime
+                          EqualityOperandPrime
+                         AndOperandPrime
+                        OrOperandPrime
+                       ExprPrime
+                      T: ;
+                   StmtList
+                    Stmt
+                     AtomicStmt
+                      T: ID : var_end
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: ID : end
+                              ValuePrime
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                    StmtList
+                     Stmt
+                      AtomicStmt
+                       T: ID : var_elem
+                       IsArr
+                       IDAssignment
+                        T: =
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: ID : elem
+                               ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: ;
+                     StmtList
+                      Stmt
+                       T: while
+                       T: (
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: !
+                              Value
+                               T: ID : var_end
+                               ValuePrime
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: )
+                       BracketStmt
+                        T: {
+                        StmtList
+                         Stmt
+                          T: if
+                          T: (
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: ID : e
+                                 ValuePrime
+                                  T: .
+                                  DotWhat
+                                   T: ID : Equal
+                                   T: (
+                                   ExprList
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: ID : var_elem
+                                           ValuePrime
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    ExprListPrime
+                                   T: )
+                                   ValuePrime
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: )
+                          BracketStmt
+                           T: {
+                           StmtList
+                            Stmt
+                             AtomicStmt
+                              T: ID : int_ret_val
+                              IsArr
+                              IDAssignment
+                               T: =
+                               Expr
+                                OrOperand
+                                 AndOperand
+                                  EqualityOperand
+                                   RelOperand
+                                    AddOperand
+                                     Value
+                                      T: Integer : 1
+                                     AddOperandPrime
+                                    RelOperandPrime
+                                   EqualityOperandPrime
+                                  AndOperandPrime
+                                 OrOperandPrime
+                                ExprPrime
+                               T: ;
+                            StmtList
+                           T: }
+                          T: else
+                          BracketStmt
+                           Stmt
+                            AtomicStmt
+                             T: ID : nt
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: Integer : 0
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                         StmtList
+                          Stmt
+                           AtomicStmt
+                            T: ID : aux01
+                            IsArr
+                            IDAssignment
+                             T: =
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: ID : aux01
+                                    ValuePrime
+                                     T: .
+                                     DotWhat
+                                      T: ID : GetNext
+                                      T: (
+                                      ExprList
+                                      T: )
+                                      ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                              ExprPrime
+                             T: ;
+                          StmtList
+                           Stmt
+                            AtomicStmt
+                             T: ID : var_end
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: ID : aux01
+                                     ValuePrime
+                                      T: .
+                                      DotWhat
+                                       T: ID : GetEnd
+                                       T: (
+                                       ExprList
+                                       T: )
+                                       ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                           StmtList
+                            Stmt
+                             AtomicStmt
+                              T: ID : var_elem
+                              IsArr
+                              IDAssignment
+                               T: =
+                               Expr
+                                OrOperand
+                                 AndOperand
+                                  EqualityOperand
+                                   RelOperand
+                                    AddOperand
+                                     Value
+                                      T: ID : aux01
+                                      ValuePrime
+                                       T: .
+                                       DotWhat
+                                        T: ID : GetElem
+                                        T: (
+                                        ExprList
+                                        T: )
+                                        ValuePrime
+                                     AddOperandPrime
+                                    RelOperandPrime
+                                   EqualityOperandPrime
+                                  AndOperandPrime
+                                 OrOperandPrime
+                                ExprPrime
+                               T: ;
+                            StmtList
+                        T: }
+                      StmtList
+            T: return
+            Expr
+             OrOperand
+              AndOperand
+               EqualityOperand
+                RelOperand
+                 AddOperand
+                  Value
+                   T: ID : int_ret_val
+                   ValuePrime
+                  AddOperandPrime
+                 RelOperandPrime
+                EqualityOperandPrime
+               AndOperandPrime
+              OrOperandPrime
+             ExprPrime
+            T: ;
+            T: }
+           MethodDeclList
+            MethodDecl
+             T: public
+             Formal
+              Type
+               T: boolean
+              T: ID : GetEnd
+             T: (
+             FormalList
+             T: )
+             T: {
+             StmtList
+             T: return
+             Expr
+              OrOperand
+               AndOperand
+                EqualityOperand
+                 RelOperand
+                  AddOperand
+                   Value
+                    T: ID : end
+                    ValuePrime
+                   AddOperandPrime
+                  RelOperandPrime
+                 EqualityOperandPrime
+                AndOperandPrime
+               OrOperandPrime
+              ExprPrime
+             T: ;
+             T: }
+            MethodDeclList
+             MethodDecl
+              T: public
+              Formal
+               Type
+                T: ID : Element
+               T: ID : GetElem
+              T: (
+              FormalList
+              T: )
+              T: {
+              StmtList
+              T: return
+              Expr
+               OrOperand
+                AndOperand
+                 EqualityOperand
+                  RelOperand
+                   AddOperand
+                    Value
+                     T: ID : elem
+                     ValuePrime
+                    AddOperandPrime
+                   RelOperandPrime
+                  EqualityOperandPrime
+                 AndOperandPrime
+                OrOperandPrime
+               ExprPrime
+              T: ;
+              T: }
+             MethodDeclList
+              MethodDecl
+               T: public
+               Formal
+                Type
+                 T: ID : List
+                T: ID : GetNext
+               T: (
+               FormalList
+               T: )
+               T: {
+               StmtList
+               T: return
+               Expr
+                OrOperand
+                 AndOperand
+                  EqualityOperand
+                   RelOperand
+                    AddOperand
+                     Value
+                      T: ID : next
+                      ValuePrime
+                     AddOperandPrime
+                    RelOperandPrime
+                   EqualityOperandPrime
+                  AndOperandPrime
+                 OrOperandPrime
+                ExprPrime
+               T: ;
+               T: }
+              MethodDeclList
+               MethodDecl
+                T: public
+                Formal
+                 Type
+                  T: boolean
+                 T: ID : Print
+                T: (
+                FormalList
+                T: )
+                T: {
+                StmtList
+                 Stmt
+                  AtomicStmt
+                   T: ID : List
+                   IsArr
+                   IDAssignment
+                    T: ID : aux01
+                    IsArr
+                    Assignment
+                     T: ;
+                 StmtList
+                  Stmt
+                   AtomicStmt
+                    T: boolean
+                    T: ID : var_end
+                    IsArr
+                    Assignment
+                     T: ;
+                  StmtList
+                   Stmt
+                    AtomicStmt
+                     T: ID : Element
+                     IsArr
+                     IDAssignment
+                      T: ID : var_elem
+                      IsArr
+                      Assignment
+                       T: ;
+                   StmtList
+                    Stmt
+                     AtomicStmt
+                      T: ID : aux01
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: this
+                              ValuePrime
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                    StmtList
+                     Stmt
+                      AtomicStmt
+                       T: ID : var_end
+                       IsArr
+                       IDAssignment
+                        T: =
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: ID : end
+                               ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: ;
+                     StmtList
+                      Stmt
+                       AtomicStmt
+                        T: ID : var_elem
+                        IsArr
+                        IDAssignment
+                         T: =
+                         Expr
+                          OrOperand
+                           AndOperand
+                            EqualityOperand
+                             RelOperand
+                              AddOperand
+                               Value
+                                T: ID : elem
+                                ValuePrime
+                               AddOperandPrime
+                              RelOperandPrime
+                             EqualityOperandPrime
+                            AndOperandPrime
+                           OrOperandPrime
+                          ExprPrime
+                         T: ;
+                      StmtList
+                       Stmt
+                        T: while
+                        T: (
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: !
+                               Value
+                                T: ID : var_end
+                                ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: )
+                        BracketStmt
+                         T: {
+                         StmtList
+                          Stmt
+                           AtomicStmt
+                            T: System.out.println
+                            T: (
+                            Expr
+                             OrOperand
+                              AndOperand
+                               EqualityOperand
+                                RelOperand
+                                 AddOperand
+                                  Value
+                                   T: ID : var_elem
+                                   ValuePrime
+                                    T: .
+                                    DotWhat
+                                     T: ID : GetAge
+                                     T: (
+                                     ExprList
+                                     T: )
+                                     ValuePrime
+                                  AddOperandPrime
+                                 RelOperandPrime
+                                EqualityOperandPrime
+                               AndOperandPrime
+                              OrOperandPrime
+                             ExprPrime
+                            T: )
+                            T: ;
+                          StmtList
+                           Stmt
+                            AtomicStmt
+                             T: ID : aux01
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: ID : aux01
+                                     ValuePrime
+                                      T: .
+                                      DotWhat
+                                       T: ID : GetNext
+                                       T: (
+                                       ExprList
+                                       T: )
+                                       ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                           StmtList
+                            Stmt
+                             AtomicStmt
+                              T: ID : var_end
+                              IsArr
+                              IDAssignment
+                               T: =
+                               Expr
+                                OrOperand
+                                 AndOperand
+                                  EqualityOperand
+                                   RelOperand
+                                    AddOperand
+                                     Value
+                                      T: ID : aux01
+                                      ValuePrime
+                                       T: .
+                                       DotWhat
+                                        T: ID : GetEnd
+                                        T: (
+                                        ExprList
+                                        T: )
+                                        ValuePrime
+                                     AddOperandPrime
+                                    RelOperandPrime
+                                   EqualityOperandPrime
+                                  AndOperandPrime
+                                 OrOperandPrime
+                                ExprPrime
+                               T: ;
+                            StmtList
+                             Stmt
+                              AtomicStmt
+                               T: ID : var_elem
+                               IsArr
+                               IDAssignment
+                                T: =
+                                Expr
+                                 OrOperand
+                                  AndOperand
+                                   EqualityOperand
+                                    RelOperand
+                                     AddOperand
+                                      Value
+                                       T: ID : aux01
+                                       ValuePrime
+                                        T: .
+                                        DotWhat
+                                         T: ID : GetElem
+                                         T: (
+                                         ExprList
+                                         T: )
+                                         ValuePrime
+                                      AddOperandPrime
+                                     RelOperandPrime
+                                    EqualityOperandPrime
+                                   AndOperandPrime
+                                  OrOperandPrime
+                                 ExprPrime
+                                T: ;
+                             StmtList
+                         T: }
+                       StmtList
+                T: return
+                Expr
+                 OrOperand
+                  AndOperand
+                   EqualityOperand
+                    RelOperand
+                     AddOperand
+                      Value
+                       T: true
+                      AddOperandPrime
+                     RelOperandPrime
+                    EqualityOperandPrime
+                   AndOperandPrime
+                  OrOperandPrime
+                 ExprPrime
+                T: ;
+                T: }
+               MethodDeclList
+     T: }
+    ClassDeclList
+     ClassDecl
+      T: class
+      T: ID : LL
+      ClassDeclPrime
+      T: {
+      ClassVarDeclList
+      MethodDeclList
+       MethodDecl
+        T: public
+        Formal
+         Type
+          T: int
+          IsArr
+         T: ID : Start
+        T: (
+        FormalList
+        T: )
+        T: {
+        StmtList
+         Stmt
+          AtomicStmt
+           T: ID : List
+           IsArr
+           IDAssignment
+            T: ID : head
+            IsArr
+            Assignment
+             T: ;
+         StmtList
+          Stmt
+           AtomicStmt
+            T: ID : List
+            IsArr
+            IDAssignment
+             T: ID : last_elem
+             IsArr
+             Assignment
+              T: ;
+          StmtList
+           Stmt
+            AtomicStmt
+             T: boolean
+             T: ID : aux01
+             IsArr
+             Assignment
+              T: ;
+           StmtList
+            Stmt
+             AtomicStmt
+              T: ID : Element
+              IsArr
+              IDAssignment
+               T: ID : el01
+               IsArr
+               Assignment
+                T: ;
+            StmtList
+             Stmt
+              AtomicStmt
+               T: ID : Element
+               IsArr
+               IDAssignment
+                T: ID : el02
+                IsArr
+                Assignment
+                 T: ;
+             StmtList
+              Stmt
+               AtomicStmt
+                T: ID : Element
+                IsArr
+                IDAssignment
+                 T: ID : el03
+                 IsArr
+                 Assignment
+                  T: ;
+              StmtList
+               Stmt
+                AtomicStmt
+                 T: ID : last_elem
+                 IsArr
+                 IDAssignment
+                  T: =
+                  Expr
+                   OrOperand
+                    AndOperand
+                     EqualityOperand
+                      RelOperand
+                       AddOperand
+                        Value
+                         T: new
+                         NewWhat
+                          T: ID : List
+                          T: (
+                          T: )
+                          ValuePrime
+                        AddOperandPrime
+                       RelOperandPrime
+                      EqualityOperandPrime
+                     AndOperandPrime
+                    OrOperandPrime
+                   ExprPrime
+                  T: ;
+               StmtList
+                Stmt
+                 AtomicStmt
+                  T: ID : aux01
+                  IsArr
+                  IDAssignment
+                   T: =
+                   Expr
+                    OrOperand
+                     AndOperand
+                      EqualityOperand
+                       RelOperand
+                        AddOperand
+                         Value
+                          T: ID : last_elem
+                          ValuePrime
+                           T: .
+                           DotWhat
+                            T: ID : Init
+                            T: (
+                            ExprList
+                            T: )
+                            ValuePrime
+                         AddOperandPrime
+                        RelOperandPrime
+                       EqualityOperandPrime
+                      AndOperandPrime
+                     OrOperandPrime
+                    ExprPrime
+                   T: ;
+                StmtList
+                 Stmt
+                  AtomicStmt
+                   T: ID : head
+                   IsArr
+                   IDAssignment
+                    T: =
+                    Expr
+                     OrOperand
+                      AndOperand
+                       EqualityOperand
+                        RelOperand
+                         AddOperand
+                          Value
+                           T: ID : last_elem
+                           ValuePrime
+                          AddOperandPrime
+                         RelOperandPrime
+                        EqualityOperandPrime
+                       AndOperandPrime
+                      OrOperandPrime
+                     ExprPrime
+                    T: ;
+                 StmtList
+                  Stmt
+                   AtomicStmt
+                    T: ID : aux01
+                    IsArr
+                    IDAssignment
+                     T: =
+                     Expr
+                      OrOperand
+                       AndOperand
+                        EqualityOperand
+                         RelOperand
+                          AddOperand
+                           Value
+                            T: ID : head
+                            ValuePrime
+                             T: .
+                             DotWhat
+                              T: ID : Init
+                              T: (
+                              ExprList
+                              T: )
+                              ValuePrime
+                           AddOperandPrime
+                          RelOperandPrime
+                         EqualityOperandPrime
+                        AndOperandPrime
+                       OrOperandPrime
+                      ExprPrime
+                     T: ;
+                  StmtList
+                   Stmt
+                    AtomicStmt
+                     T: ID : aux01
+                     IsArr
+                     IDAssignment
+                      T: =
+                      Expr
+                       OrOperand
+                        AndOperand
+                         EqualityOperand
+                          RelOperand
+                           AddOperand
+                            Value
+                             T: ID : head
+                             ValuePrime
+                              T: .
+                              DotWhat
+                               T: ID : Print
+                               T: (
+                               ExprList
+                               T: )
+                               ValuePrime
+                            AddOperandPrime
+                           RelOperandPrime
+                          EqualityOperandPrime
+                         AndOperandPrime
+                        OrOperandPrime
+                       ExprPrime
+                      T: ;
+                   StmtList
+                    Stmt
+                     AtomicStmt
+                      T: ID : el01
+                      IsArr
+                      IDAssignment
+                       T: =
+                       Expr
+                        OrOperand
+                         AndOperand
+                          EqualityOperand
+                           RelOperand
+                            AddOperand
+                             Value
+                              T: new
+                              NewWhat
+                               T: ID : Element
+                               T: (
+                               T: )
+                               ValuePrime
+                             AddOperandPrime
+                            RelOperandPrime
+                           EqualityOperandPrime
+                          AndOperandPrime
+                         OrOperandPrime
+                        ExprPrime
+                       T: ;
+                    StmtList
+                     Stmt
+                      AtomicStmt
+                       T: ID : aux01
+                       IsArr
+                       IDAssignment
+                        T: =
+                        Expr
+                         OrOperand
+                          AndOperand
+                           EqualityOperand
+                            RelOperand
+                             AddOperand
+                              Value
+                               T: ID : el01
+                               ValuePrime
+                                T: .
+                                DotWhat
+                                 T: ID : Init
+                                 T: (
+                                 ExprList
+                                  Expr
+                                   OrOperand
+                                    AndOperand
+                                     EqualityOperand
+                                      RelOperand
+                                       AddOperand
+                                        Value
+                                         T: Integer : 25
+                                        AddOperandPrime
+                                       RelOperandPrime
+                                      EqualityOperandPrime
+                                     AndOperandPrime
+                                    OrOperandPrime
+                                   ExprPrime
+                                  ExprListPrime
+                                   T: ,
+                                   Expr
+                                    OrOperand
+                                     AndOperand
+                                      EqualityOperand
+                                       RelOperand
+                                        AddOperand
+                                         Value
+                                          T: Integer : 37000
+                                         AddOperandPrime
+                                        RelOperandPrime
+                                       EqualityOperandPrime
+                                      AndOperandPrime
+                                     OrOperandPrime
+                                    ExprPrime
+                                   ExprListPrime
+                                    T: ,
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: false
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    ExprListPrime
+                                 T: )
+                                 ValuePrime
+                              AddOperandPrime
+                             RelOperandPrime
+                            EqualityOperandPrime
+                           AndOperandPrime
+                          OrOperandPrime
+                         ExprPrime
+                        T: ;
+                     StmtList
+                      Stmt
+                       AtomicStmt
+                        T: ID : head
+                        IsArr
+                        IDAssignment
+                         T: =
+                         Expr
+                          OrOperand
+                           AndOperand
+                            EqualityOperand
+                             RelOperand
+                              AddOperand
+                               Value
+                                T: ID : head
+                                ValuePrime
+                                 T: .
+                                 DotWhat
+                                  T: ID : Insert
+                                  T: (
+                                  ExprList
+                                   Expr
+                                    OrOperand
+                                     AndOperand
+                                      EqualityOperand
+                                       RelOperand
+                                        AddOperand
+                                         Value
+                                          T: ID : el01
+                                          ValuePrime
+                                         AddOperandPrime
+                                        RelOperandPrime
+                                       EqualityOperandPrime
+                                      AndOperandPrime
+                                     OrOperandPrime
+                                    ExprPrime
+                                   ExprListPrime
+                                  T: )
+                                  ValuePrime
+                               AddOperandPrime
+                              RelOperandPrime
+                             EqualityOperandPrime
+                            AndOperandPrime
+                           OrOperandPrime
+                          ExprPrime
+                         T: ;
+                      StmtList
+                       Stmt
+                        AtomicStmt
+                         T: ID : aux01
+                         IsArr
+                         IDAssignment
+                          T: =
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: ID : head
+                                 ValuePrime
+                                  T: .
+                                  DotWhat
+                                   T: ID : Print
+                                   T: (
+                                   ExprList
+                                   T: )
+                                   ValuePrime
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: ;
+                       StmtList
+                        Stmt
+                         AtomicStmt
+                          T: System.out.println
+                          T: (
+                          Expr
+                           OrOperand
+                            AndOperand
+                             EqualityOperand
+                              RelOperand
+                               AddOperand
+                                Value
+                                 T: Integer : 10000000
+                                AddOperandPrime
+                               RelOperandPrime
+                              EqualityOperandPrime
+                             AndOperandPrime
+                            OrOperandPrime
+                           ExprPrime
+                          T: )
+                          T: ;
+                        StmtList
+                         Stmt
+                          AtomicStmt
+                           T: ID : el01
+                           IsArr
+                           IDAssignment
+                            T: =
+                            Expr
+                             OrOperand
+                              AndOperand
+                               EqualityOperand
+                                RelOperand
+                                 AddOperand
+                                  Value
+                                   T: new
+                                   NewWhat
+                                    T: ID : Element
+                                    T: (
+                                    T: )
+                                    ValuePrime
+                                  AddOperandPrime
+                                 RelOperandPrime
+                                EqualityOperandPrime
+                               AndOperandPrime
+                              OrOperandPrime
+                             ExprPrime
+                            T: ;
+                         StmtList
+                          Stmt
+                           AtomicStmt
+                            T: ID : aux01
+                            IsArr
+                            IDAssignment
+                             T: =
+                             Expr
+                              OrOperand
+                               AndOperand
+                                EqualityOperand
+                                 RelOperand
+                                  AddOperand
+                                   Value
+                                    T: ID : el01
+                                    ValuePrime
+                                     T: .
+                                     DotWhat
+                                      T: ID : Init
+                                      T: (
+                                      ExprList
+                                       Expr
+                                        OrOperand
+                                         AndOperand
+                                          EqualityOperand
+                                           RelOperand
+                                            AddOperand
+                                             Value
+                                              T: Integer : 39
+                                             AddOperandPrime
+                                            RelOperandPrime
+                                           EqualityOperandPrime
+                                          AndOperandPrime
+                                         OrOperandPrime
+                                        ExprPrime
+                                       ExprListPrime
+                                        T: ,
+                                        Expr
+                                         OrOperand
+                                          AndOperand
+                                           EqualityOperand
+                                            RelOperand
+                                             AddOperand
+                                              Value
+                                               T: Integer : 42000
+                                              AddOperandPrime
+                                             RelOperandPrime
+                                            EqualityOperandPrime
+                                           AndOperandPrime
+                                          OrOperandPrime
+                                         ExprPrime
+                                        ExprListPrime
+                                         T: ,
+                                         Expr
+                                          OrOperand
+                                           AndOperand
+                                            EqualityOperand
+                                             RelOperand
+                                              AddOperand
+                                               Value
+                                                T: true
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                             EqualityOperandPrime
+                                            AndOperandPrime
+                                           OrOperandPrime
+                                          ExprPrime
+                                         ExprListPrime
+                                      T: )
+                                      ValuePrime
+                                   AddOperandPrime
+                                  RelOperandPrime
+                                 EqualityOperandPrime
+                                AndOperandPrime
+                               OrOperandPrime
+                              ExprPrime
+                             T: ;
+                          StmtList
+                           Stmt
+                            AtomicStmt
+                             T: ID : el02
+                             IsArr
+                             IDAssignment
+                              T: =
+                              Expr
+                               OrOperand
+                                AndOperand
+                                 EqualityOperand
+                                  RelOperand
+                                   AddOperand
+                                    Value
+                                     T: ID : el01
+                                     ValuePrime
+                                    AddOperandPrime
+                                   RelOperandPrime
+                                  EqualityOperandPrime
+                                 AndOperandPrime
+                                OrOperandPrime
+                               ExprPrime
+                              T: ;
+                           StmtList
+                            Stmt
+                             AtomicStmt
+                              T: ID : head
+                              IsArr
+                              IDAssignment
+                               T: =
+                               Expr
+                                OrOperand
+                                 AndOperand
+                                  EqualityOperand
+                                   RelOperand
+                                    AddOperand
+                                     Value
+                                      T: ID : head
+                                      ValuePrime
+                                       T: .
+                                       DotWhat
+                                        T: ID : Insert
+                                        T: (
+                                        ExprList
+                                         Expr
+                                          OrOperand
+                                           AndOperand
+                                            EqualityOperand
+                                             RelOperand
+                                              AddOperand
+                                               Value
+                                                T: ID : el01
+                                                ValuePrime
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                             EqualityOperandPrime
+                                            AndOperandPrime
+                                           OrOperandPrime
+                                          ExprPrime
+                                         ExprListPrime
+                                        T: )
+                                        ValuePrime
+                                     AddOperandPrime
+                                    RelOperandPrime
+                                   EqualityOperandPrime
+                                  AndOperandPrime
+                                 OrOperandPrime
+                                ExprPrime
+                               T: ;
+                            StmtList
+                             Stmt
+                              AtomicStmt
+                               T: ID : aux01
+                               IsArr
+                               IDAssignment
+                                T: =
+                                Expr
+                                 OrOperand
+                                  AndOperand
+                                   EqualityOperand
+                                    RelOperand
+                                     AddOperand
+                                      Value
+                                       T: ID : head
+                                       ValuePrime
+                                        T: .
+                                        DotWhat
+                                         T: ID : Print
+                                         T: (
+                                         ExprList
+                                         T: )
+                                         ValuePrime
+                                      AddOperandPrime
+                                     RelOperandPrime
+                                    EqualityOperandPrime
+                                   AndOperandPrime
+                                  OrOperandPrime
+                                 ExprPrime
+                                T: ;
+                             StmtList
+                              Stmt
+                               AtomicStmt
+                                T: System.out.println
+                                T: (
+                                Expr
+                                 OrOperand
+                                  AndOperand
+                                   EqualityOperand
+                                    RelOperand
+                                     AddOperand
+                                      Value
+                                       T: Integer : 10000000
+                                      AddOperandPrime
+                                     RelOperandPrime
+                                    EqualityOperandPrime
+                                   AndOperandPrime
+                                  OrOperandPrime
+                                 ExprPrime
+                                T: )
+                                T: ;
+                              StmtList
+                               Stmt
+                                AtomicStmt
+                                 T: ID : el01
+                                 IsArr
+                                 IDAssignment
+                                  T: =
+                                  Expr
+                                   OrOperand
+                                    AndOperand
+                                     EqualityOperand
+                                      RelOperand
+                                       AddOperand
+                                        Value
+                                         T: new
+                                         NewWhat
+                                          T: ID : Element
+                                          T: (
+                                          T: )
+                                          ValuePrime
+                                        AddOperandPrime
+                                       RelOperandPrime
+                                      EqualityOperandPrime
+                                     AndOperandPrime
+                                    OrOperandPrime
+                                   ExprPrime
+                                  T: ;
+                               StmtList
+                                Stmt
+                                 AtomicStmt
+                                  T: ID : aux01
+                                  IsArr
+                                  IDAssignment
+                                   T: =
+                                   Expr
+                                    OrOperand
+                                     AndOperand
+                                      EqualityOperand
+                                       RelOperand
+                                        AddOperand
+                                         Value
+                                          T: ID : el01
+                                          ValuePrime
+                                           T: .
+                                           DotWhat
+                                            T: ID : Init
+                                            T: (
+                                            ExprList
+                                             Expr
+                                              OrOperand
+                                               AndOperand
+                                                EqualityOperand
+                                                 RelOperand
+                                                  AddOperand
+                                                   Value
+                                                    T: Integer : 22
+                                                   AddOperandPrime
+                                                  RelOperandPrime
+                                                 EqualityOperandPrime
+                                                AndOperandPrime
+                                               OrOperandPrime
+                                              ExprPrime
+                                             ExprListPrime
+                                              T: ,
+                                              Expr
+                                               OrOperand
+                                                AndOperand
+                                                 EqualityOperand
+                                                  RelOperand
+                                                   AddOperand
+                                                    Value
+                                                     T: Integer : 34000
+                                                    AddOperandPrime
+                                                   RelOperandPrime
+                                                  EqualityOperandPrime
+                                                 AndOperandPrime
+                                                OrOperandPrime
+                                               ExprPrime
+                                              ExprListPrime
+                                               T: ,
+                                               Expr
+                                                OrOperand
+                                                 AndOperand
+                                                  EqualityOperand
+                                                   RelOperand
+                                                    AddOperand
+                                                     Value
+                                                      T: false
+                                                     AddOperandPrime
+                                                    RelOperandPrime
+                                                   EqualityOperandPrime
+                                                  AndOperandPrime
+                                                 OrOperandPrime
+                                                ExprPrime
+                                               ExprListPrime
+                                            T: )
+                                            ValuePrime
+                                         AddOperandPrime
+                                        RelOperandPrime
+                                       EqualityOperandPrime
+                                      AndOperandPrime
+                                     OrOperandPrime
+                                    ExprPrime
+                                   T: ;
+                                StmtList
+                                 Stmt
+                                  AtomicStmt
+                                   T: ID : head
+                                   IsArr
+                                   IDAssignment
+                                    T: =
+                                    Expr
+                                     OrOperand
+                                      AndOperand
+                                       EqualityOperand
+                                        RelOperand
+                                         AddOperand
+                                          Value
+                                           T: ID : head
+                                           ValuePrime
+                                            T: .
+                                            DotWhat
+                                             T: ID : Insert
+                                             T: (
+                                             ExprList
+                                              Expr
+                                               OrOperand
+                                                AndOperand
+                                                 EqualityOperand
+                                                  RelOperand
+                                                   AddOperand
+                                                    Value
+                                                     T: ID : el01
+                                                     ValuePrime
+                                                    AddOperandPrime
+                                                   RelOperandPrime
+                                                  EqualityOperandPrime
+                                                 AndOperandPrime
+                                                OrOperandPrime
+                                               ExprPrime
+                                              ExprListPrime
+                                             T: )
+                                             ValuePrime
+                                          AddOperandPrime
+                                         RelOperandPrime
+                                        EqualityOperandPrime
+                                       AndOperandPrime
+                                      OrOperandPrime
+                                     ExprPrime
+                                    T: ;
+                                 StmtList
+                                  Stmt
+                                   AtomicStmt
+                                    T: ID : aux01
+                                    IsArr
+                                    IDAssignment
+                                     T: =
+                                     Expr
+                                      OrOperand
+                                       AndOperand
+                                        EqualityOperand
+                                         RelOperand
+                                          AddOperand
+                                           Value
+                                            T: ID : head
+                                            ValuePrime
+                                             T: .
+                                             DotWhat
+                                              T: ID : Print
+                                              T: (
+                                              ExprList
+                                              T: )
+                                              ValuePrime
+                                           AddOperandPrime
+                                          RelOperandPrime
+                                         EqualityOperandPrime
+                                        AndOperandPrime
+                                       OrOperandPrime
+                                      ExprPrime
+                                     T: ;
+                                  StmtList
+                                   Stmt
+                                    AtomicStmt
+                                     T: ID : el03
+                                     IsArr
+                                     IDAssignment
+                                      T: =
+                                      Expr
+                                       OrOperand
+                                        AndOperand
+                                         EqualityOperand
+                                          RelOperand
+                                           AddOperand
+                                            Value
+                                             T: new
+                                             NewWhat
+                                              T: ID : Element
+                                              T: (
+                                              T: )
+                                              ValuePrime
+                                            AddOperandPrime
+                                           RelOperandPrime
+                                          EqualityOperandPrime
+                                         AndOperandPrime
+                                        OrOperandPrime
+                                       ExprPrime
+                                      T: ;
+                                   StmtList
+                                    Stmt
+                                     AtomicStmt
+                                      T: ID : aux01
+                                      IsArr
+                                      IDAssignment
+                                       T: =
+                                       Expr
+                                        OrOperand
+                                         AndOperand
+                                          EqualityOperand
+                                           RelOperand
+                                            AddOperand
+                                             Value
+                                              T: ID : el03
+                                              ValuePrime
+                                               T: .
+                                               DotWhat
+                                                T: ID : Init
+                                                T: (
+                                                ExprList
+                                                 Expr
+                                                  OrOperand
+                                                   AndOperand
+                                                    EqualityOperand
+                                                     RelOperand
+                                                      AddOperand
+                                                       Value
+                                                        T: Integer : 27
+                                                       AddOperandPrime
+                                                      RelOperandPrime
+                                                     EqualityOperandPrime
+                                                    AndOperandPrime
+                                                   OrOperandPrime
+                                                  ExprPrime
+                                                 ExprListPrime
+                                                  T: ,
+                                                  Expr
+                                                   OrOperand
+                                                    AndOperand
+                                                     EqualityOperand
+                                                      RelOperand
+                                                       AddOperand
+                                                        Value
+                                                         T: Integer : 34000
+                                                        AddOperandPrime
+                                                       RelOperandPrime
+                                                      EqualityOperandPrime
+                                                     AndOperandPrime
+                                                    OrOperandPrime
+                                                   ExprPrime
+                                                  ExprListPrime
+                                                   T: ,
+                                                   Expr
+                                                    OrOperand
+                                                     AndOperand
+                                                      EqualityOperand
+                                                       RelOperand
+                                                        AddOperand
+                                                         Value
+                                                          T: false
+                                                         AddOperandPrime
+                                                        RelOperandPrime
+                                                       EqualityOperandPrime
+                                                      AndOperandPrime
+                                                     OrOperandPrime
+                                                    ExprPrime
+                                                   ExprListPrime
+                                                T: )
+                                                ValuePrime
+                                             AddOperandPrime
+                                            RelOperandPrime
+                                           EqualityOperandPrime
+                                          AndOperandPrime
+                                         OrOperandPrime
+                                        ExprPrime
+                                       T: ;
+                                    StmtList
+                                     Stmt
+                                      AtomicStmt
+                                       T: System.out.println
+                                       T: (
+                                       Expr
+                                        OrOperand
+                                         AndOperand
+                                          EqualityOperand
+                                           RelOperand
+                                            AddOperand
+                                             Value
+                                              T: ID : head
+                                              ValuePrime
+                                               T: .
+                                               DotWhat
+                                                T: ID : Search
+                                                T: (
+                                                ExprList
+                                                 Expr
+                                                  OrOperand
+                                                   AndOperand
+                                                    EqualityOperand
+                                                     RelOperand
+                                                      AddOperand
+                                                       Value
+                                                        T: ID : el02
+                                                        ValuePrime
+                                                       AddOperandPrime
+                                                      RelOperandPrime
+                                                     EqualityOperandPrime
+                                                    AndOperandPrime
+                                                   OrOperandPrime
+                                                  ExprPrime
+                                                 ExprListPrime
+                                                T: )
+                                                ValuePrime
+                                             AddOperandPrime
+                                            RelOperandPrime
+                                           EqualityOperandPrime
+                                          AndOperandPrime
+                                         OrOperandPrime
+                                        ExprPrime
+                                       T: )
+                                       T: ;
+                                     StmtList
+                                      Stmt
+                                       AtomicStmt
+                                        T: System.out.println
+                                        T: (
+                                        Expr
+                                         OrOperand
+                                          AndOperand
+                                           EqualityOperand
+                                            RelOperand
+                                             AddOperand
+                                              Value
+                                               T: ID : head
+                                               ValuePrime
+                                                T: .
+                                                DotWhat
+                                                 T: ID : Search
+                                                 T: (
+                                                 ExprList
+                                                  Expr
+                                                   OrOperand
+                                                    AndOperand
+                                                     EqualityOperand
+                                                      RelOperand
+                                                       AddOperand
+                                                        Value
+                                                         T: ID : el03
+                                                         ValuePrime
+                                                        AddOperandPrime
+                                                       RelOperandPrime
+                                                      EqualityOperandPrime
+                                                     AndOperandPrime
+                                                    OrOperandPrime
+                                                   ExprPrime
+                                                  ExprListPrime
+                                                 T: )
+                                                 ValuePrime
+                                              AddOperandPrime
+                                             RelOperandPrime
+                                            EqualityOperandPrime
+                                           AndOperandPrime
+                                          OrOperandPrime
+                                         ExprPrime
+                                        T: )
+                                        T: ;
+                                      StmtList
+                                       Stmt
+                                        AtomicStmt
+                                         T: System.out.println
+                                         T: (
+                                         Expr
+                                          OrOperand
+                                           AndOperand
+                                            EqualityOperand
+                                             RelOperand
+                                              AddOperand
+                                               Value
+                                                T: Integer : 10000000
+                                               AddOperandPrime
+                                              RelOperandPrime
+                                             EqualityOperandPrime
+                                            AndOperandPrime
+                                           OrOperandPrime
+                                          ExprPrime
+                                         T: )
+                                         T: ;
+                                       StmtList
+                                        Stmt
+                                         AtomicStmt
+                                          T: ID : el01
+                                          IsArr
+                                          IDAssignment
+                                           T: =
+                                           Expr
+                                            OrOperand
+                                             AndOperand
+                                              EqualityOperand
+                                               RelOperand
+                                                AddOperand
+                                                 Value
+                                                  T: new
+                                                  NewWhat
+                                                   T: ID : Element
+                                                   T: (
+                                                   T: )
+                                                   ValuePrime
+                                                 AddOperandPrime
+                                                RelOperandPrime
+                                               EqualityOperandPrime
+                                              AndOperandPrime
+                                             OrOperandPrime
+                                            ExprPrime
+                                           T: ;
+                                        StmtList
+                                         Stmt
+                                          AtomicStmt
+                                           T: ID : aux01
+                                           IsArr
+                                           IDAssignment
+                                            T: =
+                                            Expr
+                                             OrOperand
+                                              AndOperand
+                                               EqualityOperand
+                                                RelOperand
+                                                 AddOperand
+                                                  Value
+                                                   T: ID : el01
+                                                   ValuePrime
+                                                    T: .
+                                                    DotWhat
+                                                     T: ID : Init
+                                                     T: (
+                                                     ExprList
+                                                      Expr
+                                                       OrOperand
+                                                        AndOperand
+                                                         EqualityOperand
+                                                          RelOperand
+                                                           AddOperand
+                                                            Value
+                                                             T: Integer : 28
+                                                            AddOperandPrime
+                                                           RelOperandPrime
+                                                          EqualityOperandPrime
+                                                         AndOperandPrime
+                                                        OrOperandPrime
+                                                       ExprPrime
+                                                      ExprListPrime
+                                                       T: ,
+                                                       Expr
+                                                        OrOperand
+                                                         AndOperand
+                                                          EqualityOperand
+                                                           RelOperand
+                                                            AddOperand
+                                                             Value
+                                                              T: Integer : 35000
+                                                             AddOperandPrime
+                                                            RelOperandPrime
+                                                           EqualityOperandPrime
+                                                          AndOperandPrime
+                                                         OrOperandPrime
+                                                        ExprPrime
+                                                       ExprListPrime
+                                                        T: ,
+                                                        Expr
+                                                         OrOperand
+                                                          AndOperand
+                                                           EqualityOperand
+                                                            RelOperand
+                                                             AddOperand
+                                                              Value
+                                                               T: false
+                                                              AddOperandPrime
+                                                             RelOperandPrime
+                                                            EqualityOperandPrime
+                                                           AndOperandPrime
+                                                          OrOperandPrime
+                                                         ExprPrime
+                                                        ExprListPrime
+                                                     T: )
+                                                     ValuePrime
+                                                  AddOperandPrime
+                                                 RelOperandPrime
+                                                EqualityOperandPrime
+                                               AndOperandPrime
+                                              OrOperandPrime
+                                             ExprPrime
+                                            T: ;
+                                         StmtList
+                                          Stmt
+                                           AtomicStmt
+                                            T: ID : head
+                                            IsArr
+                                            IDAssignment
+                                             T: =
+                                             Expr
+                                              OrOperand
+                                               AndOperand
+                                                EqualityOperand
+                                                 RelOperand
+                                                  AddOperand
+                                                   Value
+                                                    T: ID : head
+                                                    ValuePrime
+                                                     T: .
+                                                     DotWhat
+                                                      T: ID : Insert
+                                                      T: (
+                                                      ExprList
+                                                       Expr
+                                                        OrOperand
+                                                         AndOperand
+                                                          EqualityOperand
+                                                           RelOperand
+                                                            AddOperand
+                                                             Value
+                                                              T: ID : el01
+                                                              ValuePrime
+                                                             AddOperandPrime
+                                                            RelOperandPrime
+                                                           EqualityOperandPrime
+                                                          AndOperandPrime
+                                                         OrOperandPrime
+                                                        ExprPrime
+                                                       ExprListPrime
+                                                      T: )
+                                                      ValuePrime
+                                                   AddOperandPrime
+                                                  RelOperandPrime
+                                                 EqualityOperandPrime
+                                                AndOperandPrime
+                                               OrOperandPrime
+                                              ExprPrime
+                                             T: ;
+                                          StmtList
+                                           Stmt
+                                            AtomicStmt
+                                             T: ID : aux01
+                                             IsArr
+                                             IDAssignment
+                                              T: =
+                                              Expr
+                                               OrOperand
+                                                AndOperand
+                                                 EqualityOperand
+                                                  RelOperand
+                                                   AddOperand
+                                                    Value
+                                                     T: ID : head
+                                                     ValuePrime
+                                                      T: .
+                                                      DotWhat
+                                                       T: ID : Print
+                                                       T: (
+                                                       ExprList
+                                                       T: )
+                                                       ValuePrime
+                                                    AddOperandPrime
+                                                   RelOperandPrime
+                                                  EqualityOperandPrime
+                                                 AndOperandPrime
+                                                OrOperandPrime
+                                               ExprPrime
+                                              T: ;
+                                           StmtList
+                                            Stmt
+                                             AtomicStmt
+                                              T: System.out.println
+                                              T: (
+                                              Expr
+                                               OrOperand
+                                                AndOperand
+                                                 EqualityOperand
+                                                  RelOperand
+                                                   AddOperand
+                                                    Value
+                                                     T: Integer : 2220000
+                                                    AddOperandPrime
+                                                   RelOperandPrime
+                                                  EqualityOperandPrime
+                                                 AndOperandPrime
+                                                OrOperandPrime
+                                               ExprPrime
+                                              T: )
+                                              T: ;
+                                            StmtList
+                                             Stmt
+                                              AtomicStmt
+                                               T: ID : head
+                                               IsArr
+                                               IDAssignment
+                                                T: =
+                                                Expr
+                                                 OrOperand
+                                                  AndOperand
+                                                   EqualityOperand
+                                                    RelOperand
+                                                     AddOperand
+                                                      Value
+                                                       T: ID : head
+                                                       ValuePrime
+                                                        T: .
+                                                        DotWhat
+                                                         T: ID : Delete
+                                                         T: (
+                                                         ExprList
+                                                          Expr
+                                                           OrOperand
+                                                            AndOperand
+                                                             EqualityOperand
+                                                              RelOperand
+                                                               AddOperand
+                                                                Value
+                                                                 T: ID : el02
+                                                                 ValuePrime
+                                                                AddOperandPrime
+                                                               RelOperandPrime
+                                                              EqualityOperandPrime
+                                                             AndOperandPrime
+                                                            OrOperandPrime
+                                                           ExprPrime
+                                                          ExprListPrime
+                                                         T: )
+                                                         ValuePrime
+                                                      AddOperandPrime
+                                                     RelOperandPrime
+                                                    EqualityOperandPrime
+                                                   AndOperandPrime
+                                                  OrOperandPrime
+                                                 ExprPrime
+                                                T: ;
+                                             StmtList
+                                              Stmt
+                                               AtomicStmt
+                                                T: ID : aux01
+                                                IsArr
+                                                IDAssignment
+                                                 T: =
+                                                 Expr
+                                                  OrOperand
+                                                   AndOperand
+                                                    EqualityOperand
+                                                     RelOperand
+                                                      AddOperand
+                                                       Value
+                                                        T: ID : head
+                                                        ValuePrime
+                                                         T: .
+                                                         DotWhat
+                                                          T: ID : Print
+                                                          T: (
+                                                          ExprList
+                                                          T: )
+                                                          ValuePrime
+                                                       AddOperandPrime
+                                                      RelOperandPrime
+                                                     EqualityOperandPrime
+                                                    AndOperandPrime
+                                                   OrOperandPrime
+                                                  ExprPrime
+                                                 T: ;
+                                              StmtList
+                                               Stmt
+                                                AtomicStmt
+                                                 T: System.out.println
+                                                 T: (
+                                                 Expr
+                                                  OrOperand
+                                                   AndOperand
+                                                    EqualityOperand
+                                                     RelOperand
+                                                      AddOperand
+                                                       Value
+                                                        T: Integer : 33300000
+                                                       AddOperandPrime
+                                                      RelOperandPrime
+                                                     EqualityOperandPrime
+                                                    AndOperandPrime
+                                                   OrOperandPrime
+                                                  ExprPrime
+                                                 T: )
+                                                 T: ;
+                                               StmtList
+                                                Stmt
+                                                 AtomicStmt
+                                                  T: ID : head
+                                                  IsArr
+                                                  IDAssignment
+                                                   T: =
+                                                   Expr
+                                                    OrOperand
+                                                     AndOperand
+                                                      EqualityOperand
+                                                       RelOperand
+                                                        AddOperand
+                                                         Value
+                                                          T: ID : head
+                                                          ValuePrime
+                                                           T: .
+                                                           DotWhat
+                                                            T: ID : Delete
+                                                            T: (
+                                                            ExprList
+                                                             Expr
+                                                              OrOperand
+                                                               AndOperand
+                                                                EqualityOperand
+                                                                 RelOperand
+                                                                  AddOperand
+                                                                   Value
+                                                                    T: ID : el01
+                                                                    ValuePrime
+                                                                   AddOperandPrime
+                                                                  RelOperandPrime
+                                                                 EqualityOperandPrime
+                                                                AndOperandPrime
+                                                               OrOperandPrime
+                                                              ExprPrime
+                                                             ExprListPrime
+                                                            T: )
+                                                            ValuePrime
+                                                         AddOperandPrime
+                                                        RelOperandPrime
+                                                       EqualityOperandPrime
+                                                      AndOperandPrime
+                                                     OrOperandPrime
+                                                    ExprPrime
+                                                   T: ;
+                                                StmtList
+                                                 Stmt
+                                                  AtomicStmt
+                                                   T: ID : aux01
+                                                   IsArr
+                                                   IDAssignment
+                                                    T: =
+                                                    Expr
+                                                     OrOperand
+                                                      AndOperand
+                                                       EqualityOperand
+                                                        RelOperand
+                                                         AddOperand
+                                                          Value
+                                                           T: ID : head
+                                                           ValuePrime
+                                                            T: .
+                                                            DotWhat
+                                                             T: ID : Print
+                                                             T: (
+                                                             ExprList
+                                                             T: )
+                                                             ValuePrime
+                                                          AddOperandPrime
+                                                         RelOperandPrime
+                                                        EqualityOperandPrime
+                                                       AndOperandPrime
+                                                      OrOperandPrime
+                                                     ExprPrime
+                                                    T: ;
+                                                 StmtList
+                                                  Stmt
+                                                   AtomicStmt
+                                                    T: System.out.println
+                                                    T: (
+                                                    Expr
+                                                     OrOperand
+                                                      AndOperand
+                                                       EqualityOperand
+                                                        RelOperand
+                                                         AddOperand
+                                                          Value
+                                                           T: Integer : 44440000
+                                                          AddOperandPrime
+                                                         RelOperandPrime
+                                                        EqualityOperandPrime
+                                                       AndOperandPrime
+                                                      OrOperandPrime
+                                                     ExprPrime
+                                                    T: )
+                                                    T: ;
+                                                  StmtList
+        T: return
+        Expr
+         OrOperand
+          AndOperand
+           EqualityOperand
+            RelOperand
+             AddOperand
+              Value
+               T: Integer : 0
+              AddOperandPrime
+             RelOperandPrime
+            EqualityOperandPrime
+           AndOperandPrime
+          OrOperandPrime
+         ExprPrime
+        T: ;
+        T: }
+       MethodDeclList
+      T: }
+     ClassDeclList
+

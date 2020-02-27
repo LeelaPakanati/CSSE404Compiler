@@ -4,15 +4,15 @@ build: *.java **/*.java
 
 compile_run: build
 	> compiledouts
-	for file in tests/*.java ; do \
-		echo `echo $$file | sed 's/tests\///g'` | tee -a compiledouts ; \
-		./cr.sh `echo $$file | sed 's/.java//g' | sed 's/tests\///g'` | tee -a compiledouts ; \
+	for file in SourceFiles/*.java ; do \
+		echo `echo $$file | sed 's/SourceFiles\///g'` | tee -a compiledouts ; \
+		./cr.sh `echo $$file | sed 's/.java//g' | sed 's/SourceFiles\///g'` | tee -a compiledouts ; \
 		done
 
 .ONESHELL:
 compile_run_java:
 	> actualouts
-	cd tests
+	cd SourceFiles
 	for file in *.java; do \
 		echo $$file | tee -a ../actualouts ; \
 		javac $$file ; \
